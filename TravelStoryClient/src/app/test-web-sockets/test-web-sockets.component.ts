@@ -27,7 +27,7 @@ export class TestWebSocketsComponent implements OnInit {
   }
 
   connect() {
-    const socket = new SockJS('http://localhost:8080/chat');
+    const socket = new SockJS('http://localhost:8080/messenger');
     this.stompClient = Stomp.over(socket);
 
     const _this = this;

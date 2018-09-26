@@ -3,31 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
-import {ChatComponent} from "./chat/chat.component";
-import {PersonalInfoComponent} from "./chat/chat-sidebar/personal-info/personal-info.component";
-import {ChatSidebarComponent} from "./chat/chat-sidebar/chat-sidebar.component";
-import {ChatListComponent} from "./chat/chat-sidebar/chat-list/chat-list.component";
-import {MainMessagingContentComponent} from "./chat/main-messaging-content/main-messaging-content.component";
-import {ChatInfoComponent} from "./chat/main-messaging-content/chat-info/chat-info.component";
-import { ChatSearchComponent } from './chat/chat-sidebar/chat-search/chat-search.component';
+import {MessengerComponent} from "./messenger/messenger.component";
+import {PersonalInfoComponent} from "./messenger/messenger-sidebar/personal-info/personal-info.component";
+import {ChatSidebarComponent} from "./messenger/messenger-sidebar/chat-sidebar.component";
+import {ChatListComponent} from "./messenger/messenger-sidebar/chat-list/chat-list.component";
+import {MainMessagingContentComponent} from "./messenger/main-messaging-content/main-messaging-content.component";
+import {ChatInfoComponent} from "./messenger/main-messaging-content/chat-info/chat-info.component";
 import { TestWebSocketsComponent } from './test-web-sockets/test-web-sockets.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './main/main.component';
 import {RouterModule} from "@angular/router";
+import { ChatSearchPipe } from './messenger/pipes/chat-search.pipe';
 // import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent,
+    MessengerComponent,
     PersonalInfoComponent,
     ChatSidebarComponent,
     ChatListComponent,
     MainMessagingContentComponent,
     ChatInfoComponent,
-    ChatSearchComponent,
     TestWebSocketsComponent,
-    MainComponent
+    MainComponent,
+    ChatSearchPipe
   ],
   imports: [
     BrowserModule,

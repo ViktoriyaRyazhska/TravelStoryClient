@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from "../model/User";
+import {currUserMockup} from "../mockups/UserMockup";
 
 
 @Component({
@@ -7,6 +9,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./chat-sidebar.component.scss', '../general.scss']
 })
 export class ChatSidebarComponent implements OnInit {
+  @Input() currentUser: User;
+  chatsSearchQuery: string = '';
 
   constructor() {
   }

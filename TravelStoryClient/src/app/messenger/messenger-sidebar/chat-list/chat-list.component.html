@@ -1,0 +1,34 @@
+<script src="chat-list.component.spec.ts"></script>
+<div id="contacts">
+  <ul>
+    <li class="contact">
+      <div class="wrap">
+        <span class="contact-status online"></span>
+        <img src="http://emilcarlsson.se/assets/louislitt.png" alt=""/>
+        <div class="meta">
+          <p class="name">Louis Litt</p>
+          <p class="preview">You just got LITT up, Mike.</p>
+        </div>
+      </div>
+    </li>
+    <li class="contact" *ngFor="let chat of chats | chatSearch : searchQuery">
+      <div class="wrap" *ngIf="chat.chatType === chatTypes.PRIVATE_MESSAGES">
+        <span class="contact-status "
+              [ngClass]="{
+              'online':currentUser.status === statusTypes.ONLINE,
+              'away':currentUser.status === statusTypes.AWAY,
+              'busy':currentUser.status === statusTypes.BUSY,
+              'offline':currentUser.status === statusTypes.OFFLINE
+            }"></span>
+        <img src="{{chat.interlocutor.avatarUrl}}" alt=""/>
+        <div class="meta">
+          <p class="name">
+            {{chat.name}}
+            <!--{{chat.interlocutor.firstName + ' ' + chat.interlocutor.lastName}}-->
+          </p>
+          <p class="preview">{{chat.messages[chat.messages.length-1].messageContent}}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
