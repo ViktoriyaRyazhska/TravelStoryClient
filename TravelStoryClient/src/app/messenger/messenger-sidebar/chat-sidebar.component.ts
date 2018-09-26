@@ -10,7 +10,7 @@ import {currUserMockup} from "../mockups/UserMockup";
 })
 export class ChatSidebarComponent implements OnInit {
   @Input() currentUser: User;
-  chatsSearchQuery: string = '';
+  chatsSearchQuery: string = 'A';
 
   constructor() {
   }

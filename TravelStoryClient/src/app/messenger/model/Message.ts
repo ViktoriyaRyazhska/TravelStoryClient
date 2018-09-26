@@ -4,7 +4,7 @@ export class Message {
   id: number;
   messageContent: string;
   messageType: MessageType;
-  author_id: number;
+  author: User;
 }
 
 export enum MessageType {

@@ -5,7 +5,7 @@ import {chats} from "./chatsMockup";
 import {messages} from "./messagesMockUp";
 
 export const currUserMockup: User = {
-  id: 100,
+  id: 1,
   avatarUrl: "http://emilcarlsson.se/assets/mikeross.png",
   firstName: "Mike",
   lastName: "Ross",
