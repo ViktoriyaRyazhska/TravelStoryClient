@@ -9,9 +9,9 @@ import {ChatSidebarComponent} from "./messenger/messenger-sidebar/chat-sidebar.c
 import {ChatListComponent} from "./messenger/messenger-sidebar/chat-list/chat-list.component";
 import {MainMessagingContentComponent} from "./messenger/main-messaging-content/main-messaging-content.component";
 import {ChatInfoComponent} from "./messenger/main-messaging-content/chat-info/chat-info.component";
-import { TestWebSocketsComponent } from './test-web-sockets/test-web-sockets.component';
+import { TestWebSocketsComponent } from './messenger/test-web-sockets/test-web-sockets.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MainComponent } from './main/main.component';
+import { UserComponent } from './user/user.component';
 import {RouterModule} from "@angular/router";
 import { ChatSearchPipe } from './messenger/pipes/chat-search.pipe';
 // import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
@@ -26,7 +26,7 @@ import { ChatSearchPipe } from './messenger/pipes/chat-search.pipe';
     MainMessagingContentComponent,
     ChatInfoComponent,
     TestWebSocketsComponent,
-    MainComponent,
+    UserComponent,
     ChatSearchPipe
   ],
   imports: [
