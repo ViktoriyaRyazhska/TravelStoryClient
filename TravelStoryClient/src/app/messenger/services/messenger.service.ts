@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {User} from "../model/User";
-import {chats} from "../mockups/chatsMockup";
-import {forEach} from "../../../../node_modules/@angular/router/src/utils/collection";
-import {Chat} from "../model/Chat";
-import {Message} from "../model/Message";
-import {currUserMockup} from "../mockups/UserMockup";
+import {User} from '../model/User';
+import {chats} from '../mockups/chatsMockup';
+import {forEach} from '../../../../node_modules/@angular/router/src/utils/collection';
+import {Chat} from '../model/Chat';
+import {Message} from '../model/Message';
+import {currUserMockup} from '../mockups/UserMockup';
 
 @Injectable({
   providedIn: 'root'
