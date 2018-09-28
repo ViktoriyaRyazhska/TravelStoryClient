@@ -10,7 +10,7 @@ import {UserPageComponent} from './user-page/user-page.component';
 
 const userRoutes: Routes = [
   {path: 'feed', component: FeedComponent},
-  {path: ':id', component: UserPageComponent}
+  {path: 'user/:id', component: UserPageComponent}
 ];
 
 @NgModule({
