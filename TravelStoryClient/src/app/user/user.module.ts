@@ -24,6 +24,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatIconModule} from "@angular/material/typings/icon";
 
+import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
+import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
+import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
 
 
 @NgModule({
@@ -48,9 +51,10 @@ import {MatIconModule} from "@angular/material/typings/icon";
     UserPageComponent,
     FeedComponent,
     ContainerPostComponent,
-    CommentsComponent
-
-
+    CommentsComponent,
+    UserInfoSideComponent,
+    UserFollowsSideComponent,
+    UserGallerySideComponent
   ]
 })
 export class UserModule {
