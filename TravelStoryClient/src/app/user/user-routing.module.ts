@@ -7,16 +7,19 @@ import {MessengerComponent} from '../messenger/messenger.component';
 import {TestWebSocketsComponent} from '../messenger/test-web-sockets/test-web-sockets.component';
 import {FeedComponent} from './feed/feed.component';
 import {UserPageComponent} from './user-page/user-page.component';
+import {MatIconModule} from "@angular/material";
 
 const userRoutes: Routes = [
   {path: 'feed', component: FeedComponent},
-  {path: 'user/:id', component: UserPageComponent}
+  {path: 'user/:id', component: UserPageComponent},
+  {path: 'user', component: UserPageComponent}
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(userRoutes)
+    RouterModule.forChild(userRoutes),
+
   ],
   exports: [RouterModule],
   declarations: []

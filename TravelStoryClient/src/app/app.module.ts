@@ -14,8 +14,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {UserComponent} from './user/user.component';
 import {RouterModule} from '@angular/router';
 import {ChatSearchPipe} from './messenger/pipes/chat-search.pipe';
-import {CommentsComponent} from './user/comments/comments.component';
 import {UserModule} from './user/user.module';
+
+
+
 
 // import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 
@@ -31,7 +33,7 @@ import {UserModule} from './user/user.module';
     TestWebSocketsComponent,
     UserComponent,
     ChatSearchPipe,
-    CommentsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,10 @@ import {UserModule} from './user/user.module';
     AppRoutingModule,
     RouterModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+
+
     // BsDropdownModule.forRoot(),
     // TooltipModule.forRoot(),
     // ModalModule.forRoot()

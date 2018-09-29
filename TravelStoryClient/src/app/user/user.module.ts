@@ -1,3 +1,4 @@
+import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FooterComponent} from './footer/footer.component';
@@ -8,19 +9,36 @@ import {SearchComponent} from './search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
-import {MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatProgressSpinnerModule} from '@angular/material';
-import {MatInputModule} from '@angular/material/typings/input';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ContainerPostComponent} from './user-page/container-post/container-post.component';
+import {CommentsComponent} from "./comments/comments.component";
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from "@angular/material/typings/icon";
+
+
 
 @NgModule({
   imports: [
+    BrowserModule,
+    FormsModule,
     CommonModule,
     UserRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+
+
   ],
   declarations: [FooterComponent,
     HeaderComponent,
@@ -28,7 +46,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     LikesComponent,
     SearchComponent,
     UserPageComponent,
-    FeedComponent
+    FeedComponent,
+    ContainerPostComponent,
+    CommentsComponent
+
+
   ]
 })
 export class UserModule {

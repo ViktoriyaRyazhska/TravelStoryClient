@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {COMMENTS} from "./CommentsData";
+import {ComponentMetadata} from "codelyzer/angular/metadata";
+import {Comment} from './Comment';
 
 @Component({
   selector: 'app-comments',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor() { }
+  currentComment: Comment;
+  comments: Comment [];
+
+  constructor() {
+  }
+
+  addComment(comment: Comment) {
+    this.comments.push(comment);
+  }
 
   ngOnInit() {
+    this.comments = COMMENTS;
   }
 
 }

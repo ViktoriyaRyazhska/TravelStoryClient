@@ -1,3 +1,23 @@
-<p>
-  comments works!
-</p>
+<mat-card-content *ngFor="let comment of comments">
+
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Posted time ago</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>{{comment.massage}}</mat-card-content>
+
+</mat-card-content>
+
+<mat-card-actions>
+
+  <textarea matInput class="example-full-width" placeholder="Leave a comment"
+            [(ngModel)]="currentComment.massage"></textarea>
+
+
+  <button mat-button (click)="addComment(currentComment)">Add</button>
+
+</mat-card-actions>
+
+
+
