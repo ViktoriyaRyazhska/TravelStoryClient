@@ -10,7 +10,6 @@ import {UserPageComponent} from './user/user-page/user-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'feed', pathMatch: 'full'},
-  {path: 'user/1', component: UserPageComponent},
   {path: 'messenger', redirectTo: 'messenger/chat/1'},
   {path: 'messenger/chat/:id', component: MessengerComponent},
   {path: 'testwebsocket', component: TestWebSocketsComponent}

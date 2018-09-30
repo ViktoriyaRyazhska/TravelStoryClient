@@ -10,6 +10,7 @@ import {User} from '../../models/User';
   templateUrl: './user-page.component.html',
   styleUrls: ['./user-page.component.scss']
 })
+
 export class UserPageComponent implements OnInit {
   user: User;
 
