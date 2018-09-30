@@ -1,6 +1,6 @@
 <hr>
 <mat-card-actions>
-  <span><button  mat-icon-button="favorite" (click)="like()"><i class="fa fa-heart"></i></button>{{likesNumber}} like it!</span>
+  <span><button  mat-icon-button="favorite" (click)="like(this.userLike,travelStory.id,media.id)"><i class="fa fa-heart"></i></button>{{likes.length}} like it!</span>
 </mat-card-actions>
 <hr>
 

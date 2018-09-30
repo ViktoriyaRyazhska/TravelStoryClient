@@ -3,6 +3,7 @@ import {Like} from "../../models/Like";
 import {LikeService} from "../../service/like.service";
 import {User} from "../../models/User";
 import {TravelStory} from "../../models/TravelStory";
+import {Media} from "../../models/Media";
 
 
 @Component({
@@ -12,6 +13,7 @@ import {TravelStory} from "../../models/TravelStory";
 })
 export class LikesComponent implements OnInit {
   @Input() travelStory: TravelStory;
+  @Input() media: Media;
   @Input() user: User;
   likeState: boolean;
   userLike: Like;
@@ -32,13 +34,13 @@ export class LikesComponent implements OnInit {
       .subscribe(likes => this.likes = likes);
   }
 
-  like() {
+  like(userLike:Like,travelStoryId:number,mediaId:number) {
     this.flipLike();
     if (this.likeState == true) {
-      this.add();
+      this.add(userLike,travelStoryId,mediaId);
     }
     else {
-      this.delete();
+      this.delete(userLike);
 
     }
 
@@ -55,15 +57,15 @@ export class LikesComponent implements OnInit {
 
   }
 
-  add() {
-    this.likeService.addLike(this.userLike).subscribe(like => {
+  add(userLike:Like,travelStoryId:number,mediaId:number) {
+    this.likeService.addLike(userLike,travelStoryId,mediaId).subscribe(like => {
       this.likes.push(like);
     });
   }
 
-  delete() {
-    this.likes = this.likes.filter(h => h !== this.userLike);
-    this.likeService.deleteLike(this.userLike).subscribe();
+  delete(userLike:Like) {
+    this.likes = this.likes.filter(h => h !== userLike);
+    this.likeService.deleteLike(userLike).subscribe();
   }
 
 }

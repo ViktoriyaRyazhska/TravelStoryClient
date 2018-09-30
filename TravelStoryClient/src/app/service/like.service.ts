@@ -27,7 +27,7 @@ export class LikeService {
   }
 
   /** POST: add a new like to the server */
-  addLike(like: Like): Observable<Like> {
+  addLike(like: Like,travelStoryId:number,mediaId:number): Observable<Like> {
     return this.http.post<Like>(`${this.baseUrl}/${this.likesUrl}/${travelStoryId}/${mediaId}`, like, httpOptions).pipe(
       catchError(this.handleError<Like>('addLike'))
     );
