@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Like} from "./Like";
-import {LikeService} from "../like.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Like} from "../../models/Like";
+import {LikeService} from "../../service/like.service";
+import {User} from "../../models/User";
+import {TravelStory} from "../../models/TravelStory";
 
 
 @Component({
@@ -9,7 +11,10 @@ import {LikeService} from "../like.service";
   styleUrls: ['./likes.component.scss']
 })
 export class LikesComponent implements OnInit {
-  likesNumber: number;
+  @Input() travelStoryId: number;
+  @Input() mediaId: number;
+
+
   likes: Like[];
 
 
@@ -20,8 +25,8 @@ export class LikesComponent implements OnInit {
     this.getLikes();
   }
 
-  getLikes() {
-    this.likeService.getLikes()
+  getLikes(travelStoryId: number, mediaId: number) {
+    this.likeService.getLikes(travelStoryId: number, mediaId: number)
       .subscribe(likes => this.likes = likes);
   }
 

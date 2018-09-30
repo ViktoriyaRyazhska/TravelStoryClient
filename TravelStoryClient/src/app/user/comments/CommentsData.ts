@@ -1,4 +1,4 @@
-import {Comment} from './Comment';
+import {Comment} from '../../models/Comment';
 
 export const COMMENTS: Comment[] = [
     {

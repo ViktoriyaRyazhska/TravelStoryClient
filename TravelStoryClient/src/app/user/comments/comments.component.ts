@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {COMMENTS} from "./CommentsData";
 import {ComponentMetadata} from "codelyzer/angular/metadata";
-import {Comment} from './Comment';
+import {Comment} from '../../models/Comment';
 
 @Component({
   selector: 'app-comments',
