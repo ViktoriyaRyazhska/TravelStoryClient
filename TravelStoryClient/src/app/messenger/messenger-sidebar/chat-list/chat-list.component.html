@@ -1,8 +1,10 @@
 <script src="chat-list.component.spec.ts"></script>
 <div id="contacts">
   <ul>
-    <li class="contact" *ngFor="let chat of chats | chatSearch : searchQuery">
-      <div class="wrap" *ngIf="chat.chatType === chatTypes.PRIVATE_MESSAGES">
+    <li class="contact" *ngFor="let chat of chats | chatSearch : searchQuery"
+        [ngClass]="{'active' : chat.id == +route.snapshot.paramMap.get('id')}">
+      <a routerLink="/messenger/chat/{{chat.id}}">
+        <div class="wrap" *ngIf="chat.chatType === chatTypes.PRIVATE_MESSAGES">
         <span class="contact-status "
               [ngClass]="{
               'online':currentUser.status === statusTypes.ONLINE,
@@ -10,15 +12,16 @@
               'busy':currentUser.status === statusTypes.BUSY,
               'offline':currentUser.status === statusTypes.OFFLINE
             }"></span>
-        <img src="{{chat.interlocutor.avatarUrl}}" alt=""/>
-        <div class="meta">
-          <p class="name">
-            {{chat.name}}
-            <!--{{chat.interlocutor.firstName + ' ' + chat.interlocutor.lastName}}-->
-          </p>
-          <p class="preview">{{chat.messages[chat.messages.length-1].messageContent}}</p>
+          <img src="{{chat.interlocutor.avatarUrl}}" alt=""/>
+          <div class="meta">
+            <p class="name">
+              {{chat.name}}
+              <!--{{chat.interlocutor.firstName + ' ' + chat.interlocutor.lastName}}-->
+            </p>
+            <p class="preview">{{chat.messages[chat.messages.length-1].messageContent}}</p>
+          </div>
         </div>
-      </div>
+      </a>
     </li>
   </ul>
 </div>
