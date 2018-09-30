@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from "../../../models/User";
+import {TravelStory} from "../../../models/TravelStory";
 
 
 @Component({
@@ -7,23 +9,15 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./container-post.component.scss']
 })
 export class ContainerPostComponent implements OnInit {
-  travelStorys: [{
-    id: 1,
-    media: {
-      id: 1
-      url: "https://material.angular.io/assets/img/examples/shiba2.jpg"
-    }
-    user: {
-      id: 1
-      avatarUrl: "https://material.angular.io/assets/img/examples/shiba2.jpg"
-    }
-  }]
+  @Input() user: User;
+  @Input() travelStory: TravelStory;
 
   constructor
   () {
   }
 
   ngOnInit() {
+
   }
 
 }

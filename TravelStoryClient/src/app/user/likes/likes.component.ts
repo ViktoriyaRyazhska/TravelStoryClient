@@ -11,8 +11,10 @@ import {TravelStory} from "../../models/TravelStory";
   styleUrls: ['./likes.component.scss']
 })
 export class LikesComponent implements OnInit {
-  @Input() travelStoryId: number;
-  @Input() mediaId: number;
+  @Input() travelStory: TravelStory;
+  @Input() user: User;
+  likeState: boolean;
+  userLike: Like;
 
 
   likes: Like[];
@@ -22,30 +24,46 @@ export class LikesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getLikes();
+    this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
   }
 
   getLikes(travelStoryId: number, mediaId: number) {
-    this.likeService.getLikes(travelStoryId: number, mediaId: number)
+    this.likeService.getLikes(travelStoryId, mediaId)
       .subscribe(likes => this.likes = likes);
   }
 
   like() {
-    this.likesNumber = 1;
+    this.flipLike();
+    if (this.likeState == true) {
+      this.add();
+    }
+    else {
+      this.delete();
+
+    }
+
   }
 
+  flipLike() {
+    if (this.likeState == true) {
+      this.likeState = false;
+    }
+    else {
+      this.likeState = true;
 
-  add(): void {
+    }
 
-    this.likeService.addLike({like} as Like)
-      .subscribe(like => {
-        this.likes.push(like);
-      });
   }
 
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero).subscribe();
+  add() {
+    this.likeService.addLike(this.userLike).subscribe(like => {
+      this.likes.push(like);
+    });
+  }
+
+  delete() {
+    this.likes = this.likes.filter(h => h !== this.userLike);
+    this.likeService.deleteLike(this.userLike).subscribe();
   }
 
 }

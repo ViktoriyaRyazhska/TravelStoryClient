@@ -1,4 +1,4 @@
-<mat-card-content *ngFor="let comment of comments">
+<div *ngIf="user.id"><mat-card-content *ngFor="let comment of comments">
 
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
@@ -17,7 +17,7 @@
 
   <button mat-button (click)="addComment(currentComment)">Add</button>
 
-</mat-card-actions>
+</mat-card-actions></div>
 
 
 

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
+import {TravelStory} from "../../models/TravelStory";
 
 @Component({
   selector: 'app-user-page',
@@ -13,6 +14,7 @@ import {User} from '../../models/User';
 
 export class UserPageComponent implements OnInit {
   user: User;
+  travelStories: TravelStory[];
 
   constructor(
     private route: ActivatedRoute,

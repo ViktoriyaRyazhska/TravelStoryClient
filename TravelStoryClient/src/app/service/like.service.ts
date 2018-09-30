@@ -11,6 +11,7 @@ const httpOptions = {
 
 @Injectable({providedIn: 'root'})
 export class LikeService {
+  baseUrl = 'http://localhost:8080/api';
   private likesUrl = 'likes';
 
   constructor(
@@ -19,23 +20,15 @@ export class LikeService {
 
   /** GET likes from the server */
   getLikes(travelStoryId: number, mediaId: number): Observable<Like[]> {
-    return this.http.get<Like[]>(`${this.likesUrl}/${travelStoryId}/${mediaId}`)
+    return this.http.get<Like[]>(`${this.baseUrl}/${this.likesUrl}/${travelStoryId}/${mediaId}`)
       .pipe(
         catchError(this.handleError('getLikes', []))
       );
   }
 
-  /** GET like by id. Will 404 if id not found */
-  getLike(id: number): Observable<Like> {
-    const url = `${this.likesUrl}/${id}`;
-    return this.http.get<Like>(url).pipe(
-      catchError(this.handleError<Like>(`getLike id=${id}`))
-    );
-  }
-
   /** POST: add a new like to the server */
   addLike(like: Like): Observable<Like> {
-    return this.http.post<Like>(this.likesUrl, like, httpOptions).pipe(
+    return this.http.post<Like>(`${this.baseUrl}/${this.likesUrl}/${travelStoryId}/${mediaId}`, like, httpOptions).pipe(
       catchError(this.handleError<Like>('addLike'))
     );
   }
@@ -47,13 +40,6 @@ export class LikeService {
 
     return this.http.delete<Like>(url, httpOptions).pipe(
       catchError(this.handleError<Like>('deleteLike'))
-    );
-  }
-
-  /** PUT: update the like on the server */
-  updateLike(like: Like): Observable<any> {
-    return this.http.put(this.likesUrl, like, httpOptions).pipe(
-      catchError(this.handleError<any>('updateLike'))
     );
   }
 
