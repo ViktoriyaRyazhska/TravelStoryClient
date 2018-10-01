@@ -16,6 +16,7 @@ import {RouterModule} from '@angular/router';
 import {ChatSearchPipe} from './messenger/pipes/chat-search.pipe';
 import {CommentsComponent} from './user/comments/comments.component';
 import {UserModule} from './user/user.module';
+import {DialogChangeProfilePicComponent} from './user/intro/dialog-change-profile-pic/dialog-change-profile-pic.component';
 
 // import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 
@@ -31,7 +32,8 @@ import {UserModule} from './user/user.module';
     TestWebSocketsComponent,
     UserComponent,
     ChatSearchPipe,
-    CommentsComponent
+    CommentsComponent,
+    DialogChangeProfilePicComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import {UserModule} from './user/user.module';
   ],
   providers: [],
   // exports: [BsDropdownModule, TooltipModule, ModalModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogChangeProfilePicComponent]
 })
 export class AppModule {
 }
