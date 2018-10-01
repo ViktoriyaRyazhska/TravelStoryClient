@@ -20,18 +20,18 @@ export class LikeService {
 
   /** GET likes from the server */
   getLikes(travelStoryId: number, mediaId: number): Observable<Like[]> {
-    let params = new HttpParams();
-    params.append('travelStoryId', travelStoryId.toString());
-    params.append('mediaId', mediaId.toString());
-    return this.http.get<Like[]>(`${this.baseUrl}/${this.likesUrl}`, {params: params})
+    // let params = new HttpParams();
+    // params.append('travelStoryId', travelStoryId.toString());
+    // params.append('mediaId', mediaId.toString());
+    return this.http.get<Like[]>(`${this.baseUrl}/${this.likesUrl}&?` +`travelStoryId=` + `${travelStoryId}` + `?mediaId=` + mediaId)
       .pipe(
         catchError(this.handleError('getLikes', []))
       );
   }
 
   /** POST: add a new like to the server */
-  addLike(like: Like,travelStoryId:number,mediaId:number): Observable<Like> {
-    return this.http.post<Like>(`${this.baseUrl}/${this.likesUrl}/${travelStoryId}/${mediaId}`, like, httpOptions).pipe(
+  addLike(logedUserId: number, like: Like, travelStoryId: number, mediaId: number): Observable<Like> {
+    return this.http.post<Like>(`${this.baseUrl}/${this.likesUrl}/${logedUserId}/${travelStoryId}/${mediaId}`, like, httpOptions).pipe(
       catchError(this.handleError<Like>('addLike'))
     );
   }

@@ -4,6 +4,8 @@ import {LikeService} from "../../service/like.service";
 import {User} from "../../models/User";
 import {TravelStory} from "../../models/TravelStory";
 import {Media} from "../../models/Media";
+import {UserService} from "../../service/user.service";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -13,16 +15,15 @@ import {Media} from "../../models/Media";
 })
 export class LikesComponent implements OnInit {
   @Input() travelStory: TravelStory;
+  loggedUser: User;
   // @Input() media: Media;
-   user: User;
-  likeState: boolean;
+  @Input() user: User;
+  likeState: boolean = false;
   userLike: Like;
-
-
   likes: Like[];
 
 
-  constructor(private likeService: LikeService) {
+  constructor(private likeService: LikeService, private userService: UserService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -35,10 +36,10 @@ export class LikesComponent implements OnInit {
       .subscribe(likes => this.likes = likes);
   }
 
-  like(userLike:Like,travelStoryId:number,mediaId:number) {
+  like(loggedUserId: number, userLike: Like, travelStoryId: number, mediaId: number) {
     this.flipLike();
     if (this.likeState == true) {
-      this.add(userLike,travelStoryId,mediaId);
+      this.add(loggedUserId, userLike, travelStoryId, mediaId);
     }
     else {
       this.delete(userLike);
@@ -56,16 +57,17 @@ export class LikesComponent implements OnInit {
 
   }
 
-  add(userLike:Like,travelStoryId:number,mediaId:number) {
-    this.likeService.addLike(userLike,travelStoryId,mediaId).subscribe(like => {
+  add(loggedUserId: number, userLike: Like, travelStoryId: number, mediaId: number) {
+    this.likeService.addLike(loggedUserId, userLike, travelStoryId, mediaId).subscribe(like => {
       this.likes.push(like);
     });
   }
 
-  delete(userLike:Like) {
+  delete(userLike: Like) {
     this.likes = this.likes.filter(h => h !== userLike);
     this.likeService.deleteLike(userLike).subscribe();
   }
+
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUser(id)

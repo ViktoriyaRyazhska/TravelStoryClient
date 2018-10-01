@@ -22,14 +22,15 @@
     </div>
 
     <div class="col-md-8">
-      <div class="col-sm-8 posts">
+      <div class="col-sm-12 posts">
 
         <!--<button type="button" class="btn btn-outline-success">Add new post</button>-->
-
-        <div *ngFor="let travelStory of travelStories">
-          <!--<app-container-post [(ngModel)]="user" [(ngModel)]="travelStory"></app-container-post>-->
-          <!--<app-likes   ></app-likes>-->
-          <app-likes [(ngModel)]="user"  ></app-likes>
+        <button class="btn btn-secondary" type="button">Add new story!</button>
+        <div > <mat-card class="card" *ngFor="let story of travelStories">
+          <app-container-post  [travelStory]="story" [user]="this.user"></app-container-post>
+          <app-likes [travelStory]="story" [user]="this.user">  </app-likes>
+          <!--<app-comments [travelStory]="story" [user]="this.user"> </app-comments>-->
+          </mat-card >
         </div>
       </div>
     </div>

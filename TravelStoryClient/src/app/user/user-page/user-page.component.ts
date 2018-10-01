@@ -33,7 +33,9 @@ export class UserPageComponent implements OnInit {
     this.userService.getUser(id)
       .subscribe(user => this.user = user);
   }
-  getTravelStories(){
-    this.travelStories=TRAVELSTORYS;
+
+  getTravelStories() {
+    return this.travelStories = TRAVELSTORYS;
   }
+
 }

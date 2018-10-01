@@ -33,7 +33,6 @@ import {UserModule} from './user/user.module';
     TestWebSocketsComponent,
     UserComponent,
     ChatSearchPipe,
-
   ],
   imports: [
     BrowserModule,
@@ -42,8 +41,6 @@ import {UserModule} from './user/user.module';
     RouterModule,
     UserModule,
     AppRoutingModule,
-
-
 
     // BsDropdownModule.forRoot(),
     // TooltipModule.forRoot(),

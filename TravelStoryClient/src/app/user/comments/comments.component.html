@@ -1,5 +1,4 @@
-<div *ngIf="travelStory">
-  <div *ngIf="user">
+
     <mat-card-content *ngFor="let comment of comments">
 
       <mat-card-header>
@@ -10,17 +9,13 @@
       <mat-card-content class="comment">{{comment.massage}}</mat-card-content>
 
     </mat-card-content>
-
     <mat-card-actions>
-
   <textarea matInput class="full-width" placeholder="Leave a comment"
             [(ngModel)]="currentComment.massage"></textarea>
 
       <button mat-button (click)="addComment(currentComment,travelStory.id,media.id)">Add</button>
-
     </mat-card-actions>
-  </div>
-</div>
+
 
 
 

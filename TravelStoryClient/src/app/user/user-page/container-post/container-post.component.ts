@@ -9,14 +9,15 @@ import {TravelStory} from "../../../models/TravelStory";
   styleUrls: ['./container-post.component.scss']
 })
 export class ContainerPostComponent implements OnInit {
-  @Input() user: User;
   @Input() travelStory: TravelStory;
+  @Input() user:User;
 
   constructor
   () {
   }
 
   ngOnInit() {
+
 
   }
 

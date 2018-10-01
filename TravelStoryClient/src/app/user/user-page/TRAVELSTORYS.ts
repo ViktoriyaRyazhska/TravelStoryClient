@@ -3,9 +3,9 @@ import {TravelStory} from "../../models/TravelStory";
 export const TRAVELSTORYS: TravelStory[] = [
   {
     id: 1,
-    medias:  [
+    medias: [
       {
-        id: 3,
+        id: 1,
         url: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
       }]
     ,
@@ -13,19 +13,19 @@ export const TRAVELSTORYS: TravelStory[] = [
     description: "here is a description"
 
   }, {
-    id: 12,
+    id: 2,
     medias: [
       {
         id: 1,
-        url: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
+        url: 'https://yeella.com/files/uploads/znachok-url.png'
       },
       {
         id: 2,
         url: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
       }]
     ,
-    head: "here is a head",
-    description: "here is a description"
+    head: "here is a another head",
+    description: "here is a anothser doscription"
 
   }]
 
