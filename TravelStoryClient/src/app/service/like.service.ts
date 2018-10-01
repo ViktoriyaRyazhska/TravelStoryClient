@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
@@ -20,7 +20,10 @@ export class LikeService {
 
   /** GET likes from the server */
   getLikes(travelStoryId: number, mediaId: number): Observable<Like[]> {
-    return this.http.get<Like[]>(`${this.baseUrl}/${this.likesUrl}/${travelStoryId}/${mediaId}`)
+    let params = new HttpParams();
+    params.append('travelStoryId', travelStoryId.toString());
+    params.append('mediaId', mediaId.toString());
+    return this.http.get<Like[]>(`${this.baseUrl}/${this.likesUrl}`, {params: params})
       .pipe(
         catchError(this.handleError('getLikes', []))
       );

@@ -1,17 +1,16 @@
-import {TravelStory} from "../../../models/TravelStory";
-import {Media} from "../../../models/Media";
+import {TravelStory} from "../../models/TravelStory";
 
 export const TRAVELSTORYS: TravelStory[] = [
   {
-    id: 11,
+    id: 1,
     medias:  [
       {
-        id: 1,
+        id: 3,
         url: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
       }]
     ,
     head: "here is a head",
-    description: "here is a descriptuon"
+    description: "here is a description"
 
   }, {
     id: 12,
@@ -19,10 +18,14 @@ export const TRAVELSTORYS: TravelStory[] = [
       {
         id: 1,
         url: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
+      },
+      {
+        id: 2,
+        url: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
       }]
     ,
     head: "here is a head",
-    description: "here is a descriptuon"
+    description: "here is a description"
 
   }]
 

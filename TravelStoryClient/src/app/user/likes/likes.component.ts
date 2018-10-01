@@ -13,8 +13,8 @@ import {Media} from "../../models/Media";
 })
 export class LikesComponent implements OnInit {
   @Input() travelStory: TravelStory;
-  @Input() media: Media;
-  @Input() user: User;
+  // @Input() media: Media;
+   user: User;
   likeState: boolean;
   userLike: Like;
 
@@ -27,6 +27,7 @@ export class LikesComponent implements OnInit {
 
   ngOnInit() {
     this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
+    this.getUser();
   }
 
   getLikes(travelStoryId: number, mediaId: number) {
@@ -65,5 +66,9 @@ export class LikesComponent implements OnInit {
     this.likes = this.likes.filter(h => h !== userLike);
     this.likeService.deleteLike(userLike).subscribe();
   }
-
+  getUser(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(id)
+      .subscribe(user => this.user = user);
+  }
 }

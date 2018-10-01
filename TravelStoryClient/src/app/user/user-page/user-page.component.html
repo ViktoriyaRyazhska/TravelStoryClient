@@ -27,7 +27,9 @@
         <!--<button type="button" class="btn btn-outline-success">Add new post</button>-->
 
         <div *ngFor="let travelStory of travelStories">
-          <app-container-post [(ngModel)]="user" [(ngModel)]="travelStory"></app-container-post>
+          <!--<app-container-post [(ngModel)]="user" [(ngModel)]="travelStory"></app-container-post>-->
+          <!--<app-likes   ></app-likes>-->
+          <app-likes [(ngModel)]="user"  ></app-likes>
         </div>
       </div>
     </div>

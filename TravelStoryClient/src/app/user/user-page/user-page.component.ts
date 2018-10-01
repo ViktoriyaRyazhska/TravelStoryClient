@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
 import {TravelStory} from "../../models/TravelStory";
-import {TRAVELSTORYS} from "./container-post/TRAVELSTORYS";
+import {TRAVELSTORYS} from "./TRAVELSTORYS";
 
 @Component({
   selector: 'app-user-page',
@@ -34,6 +34,6 @@ export class UserPageComponent implements OnInit {
       .subscribe(user => this.user = user);
   }
   getTravelStories(){
-    return this.travelStories=TRAVELSTORYS;
+    this.travelStories=TRAVELSTORYS;
   }
 }
