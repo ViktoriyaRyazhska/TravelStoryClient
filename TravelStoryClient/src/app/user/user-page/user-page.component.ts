@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
 import {TravelStory} from "../../models/TravelStory";
+import {TRAVELSTORYS} from "./container-post/TRAVELSTORYS";
 
 @Component({
   selector: 'app-user-page',
@@ -24,6 +25,7 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.getTravelStories();
   }
 
   getUser(): void {
@@ -31,5 +33,7 @@ export class UserPageComponent implements OnInit {
     this.userService.getUser(id)
       .subscribe(user => this.user = user);
   }
-
+  getTravelStories(){
+    return this.travelStories=TRAVELSTORYS;
+  }
 }

@@ -4,14 +4,12 @@
   width: 100%;
 }
 
-.example-full-width {
+.full-width {
   width: 100%;
 }
-.example-card {
-  max-width: 400px;
-}
 
-.example-header-image {
+
+.header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
@@ -19,9 +17,7 @@
   background: lightskyblue;
   border-radius: 20px;
 }
-.example-card {
-  max-width: 400px;
-}
+
 .article-body p {
   word-break: break-all;
 }

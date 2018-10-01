@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 
 import {Like} from "../models/Like";
 
@@ -36,7 +36,7 @@ export class LikeService {
   /** DELETE: delete the like from the server */
   deleteLike(like: Like | number): Observable<Like> {
     const id = typeof like === 'number' ? like : like.id;
-    const url = `${this.likesUrl}/${id}`;
+    const url = `${this.baseUrl}/${this.likesUrl}/${id}`;
 
     return this.http.delete<Like>(url, httpOptions).pipe(
       catchError(this.handleError<Like>('deleteLike'))

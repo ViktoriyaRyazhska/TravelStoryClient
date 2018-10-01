@@ -41,9 +41,7 @@ export class LikesComponent implements OnInit {
     }
     else {
       this.delete(userLike);
-
     }
-
   }
 
   flipLike() {

@@ -1,18 +1,19 @@
 <button class="btn btn-secondary" type="button">Add new story!</button>
-<div *ngIf="travelStory">
-  <mat-card class="card">
-    <mat-card-header>
-      <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{travelStory.media.url}}" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
-      </p>
-    </mat-card-content>
-    <app-likes [(ngModel)]="user" [(ngModel)]="travelStory"></app-likes>
-    <app-comments [(ngModel)]="user" [(ngModel)]="travelStory"></app-comments>
-  </mat-card>
+<div *ngIf="user">
+  <div *ngIf="travelStory">
+    <mat-card class="card">
+      <mat-card-header>
+        <div mat-card-avatar="" class="header-image"></div>
+        <mat-card-title>{{travelStory.description}}</mat-card-title>
+        <mat-card-subtitle>{{user.firstName}} {{user.lastName}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{travelStory.medias[0].url}}" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>{{travelStory.description}}
+        </p>
+      </mat-card-content>
+      <app-likes [(ngModel)]="user" [(ngModel)]="travelStory"></app-likes>
+      <!--<app-comments [(ngModel)]="user" [(ngModel)]="travelStory"></app-comments>-->
+</mat-card>
+</div>
 </div>

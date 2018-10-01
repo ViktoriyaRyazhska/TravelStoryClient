@@ -1,23 +1,26 @@
-<div *ngIf="user.id"><mat-card-content *ngFor="let comment of comments">
+<div *ngIf="travelStory">
+  <div *ngIf="user">
+    <mat-card-content *ngFor="let comment of comments">
 
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Posted time ago</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>{{comment.massage}}</mat-card-content>
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{comment.createdTime}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="comment">{{comment.massage}}</mat-card-content>
 
-</mat-card-content>
+    </mat-card-content>
 
-<mat-card-actions>
+    <mat-card-actions>
 
-  <textarea matInput class="example-full-width" placeholder="Leave a comment"
+  <textarea matInput class="full-width" placeholder="Leave a comment"
             [(ngModel)]="currentComment.massage"></textarea>
 
+      <button mat-button (click)="addComment(currentComment,travelStory.id,media.id)">Add</button>
 
-  <button mat-button (click)="addComment(currentComment)">Add</button>
-
-</mat-card-actions></div>
+    </mat-card-actions>
+  </div>
+</div>
 
 
 
