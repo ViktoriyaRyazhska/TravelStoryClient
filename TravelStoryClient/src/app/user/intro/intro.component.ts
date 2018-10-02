@@ -4,8 +4,6 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {MatDialog} from '@angular/material';
 import {DialogChangeProfilePicComponent} from './dialog-change-profile-pic/dialog-change-profile-pic.component';
-import {UserPageComponent} from '../user-page/user-page.component';
-import {FeedComponent} from '../feed/feed.component';
 
 @Component({
   selector: 'app-intro',
