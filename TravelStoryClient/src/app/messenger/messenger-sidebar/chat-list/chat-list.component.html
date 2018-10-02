@@ -1,24 +1,48 @@
 <script src="chat-list.component.spec.ts"></script>
 <div id="contacts">
-  <ul>
+  <ul *ngIf="chats">
     <li class="contact" *ngFor="let chat of chats | chatSearch : searchQuery"
-        [ngClass]="{'active' : chat.id == +route.snapshot.paramMap.get('id')}">
+        [ngClass]="{'active' : chat.id === +route.snapshot.paramMap.get('id')}">
       <a routerLink="/messenger/chat/{{chat.id}}">
-        <div class="wrap" *ngIf="chat.chatType === chatTypes.PRIVATE_MESSAGES">
-        <span class="contact-status "
-              [ngClass]="{
-              'online':currentUser.status === statusTypes.ONLINE,
-              'away':currentUser.status === statusTypes.AWAY,
-              'busy':currentUser.status === statusTypes.BUSY,
-              'offline':currentUser.status === statusTypes.OFFLINE
-            }"></span>
-          <img src="{{chat.interlocutor.avatarUrl}}" alt=""/>
+        <div class="wrap" *ngIf="chat.chatType == 'PRIVATE_MESSAGES'">
+          <span class="contact-status"
+                [ngClass]="{
+          'online':currentUser.userState == 'ONLINE',
+          'away':currentUser.userState == 'AWAY',
+          'busy':currentUser.userState == 'BUSY',
+          'offline':currentUser.userState == 'OFFLINE'
+          }"></span>
+          <img *ngIf="chat.interlocutor" src="{{chat.interlocutor.profilePic}}" class="contacts-wrap__img" alt=""/>
           <div class="meta">
             <p class="name">
-              {{chat.name}}
-              <!--{{chat.interlocutor.firstName + ' ' + chat.interlocutor.lastName}}-->
+              {{chat.chatName}}
             </p>
-            <p class="preview">{{chat.messages[chat.messages.length-1].messageContent}}</p>
+            <p class="preview">
+              {{chat.lastMessage.messageContent}}
+            </p>
+          </div>
+        </div>
+      </a>
+      <a routerLink="/messenger/chat/{{chat.id}}">
+
+        <div class="wrap" *ngIf="chat.chatType != 'PRIVATE_MESSAGES'">
+          <div *ngIf="chat.avatar;then profile_pic else alternative_avatar"></div>
+          <ng-template #profile_pic>
+            <img *ngIf="chat.interlocutor" src="{{chat.interlocutor.profilePic}}" class="contacts-wrap__img" alt=""/>
+          </ng-template>
+          <ng-template #alternative_avatar>
+            <div class="contacts-wrap__img contacts-wrap__alternative-img"
+                 [ngStyle]="{'background-color': chat.alternativeAvatar.color}">
+              {{chat.alternativeAvatar.letter}}
+            </div>
+          </ng-template>
+          <div class="meta">
+            <p class="name">
+              {{chat.chatName}}
+            </p>
+            <p class="preview">
+              {{chat.lastMessage.messageContent}}
+            </p>
           </div>
         </div>
       </a>

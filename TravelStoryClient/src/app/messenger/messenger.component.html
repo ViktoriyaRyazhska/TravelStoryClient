@@ -1,8 +1,7 @@
-
 <div id="frame">
 
-  <app-chat-sidebar [currentUser]="currentUser"></app-chat-sidebar>
-  <app-main-messaging-content [currUser]="currentUser"></app-main-messaging-content>
+  <app-chat-sidebar [currentUser]="currentUser" [stompClient]="stompClient"></app-chat-sidebar>
+  <app-main-messaging-content [currUser]="currentUser" [stompClient]="stompClient"></app-main-messaging-content>
 
 </div>
 

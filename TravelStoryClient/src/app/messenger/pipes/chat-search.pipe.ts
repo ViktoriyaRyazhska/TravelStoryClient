@@ -5,8 +5,9 @@ import {Chat} from "../model/Chat";
 export class ChatSearchPipe implements PipeTransform {
   transform(chats: Chat[], term: string): any[] {
     return chats.filter(function (chat) {
-      let currName = chat.name;
+      let currName = chat.chatName;
       return currName.toLowerCase().startsWith(term.toLowerCase());
     });
   }
 }
+

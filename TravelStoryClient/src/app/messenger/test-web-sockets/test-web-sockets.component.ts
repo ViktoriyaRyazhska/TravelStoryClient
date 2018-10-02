@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
+import {Message} from "../model/Message";
+
 @Component({
   selector: 'app-test-web-sockets',
   templateUrl: './test-web-sockets.component.html',
@@ -27,7 +29,7 @@ export class TestWebSocketsComponent implements OnInit {
   }
 
   connect() {
-    const socket = new SockJS('http://localhost:8080/messenger');
+    const socket = new SockJS('http://localhost:8080/ws');
     this.stompClient = Stomp.over(socket);
 
     const _this = this;
@@ -35,7 +37,7 @@ export class TestWebSocketsComponent implements OnInit {
       _this.setConnected(true);
       console.log('Connected: ' + frame);
 
-      _this.stompClient.subscribe('/topic/messages', function (message) {
+      _this.stompClient.subscribe('/chat/1/messages', function (message) {
         const json = JSON.parse(message.body);
         _this.showMessages(json.messageContent);
       });
@@ -52,10 +54,12 @@ export class TestWebSocketsComponent implements OnInit {
   }
 
   sendMessage() {
+    let message = new Message();
+    message.messageContent = this.messageContent;
     this.stompClient.send(
-      '/app/message',
+      '/messenger/1/message',
       {},
-      JSON.stringify({'messageContent': this.messageContent})
+      JSON.stringify(message.messageContent)
     );
   }
 

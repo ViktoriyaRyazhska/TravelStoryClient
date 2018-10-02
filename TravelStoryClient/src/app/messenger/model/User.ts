@@ -2,24 +2,39 @@ import {Chat} from "./Chat";
 
 export class User {
   id: number;
-  avatarUrl: string;
+  profilePic: string;
   firstName: string;
   lastName: string;
-  socialNetworkNicks: SocialNetworksNicks;
-  status: Status;
+  socialNetworks: SocialNetwork[];
+  email: string;
+  userState: string;
+
+  // getSocialNetworkNickBySocialNetworkName(socialNetworkName: string): string {
+  //   let nickName: string;
+  //
+  //   for (let socialNetwork of this.socialNetworks) {
+  //     if (socialNetwork.socialNetworkName === socialNetworkName) {
+  //       nickName = socialNetwork.nickName;
+  //     }
+  //   }
+  //
+  //   return nickName;
+  // }
 }
 
-export enum Status {
-  ONLINE,
-  AWAY,
-  BUSY,
-  OFFLINE
-}
+//
+// export enum Status {
+//   ONLINE,
+//   AWAY,
+//   BUSY,
+//   OFFLINE
+// }
 
-class SocialNetworksNicks {
-  facebook: string;
-  twitter: string;
-  instagram: string;
+class SocialNetwork {
+  id: number;
+  socialNetworkName: string;
+  urlToHomePage: string;
+  nickName: string;
 }
 
 
