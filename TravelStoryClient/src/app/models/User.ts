@@ -8,8 +8,8 @@ export class User {
   userStatus: string;
   registrationDate: string;
   lastUpdateDate: string;
-  profilePicUrl: string;
+  profilePic: string;
   gender: string;
-
+  backgroundPic: string;
 
 }

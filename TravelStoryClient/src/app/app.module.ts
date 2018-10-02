@@ -21,8 +21,8 @@ import {CookieService} from 'ngx-cookie-service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {InterceptorService} from './user/login/interceptor.service';
 import {MyAuthService} from './user/login/my-auth.service';
+import {DialogChangeProfilePicComponent} from './user/intro/dialog-change-profile-pic/dialog-change-profile-pic.component';
 
-// import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import {MyAuthService} from './user/login/my-auth.service';
     TestWebSocketsComponent,
     UserComponent,
     ChatSearchPipe,
-    CommentsComponent
+    CommentsComponent,
+    DialogChangeProfilePicComponent
   ],
   imports: [
     MatCardModule,
@@ -46,9 +47,6 @@ import {MyAuthService} from './user/login/my-auth.service';
     RouterModule,
     UserModule,
     AppRoutingModule
-    // BsDropdownModule.forRoot(),
-    // TooltipModule.forRoot(),
-    // ModalModule.forRoot()
   ],
   providers: [
     {
@@ -59,8 +57,8 @@ import {MyAuthService} from './user/login/my-auth.service';
     MyAuthService,
     CookieService
   ],
-  // exports: [BsDropdownModule, TooltipModule, ModalModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogChangeProfilePicComponent]
 })
 export class AppModule {
 }

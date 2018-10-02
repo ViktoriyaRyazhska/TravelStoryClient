@@ -20,7 +20,7 @@ import {
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatFormFieldModule, MatInputModule,
   MatToolbarModule
 } from '@angular/material';
-import {CookieService} from 'ngx-cookie-service';
+import {MatDialogModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -36,6 +36,8 @@ import {CookieService} from 'ngx-cookie-service';
     MatFormFieldModule,
     MatButtonToggleModule,
     MatToolbarModule,
+    HttpClientModule,
+    MatDialogModule,
   ],
   declarations: [FooterComponent,
     HeaderComponent,
