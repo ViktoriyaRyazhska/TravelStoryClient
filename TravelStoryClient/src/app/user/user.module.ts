@@ -27,6 +27,7 @@ import {MatIconModule} from "@angular/material/typings/icon";
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
 import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
+import { TravelStoryComponent } from './travel-story/travel-story.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.
     CommentsComponent,
     UserInfoSideComponent,
     UserFollowsSideComponent,
-    UserGallerySideComponent
+    UserGallerySideComponent,
+    TravelStoryComponent
   ]
 })
 export class UserModule {

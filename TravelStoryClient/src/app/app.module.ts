@@ -15,6 +15,7 @@ import {UserComponent} from './user/user.component';
 import {RouterModule} from '@angular/router';
 import {ChatSearchPipe} from './messenger/pipes/chat-search.pipe';
 import {UserModule} from './user/user.module';
+import {TravelStoryComponent} from "./user/travel-story/travel-story.component";
 
 
 
@@ -33,7 +34,7 @@ import {UserModule} from './user/user.module';
     TestWebSocketsComponent,
     UserComponent,
     ChatSearchPipe,
-
+    TravelStoryComponent
   ],
   imports: [
     BrowserModule,

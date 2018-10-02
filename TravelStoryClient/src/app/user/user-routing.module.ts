@@ -7,7 +7,8 @@ import {MatIconModule} from "@angular/material";
 
 const userRoutes: Routes = [
   {path: 'feed', component: FeedComponent},
-  {path: 'u/:id', component: UserPageComponent}
+  {path: 'u/:id', component: UserPageComponent},
+  {path: 'user', component: UserPageComponent}
 
 ];
 

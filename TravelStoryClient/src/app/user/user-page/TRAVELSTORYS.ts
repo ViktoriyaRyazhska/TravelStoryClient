@@ -10,8 +10,9 @@ export const TRAVELSTORYS: TravelStory[] = [
       }]
     ,
     head: "here is a head",
-    description: "here is a description"
-
+    description: "here is a description",
+    createdDate:"02-05-2014",
+    updatedDate:"08-06-2015"
   }, {
     id: 12,
     medias: [
@@ -25,7 +26,9 @@ export const TRAVELSTORYS: TravelStory[] = [
       }]
     ,
     head: "here is a head",
-    description: "here is a description"
+    description: "here is a description",
+    createdDate:"08-05-2018",
+    updatedDate:"08-06-2011"
 
   }]
 

@@ -6,6 +6,7 @@ import {TravelStory} from "../../models/TravelStory";
 import {Media} from "../../models/Media";
 
 
+
 @Component({
   selector: 'app-likes',
   templateUrl: './likes.component.html',
@@ -27,7 +28,7 @@ export class LikesComponent implements OnInit {
 
   ngOnInit() {
     this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
-    this.getUser();
+    // this.getUser();
   }
 
   getLikes(travelStoryId: number, mediaId: number) {
@@ -66,9 +67,9 @@ export class LikesComponent implements OnInit {
     this.likes = this.likes.filter(h => h !== userLike);
     this.likeService.deleteLike(userLike).subscribe();
   }
-  getUser(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id)
-      .subscribe(user => this.user = user);
-  }
+  // getUser(): void {
+  //   const id = +this.route.snapshot.paramMap.get('id');
+  //   this.userService.getUser(id)
+  //     .subscribe(user => this.user = user);
+  // }
 }
