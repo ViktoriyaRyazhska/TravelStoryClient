@@ -8,14 +8,13 @@ import {SearchComponent} from './search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserInfoSideComponent} from './user-info-side/user-info-side.component';
 import {UserFollowsSideComponent} from './user-follows-side/user-follows-side.component';
 import {UserGallerySideComponent} from './user-gallery-side/user-gallery-side.component';
 import {MatDialogModule} from '@angular/material';
-import { DialogChangeProfilePicComponent } from './intro/dialog-change-profile-pic/dialog-change-profile-pic.component';
 
 @NgModule({
   imports: [

@@ -4,10 +4,9 @@
   <div class="actions">
     <p></p>
 
-    <div>
-      <input type="file" placeholder="Upload file..."/>
-      <!--<button type="button" (click)="fileChange()">Upload</button>-->
-    </div>
+    <input type="text" [(ngModel)]="userId">
+    <input type="file" accept="image/*" (change)="changeListener($event)">
+    <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
 
     <p>Remove current photo</p>
   </div>
