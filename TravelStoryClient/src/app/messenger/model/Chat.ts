@@ -3,16 +3,27 @@ import {User} from "./User";
 
 export class Chat {
   id: number;
-  name: string;
-  members: User[];
+  chatName: string;
+  creator: User;
+  users: User[];
+  avatar: string;
+  alternativeAvatar: AlternativeAvatar;
   notification: boolean;
-  chatType: ChatType;
+  lastMessage: Message;
+  chatType: string;
   messages: Message[];
   interlocutor: User;
+  description: string;
+  createdAt: string;
 }
 
-export enum ChatType {
-  PRIVATE_MESSAGES,
-  PRIVATE_GROUP,
-  PUBLIC_GROUP
+export class AlternativeAvatar {
+  color: string;
+  letter: string;
 }
+
+// export enum ChatType {
+//   PRIVATE_MESSAGES,
+//   PRIVATE_GROUP,
+//   PUBLIC_GROUP
+// }

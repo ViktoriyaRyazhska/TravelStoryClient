@@ -1,13 +1,14 @@
 <script src="../../model/Chat.ts"></script>
-<div id="profile">
+<div id="profile" *ngIf="currentUser">
+
   <div class="wrap">
     <img id="profile-img" (click)="profileImgClick()"
-         src="http://emilcarlsson.se/assets/mikeross.png"
+         src="{{currentUser.profilePic}}"
          [ngClass]="{
-          'online':currentUser.status === statusTypes.ONLINE,
-          'away':currentUser.status === statusTypes.AWAY,
-          'busy':currentUser.status === statusTypes.BUSY,
-          'offline':currentUser.status === statusTypes.OFFLINE
+          'online':currentUser.userState === 'ONLINE',
+          'away':currentUser.userState === 'AWAY',
+          'busy':currentUser.userState === 'BUSY',
+          'offline':currentUser.userState === 'OFFLINE'
          }"
          class="" alt=""/>
     <p>{{currentUser.firstName + ' ' + currentUser.lastName}}</p>
@@ -25,25 +26,18 @@
           <p>Offline</p></li>
       </ul>
     </div>
-    <div id="expanded" (click)="expandBtnClick()">
-      <label for="facebook">
-        <i class="fa fa-facebook fa-fw" aria-hidden="true"></i>
-      </label>
-      <input name="facebook" id="facebook" type="text"
-             [ngModel]="currentUser.socialNetworkNicks.facebook"
-             value="{{currentUser.socialNetworkNicks.facebook}}"/>
-      <label for="twitter">
-        <i class="fa fa-twitter fa-fw" aria-hidden="true"></i>
-      </label>
-      <input name="twitter" id="twitter" type="text"
-             [ngModel]="currentUser.socialNetworkNicks.twitter"
-             value="{{currentUser.socialNetworkNicks.twitter}}"/>
-      <label for="instagram">
-        <i class="fa fa-instagram fa-fw" aria-hidden="true"></i>
-      </label>
-      <input name="instagram" id="instagram" type="text"
-             [ngModel]="currentUser.socialNetworkNicks.instagram"
-             value="{{currentUser.socialNetworkNicks.instagram}}"/>
+    <div id="expanded" *ngIf="currentUser.socialNetworks" (click)="expandBtnClick()">
+      <div *ngFor="let socialNetwork of currentUser.socialNetworks">
+        <label>
+          <i class="fa fa-fw" aria-hidden="true" [ngClass]="{
+          'fa-facebook':socialNetwork.socialNetworkName === 'FACEBOOK',
+          'fa-instagram':socialNetwork.socialNetworkName === 'INSTAGRAM',
+          'fa-twitter':socialNetwork.socialNetworkName === 'TWITTER'
+         }"></i>
+        </label>
+        <input type="text" disabled name="{{socialNetwork.socialNetworkName}}"
+               value="{{socialNetwork.nickName}}"/>
+      </div>
     </div>
   </div>
 </div>

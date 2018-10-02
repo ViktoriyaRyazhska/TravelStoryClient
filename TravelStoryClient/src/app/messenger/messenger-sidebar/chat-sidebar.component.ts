@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../model/User";
-import {currUserMockup} from "../mockups/UserMockup";
-
+import * as Stomp from 'stompjs';
 
 @Component({
   selector: 'app-chat-sidebar',
@@ -9,6 +8,7 @@ import {currUserMockup} from "../mockups/UserMockup";
   styleUrls: ['./chat-sidebar.component.scss', '../general.scss']
 })
 export class ChatSidebarComponent implements OnInit {
+  @Input() stompClient: Stomp;
   @Input() currentUser: User;
   chatsSearchQuery: string = '';
 

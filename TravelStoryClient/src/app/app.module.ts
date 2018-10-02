@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {MessengerModule} from "./messenger/messenger.module";
 import {UserModule} from "./user/user.module";
+import {HttpClientModule} from "@angular/common/http";
 
 // import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 
@@ -15,6 +16,7 @@ import {UserModule} from "./user/user.module";
 
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
