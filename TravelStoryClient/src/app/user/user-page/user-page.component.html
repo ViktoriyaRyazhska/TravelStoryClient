@@ -28,7 +28,7 @@
         <button class="btn btn-secondary" type="button">Add new story!</button>
         <div > <mat-card class="card" *ngFor="let story of travelStories">
           <app-container-post  [travelStory]="story" [user]="this.user"></app-container-post>
-          <app-likes [travelStory]="story" [user]="this.user">  </app-likes>
+          <app-likes [travelStory]="story">  </app-likes>
           <!--<app-comments [travelStory]="story" [user]="this.user"> </app-comments>-->
           </mat-card >
         </div>

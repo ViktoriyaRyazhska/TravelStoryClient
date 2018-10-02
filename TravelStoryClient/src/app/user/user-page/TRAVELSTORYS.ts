@@ -16,11 +16,11 @@ export const TRAVELSTORYS: TravelStory[] = [
     id: 2,
     medias: [
       {
-        id: 1,
+        id: 2,
         url: 'https://yeella.com/files/uploads/znachok-url.png'
       },
       {
-        id: 2,
+        id: 3,
         url: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
       }]
     ,
