@@ -7,7 +7,6 @@ export class TravelStory {
   medias:Media[];
   head:string;
   description:string;
-   userOwner: User;
+  userOwner: User;
   createdDate:string;
-  updatedDate:string;
 }

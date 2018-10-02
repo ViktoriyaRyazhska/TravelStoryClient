@@ -28,6 +28,7 @@ import { UserInfoSideComponent } from './user-info-side/user-info-side.component
 import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
 import { TravelStoryComponent } from './travel-story/travel-story.component';
+import { CreateTravelStoryComponent } from './user-page/create-travel-story/create-travel-story.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { TravelStoryComponent } from './travel-story/travel-story.component';
     UserInfoSideComponent,
     UserFollowsSideComponent,
     UserGallerySideComponent,
-    TravelStoryComponent
+    TravelStoryComponent,
+    CreateTravelStoryComponent
   ]
 })
 export class UserModule {

@@ -7,12 +7,13 @@ import {TestWebSocketsComponent} from './messenger/test-web-sockets/test-web-soc
 import {FeedComponent} from './user/feed/feed.component';
 import {LikesComponent} from './user/likes/likes.component';
 import {UserPageComponent} from './user/user-page/user-page.component';
+import {CreateTravelStoryComponent} from "./user/user-page/create-travel-story/create-travel-story.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'feed', pathMatch: 'full'},
   {path: 'messenger', redirectTo: 'messenger/chat/1'},
   {path: 'messenger/chat/:id', component: MessengerComponent},
-  {path: 'testwebsocket', component: TestWebSocketsComponent}
+  {path: 'testwebsocket', component: TestWebSocketsComponent},
 
 ];
 

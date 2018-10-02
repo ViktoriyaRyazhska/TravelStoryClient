@@ -68,18 +68,11 @@ export class LikesComponent implements OnInit {
     this.likes = this.likes.filter(h => h !== userLike);
     this.likeService.deleteLike(userLike).subscribe();
   }
-<<<<<<< HEAD
-  // getUser(): void {
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.userService.getUser(id)
-  //     .subscribe(user => this.user = user);
-  // }
-=======
+
 
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUser(id)
       .subscribe(user => this.user = user);
   }
->>>>>>> 0d4aec411742590ab726a6c729077efdaabcfece
 }

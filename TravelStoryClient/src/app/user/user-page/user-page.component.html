@@ -25,7 +25,9 @@
       <div class="col-sm-12 posts">
 
         <!--<button type="button" class="btn btn-outline-success">Add new post</button>-->
-        <button class="btn btn-secondary" type="button">Add new story!</button>
+
+        <button class="btn btn-secondary" type="button" routerLink="/createTravelStory">Add new story!</button>
+
         <div > <mat-card class="card" *ngFor="let story of travelStories">
           <app-container-post  [travelStory]="story" [user]="this.user"></app-container-post>
           <app-likes [travelStory]="story" [user]="this.user">  </app-likes>

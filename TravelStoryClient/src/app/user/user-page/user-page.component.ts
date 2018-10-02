@@ -6,6 +6,8 @@ import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
 import {TravelStory} from "../../models/TravelStory";
 import {TRAVELSTORYS} from "./TRAVELSTORYS";
+import {LikeService} from "../../service/like.service";
+import {TravelStoryService} from "../../service/travel-story.service";
 
 @Component({
   selector: 'app-user-page',
@@ -18,14 +20,15 @@ export class UserPageComponent implements OnInit {
   travelStories: TravelStory[];
 
   constructor(
+    private travelStoryService: TravelStoryService,
     private route: ActivatedRoute,
     private userService: UserService
   ) {
   }
 
   ngOnInit() {
+    //this.getTravelStories(this.user.id);
     this.getUser();
-    this.getTravelStories();
   }
 
   getUser(): void {
@@ -34,6 +37,10 @@ export class UserPageComponent implements OnInit {
       .subscribe(user => this.user = user);
   }
 
+  // getTravelStories(userId:number ) {
+  //   this.travelStoryService.getTravelStories(userId)
+  //     .subscribe(travelStories => this.travelStories = travelStories);
+  // }
   getTravelStories() {
     return this.travelStories = TRAVELSTORYS;
   }
