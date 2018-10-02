@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { AuthService } from '../../core/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {LoginDTO} from './LoginDTO';
 import {LoginService} from './login.service';
@@ -52,7 +51,7 @@ export class LoginComponent implements OnInit {
           this.cookie.set('auth', response.accessToken);
         localStorage.setItem('auth', response.accessToken);
           this.error = false;
-          this.router.navigate(['/']);
+          this.router.navigate(['/feed']);
         }, error2 => {
           this.error = true;
         }

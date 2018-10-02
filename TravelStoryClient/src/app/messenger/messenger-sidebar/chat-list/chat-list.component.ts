@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Status, User} from "../../model/User";
 import {Chat, ChatType} from "../../model/Chat";
 import {MessengerService} from "../../services/messenger.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-chat-list',
@@ -16,7 +17,9 @@ export class ChatListComponent implements OnInit {
   statusTypes = Status;
   friend: User;
 
-  constructor(messengerService: MessengerService) {
+  activeChatId: number;
+
+  constructor(messengerService: MessengerService, private route: ActivatedRoute) {
     this.chats = messengerService.getChats(this.currentUser);
   }
 

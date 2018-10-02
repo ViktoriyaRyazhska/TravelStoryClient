@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
     this.registrationDTO = this.registrationForm.value;
     this.registrationService.registrate(this.registrationDTO)
       .subscribe(() => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/feed']);
         }
       );
     console.log('message');

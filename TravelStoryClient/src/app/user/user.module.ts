@@ -8,7 +8,7 @@ import {SearchComponent} from './search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
@@ -21,6 +21,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {MatDialogModule} from '@angular/material';
+import {UserComponent} from './user.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,6 @@ import {MatDialogModule} from '@angular/material';
     UserRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
@@ -38,8 +38,11 @@ import {MatDialogModule} from '@angular/material';
     MatToolbarModule,
     HttpClientModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
-  declarations: [FooterComponent,
+  declarations: [
+    UserComponent,
+    FooterComponent,
     HeaderComponent,
     IntroComponent,
     LikesComponent,
