@@ -16,6 +16,11 @@ import {RouterModule} from '@angular/router';
 import {ChatSearchPipe} from './messenger/pipes/chat-search.pipe';
 import {CommentsComponent} from './user/comments/comments.component';
 import {UserModule} from './user/user.module';
+import {MatCardModule} from '@angular/material';
+import {CookieService} from 'ngx-cookie-service';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {InterceptorService} from './user/login/interceptor.service';
+import {MyAuthService} from './user/login/my-auth.service';
 
 // import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 
@@ -34,6 +39,7 @@ import {UserModule} from './user/user.module';
     CommentsComponent
   ],
   imports: [
+    MatCardModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -44,7 +50,15 @@ import {UserModule} from './user/user.module';
     // TooltipModule.forRoot(),
     // ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  },
+    MyAuthService,
+    CookieService
+  ],
   // exports: [BsDropdownModule, TooltipModule, ModalModule],
   bootstrap: [AppComponent]
 })
