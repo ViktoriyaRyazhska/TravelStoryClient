@@ -35,6 +35,7 @@ import {TravelStoryComponent} from "./user/travel-story/travel-story.component";
     UserComponent,
     ChatSearchPipe,
     TravelStoryComponent
+
   ],
   imports: [
     BrowserModule,
@@ -43,8 +44,6 @@ import {TravelStoryComponent} from "./user/travel-story/travel-story.component";
     RouterModule,
     UserModule,
     AppRoutingModule,
-
-
 
     // BsDropdownModule.forRoot(),
     // TooltipModule.forRoot(),

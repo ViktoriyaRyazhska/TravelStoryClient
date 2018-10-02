@@ -17,7 +17,7 @@ import {CommentService} from "../../service/comment.service";
 export class CommentsComponent implements OnInit {
   @Input() user: User;
   @Input() travelStory: TravelStory;
-  @Input() media: Media;
+  // @Input() media: Media;
 
   currentComment: Comment;
   comments: Comment [];
@@ -41,7 +41,7 @@ export class CommentsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getComments(this.travelStory.id,this.media.id);
+    this.getComments(this.travelStory.id,this.travelStory.medias[0].id);
   }
 
 }
