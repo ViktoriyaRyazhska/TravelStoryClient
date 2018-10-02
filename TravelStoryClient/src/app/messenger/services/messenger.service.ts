@@ -4,6 +4,7 @@ import {Chat} from "../model/Chat";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Message} from "../model/Message";
+import {ActivatedRoute, Router} from "@angular/router";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -20,14 +21,21 @@ const colors: string[] = [
   providedIn: 'root'
 })
 export class MessengerService {
-
+  userId: number;
   baseUrl: string = "http://localhost:8080/";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
+  ) {
   }
 
   getChats(user: User): Observable<Chat[]> {
-    return this.http.get<Chat[]>(this.baseUrl + "messenger/1/chats");
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['userId'];
+    });
+    if (this.userId) {
+      return this.http.get<Chat[]>(this.baseUrl + "messenger/" + this.userId + "/chats");
+    }
+    return this.http.get<Chat[]>(this.baseUrl + "messenger/" + HARDCODED_USER_ID + "/chats");
   }
 
   getChat(id: number): Observable<Chat> {
@@ -35,10 +43,17 @@ export class MessengerService {
   }
 
   getCurrentUser(): Observable<User> {
+    this.route.queryParams.subscribe(params => {
+      this.userId = params['userId'];
+    });
+
+    if (this.userId) {
+      return this.http.get<User>(this.baseUrl + "messenger/user/" + this.userId);
+    }
     return this.http.get<User>(this.baseUrl + "messenger/user/" + HARDCODED_USER_ID);
   }
 
-  getMessages(chatId: number, pageNumber: number): Observable<Message[]> {
+  getNext30Messages(chatId: number, pageNumber: number): Observable<Message[]> {
     let httpParams = new HttpParams().set('pageNumber', pageNumber.toString());
     return this.http.get<Message[]>(this.baseUrl + "messenger/chat/" + chatId + "/messages",
       {params: httpParams});
