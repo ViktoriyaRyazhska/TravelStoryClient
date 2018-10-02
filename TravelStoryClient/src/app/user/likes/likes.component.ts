@@ -5,7 +5,6 @@ import {User} from "../../models/User";
 import {TravelStory} from "../../models/TravelStory";
 import {UserService} from "../../service/user.service";
 import {ActivatedRoute} from "@angular/router";
-import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Component({
@@ -26,15 +25,14 @@ export class LikesComponent implements OnInit {
   ngOnInit() {
     this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
     this.getLoggedUser();
-    this.getLikeOfCurrentUser(this.travelStory.id, this.travelStory.medias[0].id, this.loggedUser.id);
-
-    this.getLikeOfUser(this.likes,this.loggedUser.id);
+    // this.loggedUserLike=new Like();
+    this.loggedUserLike = this.getLikeOfUser(this.likes, this.loggedUser.id);
 
   }
 
   like(userLike: Like, travelStoryId: number, mediaId: number) {
     this.flipLike();
-    if (userLike.likeState == true) {
+    if (userLike.likeState === true) {
       userLike.loggedUserId = this.loggedUser.id;
       userLike.travelStoryId = travelStoryId;
       userLike.mediaId = mediaId;
@@ -50,7 +48,7 @@ export class LikesComponent implements OnInit {
   }
 
   flipLike() {
-    if (this.loggedUserLike.likeState == true) {
+    if (this.loggedUserLike.likeState === true) {
       this.loggedUserLike.likeState = false;
     }
     else {
@@ -80,36 +78,32 @@ export class LikesComponent implements OnInit {
     this.loggedUser = user;
   }
 
-  liked(likes: Like[]): number {
-    let likedNumber: number;
-    likedNumber = 0;
-    likes.forEach(function (like) {
-      if (like.likeState == true) {
-        likedNumber++;
-      }
 
-    });
-    return likedNumber;
-  }
-
-
-  getLikeOfCurrentUser(travelStoryId: number, mediaId: number, userId: number) {
-    this.likeService.getUserLike(travelStoryId, mediaId, userId)
-      .subscribe(like => this.loggedUserLike = like);
-    {
-    }
-  }
-
-  getLikeOfUser(likes: Like[], LoggedUserId: number): Like {
+  getLikeOfUser(likes: Like[], loggedUserId: number): Like {
     let userLike: Like;
-    likes.forEach(function (like) {
-      if (like.loggedUserId = LoggedUserId) {
-        userLike = like;
-        return userLike;
-      }});
-      userLike = new Like();
-      userLike.likeState=false;
-      return userLike;
+    if (likes != null) {
+      for (let like of likes) {
+        if (like.loggedUserId === loggedUserId) {
+          debugger;
+          userLike = like;
+          return userLike;
+        }
       }
+    }
+    userLike = new Like();
+    userLike.likeState = false;
+    return userLike;
+  }
 
+  likeExhist(likes: Like[], like: Like): boolean {
+    if (likes != null) {
+      for (let l of likes) {
+        if (l === like) {
+          return true;
+        }
+      }
+    }
+    return false;
+
+  }
 }
