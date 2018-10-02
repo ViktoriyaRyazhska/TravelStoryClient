@@ -6,7 +6,7 @@ import {User} from "../model/User";
 import {Message} from "../model/Message";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import {ChatListComponent} from "../messenger-sidebar/chat-list/chat-list.component";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-main-messaging-content',
@@ -19,8 +19,10 @@ export class MainMessagingContentComponent implements OnInit {
   @Input() currUser: User;
   @Input() stompClient: Stomp;
 
-  messages: Message[];
-  pageNumber: number = 0;
+  private container;
+
+  messages: Message[] = [];
+  pageNumber: number = 1;
 
   constructor(
     private router: Router,
@@ -29,15 +31,32 @@ export class MainMessagingContentComponent implements OnInit {
   ) {
     router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
-        this.getMessages();
-        this.getChat()
+        this.pageNumber = 1;
+        this.getFirst30Messages();
+        this.getChat();
       }
     });
   }
 
   ngOnInit() {
     this.getChat();
-    this.getMessages();
+    this.getFirst30Messages();
+
+    this.container = $("#messagesContainer");
+
+    const _this = this;
+
+    setTimeout(function () {
+      _this.container.scrollTop(_this.container.prop("scrollHeight"));//scroll down
+    }, 500);
+
+    $(document).ready(function () {
+      $(_this.container).scroll(function () {
+        if (_this.container.scrollTop() < 100) {
+          // _this.getNext30Messages();
+        }
+      });
+    });
   }
 
 
@@ -66,35 +85,59 @@ export class MainMessagingContentComponent implements OnInit {
             castedMessage.messageContent = message.messageContent;
             castedMessage.messageType = message.messageType;
             castedMessage.createdAt = message.createdAt;
-            _this.messages.push(castedMessage);
 
+            if (_this.messages[_this.messages.length - 1].messageContent != castedMessage.messageContent
+              || _this.messages[_this.messages.length - 1].user.id != castedMessage.user.id) {
+              _this.messages.push(castedMessage);
+            }
+
+            setTimeout(function () {
+              _this.container.scrollTop(_this.container.prop("scrollHeight"));
+            }, 200)
 
           });
         console.log('Connected: ' + frame);
       });
+
+
     });
   }
 
-  getMessages() {
+  getFirst30Messages() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.messengerService.getMessages(id, this.pageNumber)
+    this.messengerService.getNext30Messages(id, 0)
       .subscribe(
         messages => {
           this.messages = messages;
-          //   debugger;
         }
       );
-    //this.pageNumber++;
   }
+
+  //
+  //
+  // getNext30Messages(pageNumber: number) {
+  //   const id = +this.route.snapshot.paramMap.get('id');
+  //   this.messengerService.getNext30Messages(id, this.pageNumber)
+  //     .subscribe(
+  //       messages => {
+  //         for (let message of messages) {
+  //           this.messages.push(message);
+  //         }
+  //
+  //       }
+  //     );
+  //   this.pageNumber++;
+  // }
 
   sendMessage() {
-    this.stompClient.send(
-      '/messenger/' + this.currChat.id + '/message',
-      {},
-      JSON.stringify(this.currMessage)
-    );
-
+    if (this.currMessage.messageContent != "") {
+      this.stompClient.send(
+        '/messenger/' + this.currChat.id + '/message',
+        {},
+        JSON.stringify(this.currMessage)
+      );
+      this.currMessage.messageContent = "";
+    }
   }
-
 
 }
