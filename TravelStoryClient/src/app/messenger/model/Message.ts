@@ -3,13 +3,14 @@ import {User} from "./User";
 export class Message {
   id: number;
   messageContent: string;
-  messageType: MessageType;
-  author: User;
+  messageType: string;
+  createdAt: string;
+  user: User;
 }
 
-export enum MessageType {
-  TEXT,
-  PHOTO,
-  VIDEO,
-  AUDIO
-}
+// export enum MessageType {
+//   TEXT,
+//   PHOTO,
+//   VIDEO,
+//   AUDIO
+// }

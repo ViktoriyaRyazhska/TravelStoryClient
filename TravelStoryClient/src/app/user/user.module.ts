@@ -1,5 +1,4 @@
 import {BrowserModule} from "@angular/platform-browser";
-
 import {CommonModule} from '@angular/common';
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
@@ -13,20 +12,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ContainerPostComponent} from './user-page/container-post/container-post.component';
 import {CommentsComponent} from "./comments/comments.component";
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatProgressSpinnerModule
-} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatIconModule} from "@angular/material/typings/icon";
 import {NgModule} from '@angular/core';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
 import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+import {
+  MatButtonModule, MatButtonToggleModule, MatCardModule, MatFormFieldModule, MatInputModule,
+  MatToolbarModule
+} from '@angular/material';
+import {MatDialogModule} from '@angular/material';
+import {UserComponent} from './user.component';
 
 
 @NgModule({
@@ -40,10 +38,18 @@ import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonToggleModule,
+    MatToolbarModule,
+    HttpClientModule,
+    MatDialogModule,
+    ReactiveFormsModule
 
   ],
-  declarations: [FooterComponent,
+  declarations: [
+    UserComponent,
+    FooterComponent,
     HeaderComponent,
     IntroComponent,
     SearchComponent,
@@ -54,7 +60,9 @@ import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.
     CommentsComponent,
     UserInfoSideComponent,
     UserFollowsSideComponent,
-    UserGallerySideComponent
+    UserGallerySideComponent,
+    LoginComponent,
+    RegistrationComponent
   ]
 })
 export class UserModule {

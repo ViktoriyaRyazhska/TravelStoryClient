@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
+import {MatDialog} from '@angular/material';
+import {DialogChangeProfilePicComponent} from './dialog-change-profile-pic/dialog-change-profile-pic.component';
 
 @Component({
   selector: 'app-intro',
@@ -13,12 +15,20 @@ export class IntroComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit() {
     this.getUser();
+  }
+
+  changeProfilePic() {
+    this.dialog.open(DialogChangeProfilePicComponent, {
+      height: '400px',
+      width: '600px',
+    });
   }
 
   getUser(): void {
@@ -27,3 +37,4 @@ export class IntroComponent implements OnInit {
       .subscribe(user => this.user = user);
   }
 }
+

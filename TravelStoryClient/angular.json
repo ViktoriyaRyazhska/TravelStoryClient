@@ -28,12 +28,12 @@
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
-              "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.scss"
+              //"node_modules/bootstrap/dist/css/bootstrap.min.css" // Include ONLY LOCALY
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
+              //"node_modules/bootstrap/dist/js/bootstrap.js" // Include ONLY LOCALY
             ]
           },
           "configurations": {
