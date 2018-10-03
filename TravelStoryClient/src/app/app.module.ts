@@ -13,11 +13,11 @@ import {MyAuthService} from './user/login/my-auth.service';
 import {DialogChangeProfilePicComponent} from './user/intro/dialog-change-profile-pic/dialog-change-profile-pic.component';
 import {MessengerModule} from './messenger/messenger.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     DialogChangeProfilePicComponent
+
   ],
   imports: [
     MatCardModule,

@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
-import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
+import {TravelStory} from "../../models/TravelStory";
+import {TRAVELSTORYS} from "./TRAVELSTORYS";
 
 @Component({
   selector: 'app-user-page',
@@ -13,6 +13,7 @@ import {User} from '../../models/User';
 
 export class UserPageComponent implements OnInit {
   user: User;
+  travelStories: TravelStory[];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,12 +23,17 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.getTravelStories();
   }
 
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUser(id)
       .subscribe(user => this.user = user);
+  }
+
+  getTravelStories() {
+    return this.travelStories = TRAVELSTORYS;
   }
 
 }
