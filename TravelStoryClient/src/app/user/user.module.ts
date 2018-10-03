@@ -25,6 +25,7 @@ import {
 } from '@angular/material';
 import {MatDialogModule} from '@angular/material';
 import {UserComponent} from './user.component';
+import { UserPlacesComponent } from './user-places/user-places.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import {UserComponent} from './user.component';
     UserFollowsSideComponent,
     UserGallerySideComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    UserPlacesComponent
   ]
 })
 export class UserModule {

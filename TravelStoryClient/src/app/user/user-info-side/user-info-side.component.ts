@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../models/User';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-user-info-side',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-info-side.component.scss']
 })
 export class UserInfoSideComponent implements OnInit {
+  user: User;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private userService: UserService) {
   }
 
+  ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
+    this.userService.getUser(1).subscribe(user => this.user = user);
+  }
 }

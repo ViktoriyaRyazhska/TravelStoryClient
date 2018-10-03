@@ -11,5 +11,8 @@ export class User {
   profilePic: string;
   gender: string;
   backgroundPic: string;
+  location: string;
+  hobbies: string;
+  countOfTravelStories: number;
 
 }

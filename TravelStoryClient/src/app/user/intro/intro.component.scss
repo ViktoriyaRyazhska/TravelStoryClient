@@ -56,7 +56,16 @@
 
 .ava {
   background-color: #28a745;
+}
 
+.right-details {
+  margin-left: 200px;
+  padding-top: 25px;
+  position: relative;
+  float: right;
 
+  .btn {
+    margin: 0 5px;
+  }
 }
 

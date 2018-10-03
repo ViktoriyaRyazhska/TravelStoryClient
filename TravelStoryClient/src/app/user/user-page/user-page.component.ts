@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
-import {TravelStory} from "../../models/TravelStory";
-import {TRAVELSTORYS} from "./TRAVELSTORYS";
+import {TravelStory} from '../../models/TravelStory';
+import {TRAVELSTORYS} from './TRAVELSTORYS';
 
 @Component({
   selector: 'app-user-page',
