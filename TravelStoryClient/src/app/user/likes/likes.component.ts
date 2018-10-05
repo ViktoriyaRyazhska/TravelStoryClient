@@ -5,6 +5,7 @@ import {User} from "../../models/User";
 import {TravelStory} from "../../models/TravelStory";
 import {UserService} from "../../service/user.service";
 import {ActivatedRoute} from "@angular/router";
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Component({
@@ -25,44 +26,48 @@ export class LikesComponent implements OnInit {
   ngOnInit() {
     this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
     this.getLoggedUser();
-    // this.loggedUserLike=new Like();
-    this.loggedUserLike = this.getLikeOfUser(this.likes, this.loggedUser.id);
+    this.getLoggedUserLike();
+  }
+
+  getLoggedUser() {
+    this.loggedUser=new User();
+    this.loggedUser.id = 1;
 
   }
 
-  like(userLike: Like, travelStoryId: number, mediaId: number) {
-    this.flipLike();
-    if (userLike.likeState === true) {
-      userLike.loggedUserId = this.loggedUser.id;
-      userLike.travelStoryId = travelStoryId;
-      userLike.mediaId = mediaId;
-      this.add(userLike);
+  like(travelStoryId: number, mediaId: number) {
+    if (!this.likeExhist()) {
+      let newLike: Like = new Like();
+      newLike.userId = this.loggedUser.id;
+      newLike.travelStoryId = travelStoryId;
+      newLike.mediaId = mediaId;
+      this.loggedUserLike = newLike;
+      this.add();
     }
     else {
-      userLike.loggedUserId = this.loggedUser.id;
-      userLike.travelStoryId = travelStoryId;
-      userLike.mediaId = mediaId;
-      userLike.likeState = false;
-      this.delete(userLike);
+      this.delete(this.loggedUserLike);
     }
   }
 
-  flipLike() {
-    if (this.loggedUserLike.likeState === true) {
-      this.loggedUserLike.likeState = false;
-    }
-    else {
-      this.loggedUserLike.likeState = true;
+  getLoggedUserLike(): void {
+    this.loggedUserLike = new Like();
+    if (this.likes !== null) {
+      for (let l of this.likes) {
+        if (l.userId == this.loggedUser.id) {
+          this.loggedUserLike = l;
+        }
+      }
     }
   }
 
   getLikes(travelStoryId: number, mediaId: number) {
     this.likeService.getLikes(travelStoryId, mediaId)
       .subscribe(likes => this.likes = likes);
+
   }
 
-  add(userLike: Like) {
-    this.likeService.addLike(userLike).subscribe(like => {
+  add() {
+    this.likeService.addLike(this.loggedUserLike).subscribe(like => {
       this.likes.push(like);
     });
   }
@@ -72,38 +77,16 @@ export class LikesComponent implements OnInit {
     this.likeService.deleteLike(userLike).subscribe(like => this.loggedUserLike = like);
   }
 
-  getLoggedUser(): void {
-    let user = new User();
-    user.id = 2;
-    this.loggedUser = user;
-  }
+  likeExhist(): boolean {
+    debugger;
+    let k = this.likes.indexOf(this.loggedUserLike);
+    for (let l of this.likes) {
+      if (l.userId == this.loggedUserLike.userId) {
 
-
-  getLikeOfUser(likes: Like[], loggedUserId: number): Like {
-    let userLike: Like;
-    if (likes != null) {
-      for (let like of likes) {
-        if (like.loggedUserId === loggedUserId) {
-          debugger;
-          userLike = like;
-          return userLike;
-        }
-      }
-    }
-    userLike = new Like();
-    userLike.likeState = false;
-    return userLike;
-  }
-
-  likeExhist(likes: Like[], like: Like): boolean {
-    if (likes != null) {
-      for (let l of likes) {
-        if (l === like) {
-          return true;
-        }
+        return true;
       }
     }
     return false;
-
   }
+
 }
