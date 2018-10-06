@@ -5,7 +5,7 @@ import {UserComponent} from './user/user.component';
 
 
 const routes: Routes = [
-  {path: '', component: UserComponent}
+  {path: '', redirectTo: 'user/feed', pathMatch: 'full'}
 ];
 
 @NgModule({
