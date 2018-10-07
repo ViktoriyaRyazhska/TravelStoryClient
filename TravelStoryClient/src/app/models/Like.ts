@@ -3,7 +3,6 @@ export class Like {
   travelStoryId: number;
   mediaId: number;
   userId: number;
-  likeState: boolean;
 
   constructor() {
   }

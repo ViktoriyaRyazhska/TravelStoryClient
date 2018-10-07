@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable({providedIn: 'root'})
 export class LikeService {
   private baseUrl = 'http://localhost:8080/api/likes';
-  private likeUrl = 'http://localhost:8080/api/like';
+
 
   constructor(
     private http: HttpClient) {
@@ -30,7 +30,7 @@ export class LikeService {
   }
 
   /** POST: add a new like to the server */
-  addLike(like:Like): Observable<any> {
+  addLike(like: Like): Observable<Like> {
     return this.http.post<Like>(this.baseUrl, like, httpOptions).pipe(
       catchError(this.handleError<Like>('addLike'))
     );
@@ -56,15 +56,4 @@ export class LikeService {
     };
   }
 
-
-  getUserLike(travelStoryId: number, mediaId: number, userId: number) : Observable<any> {
-    let params = new HttpParams();
-    params = params.set('travelStoryId', travelStoryId.toString());
-    params = params.set('mediaId', mediaId.toString());
-    params = params.set('userId', userId.toString());
-    return this.http.get<Like[]>(this.likeUrl, {params: params})
-      .pipe(
-        catchError(this.handleError('getUserLike', Like))
-      );
-  }
 }

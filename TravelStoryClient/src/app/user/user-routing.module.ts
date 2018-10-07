@@ -8,7 +8,7 @@ import {LoginComponent} from './login/login.component';
 
 const userRoutes: Routes = [
   {path: 'feed', component: FeedComponent},
-  {path: 'u/:id', component: UserPageComponent},
+  {path: 'user/:id', component: UserPageComponent},
   {path: 'login', component: LoginComponent},
 
 ];

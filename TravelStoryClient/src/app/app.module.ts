@@ -24,11 +24,11 @@ import {MessengerModule} from './messenger/messenger.module';
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     RouterModule,
     UserModule,
     AppRoutingModule,
     MessengerModule,
+
   ],
   providers: [
     {

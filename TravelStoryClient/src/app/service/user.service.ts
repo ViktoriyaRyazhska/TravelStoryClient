@@ -11,12 +11,11 @@ export class UserService {
 
   private user = new BehaviorSubject<any>(null);
 
-  public user$ = this.user.asObservable();
+   public user$ = this.user.asObservable();
 
   constructor(private httpClient: HttpClient) {
   }
-
   getUser(id: number): Observable<any> {
-    return this.httpClient.get<User>(this.baseUrl + '/user/' + id);
+    debugger;    return this.httpClient.get<User>(this.baseUrl + '/user/' + id);
   }
 }

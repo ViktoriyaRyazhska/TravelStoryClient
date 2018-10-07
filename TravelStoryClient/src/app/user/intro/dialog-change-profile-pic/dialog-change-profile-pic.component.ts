@@ -48,6 +48,13 @@ export class DialogChangeProfilePicComponent implements OnInit {
     });
   }
 
+  onResetProfilePic() {
+    // TODO rm hardcoded id
+    this.fileService.resetProfilePic(1).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
   ngOnInit(): void {
     this.userProfilePicDto = new UserProfilePicDto();
   }

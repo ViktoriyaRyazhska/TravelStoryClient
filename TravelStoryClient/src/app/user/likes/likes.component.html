@@ -1,6 +1,11 @@
-<div *ngIf="loggedUserLike"><hr>
-<mat-card-actions>
-  <span><button  mat-icon-button="favorite" (click)="like(this.travelStory.id,this.travelStory.medias[0].id)"><i class="fa fa-heart"></i></button>{{this.likes.length}} like it!</span>
-</mat-card-actions>
-<hr>
+<div *ngIf="likes && travelStory && loggedUser">
+  <hr>
+  <mat-card-actions>
+      <span><button mat-icon-button="favorite" (click)="this.like(travelStory.id,travelStory.medias[0].id)"><i
+        class="fa fa-heart"></i></button>{{this.likes.length}} like it!</span>
+  </mat-card-actions>
+  <hr>
 </div>
+
+
+
