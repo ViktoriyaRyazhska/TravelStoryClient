@@ -7,7 +7,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'http://localhost:8080/api';
+  baseUrl = 'http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com/api';
 
   private user = new BehaviorSubject<any>(null);
 

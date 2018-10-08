@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
 import {TravelStory} from '../../models/TravelStory';
 import {TRAVELSTORYS} from './TRAVELSTORYS';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-page',
@@ -17,13 +18,19 @@ export class UserPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private translate: TranslateService
   ) {
   }
 
   ngOnInit() {
+    this.translate.setDefaultLang('en');
     this.getUser();
     this.getTravelStories();
+  }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
   }
 
   getUser(): void {

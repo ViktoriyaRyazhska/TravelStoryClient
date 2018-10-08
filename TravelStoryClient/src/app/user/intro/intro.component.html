@@ -10,7 +10,7 @@
       <div class="left-details col-md-5 offset-md-2">
         <div class="description">
           <div>
-            <h3 class="name">{{user.firstName}} {{user.lastName}}</h3>
+            <h3 class="name" *ngIf="user.firstName">{{user.firstName}} {{user.lastName}}</h3>
           </div>
           <div class="text-under">Dreamer, Traveler</div>
         </div>
