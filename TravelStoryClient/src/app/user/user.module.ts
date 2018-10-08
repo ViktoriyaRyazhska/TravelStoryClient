@@ -1,4 +1,4 @@
-import {BrowserModule} from "@angular/platform-browser";
+import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
@@ -11,7 +11,7 @@ import {FeedComponent} from './feed/feed.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ContainerPostComponent} from './user-page/container-post/container-post.component';
-import {CommentsComponent} from "./comments/comments.component";
+import {CommentsComponent} from './comments/comments.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
@@ -20,12 +20,21 @@ import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatFormFieldModule, MatInputModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {MatDialogModule} from '@angular/material';
 import {UserComponent} from './user.component';
 import { UserPlacesComponent } from './user-places/user-places.component';
+import { SettingsPageComponent } from './settings-page/settings-page.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -45,8 +54,11 @@ import { UserPlacesComponent } from './user-places/user-places.component';
     MatToolbarModule,
     HttpClientModule,
     MatDialogModule,
-    ReactiveFormsModule
-
+    MatSidenavModule,
+    ReactiveFormsModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatDatepickerModule,
   ],
   declarations: [
     UserComponent,
@@ -64,7 +76,8 @@ import { UserPlacesComponent } from './user-places/user-places.component';
     UserGallerySideComponent,
     LoginComponent,
     RegistrationComponent,
-    UserPlacesComponent
+    UserPlacesComponent,
+    SettingsPageComponent
   ]
 })
 export class UserModule {

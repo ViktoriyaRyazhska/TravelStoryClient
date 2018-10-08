@@ -5,7 +5,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { TableComponent } from './table/table.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import {AdminComponent} from "./admin.component";
+import {AdminComponent} from './admin.component';
 
 @NgModule({
   imports: [

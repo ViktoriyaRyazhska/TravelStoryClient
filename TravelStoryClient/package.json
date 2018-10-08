@@ -22,6 +22,8 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@ngx-translate/core": "^10.0.2",
+    "@ngx-translate/http-loader": "^3.0.1",
     "@types/googlemaps": "^3.30.13",
     "angular-bootstrap-md": "^6.2.4",
     "angular-file-uploader": "^4.1.3",
