@@ -35,6 +35,7 @@ import {UserComponent} from './user.component';
 import { UserPlacesComponent } from './user-places/user-places.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatTabsModule,
     MatSelectModule,
     MatDatepickerModule,
+    TranslateModule,
   ],
   declarations: [
     UserComponent,

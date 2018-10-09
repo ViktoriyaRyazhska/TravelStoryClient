@@ -11,13 +11,15 @@ import {ChatListComponent} from './messenger-sidebar/chat-list/chat-list.compone
 import {MainMessagingContentComponent} from './main-messaging-content/main-messaging-content.component';
 import {ChatInfoComponent} from './main-messaging-content/chat-info/chat-info.component';
 import {ChatSearchPipe} from './pipes/chat-search.pipe';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
     FormsModule,
-    MessengerRoutingModule
+    MessengerRoutingModule,
+    TranslateModule,
   ],
   declarations: [
     TestWebSocketsComponent,

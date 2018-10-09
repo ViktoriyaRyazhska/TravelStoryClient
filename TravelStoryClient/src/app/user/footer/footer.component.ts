@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,8 @@ export class FooterComponent implements OnInit {
 
   language: string;
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -18,8 +20,8 @@ export class FooterComponent implements OnInit {
 
   switchLanguage() {
     console.log('Switch to language: ' + this.language);
+    this.userService.setPreferedLang(this.language);
     this.translate.use(this.language);
   }
-
 
 }
