@@ -1,0 +1,26 @@
+<div class="content">
+  <app-chat-info [currChat]="currChat"></app-chat-info>
+
+  <div class="messages" id="messagesContainer">
+    <ul *ngIf="currChat && messages && currUser">
+      <li *ngFor="let message of messages" [ngClass]="{
+          'sent':message.user.id === currUser.id,
+          'replies':message.user.id !== currUser.id
+        }">
+        <img src="{{message.user.profilePic}}" alt=""/>
+        <p>{{message.messageContent}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="message-input">
+    <div class="wrap">
+      <input type="text" placeholder="Write your message..." (keydown.enter)="sendMessage()"
+             [(ngModel)]="currMessage.messageContent">
+      <div class="btn-wrapper">
+        <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+        <button class="submit" id="sendMsgBtn" (click)="sendMessage()"><i class="fa fa-paper-plane"
+                                                                          aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
