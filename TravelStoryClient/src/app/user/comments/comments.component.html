@@ -1,19 +1,28 @@
-<mat-card-content *ngFor="let comment of comments">
-
-  <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>{{comment.userFirstName}} {{comment.userLastName}}</mat-card-title>
-    <mat-card-subtitle>{{comment.createdTime |date:'medium'}}</mat-card-subtitle>
-  </mat-card-header>
-  <p class="comment">{{comment.commentMassage}}</p>
-
-</mat-card-content>
-<mat-card-actions>
+<div *ngIf="travelStory">
+  <button mat-button (click)="this.getComments(this.travelStory.id,this.travelStory.medias[0].id);"><i
+    class="material-icons" matBadge="{{this.comments.length}}" matBadgePosition="after"> chat_bubble_outline</i> shaw
+    all comments
+  </button>
+  <button mat-button (click)="hideComments()"><i class="material-icons">keyboard_arrow_up</i> hide comments</button>
+  <hr>
+  <div id="commentsBlock" *ngIf="comments" >
+    <mat-card-content *ngFor="let comment of comments">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>{{comment.userFirstName}} {{comment.userLastName}}</mat-card-title>
+        <mat-card-subtitle>{{comment.createdTime |date:'medium'}}<a mat-button (click)="delete(comment)">delete</a></mat-card-subtitle>
+      </mat-card-header>
+      <p class="comment">{{comment.commentMassage}}</p>
+    </mat-card-content>
+  </div>
+  <mat-card-actions>
   <textarea matInput class="full-width" placeholder="Leave a comment"
             #commentMassage></textarea>
-
-  <button mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.medias[0].id)" (click)="commentMassage.value=''">Add</button>
-</mat-card-actions>
+    <button mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.medias[0].id)"
+            (click)="commentMassage.value=''">Add
+    </button>
+  </mat-card-actions>
+</div>
 
 
 

@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Comment} from '../models/Comment';
-import {Message} from "../messenger/model/Message";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -20,8 +19,8 @@ export class CommentService {
 
   /** GET comments from the server */
   getComments(travelStoryId: number, mediaId: number): Observable<Comment[]> {
-    let params = new HttpParams().set('travelStoryId',travelStoryId.toString());
-    params.set('mediaId',mediaId.toString());
+    let params = new HttpParams().set('travelStoryId', travelStoryId.toString());
+    params.set('mediaId', mediaId.toString());
     return this.http.get<Comment[]>(this.baseUrl,
       {params: params});
   }
@@ -42,13 +41,13 @@ export class CommentService {
       catchError(this.handleError<Comment>('deleteComment'))
     );
   }
-  getNextComments(travelStoryId: number,mediaId:number, pageNumber: number): Observable<Comment[]> {
-    let params = new HttpParams().set('pageNumber', pageNumber.toString());
-    params.set('travelStoryId',travelStoryId.toString());
-    params.set('mediaId',mediaId.toString());
-    return this.http.get<Comment[]>(this.baseUrl,
+
+  getCommentsPortion(travelStoryId: number, mediaId: number, pageNumber: number): Observable<Comment[]> {
+   debugger; let params = new HttpParams().set('pageNumber', pageNumber.toString()).set('mediaId', mediaId.toString());
+    debugger; return this.http.get<Comment[]>(`${this.baseUrl}/` + travelStoryId,
       {params: params});
   }
+
   /**
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result

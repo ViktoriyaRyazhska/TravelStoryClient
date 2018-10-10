@@ -20,6 +20,7 @@ import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import {
+  MatBadgeModule,
   MatButtonModule, MatButtonToggleModule, MatCardModule, MatFormFieldModule, MatInputModule,
   MatToolbarModule
 } from '@angular/material';
@@ -46,7 +47,8 @@ import { UserPlacesComponent } from './user-places/user-places.component';
     MatToolbarModule,
     HttpClientModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatBadgeModule
   ],
   declarations: [
     UserComponent,
