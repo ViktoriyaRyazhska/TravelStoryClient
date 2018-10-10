@@ -17,7 +17,6 @@ export class UserService {
   }
 
   getUser(id: number): Observable<any> {
-    debugger;
     return this.httpClient.get<User>(this.baseUrl + '/user/' + id);
   }
 
@@ -25,7 +24,7 @@ export class UserService {
     localStorage.setItem('lang', lang);
   }
 
-  getPreferedLang(): string{
+  getPreferedLang(): string {
     return localStorage.getItem('lang');
   }
 
