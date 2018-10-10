@@ -76,7 +76,6 @@ import {TranslateModule} from '@ngx-translate/core';
     UserInfoSideComponent,
     UserFollowsSideComponent,
     UserGallerySideComponent,
-    RegistrationComponent,
     UserPlacesComponent,
     SettingsPageComponent,
     UserPlacesComponent
