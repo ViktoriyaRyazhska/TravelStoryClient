@@ -1,6 +1,6 @@
 <script src="chat-list.component.spec.ts"></script>
 <div id="contacts">
-  <ul *ngIf="chats">
+  <ul *ngIf="chats && currentUser">
     <li class="contact" *ngFor="let chat of chats | chatSearch : searchQuery"
         [ngClass]="{'active' : chat.id === +route.snapshot.paramMap.get('id')}">
       <a routerLink="/messenger/chat/{{chat.id}}">
@@ -31,7 +31,7 @@
             <img *ngIf="chat.interlocutor" src="{{chat.interlocutor.profilePic}}" class="contacts-wrap__img" alt=""/>
           </ng-template>
           <ng-template #alternative_avatar>
-            <div class="contacts-wrap__img contacts-wrap__alternative-img"
+            <div *ngIf="chat.alternativeAvatar" class="contacts-wrap__img contacts-wrap__alternative-img"
                  [ngStyle]="{'background-color': chat.alternativeAvatar.color}">
               {{chat.alternativeAvatar.letter}}
             </div>
@@ -40,7 +40,7 @@
             <p class="name">
               {{chat.chatName}}
             </p>
-            <p class="preview">
+            <p class="preview" [ngClass]="{'you-before' : chat.lastMessage.user.id == currentUser.id}">
               {{chat.lastMessage.messageContent}}
             </p>
           </div>
