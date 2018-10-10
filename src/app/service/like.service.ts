@@ -11,9 +11,8 @@ const httpOptions = {
 
 @Injectable({providedIn: 'root'})
 export class LikeService {
-  private baseUrl = 'http://localhost:808' +
-    '0/api/likes';
-  private likeUrl = 'http://localhost:8080/api/like';
+  private baseUrl = 'http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com/api/likes';
+  private likeUrl = 'http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com/api/like';
 
   constructor(
     private http: HttpClient) {

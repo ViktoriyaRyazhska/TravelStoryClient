@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {UserProfilePicDto} from '../models/UserProfilePicDto';
 import {HttpClient} from '@angular/common/http';
 
-const baseUrl = 'http://localhost:8080/api/';
+const baseUrl = 'http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com/api';
 
 @Injectable({
   providedIn: 'root'
