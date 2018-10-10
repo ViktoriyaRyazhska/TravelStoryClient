@@ -15,6 +15,7 @@ import {MessengerModule} from './messenger/messenger.module';
 import {HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {SecurityModule} from './security/security.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -33,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule,
     UserModule,
     AppRoutingModule,
+    SecurityModule,
     MessengerModule,
     MatNativeDateModule,
     TranslateModule.forRoot({
