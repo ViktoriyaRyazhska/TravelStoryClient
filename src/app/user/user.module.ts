@@ -17,8 +17,8 @@ import {NgModule} from '@angular/core';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
 import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from '../security/login/login.component';
+import { RegistrationComponent } from '../security/registration/registration.component';
 import {
   MatButtonModule,
   MatButtonToggleModule,
@@ -79,7 +79,8 @@ import {TranslateModule} from '@ngx-translate/core';
     LoginComponent,
     RegistrationComponent,
     UserPlacesComponent,
-    SettingsPageComponent
+    SettingsPageComponent,
+    UserPlacesComponent
   ]
 })
 export class UserModule {
