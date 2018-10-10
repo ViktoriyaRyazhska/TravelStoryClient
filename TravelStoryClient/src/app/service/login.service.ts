@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http'; import { HttpModule } from '@angular/http';
 
 import {Observable} from 'rxjs';
-import {LoginDTO} from './LoginDTO';
+import {LoginDTO} from '../models/LoginDTO';
 import {MyAuthService} from './my-auth.service';
 import {CookieService} from 'ngx-cookie-service';
 

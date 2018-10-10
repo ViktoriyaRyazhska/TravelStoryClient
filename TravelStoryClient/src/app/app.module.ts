@@ -8,10 +8,11 @@ import {UserModule} from './user/user.module';
 import {MatCardModule} from '@angular/material';
 import {CookieService} from 'ngx-cookie-service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {InterceptorService} from './user/login/interceptor.service';
-import {MyAuthService} from './user/login/my-auth.service';
+import {InterceptorService} from './service/interceptor.service';
+import {MyAuthService} from './service/my-auth.service';
 import {DialogChangeProfilePicComponent} from './user/intro/dialog-change-profile-pic/dialog-change-profile-pic.component';
 import {MessengerModule} from './messenger/messenger.module';
+import {SecurityModule} from './security/security.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MessengerModule} from './messenger/messenger.module';
     UserModule,
     AppRoutingModule,
     MessengerModule,
+    SecurityModule
   ],
   providers: [
     {

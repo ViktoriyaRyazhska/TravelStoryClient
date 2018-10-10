@@ -1,3 +1,31 @@
-<p>
-  registration works!
-</p>
+<h2 class="forms_title">Registration</h2>
+<form class="forms_form" [formGroup]="registrationForm" (ngSubmit)="registrate()">
+  <fieldset class="forms_fieldset">
+    <div class="forms_field">
+      <input type="text" id="firstName" placeholder="Please enter your firstName"
+             formControlName="firstName" class="forms_field-input" required />
+    </div>
+    <div class="forms_field">
+      <input type="text" id="lastName" placeholder="Please enter your lastName"
+             formControlName="lastName" class="forms_field-input" required />
+    </div>
+    <div class="forms_field">
+      <input type="email" id="regEmail" placeholder="Please enter your email"
+             formControlName="email" class="forms_field-input" required />
+    </div>
+    <div class="forms_field">
+      <input type="password" id="regPassword" placeholder="please  enter your password"
+             formControlName="password" class="forms_field-input" required />
+    </div>
+    <div class="forms_field">
+      <select name="gender" id="gender" formControlName="gender">
+        <option>Choose an option</option>
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
+      </select>
+    </div>
+  </fieldset>
+  <div class="forms_buttons">
+    <button type="submit" class="forms_buttons-action">Sign up</button>
+  </div>
+</form>
