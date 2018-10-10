@@ -11,18 +11,18 @@
           'offline':currentUser.userState === 'OFFLINE'
          }"
          class="" alt=""/>
-    <p>{{currentUser.firstName + ' ' + currentUser.lastName}}</p>
+    <p class="curr-user-name">{{currentUser.firstName + ' ' + currentUser.lastName}}</p>
     <i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
-    <div id="status-options">
+    <div id="state-options">
       <ul>
-        <li id="status-online" class="active" (click)="statusOptionChecked()"><span
+        <li id="state-online" class="active" (click)="statusOptionChecked($event)"><span
           class="status-circle"></span>
           <p>Online</p></li>
-        <li id="status-away"><span class="status-circle"></span>
+        <li id="state-away" (click)="statusOptionChecked($event)"><span class="status-circle"></span>
           <p>Away</p></li>
-        <li id="status-busy"><span class="status-circle"></span>
+        <li id="state-busy" (click)="statusOptionChecked($event)"><span class="status-circle"></span>
           <p>Busy</p></li>
-        <li id="status-offline"><span class="status-circle"></span>
+        <li id="state-offline" (click)="statusOptionChecked($event)"><span class="status-circle"></span>
           <p>Offline</p></li>
       </ul>
     </div>
