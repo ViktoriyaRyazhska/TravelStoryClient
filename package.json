@@ -1,5 +1,5 @@
 {
-  "name": "travel-story-client",
+  "name": "travelstory-client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
