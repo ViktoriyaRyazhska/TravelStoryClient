@@ -14,16 +14,16 @@ export class CommentsComponent implements OnInit {
   @Input() travelStory: TravelStory;
   loggedUser: User;
   comments: Comment [];
-  pageNumber:number;
-
+  pageNumber: number;
+  commentsNumber: number;
 
   constructor(private commentService: CommentService) {
   }
 
   ngOnInit() {
     this.getLoggedUser();
-    this.pageNumber=1;
-    debugger;this.getCommentsPortion(this.travelStory.id, this.travelStory.medias[0].id, this.pageNumber);
+    this.pageNumber = 0;
+    this.getCommentsPortion(this.travelStory.id, this.travelStory.medias[0].id);
   }
 
   add(commentMassage: string, travelStoryId: number, mediaId: number): void {
@@ -44,17 +44,19 @@ export class CommentsComponent implements OnInit {
       .subscribe(comment => {
         this.comments.push(comment);
       });
+    this.commentsNumber++;
   }
 
   getComments(travelStoryId: number, mediaId: number) {
     this.commentService.getComments(travelStoryId, mediaId)
       .subscribe(comments => this.comments = comments);
-    document.getElementById('commentsBlock').hidden = false;
+    document.getElementById('commentsBlock'+this.travelStory.id).hidden = false;
   }
 
   delete(comment: Comment) {
     this.comments = this.comments.filter(h => h !== comment);
     this.commentService.deleteComment(comment).subscribe();
+    this.commentsNumber--;
   }
 
   getLoggedUser() {
@@ -63,18 +65,16 @@ export class CommentsComponent implements OnInit {
     this.loggedUser.profilePic = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
   }
 
-  getCommentsPortion(travelStoryId: number, mediaId: number, pageNumber: number) {
-  debugger;  this.commentService.getCommentsPortion(travelStoryId, mediaId,this.pageNumber).subscribe(comments => {this.comments = comments});
+  getCommentsPortion(travelStoryId: number, mediaId: number) {
+    debugger;
+    this.commentService.getCommentsPortion(travelStoryId, mediaId, this.pageNumber).subscribe(data => {
+      this.comments = data['content'];
+      this.commentsNumber = data['totalElements'];
+    });
     document.getElementById('commentsBlock').hidden = false;
   }
 
   hideComments() {
-    document.getElementById('commentsBlock').hidden = true;
+    document.getElementById('commentsBlock'+this.travelStory.id).hidden = true;
   }
-
-  // getCommentsNumber(){
-  //   this.commentService.getCommentsNumber();
-  // }
-
-
 }

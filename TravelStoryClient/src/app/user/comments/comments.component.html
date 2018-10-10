@@ -1,16 +1,16 @@
 <div *ngIf="travelStory">
   <button mat-button (click)="this.getComments(this.travelStory.id,this.travelStory.medias[0].id);"><i
-    class="material-icons" matBadge="{{this.comments.length}}" matBadgePosition="after"> chat_bubble_outline</i> shaw
-    all comments
+    class="material-icons" matBadge="{{this.commentsNumber}}" matBadgePosition="after"> chat_bubble_outline</i> shaw
+    all
   </button>
-  <button mat-button (click)="hideComments()"><i class="material-icons">keyboard_arrow_up</i> hide comments</button>
+  <button mat-button (click)="hideComments()"><i class="material-icons">keyboard_arrow_up</i> hide </button>
   <hr>
-  <div id="commentsBlock" *ngIf="comments" >
+  <div id="commentsBlock{{travelStory.id}}" *ngIf="comments" >
     <mat-card-content *ngFor="let comment of comments">
       <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
         <mat-card-title>{{comment.userFirstName}} {{comment.userLastName}}</mat-card-title>
-        <mat-card-subtitle>{{comment.createdTime |date:'medium'}}<a mat-button (click)="delete(comment)">delete</a></mat-card-subtitle>
+        <mat-card-subtitle>{{comment.createdTime |date:'medium'}}<a mat-button *ngIf="this.loggedUser.id == comment.userId"(click)="delete(comment)">delete</a></mat-card-subtitle>
       </mat-card-header>
       <p class="comment">{{comment.commentMassage}}</p>
     </mat-card-content>
