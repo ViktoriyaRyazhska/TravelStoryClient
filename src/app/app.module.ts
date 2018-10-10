@@ -15,9 +15,6 @@ import {MessengerModule} from './messenger/messenger.module';
 import {HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {AdminComponent} from './admin/admin.component';
-import {UserComponent} from './user/user.component';
-import {SecurityModule} from './security/security.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
