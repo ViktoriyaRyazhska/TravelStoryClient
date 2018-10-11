@@ -33,6 +33,7 @@ export class IntroComponent implements OnInit {
 
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    console.log('user id: ' + id);
     this.userService.getUser(id)
       .subscribe(user => this.user = user);
   }
