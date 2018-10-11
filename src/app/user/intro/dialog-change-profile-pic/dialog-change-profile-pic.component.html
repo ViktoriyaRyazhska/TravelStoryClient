@@ -1,0 +1,18 @@
+
+<h2 mat-dialog-title>Change profile picture</h2>
+<div class="content">
+  <div class="actions">
+    <div class="row">
+      <input type="text" [(ngModel)]="userId" placeholder="enter user id">
+    </div>
+    <div class="row">
+      <input type="file" accept="image/*" (change)="changeListener($event)">
+    </div>
+    <div class="row">
+      <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+    </div>
+    <div class="row">
+      <button type="submit" class="btn btn-danger" (click)="onResetProfilePic()">Remove</button>
+    </div>
+  </div>
+</div>
