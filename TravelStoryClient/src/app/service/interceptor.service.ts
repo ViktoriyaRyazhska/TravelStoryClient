@@ -10,7 +10,7 @@ export class InterceptorService {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('asd1');
-    if (request.url.startsWith('http://localhost:8080') && this.authService.getToken()) {
+    if (request.url.startsWith('http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com') && this.authService.getToken()) {
       console.log('asd');
       request = request.clone({
         setHeaders: {

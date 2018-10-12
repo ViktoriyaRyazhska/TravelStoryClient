@@ -15,7 +15,7 @@ export class LoginService {
               private cookie: CookieService,
               private http: HttpClient) { }
   signIn(loginDTO: LoginDTO): Observable<any> {
-    return this.auth.post('http://localhost:8080/api/login', loginDTO);
+    return this.auth.post('http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com/api/login', loginDTO);
   }
 
   public getToken(): string {
