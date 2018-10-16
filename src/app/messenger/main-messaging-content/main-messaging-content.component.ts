@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Chat} from '../model/Chat';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
@@ -8,9 +8,11 @@ import {Message} from '../model/Message';
 import * as Stomp from 'stompjs';
 import * as $ from 'jquery';
 import {StompService} from '@stomp/ng2-stompjs';
+import {Time} from '@angular/common';
 
 @Component({
   selector: 'app-main-messaging-content',
+
   templateUrl: './main-messaging-content.component.html',
   styleUrls: ['./main-messaging-content.component.scss', '../general.scss']
 })
@@ -26,7 +28,8 @@ export class MainMessagingContentComponent implements OnInit {
   private container: any;
 
   messages: Message[] = [];
-  pageNumber: number = 1;
+  pageNumber: number = 0;
+  nextMessagesLock: boolean = true;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -38,8 +41,8 @@ export class MainMessagingContentComponent implements OnInit {
           this.subscription.unsubscribe();
           this.subscribed = false;
         }
-        this.pageNumber = 1;
-        this.getFirst30Messages();
+        this.pageNumber = 0;
+        this.getNext30Messages();
         this.getChat();
       }
     });
@@ -49,16 +52,16 @@ export class MainMessagingContentComponent implements OnInit {
     this.container = $('#messagesContainer');
     this.currMessage.user = this.currUser;
     this.getChat();
-    this.getFirst30Messages();
 
     //code below get previous messages
     const _this = this;
-    $(document).ready(function () {
-      $(_this.container).scroll(function () {
-        if (_this.container.scrollTop() < 100) {
-          // _this.getNext30Messages();
+    $(_this.container).scroll(function () {
+      if (_this.container.scrollTop() == 0 && _this.messages.length > 0) {
+        if (!_this.nextMessagesLock) {
+          _this.nextMessagesLock = true;
+          _this.getNext30Messages();
         }
-      });
+      }
     });
   }
 
@@ -68,7 +71,6 @@ export class MainMessagingContentComponent implements OnInit {
       this.subscribed = false;
     }
   }
-
 
   getChat() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -84,8 +86,6 @@ export class MainMessagingContentComponent implements OnInit {
         this.subscription = this.receivedMessage.subscribe(this.onNextMessage);
         this.subscribed = true;
       }
-
-      this.container.scrollTop(this.container.prop('scrollHeight')); //scroll down
     });
   }
 
@@ -113,19 +113,33 @@ export class MainMessagingContentComponent implements OnInit {
   }
 
 
-  // getNext30Messages(pageNumber: number) {
-  //   const id = +this.route.snapshot.paramMap.get('id');
-  //   this.messengerService.getNext30Messages(id, this.pageNumber)
-  //     .subscribe(
-  //       messages => {
-  //         for (let message of messages) {
-  //           this.messages.push(message);
-  //         }
-  //
-  //       }
-  //     );
-  //   this.pageNumber++;
-  // }
+  getNext30Messages() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.messengerService.getNext30Messages(id, this.pageNumber)
+      .subscribe(
+        messages => {
+          let currPageNumber = this.pageNumber;
+          let oldScrollSize = this.container.prop('scrollHeight');
+          for (let message of messages) {
+            this.messages.unshift(message);
+          }
+          setTimeout(() => {
+            let newScrollSize = this.container.prop('scrollHeight');
+            if (currPageNumber > 0) {
+              this.container.scrollTop(newScrollSize - oldScrollSize);
+            } else {
+              this.container.scrollTop(newScrollSize);
+            }
+            this.nextMessagesLock = false;
+
+          },1 ); //TODO fix to scroll when component is reloaded
+
+          this.currMessage.messageContent = ' ';
+          this.pageNumber++;
+          console.log(messages);
+        }
+      );
+  }
 
   sendMessage() {
     if (this.currMessage.messageContent != '') {
@@ -136,4 +150,7 @@ export class MainMessagingContentComponent implements OnInit {
     }
   }
 
+  trackByFn(index: number, item: any) {
+    return item ? item.id : undefined;
+  }
 }

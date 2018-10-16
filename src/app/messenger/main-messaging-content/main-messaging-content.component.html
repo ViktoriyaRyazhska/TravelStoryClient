@@ -3,7 +3,7 @@
 
   <div class="messages" id="messagesContainer">
     <ul *ngIf="currChat && messages && currUser">
-      <li *ngFor="let message of messages" [ngClass]="{
+      <li *ngFor="let message of messages;trackBy:trackByFn" [ngClass]="{
           'sent':message.user.id === currUser.id,
           'replies':message.user.id !== currUser.id
         }">
@@ -14,7 +14,7 @@
   </div>
   <div class="message-input">
     <div class="wrap">
-      <input type="text" placeholder="Write your message..." (keydown.enter)="sendMessage()"
+      <input type="text" id="messsageInput" placeholder="Write your message..." (keydown.enter)="sendMessage()"
              [(ngModel)]="currMessage.messageContent">
       <div class="btn-wrapper">
         <i class="fa fa-paperclip attachment" aria-hidden="true"></i>

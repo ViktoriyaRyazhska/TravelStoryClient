@@ -23,7 +23,7 @@ export class PersonalInfoComponent implements OnInit {
       $('.messages').animate({scrollTop: $(document).height()}, 'fast');
 
       $('#profile-img').click(function () {
-        $('#status-options').toggleClass('active');
+        $('#state-options').toggleClass('active');
       });
 
       $('.expand-button').click(function () {
@@ -31,7 +31,7 @@ export class PersonalInfoComponent implements OnInit {
         $('#contacts').toggleClass('expanded');
       });
 
-      $('#status-options ul li').click(function () {
+      $('#state-options ul li').click(function () {
         $('#profile-img').removeClass();
         $('#status-online').removeClass('active');
         $('#status-away').removeClass('active');
@@ -51,7 +51,7 @@ export class PersonalInfoComponent implements OnInit {
           $('#profile-img').removeClass();
         }
 
-        $('#status-options').removeClass('active');
+        $('#state-options').removeClass('active');
       });
 
     });
