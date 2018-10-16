@@ -6,12 +6,11 @@ const app = express();
 
 
 // Serve only the static files form the dist directory
-//TODO 
 app.use(express.static(path.join(__dirname, '/dist/travelStoryClient')));
-app.get('/*', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-});
-
+app.route('/*')
+  .get(function(req, res) {
+    res.sendFile(path.resolve(app.get('src') + '/index.html'));
+  });
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
 
