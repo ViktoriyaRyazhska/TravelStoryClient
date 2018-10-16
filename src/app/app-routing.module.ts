@@ -13,7 +13,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes,
-      {enableTracing: true})
+      {useHash: true})
   ],
   exports: [
     RouterModule
