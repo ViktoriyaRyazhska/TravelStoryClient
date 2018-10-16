@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Chat} from '../model/Chat';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
@@ -8,7 +8,7 @@ import {Message} from '../model/Message';
 import * as Stomp from 'stompjs';
 import * as $ from 'jquery';
 import {StompService} from '@stomp/ng2-stompjs';
-import {Time} from '@angular/common';
+
 
 @Component({
   selector: 'app-main-messaging-content',
@@ -52,7 +52,6 @@ export class MainMessagingContentComponent implements OnInit {
     this.container = $('#messagesContainer');
     this.currMessage.user = this.currUser;
     this.getChat();
-
     //code below get previous messages
     const _this = this;
     $(_this.container).scroll(function () {
@@ -71,6 +70,7 @@ export class MainMessagingContentComponent implements OnInit {
       this.subscribed = false;
     }
   }
+
 
   getChat() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -102,18 +102,7 @@ export class MainMessagingContentComponent implements OnInit {
   };
 
 
-  getFirst30Messages() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.messengerService.getNext30Messages(id, 0)
-      .subscribe(
-        messages => {
-          this.messages = messages;
-        }
-      );
-  }
-
-
-  getNext30Messages() {
+  getNext30Messages(){
     const id = +this.route.snapshot.paramMap.get('id');
     this.messengerService.getNext30Messages(id, this.pageNumber)
       .subscribe(

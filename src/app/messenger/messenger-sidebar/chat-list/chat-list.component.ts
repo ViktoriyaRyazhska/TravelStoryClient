@@ -47,9 +47,11 @@ export class ChatListComponent implements OnInit {
             chat.alternativeAvatar = this.messengerService.getAlternativeAvatar(chat.chatName);
           }
           this.receivedLastMessages[index] = this._stompService.subscribe('/chat/' + chat.id + '/messages');
+
           this.subscriptions[index] = this.receivedLastMessages[index].subscribe((message: Stomp.Message) => {
             this.chats[index].lastMessage = JSON.parse(message.body);
           });
+
         });
       });
   }

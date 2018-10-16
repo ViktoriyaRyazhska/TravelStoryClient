@@ -40,9 +40,11 @@
             <p class="name">
               {{chat.chatName}}
             </p>
+
             <p class="preview" *ngIf="chat.lastMessage.user"
                [ngClass]="{'you-before' : chat.lastMessage.user.id == currentUser.id}">
               {{chat.lastMessage.messageContent == chat.lastMessage.messageContent}}
+
             </p>
             <p class="preview" *ngIf="!chat.lastMessage.user"> No messages </p>
           </div>
