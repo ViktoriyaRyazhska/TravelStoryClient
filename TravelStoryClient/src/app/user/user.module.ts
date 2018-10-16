@@ -4,7 +4,7 @@ import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {IntroComponent} from './intro/intro.component';
 import {LikesComponent} from './likes/likes.component';
-import {SearchComponent} from './search/search.component';
+import {SearchComponent, SearchComponentDialog} from './search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
@@ -27,6 +27,8 @@ import {
 import {MatDialogModule} from '@angular/material';
 import {UserComponent} from './user.component';
 import { UserPlacesComponent } from './user-places/user-places.component';
+import { EmojiModule } from 'angular-emoji/dist';
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 
 
@@ -48,7 +50,13 @@ import { UserPlacesComponent } from './user-places/user-places.component';
     HttpClientModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    EmojiModule,
+    InfiniteScrollModule
+
+  ],
+  entryComponents:[
+    SearchComponentDialog
   ],
   declarations: [
     UserComponent,
@@ -67,6 +75,9 @@ import { UserPlacesComponent } from './user-places/user-places.component';
     LoginComponent,
     RegistrationComponent,
     UserPlacesComponent,
+    SearchComponentDialog,
+
+
   ]
 })
 export class UserModule {

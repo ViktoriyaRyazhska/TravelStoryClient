@@ -8,7 +8,7 @@
   <div id="commentsBlock{{travelStory.id}}" *ngIf="comments" >
     <mat-card-content *ngFor="let comment of comments">
       <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
+        <img mat-card-avatar src="{{comment.userProfilePic}}">
         <mat-card-title>{{comment.userFirstName}} {{comment.userLastName}}</mat-card-title>
         <mat-card-subtitle>{{comment.createdTime |date:'medium'}}<a mat-button *ngIf="this.loggedUser.id == comment.userId"(click)="delete(comment)">delete</a></mat-card-subtitle>
       </mat-card-header>
@@ -18,6 +18,7 @@
   <mat-card-actions>
   <textarea matInput class="full-width" placeholder="Leave a comment"
             #commentMassage></textarea>
+    <!--<emoji-input></emoji-input>-->
     <button mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.medias[0].id)"
             (click)="commentMassage.value=''">Add
     </button>

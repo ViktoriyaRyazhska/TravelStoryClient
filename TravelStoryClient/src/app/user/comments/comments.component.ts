@@ -31,6 +31,7 @@ export class CommentsComponent implements OnInit {
     if (!commentMassage) {
       return;
     }
+    this.getComments(travelStoryId,mediaId);
     let comment: Comment = new Comment();
     comment.commentMassage = commentMassage;
     comment.userId = this.loggedUser.id;
