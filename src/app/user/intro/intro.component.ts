@@ -26,8 +26,8 @@ export class IntroComponent implements OnInit {
 
   changeProfilePic() {
     this.dialog.open(DialogChangeProfilePicComponent, {
-      height: '400px',
-      width: '600px',
+      height: '430px',
+      width: '500px',
     });
   }
 

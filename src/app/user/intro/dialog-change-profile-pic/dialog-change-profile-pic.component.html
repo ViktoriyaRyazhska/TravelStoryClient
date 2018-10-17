@@ -1,18 +1,49 @@
-
 <h2 mat-dialog-title>Change profile picture</h2>
 <div class="content">
-  <div class="actions">
-    <div class="row">
-      <input type="text" [(ngModel)]="userId" placeholder="enter user id">
-    </div>
-    <div class="row">
-      <input type="file" accept="image/*" (change)="changeListener($event)">
-    </div>
-    <div class="row">
-      <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
-    </div>
-    <div class="row">
-      <button type="submit" class="btn btn-danger" (click)="onResetProfilePic()">Remove</button>
+  <div class="dropzone"
+       appDropZone
+       (hovered)="toggleHover($event)"
+       (dropped)="startUpload($event)"
+       [class.hovering]="isHovering">
+
+    <h3></h3>
+    <p>Drag and Drop a File</p>
+    <div class="file">
+      <label class="file-label">
+        <input type="file" (change)="startUpload($event.target.files)">
+        <span class="file-cta">
+    <span class="file-icon">
+      <i class="fa fa-upload"></i>
+    </span>
+    <span class="file-label">
+      or choose a file...
+    </span>
+  </span>
+      </label>
     </div>
   </div>
+
+  <div *ngIf="percentage | async as pct">
+
+    <progress class="progress is-info"
+              [value]="pct"
+              max="100">
+    </progress>
+
+    {{ pct | number }}%
+
+  </div>
+
+  <!--<div *ngIf="snapshot | async as snap">-->
+    <!--&lt;!&ndash;{{ snap.bytesTransferred | fileSize }} of {{ snap.totalBytes | fileSize }}&ndash;&gt;-->
+
+    <!--<div *ngIf="downloadURL | async as url">-->
+      <!--<h3>Results!</h3>-->
+      <!--<img [src]="url"><br>-->
+      <!--<a [href]="url" target="_blank" rel="noopener">Download Me!</a>-->
+    <!--</div>-->
+    <!--<button (click)="task.pause()" class="button is-warning" [disabled]="!isActive(snap)">Pause</button>-->
+    <!--<button (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>-->
+    <!--<button (click)="task.resume()" class="button is-info" [disabled]="!(snap?.state === 'paused')">Resume</button>-->
+  <!--</div>-->
 </div>

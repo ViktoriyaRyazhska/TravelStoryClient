@@ -36,6 +36,8 @@ import { UserPlacesComponent } from './user-places/user-places.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
+import { FileSizePipe } from './intro/dialog-change-profile-pic/file-size.pipe';
+import {DropZoneDirective} from './drop-zone.directive';
 
 
 @NgModule({
@@ -78,7 +80,7 @@ import {TranslateModule} from '@ngx-translate/core';
     UserGallerySideComponent,
     UserPlacesComponent,
     SettingsPageComponent,
-    UserPlacesComponent
+    UserPlacesComponent,
   ]
 })
 export class UserModule {

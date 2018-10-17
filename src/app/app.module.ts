@@ -16,6 +16,12 @@ import {HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {SecurityModule} from './security/security.module';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {environment} from '../environments/environment.prod';
+import {AngularFireModule} from '@angular/fire';
+import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pipe';
+import {DropZoneDirective} from './user/drop-zone.directive';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -25,6 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     DialogChangeProfilePicComponent,
+    FileSizePipe,
+    DropZoneDirective,
   ],
   imports: [
     MatCardModule,
@@ -37,6 +45,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SecurityModule,
     MessengerModule,
     MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
