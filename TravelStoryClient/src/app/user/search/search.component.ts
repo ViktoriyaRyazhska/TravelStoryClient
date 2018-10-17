@@ -45,7 +45,7 @@ export class SearchComponentDialog {
   data: Observable<PagableUserSearch>;
   users: UserSearchDTO[];
 
-
+cd
   constructor(public dialogRef: MatDialogRef<SearchComponent>, private userService: UserService) {
   }
 
@@ -57,7 +57,7 @@ export class SearchComponentDialog {
   }
 
   ngOnInit(): void {
-    this.pageSize = 2;
+    this.pageSize = 7;
      this.data=this.searchTerms.pipe(
       debounceTime(300),
       switchMap((term: string) => this.userService.searchUsers(term, this.page, this.pageSize))

@@ -29,4 +29,9 @@ export class UserService {
     this.data = this.httpClient.get(`${this.baseUrl}/users/${term}/${page}/${size}`);
     return this.data;
   }
+
+  getUsers(page: number, size: number): Observable<PagableUserSearch> {
+    this.data = this.httpClient.get(`${this.baseUrl}/users/${page}/${size}`);
+    return this.data;
+  }
 }
