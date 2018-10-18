@@ -15,7 +15,7 @@ export class LoginService {
               private cookie: CookieService,
               private http: HttpClient) { }
   signIn(loginDTO: LoginDTO): Observable<any> {
-    return this.auth.post('https://travelstory-server.herokuapp.com/login', loginDTO);
+    return this.auth.post('https://travelstory-server.herokuapp.com/api/login', loginDTO);
   }
 
   public getToken(): string {
