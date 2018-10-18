@@ -15,7 +15,7 @@ import {CommentsComponent} from "./comments/comments.component";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
-import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
+import {FollowersComponentDialog, UserFollowsSideComponent} from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -29,6 +29,7 @@ import {UserComponent} from './user.component';
 import { UserPlacesComponent } from './user-places/user-places.component';
 import { EmojiModule } from 'angular-emoji/dist';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { ScrollableDirective } from './scrollable.directive';
 
 
 
@@ -56,7 +57,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
   ],
   entryComponents:[
-    SearchComponentDialog
+    SearchComponentDialog,
+    FollowersComponentDialog
   ],
   declarations: [
     UserComponent,
@@ -76,6 +78,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     RegistrationComponent,
     UserPlacesComponent,
     SearchComponentDialog,
+    FollowersComponentDialog,
+    ScrollableDirective
 
 
   ]

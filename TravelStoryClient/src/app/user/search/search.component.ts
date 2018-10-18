@@ -45,7 +45,7 @@ export class SearchComponentDialog {
   data: Observable<PagableUserSearch>;
   users: UserSearchDTO[];
 
-cd
+
   constructor(public dialogRef: MatDialogRef<SearchComponent>, private userService: UserService) {
   }
 

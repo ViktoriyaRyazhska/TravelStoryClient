@@ -16,7 +16,7 @@ import {MessengerModule} from './messenger/messenger.module';
 @NgModule({
   declarations: [
     AppComponent,
-    DialogChangeProfilePicComponent
+    DialogChangeProfilePicComponent,
 
   ],
   imports: [

@@ -30,8 +30,8 @@ export class UserService {
     return this.data;
   }
 
-  getUsers(page: number, size: number): Observable<PagableUserSearch> {
-    this.data = this.httpClient.get(`${this.baseUrl}/users/${page}/${size}`);
+  getFollowers(userId:number,page: number, size: number): Observable<PagableUserSearch> {
+    this.data = this.httpClient.get(`${this.baseUrl}/users/followers/${userId}/${page}/${size}`);
     return this.data;
   }
 }

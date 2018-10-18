@@ -1,9 +1,13 @@
-<div class="card my-4">
-  <h5 class="card-header">Followers</h5>
-  <div class="card-body">
-    <div *ngFor="let follower of followers">
+<mat-card *ngIf="followers">
+    <h5 class="card-header pointer" (click)="openDialog()">
+    Followers
+      <i class="material-icons">
+        face
+      </i>
+    {{followersNumber}}</h5>
+  <mat-card-content>
+    <span *ngFor="let follower of followers">
       <a href="user/{{follower.id}}"><img mat-card-avatar src="{{follower.profilePic}}"></a>
-    </div>
-  </div>
-  <hr>
-</div>
+    </span>
+  </mat-card-content>
+</mat-card>
