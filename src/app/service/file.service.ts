@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {UserPicDTO} from '../models/UserPicDTO';
 import {HttpClient} from '@angular/common/http';
 
-const baseUrl = 'http://localhost:8080/api';
+const baseUrl = 'https://travelstory-server.herokuapp.com/api';
 
 @Injectable({
   providedIn: 'root'

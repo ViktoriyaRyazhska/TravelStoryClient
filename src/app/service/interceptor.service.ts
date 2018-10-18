@@ -14,7 +14,7 @@ export class InterceptorService {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('qqqqqqqqqqqqqqqq');
-    if (request.url.startsWith('http://localhost:8080') && this.authService.getToken()) {
+    if (request.url.startsWith('https://travelstory-server.herokuapp.com') && this.authService.getToken()) {
       console.log('mmmmm');
         {
           request = request.clone({

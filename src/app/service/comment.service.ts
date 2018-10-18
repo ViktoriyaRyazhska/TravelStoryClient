@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({providedIn: 'root'})
 export class CommentService {
 
-  baseUrl = 'http://localhost:8080/api';
+  baseUrl = 'https://travelstory-server.herokuapp.com/api';
   private commentsUrl = 'comments';
 
   constructor(
