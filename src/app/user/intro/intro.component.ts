@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {MatDialog} from '@angular/material';
 import {DialogChangeProfilePicComponent} from './dialog-change-profile-pic/dialog-change-profile-pic.component';
+import {DialogChangeBackgroundImageComponent} from './dialog-change-background-image/dialog-change-background-image.component';
 
 @Component({
   selector: 'app-intro',
@@ -30,6 +31,14 @@ export class IntroComponent implements OnInit {
       width: '500px',
     });
   }
+
+  changeBackgroundImage() {
+    this.dialog.open(DialogChangeBackgroundImageComponent, {
+      height: '430px',
+      width: '500px',
+    });
+  }
+
 
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');

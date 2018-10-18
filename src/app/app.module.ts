@@ -22,6 +22,7 @@ import {environment} from '../environments/environment.prod';
 import {AngularFireModule} from '@angular/fire';
 import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pipe';
 import {DropZoneDirective} from './user/drop-zone.directive';
+import {DialogChangeBackgroundImageComponent} from './user/intro/dialog-change-background-image/dialog-change-background-image.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,7 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CookieService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogChangeProfilePicComponent]
+  entryComponents: [DialogChangeProfilePicComponent, DialogChangeBackgroundImageComponent]
 })
 export class AppModule {
 }

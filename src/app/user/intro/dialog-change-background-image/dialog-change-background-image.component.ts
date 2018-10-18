@@ -6,16 +6,14 @@ import {Observable} from 'rxjs';
 import {UserPicDTO} from '../../../models/UserPicDTO';
 import {TokenService} from '../../../service/token.service';
 
-
 @Component({
-  selector: 'app-dialog-change-profile-pic',
-  templateUrl: './dialog-change-profile-pic.component.html',
-  styleUrls: ['./dialog-change-profile-pic.component.scss']
+  selector: 'app-dialog-change-background-image',
+  templateUrl: './dialog-change-background-image.component.html',
+  styleUrls: ['./dialog-change-background-image.component.scss']
 })
 
-export class DialogChangeProfilePicComponent implements OnInit {
+export class DialogChangeBackgroundImageComponent implements OnInit {
   userProfilePicDto: UserPicDTO;
-  userId = '1';
   fileToUpload: File;
   myReader: FileReader;
   image: string;

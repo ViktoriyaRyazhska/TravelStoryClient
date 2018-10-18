@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({providedIn: 'root'})
 export class CommentService {
 
-  baseUrl = 'http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com/api';
+  baseUrl = 'http://localhost:8080/api';
   private commentsUrl = 'comments';
 
   constructor(

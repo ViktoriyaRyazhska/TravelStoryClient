@@ -1,4 +1,4 @@
-export class UserProfilePicDto {
+export class UserPicDTO {
   id: string;
   profilePic: string;
 }

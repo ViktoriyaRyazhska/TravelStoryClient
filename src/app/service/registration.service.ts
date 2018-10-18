@@ -11,6 +11,6 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
   registrate(registrationDTO: RegistrationDTO): Observable<any> {
-    return this.http.post('http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com/api/registrate', registrationDTO);
+    return this.http.post('https://travelstory-server.herokuapp.com/api/registrate', registrationDTO);
   }
 }

@@ -14,7 +14,7 @@ export class InterceptorService {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('qqqqqqqqqqqqqqqq');
-    if (request.url.startsWith('http://qctravelstory-env-1.us-east-2.elasticbeanstalk.com') && this.authService.getToken()) {
+    if (request.url.startsWith('http://localhost:8080') && this.authService.getToken()) {
       console.log('mmmmm');
         {
           request = request.clone({
@@ -22,7 +22,7 @@ export class InterceptorService {
           });
         }
       } else {
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
     }
     return next.handle(request);
   }
