@@ -22,7 +22,7 @@ export class InterceptorService {
           });
         }
       } else {
-        // this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
     }
     return next.handle(request);
   }
