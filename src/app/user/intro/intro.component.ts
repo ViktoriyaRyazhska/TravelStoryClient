@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
@@ -34,7 +34,8 @@ export class IntroComponent implements OnInit {
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUser(id)
-      .subscribe(user => this.user = user);
+      .subscribe(user =>{
+        this.user = user;
+      } );
   }
 }
-

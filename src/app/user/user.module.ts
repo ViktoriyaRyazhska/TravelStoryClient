@@ -36,6 +36,7 @@ import { UserPlacesComponent } from './user-places/user-places.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
+import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import {TranslateModule} from '@ngx-translate/core';
     LoginComponent,
     RegistrationComponent,
     UserPlacesComponent,
-    SettingsPageComponent
+    SettingsPageComponent,
+    DialogEditTravelStoryComponent
   ]
 })
 export class UserModule {

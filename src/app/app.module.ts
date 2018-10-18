@@ -17,6 +17,8 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AdminComponent} from './admin/admin.component';
 import {UserComponent} from './user/user.component';
+import {DialogAddTravelStoryComponent} from './user/user-page/dialog-add-travel-story/dialog-add-travel-story.component';
+import {DialogEditTravelStoryComponent} from './user/user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -27,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     DialogChangeProfilePicComponent,
+    DialogAddTravelStoryComponent,
   ],
   imports: [
     MatCardModule,
@@ -56,7 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CookieService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogChangeProfilePicComponent]
+  entryComponents: [DialogChangeProfilePicComponent, DialogAddTravelStoryComponent,DialogEditTravelStoryComponent]
 })
 export class AppModule {
 }

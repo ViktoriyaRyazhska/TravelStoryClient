@@ -41,7 +41,7 @@ export class CommentsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getComments(this.travelStory.id,this.travelStory.medias[0].id);
+    this.getComments(this.travelStory.id,this.travelStory.media[0].id);
   }
 
 }

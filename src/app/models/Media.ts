@@ -1,4 +1,5 @@
 export class Media {
   id: number;
-  url:string;
+  url: string;
+  mediaType: string;
 }
