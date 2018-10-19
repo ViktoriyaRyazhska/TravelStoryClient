@@ -15,10 +15,6 @@ import {TokenService} from '../../../service/token.service';
 
 export class DialogChangeProfilePicComponent implements OnInit {
   userProfilePicDto: UserPicDTO;
-  userId = '1';
-  fileToUpload: File;
-  myReader: FileReader;
-  image: string;
 
 // Main task
   task: AngularFireUploadTask;
@@ -39,23 +35,6 @@ export class DialogChangeProfilePicComponent implements OnInit {
               private fileService: FileService,
               private tokenService: TokenService,
   ) {
-  }
-
-  onChange(files: FileList) {
-    this.fileToUpload = files.item(0);
-  }
-
-  changeListener($event): void {
-    this.readThis($event.target);
-  }
-
-  readThis(inputValue: any): void {
-    this.fileToUpload = inputValue.files[0];
-    this.myReader = new FileReader();
-    this.myReader.onloadend = (e) => {
-      this.image = this.myReader.result;
-    };
-    this.myReader.readAsDataURL(this.fileToUpload);
   }
 
   onResetProfilePic() {
@@ -82,7 +61,7 @@ export class DialogChangeProfilePicComponent implements OnInit {
     }
 
     // The storage path
-    const path = `test/${new Date().getTime()}_${file.name}`;
+    const path = `prof_pic/${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = {app: 'travelstory resource'};
@@ -113,11 +92,6 @@ export class DialogChangeProfilePicComponent implements OnInit {
           }
         );
     });
-  }
-
-  // Determines if the upload task is active
-  isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
 
 }

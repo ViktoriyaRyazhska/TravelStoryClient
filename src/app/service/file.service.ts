@@ -13,13 +13,22 @@ export class FileService {
   constructor(private http: HttpClient) {
   }
 
-  uploadProfilePic(user: UserPicDTO): Observable<any> {
-    console.log(user);
-   debugger; return this.http.post(baseUrl + '/uploadProfilePic', user, {headers: {'Content-Type': 'application/json'}});
+  uploadProfilePic(dto: UserPicDTO): Observable<any> {
+    console.log(dto);
+    return this.http.post(baseUrl + '/uploadProfilePic', dto, {headers: {'Content-Type': 'application/json'}});
   }
 
   resetProfilePic(id: number): Observable<any> {
     return this.http.post(baseUrl + '/resetProfilePic', id, {headers: {'Content-Type': 'application/json'}});
   }
+
+  resetBackgroundPic(id: number): Observable<any> {
+    return this.http.post(baseUrl + '/resetBackgroundPic', id, {headers: {'Content-Type': 'application/json'}});
+  }
+
+  uploadBackgroundPic(dto: UserPicDTO): Observable<any> {
+    return this.http.post(baseUrl + '/uploadBackgroundPic', dto, {headers: {'Content-Type': 'application/json'}});
+  }
+
 
 }

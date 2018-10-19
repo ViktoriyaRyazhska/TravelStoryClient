@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {UserService} from '../../service/user.service';
+import {TokenService} from '../../service/token.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-info-side',
@@ -10,7 +12,8 @@ import {UserService} from '../../service/user.service';
 export class UserInfoSideComponent implements OnInit {
   user: User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -18,6 +21,7 @@ export class UserInfoSideComponent implements OnInit {
   }
 
   getUser() {
-    this.userService.getUser(1).subscribe(user => this.user = user);
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(id).subscribe(user => this.user = user);
   }
 }

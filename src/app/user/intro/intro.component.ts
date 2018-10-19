@@ -5,6 +5,7 @@ import {UserService} from '../../service/user.service';
 import {MatDialog} from '@angular/material';
 import {DialogChangeProfilePicComponent} from './dialog-change-profile-pic/dialog-change-profile-pic.component';
 import {DialogChangeBackgroundImageComponent} from './dialog-change-background-image/dialog-change-background-image.component';
+import {TokenService} from '../../service/token.service';
 
 @Component({
   selector: 'app-intro',
@@ -13,11 +14,13 @@ import {DialogChangeBackgroundImageComponent} from './dialog-change-background-i
 })
 export class IntroComponent implements OnInit {
   user: User;
+  notOwner: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private tokenService: TokenService
   ) {
   }
 
@@ -39,12 +42,19 @@ export class IntroComponent implements OnInit {
     });
   }
 
-
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     console.log('user id: ' + id);
     this.userService.getUser(id)
-      .subscribe(user => this.user = user);
+      .subscribe(user => {
+        this.user = user;
+      }, error1 => {
+        console.error(error1);
+      }, () => {
+        if (this.tokenService.getUserId() === this.user.id) {
+          this.notOwner = true;
+        }
+      });
   }
 }
 
