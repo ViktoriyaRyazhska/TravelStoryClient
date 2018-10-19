@@ -34,7 +34,6 @@ export class DialogEditTravelStoryComponent implements OnInit {
   onSubmit() {
     this.initMedia();
     this.travelStory.media = this.medias;
-    console.log(this.travelStory);
     this.travelStory.userId = 1;
     this.travelStoryService.editTravelStory(this.travelStory).subscribe();
   }
