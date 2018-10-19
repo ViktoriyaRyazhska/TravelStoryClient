@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
           this.cookie.set('auth', response.accessToken);
         localStorage.setItem('auth', response.accessToken);
           this.error = false;
-          this.router.navigate(['/user/feed']);
+          this.router.navigate(['/feed']);
         }, error2 => {
           this.error = true;
         }

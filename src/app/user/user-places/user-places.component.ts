@@ -1,14 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 // @ts-ignore
-import {} from 'googlemaps';
+// import {} from 'googlemaps';
 
 @Component({
   selector: 'app-user-places',
   templateUrl: './user-places.component.html',
   styleUrls: ['./user-places.component.scss']
 })
-export class UserPlacesComponent implements OnInit {
-
+export class UserPlacesComponent  {
+/*
   constructor() {
   }
 
@@ -23,5 +23,5 @@ export class UserPlacesComponent implements OnInit {
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
   }
-
+*/
 }

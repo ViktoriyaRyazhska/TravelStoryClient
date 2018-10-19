@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TokenService} from '../../service/token.service';
 
 export interface Gender {
   value: string;
@@ -11,6 +12,8 @@ export interface Gender {
   styleUrls: ['./settings-page.component.scss']
 })
 export class SettingsPageComponent implements OnInit {
+  private id: number;
+
   genders: Gender[] = [
     {value: 'male', viewValue: 'Male'},
     {value: 'female', viewValue: 'Female'},
@@ -18,10 +21,11 @@ export class SettingsPageComponent implements OnInit {
   ];
 
 
-  constructor() {
+  constructor(private tokenService: TokenService) {
   }
 
   ngOnInit() {
+    this.id = this.tokenService.getUserId();
   }
 
 

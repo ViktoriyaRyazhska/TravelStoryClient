@@ -14,7 +14,7 @@ const userRoutes: Routes = [
     component: UserComponent,
     children: [
       {path: 'feed', component: FeedComponent},
-      {path: 'user/:id/settings', component: SettingsPageComponent},
+      {path: 'settings', component: SettingsPageComponent},
       {path: 'user/:id', component: UserPageComponent},
       {path: 'login', component: LoginComponent},
     ]

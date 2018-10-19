@@ -13,9 +13,7 @@ import {TokenService} from '../../../service/token.service';
 })
 
 export class DialogChangeBackgroundImageComponent implements OnInit {
-  userProfilePicDto: UserPicDTO;
-  fileToUpload: File;
-  myReader: FileReader;
+  dto: UserPicDTO;
   image: string;
 
 // Main task
@@ -25,9 +23,6 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
   percentage: Observable<number>;
 
   snapshot: Observable<any>;
-
-  downloadURL: Observable<string>;
-
 
   // State for dropzone CSS toggling
   isHovering: boolean;
@@ -39,31 +34,14 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
   ) {
   }
 
-  onChange(files: FileList) {
-    this.fileToUpload = files.item(0);
-  }
-
-  changeListener($event): void {
-    this.readThis($event.target);
-  }
-
-  readThis(inputValue: any): void {
-    this.fileToUpload = inputValue.files[0];
-    this.myReader = new FileReader();
-    this.myReader.onloadend = (e) => {
-      this.image = this.myReader.result;
-    };
-    this.myReader.readAsDataURL(this.fileToUpload);
-  }
-
-  onResetProfilePic() {
-    this.fileService.resetProfilePic(1).subscribe((response) => {
+  uploadBackgroundPic() {
+    this.fileService.resetBackgroundPic(this.tokenService.getUserId()).subscribe((response) => {
       console.log(response);
     });
   }
 
   ngOnInit(): void {
-    this.userProfilePicDto = new UserPicDTO();
+    this.dto = new UserPicDTO();
   }
 
 
@@ -96,26 +74,20 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
-            this.userProfilePicDto.profilePic = value;
+            this.dto.profilePic = value;
             console.log(value);
           }, (error1) => {
             console.error(error1);
           }, () => {
-            this.userProfilePicDto.id = this.tokenService.getUserId().toString();
-            this.fileService.uploadProfilePic(this.userProfilePicDto)
+            this.dto.id = this.tokenService.getUserId().toString();
+            this.fileService.uploadBackgroundPic(this.dto)
               .subscribe((response) => {
                 console.log(response);
                 location.reload(true);
               });
-            console.log(this.userProfilePicDto.profilePic);
+            console.log(this.dto.profilePic);
           }
         );
     });
   }
-
-  // Determines if the upload task is active
-  isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
-  }
-
 }
