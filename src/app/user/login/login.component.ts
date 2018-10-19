@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, NgForm} from '@angular/forms';
 import {LoginDTO} from './LoginDTO';
 import {LoginService} from './login.service';
 import {ResponseToken} from './ResponseToken';
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginDTO: LoginDTO;
   error: boolean;
+  email: string;
   formErrors = {
     'email': '',
     'password': ''
@@ -136,6 +137,10 @@ export class LoginComponent implements OnInit {
       userForms.classList.remove('show-login');
       userForms.classList.add('show-signup');
     }, false);
+  }
+  onSubmit(form: NgForm){
+    this.email = form.value.email;
+    this.loginService.forgotPass(this.email).subscribe();
   }
 }
 
