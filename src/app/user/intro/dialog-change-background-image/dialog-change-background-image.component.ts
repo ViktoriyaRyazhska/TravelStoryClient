@@ -74,18 +74,18 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
-            this.dto.profilePic = value;
+            this.dto.pic = value;
             console.log(value);
           }, (error1) => {
             console.error(error1);
           }, () => {
-            this.dto.id = this.tokenService.getUserId().toString();
+            this.dto.id = this.tokenService.getUserId();
             this.fileService.uploadBackgroundPic(this.dto)
               .subscribe((response) => {
                 console.log(response);
                 location.reload(true);
               });
-            console.log(this.dto.profilePic);
+            console.log(this.dto.pic);
           }
         );
     });

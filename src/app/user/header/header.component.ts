@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {User} from '../../models/User';
 import {TranslateService} from '@ngx-translate/core';
+import {TokenService} from '../../service/token.service';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,18 @@ import {TranslateService} from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
   public user: User;
   lang: string;
+  meId: number;
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private tokenService: TokenService) {
+  }
+
+  ngOnInit() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(id).subscribe(user => this.user = user);
+    this.meId = this.tokenService.getUserId();
   }
 
   switchLanguage(lang: string) {
@@ -24,10 +33,6 @@ export class HeaderComponent implements OnInit {
     this.translate.use(lang);
   }
 
-  ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id).subscribe(user => this.user = user);
-  }
 
   onChosenLang(): string {
     this.lang = this.userService.getPreferedLang();
@@ -39,6 +44,7 @@ export class HeaderComponent implements OnInit {
     }
     return 'ua';
   }
+
 
 }
 

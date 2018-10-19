@@ -14,7 +14,7 @@ import {TokenService} from '../../service/token.service';
 })
 export class IntroComponent implements OnInit {
   user: User;
-  notOwner: boolean;
+  owner: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,7 +52,7 @@ export class IntroComponent implements OnInit {
         console.error(error1);
       }, () => {
         if (this.tokenService.getUserId() === this.user.id) {
-          this.notOwner = true;
+          this.owner = true;
         }
       });
   }

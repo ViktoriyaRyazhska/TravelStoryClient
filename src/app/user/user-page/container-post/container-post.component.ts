@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../../models/User";
-import {TravelStory} from "../../../models/TravelStory";
+import {User} from '../../../models/User';
+import {TravelStory} from '../../../models/TravelStory';
 
 
 @Component({
@@ -10,7 +10,7 @@ import {TravelStory} from "../../../models/TravelStory";
 })
 export class ContainerPostComponent implements OnInit {
   @Input() travelStory: TravelStory;
-  @Input() user:User;
+  @Input() user: User;
 
   constructor
   () {
