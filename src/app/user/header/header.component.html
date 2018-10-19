@@ -18,7 +18,7 @@
       </div>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user/{{user.id}}" translate>Me</a>
+          <a *ngIf="meId" class="nav-link" routerLink="/user/{{meId}}" translate>Me</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/messenger" translate>Messenger</a>

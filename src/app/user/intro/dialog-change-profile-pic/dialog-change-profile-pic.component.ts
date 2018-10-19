@@ -67,6 +67,7 @@ export class DialogChangeProfilePicComponent implements OnInit {
     const customMetadata = {app: 'travelstory resource'};
 
     // The main task
+    debugger;
     this.task = this.storage.upload(path, file, {customMetadata});
 
     // Progress monitoring
@@ -77,18 +78,17 @@ export class DialogChangeProfilePicComponent implements OnInit {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
-            this.userProfilePicDto.profilePic = value;
-            console.log(value);
-          }, (error1) => {
-            console.error(error1);
-          }, () => {
-            this.userProfilePicDto.id = this.tokenService.getUserId().toString();
+            this.userProfilePicDto.pic = value;
+            this.userProfilePicDto.id = this.tokenService.getUserId();
             this.fileService.uploadProfilePic(this.userProfilePicDto)
               .subscribe((response) => {
                 console.log(response);
                 location.reload(true);
               });
-            console.log(this.userProfilePicDto.profilePic);
+            console.log(this.userProfilePicDto.pic);
+            console.log(value);
+          }, (error1) => {
+            console.error(error1);
           }
         );
     });
