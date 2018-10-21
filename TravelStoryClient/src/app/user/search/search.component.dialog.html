@@ -1,6 +1,8 @@
 <div mat-dialog-content></div>
 <div class="w-100 d-flex justify-content-center flex-wrap">
-  <h1 class="text-center w-100 d-block" mat-dialog-title><b>Find your friends</b></h1>
+  <h1 class="text-center w-100 d-block" mat-dialog-title><b> <i class="material-icons">
+    find_replace
+  </i>Find your friends</b></h1>
   <!--<p  class="text-center w-100 d-block">Type the mame of your friend...</p>-->
   <input placeholder="Type a name..." #searchBox id="search-box" class="d-block" (keyup)="search(searchBox.value)"/>
 </div>
@@ -8,7 +10,7 @@
 <div *ngIf="users">
   <mat-card *ngFor="let userSearch of users">
     <mat-card-content>
-      <a  href="/user/{{userSearch.id}}">
+      <a href="/user/{{userSearch.id}}">
         <mat-card-header>
           <img mat-card-avatar src="{{userSearch.profilePic}}">
           <mat-card-title>{{userSearch.firstName}} {{userSearch.lastName}}</mat-card-title>

@@ -34,4 +34,9 @@ export class UserService {
     this.data = this.httpClient.get(`${this.baseUrl}/users/followers/${userId}/${page}/${size}`);
     return this.data;
   }
+
+  getFollowing(userId:number,page: number, size: number): Observable<PagableUserSearch> {
+    this.data = this.httpClient.get(`${this.baseUrl}/users/following/${userId}/${page}/${size}`);
+    return this.data;
+  }
 }

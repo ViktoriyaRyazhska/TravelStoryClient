@@ -6,20 +6,18 @@
 
     Followers </h1></mat-card-title>
 </div>
-<div  style="overflow-y: scroll; height: 100px;" appScrollable (scrollPosition)="scrollHandler($event)" >
-  <mat-card *ngFor="let follower of followers" >
-    <mat-card-content>
-      <a href="/user/{{follower.id}}">
-        <mat-card-header>
-          <img mat-card-avatar src="{{follower.profilePic}}">
-          <mat-card-title>{{follower.firstName}} {{follower.lastName}}</mat-card-title>
-        </mat-card-header>
-      </a>
-    </mat-card-content>
+
+<div style="overflow-y: scroll; height: 700px;" appScrollable (scrollPosition)="scrollHandler($event)">
+  <mat-card *ngFor="let follower of followers">
+    <mat-card-header>
+      <mat-card-title-group>
+        <a href="/user/{{follower.id}}">
+          <img mat-card-lg-image src="{{follower.profilePic}}"/> </a>
+        <h3><b> {{follower.firstName}} {{follower.lastName}}</b></h3>
+      </mat-card-title-group>
+    </mat-card-header>
   </mat-card>
 </div>
 
-<mat-card-subtitle class="text-center w-100 d-block">
-  <a mat-button *ngIf="this.finished==false" (click)="getMore()">show more results...</a>
-</mat-card-subtitle>
+
 

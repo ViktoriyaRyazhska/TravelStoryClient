@@ -1,0 +1,20 @@
+<div *ngIf="following">
+  <mat-card-title><h1 style="text-align: center">
+    <i class="material-icons">
+      supervised_user_circle
+    </i>{{followingNumber}}
+    User follows </h1></mat-card-title>
+</div>
+
+<div style="overflow-y: scroll; height: 700px;" appScrollable (scrollPosition)="scrollHandler($event)">
+  <mat-card *ngFor="let followed of following">
+    <mat-card-header>
+      <mat-card-title-group>
+        <a href="/user/{{followed.id}}">
+          <img mat-card-lg-image src="{{followed.profilePic}}"/> </a>
+        <h3><b> {{followed.firstName}} {{followed.lastName}}</b></h3>
+      </mat-card-title-group>
+    </mat-card-header>
+  </mat-card>
+</div>
+

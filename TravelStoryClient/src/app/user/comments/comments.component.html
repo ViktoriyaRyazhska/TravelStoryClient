@@ -16,11 +16,13 @@
     </mat-card-content>
   </div>
   <mat-card-actions>
-  <textarea matInput class="full-width" placeholder="Leave a comment"
+  <textarea matInput class="full-width" placeholder="Leave a comment..."
             #commentMassage></textarea>
     <!--<emoji-input></emoji-input>-->
     <button mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.medias[0].id)"
-            (click)="commentMassage.value=''">Add
+            (click)="commentMassage.value=''">Add <i class="material-icons">
+      send
+    </i>
     </button>
   </mat-card-actions>
 </div>

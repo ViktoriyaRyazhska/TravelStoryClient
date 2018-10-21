@@ -15,7 +15,11 @@ import {CommentsComponent} from "./comments/comments.component";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
-import {FollowersComponentDialog, UserFollowsSideComponent} from './user-follows-side/user-follows-side.component';
+import {
+  FollowersComponentDialog,
+  FollowingComponentDialog,
+  UserFollowsSideComponent
+} from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -58,7 +62,8 @@ import { ScrollableDirective } from './scrollable.directive';
   ],
   entryComponents:[
     SearchComponentDialog,
-    FollowersComponentDialog
+    FollowersComponentDialog,
+    FollowingComponentDialog
   ],
   declarations: [
     UserComponent,
@@ -79,6 +84,7 @@ import { ScrollableDirective } from './scrollable.directive';
     UserPlacesComponent,
     SearchComponentDialog,
     FollowersComponentDialog,
+    FollowingComponentDialog,
     ScrollableDirective
 
 

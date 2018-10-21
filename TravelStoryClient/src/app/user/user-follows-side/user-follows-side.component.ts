@@ -11,10 +11,12 @@ import {MatDialog, MatDialogRef} from "@angular/material";
 })
 export class UserFollowsSideComponent implements OnInit {
   followers: UserSearchDTO[];
-  PageSize = 2;
+  following: UserSearchDTO[];
+  PageSize = 7;
   pageNumber = 0;
   userId: number;
   followersNumber: number;
+  followingNumber: number;
 
 
   constructor(private userService: UserService, private route: ActivatedRoute, public dialog: MatDialog) {
@@ -26,11 +28,27 @@ export class UserFollowsSideComponent implements OnInit {
       this.followers = data.content;
       this.followersNumber = data.totalElements;
     });
+
+    this.userService.getFollowing(this.userId, this.pageNumber, this.PageSize).subscribe(data => {
+      this.following = data.content;
+      this.followingNumber = data.totalElements;
+    });
   }
 
-  openDialog(): void {
+  openDialogFollowers(): void {
     const dialogRef = this.dialog.open(FollowersComponentDialog, {
-      width: '600px',
+      width: '800px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openDialogFollowing(): void {
+    const dialogRef = this.dialog.open(FollowingComponentDialog, {
+      width: '800px',
       data: {}
     });
 
@@ -48,7 +66,7 @@ export class UserFollowsSideComponent implements OnInit {
 export class FollowersComponentDialog {
   finished = false;
   followers: UserSearchDTO[];
-  PageSize = 2;
+  PageSize = 4;
   page = 0;
   userId: number;
   followersNumber: number;
@@ -65,7 +83,6 @@ export class FollowersComponentDialog {
   }
   scrollHandler(e) {
     this.getMore();
-    // should log top or bottom
   }
   getMore() {
     console.log('scrolled down!!');
@@ -73,6 +90,42 @@ export class FollowersComponentDialog {
     this.page++;
     this.userService.getFollowers(this.userId, this.page, this.PageSize).subscribe(data => {
       this.followers = this.followers.concat(data.content);
+      this.finished = data['last'];
+    })
+  }
+}
+
+@Component({
+  selector: 'following-component-dialog',
+  templateUrl: 'following.component.dialog.html',
+
+})
+export class FollowingComponentDialog {
+  finished = false;
+  following: UserSearchDTO[];
+  PageSize = 4;
+  page = 0;
+  userId: number;
+  followingNumber: number;
+
+  constructor(public dialogRef: MatDialogRef<UserFollowsSideComponent>, private userService: UserService, private route: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    this.userId = 1;
+    this.userService.getFollowing(this.userId, this.page, this.PageSize).subscribe(data => {
+      this.following = data.content;
+      this.followingNumber = data.totalElements;
+    });
+  }
+  scrollHandler(e) {
+    this.getMore();
+  }
+  getMore() {
+    if (this.finished) return
+    this.page++;
+    this.userService.getFollowing(this.userId, this.page, this.PageSize).subscribe(data => {
+      this.following = this.following.concat(data.content);
       this.finished = data['last'];
     })
   }
