@@ -1,0 +1,33 @@
+<div class="container">
+  <app-intro></app-intro>
+
+  <div class="row">
+    <div class="col-md-4">
+
+      <app-user-info-side></app-user-info-side>
+
+      <app-user-gallery-side></app-user-gallery-side>
+
+      <app-user-follows-side></app-user-follows-side>
+
+      <app-user-places></app-user-places>
+
+    </div>
+
+
+    <div class="col-md-8">
+      <div class="col-sm-12 posts">
+
+        <!--<button type="button" class="btn btn-outline-success">Add new post</button>-->
+        <button class="btn btn-secondary" type="button">Add new story!</button>
+        <div > <mat-card class="card" *ngFor="let story of travelStories">
+          <app-container-post  [travelStory]="story" [user]="this.user"></app-container-post>
+          <app-likes [travelStory]="story">  </app-likes>
+          <app-comments [travelStory]="story"> </app-comments>
+          </mat-card >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

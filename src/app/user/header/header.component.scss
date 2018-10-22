@@ -1,0 +1,24 @@
+app-search {
+  margin-left: 6em;
+}
+
+.lang-switcher {
+  float: left;
+  display: flex;
+}
+
+.ua {
+  border-right: 1px solid #a6a5a5;
+}
+
+.lang-switcher-i {
+  padding: 0 5px;
+}
+
+.selected {
+  color: #cccccc;
+  pointer-events: none;
+}
+
+
+

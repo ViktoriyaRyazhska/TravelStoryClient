@@ -1,0 +1,9 @@
+
+<div *ngIf="likes && travelStory && loggedUser">
+  <hr>
+  <mat-card-actions>
+      <span><button mat-icon-button="favorite" matBadge="{{this.likes.length}}" matBadgePosition="after" matBadgeColor="warn" (click)="this.like(travelStory.id,travelStory.medias[0].id)"><i
+        class="fa fa-heart"></i></button> like it!</span>
+  </mat-card-actions>
+  <hr>
+</div>
