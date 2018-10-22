@@ -37,4 +37,7 @@ export class DialogEditTravelStoryComponent implements OnInit {
     this.travelStory.userId = 1;
     this.travelStoryService.editTravelStory(this.travelStory).subscribe();
   }
+  changePicture(){
+
+  }
 }

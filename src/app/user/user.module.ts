@@ -81,7 +81,7 @@ import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-s
     RegistrationComponent,
     UserPlacesComponent,
     SettingsPageComponent,
-    DialogEditTravelStoryComponent
+    DialogEditTravelStoryComponent,
   ]
 })
 export class UserModule {

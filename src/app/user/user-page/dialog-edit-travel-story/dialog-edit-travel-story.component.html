@@ -11,6 +11,9 @@
             <label for="description">description</label>
             <input type="text" id="description" class="form-control" [(ngModel)]="travelStory.description" [ngModelOptions]="{standalone: true}">
           </div>
+          <div>
+            <button class="btn btn-primary" (click)="changePicture()" type="button">Add picture</button>
+          </div>
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
