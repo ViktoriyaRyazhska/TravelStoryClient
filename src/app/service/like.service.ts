@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
-import {Like} from "../models/Like";
+import {Like} from '../models/Like';
+import {environment} from '../../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -11,8 +12,8 @@ const httpOptions = {
 
 @Injectable({providedIn: 'root'})
 export class LikeService {
-  private baseUrl = 'https://travelstory-server.herokuapp.com/likes';
-  private likeUrl = 'https://travelstory-server.herokuapp.com/like';
+  private baseUrl = environment.apiUrl + '/likes';
+  private likeUrl = environment.apiUrl + '/like';
 
   constructor(
     private http: HttpClient) {
@@ -30,7 +31,7 @@ export class LikeService {
   }
 
   /** POST: add a new like to the server */
-  addLike(like:Like): Observable<any> {
+  addLike(like: Like): Observable<any> {
     return this.http.post<Like>(this.baseUrl, like, httpOptions).pipe(
       catchError(this.handleError<Like>('addLike'))
     );
@@ -58,7 +59,7 @@ export class LikeService {
   }
 
 
-  getUserLike(travelStoryId: number, mediaId: number, userId: number) : Observable<any> {
+  getUserLike(travelStoryId: number, mediaId: number, userId: number): Observable<any> {
     let params = new HttpParams();
     params = params.set('travelStoryId', travelStoryId.toString());
     params = params.set('mediaId', mediaId.toString());

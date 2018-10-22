@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/internal/Observable';
 import {LoginService} from './login.service';
 import {TokenService} from './token.service';
 import {Router} from '@angular/router';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable()
 export class InterceptorService {
@@ -13,9 +14,7 @@ export class InterceptorService {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('qqqqqqqqqqqqqqqq');
-    if (request.url.startsWith('https://travelstory-server.herokuapp.com') && this.authService.getToken()) {
-      console.log('mmmmm');
+    if (request.url.startsWith(environment.apiUrl) && this.authService.getToken()) {
         {
           request = request.clone({
             setHeaders: {Authorization: `Bearer ${this.authService.getToken()}`}

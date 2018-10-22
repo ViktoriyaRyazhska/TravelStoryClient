@@ -7,5 +7,6 @@ export const environment = {
     projectId: 'travel-story-8f313',
     storageBucket: 'travel-story-8f313.appspot.com',
     messagingSenderId: '804778208331'
-  }
+  },
+  apiUrl: 'http://localhost:8080'
 };
