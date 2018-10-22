@@ -6,12 +6,19 @@
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div ngStyle="" class="collapse navbar-collapse" id="navbarResponsive">
       <app-search></app-search>
+      <div id="language-switcher" class="lang-switcher clearfix">
+        <div class="lang-switcher-i ua" [ngClass]="{'selected':onChosenLang()==='ua'}">
+          <a (click)="switchLanguage('uk')">UA</a>
+        </div>
+        <div class="lang-switcher-i en" [ngClass]="{'selected':onChosenLang()==='en'}">
+          <a (click)="switchLanguage('en')">EN</a>
+        </div>
+      </div>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user/1" translate>Me</a>
+          <a *ngIf="meId" class="nav-link" routerLink="/user/{{meId}}" translate>Me</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/messenger" translate>Messenger</a>
@@ -20,7 +27,7 @@
           <a class="nav-link" routerLink="/settings" translate>Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']" translate>Logout</a>
+          <a class="nav-link" routerLink="/login" translate>Login</a>
         </li>
       </ul>
     </div>

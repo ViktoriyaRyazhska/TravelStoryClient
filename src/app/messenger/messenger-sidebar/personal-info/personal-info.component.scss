@@ -15,7 +15,7 @@
   height: 210px;
   line-height: initial;
 }
-#profile.expanded .wrap p {
+#profile.expanded .wrap p.curr-user-name {
   margin-top: 20px;
 }
 #profile.expanded .wrap i.expand-button {
@@ -55,7 +55,7 @@
 }
 @media screen and (max-width: 735px) {
   #profile .wrap img {
-    width: 40px;
+
     margin-left: 4px;
   }
 }
@@ -92,7 +92,7 @@
     display: none;
   }
 }
-#profile .wrap #status-options {
+#profile .wrap #state-options {
   position: absolute;
   opacity: 0;
   visibility: hidden;
@@ -108,22 +108,22 @@
   transition: 0.3s all ease;
 }
 @media screen and (max-width: 735px) {
-  #profile .wrap #status-options {
+  #profile .wrap #state-options {
     width: 58px;
     margin-top: 57px;
   }
 }
-#profile .wrap #status-options.active {
+#profile .wrap #state-options.active {
   opacity: 1;
   visibility: visible;
   margin: 75px 0 0 0;
 }
 @media screen and (max-width: 735px) {
-  #profile .wrap #status-options.active {
+  #profile .wrap #state-options.active {
     margin-top: 62px;
   }
 }
-#profile .wrap #status-options:before {
+#profile .wrap #state-options:before {
   content: '';
   position: absolute;
   width: 0;
@@ -134,28 +134,28 @@
   margin: -8px 0 0 24px;
 }
 @media screen and (max-width: 735px) {
-  #profile .wrap #status-options:before {
+  #profile .wrap #state-options:before {
     margin-left: 23px;
   }
 }
-#profile .wrap #status-options ul {
+#profile .wrap #state-options ul {
   overflow: hidden;
   border-radius: 6px;
 }
-#profile .wrap #status-options ul li {
+#profile .wrap #state-options ul li {
   padding: 15px 0 30px 18px;
   display: block;
   cursor: pointer;
 }
 @media screen and (max-width: 735px) {
-  #profile .wrap #status-options ul li {
+  #profile .wrap #state-options ul li {
     padding: 15px 0 35px 22px;
   }
 }
-#profile .wrap #status-options ul li:hover {
+#profile .wrap #state-options ul li:hover {
   background: #496886;
 }
-#profile .wrap #status-options ul li span.status-circle {
+#profile .wrap #state-options ul li span.state-circle {
   position: absolute;
   width: 10px;
   height: 10px;
@@ -163,61 +163,61 @@
   margin: 5px 0 0 0;
 }
 @media screen and (max-width: 735px) {
-  #profile .wrap #status-options ul li span.status-circle {
+  #profile .wrap #state-options ul li span.state-circle {
     width: 14px;
     height: 14px;
   }
 }
-#profile .wrap #status-options ul li span.status-circle:before {
+#profile .wrap #state-options ul li span.state-circle:before {
   content: '';
   position: absolute;
   width: 14px;
   height: 14px;
-  margin: -3px 0 0 -3px;
+  margin: -2px 0 0 -2px;
   background: transparent;
   border-radius: 50%;
   z-index: 0;
 }
 @media screen and (max-width: 735px) {
-  #profile .wrap #status-options ul li span.status-circle:before {
+  #profile .wrap #state-options ul li span.state-circle:before {
     height: 18px;
     width: 18px;
   }
 }
-#profile .wrap #status-options ul li p {
+#profile .wrap #state-options ul li p {
   padding-left: 12px;
 }
 @media screen and (max-width: 735px) {
-  #profile .wrap #status-options ul li p {
+  #profile .wrap #state-options ul li p {
     display: none;
   }
 }
-#profile .wrap #status-options ul li#status-online span.status-circle {
+#profile .wrap #state-options ul li#state-online span.state-circle {
   background: #2ecc71;
 }
-#profile .wrap #status-options ul li#status-online.active span.status-circle:before {
+#profile .wrap #state-options ul li#state-online.active span.state-circle:before {
   border: 1px solid #2ecc71;
 }
-#profile .wrap #status-options ul li#status-away span.status-circle {
+#profile .wrap #state-options ul li#state-away span.state-circle {
   background: #f1c40f;
 }
-#profile .wrap #status-options ul li#status-away.active span.status-circle:before {
+#profile .wrap #state-options ul li#state-away.active span.state-circle:before {
   border: 1px solid #f1c40f;
 }
-#profile .wrap #status-options ul li#status-busy span.status-circle {
+#profile .wrap #state-options ul li#state-busy span.state-circle {
   background: #e74c3c;
 }
-#profile .wrap #status-options ul li#status-busy.active span.status-circle:before {
+#profile .wrap #state-options ul li#state-busy.active span.state-circle:before {
   border: 1px solid #e74c3c;
 }
-#profile .wrap #status-options ul li#status-offline span.status-circle {
+#profile .wrap #state-options ul li#state-offline span.state-circle {
   background: #95a5a6;
 }
-#profile .wrap #status-options ul li#status-offline.active span.status-circle:before {
+#profile .wrap #state-options ul li#state-offline.active span.state-circle:before {
   border: 1px solid #95a5a6;
 }
 #profile .wrap #expanded {
-  padding: 100px 0 0 0;
+  padding: 85px 0 0 0;
   display: block;
   line-height: initial !important;
 }

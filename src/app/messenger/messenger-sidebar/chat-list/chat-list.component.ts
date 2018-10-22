@@ -1,14 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../model/User";
-import {AlternativeAvatar, Chat} from "../../model/Chat";
-import {MessengerService} from "../../services/messenger.service";
-import {ActivatedRoute} from "@angular/router";
-import {MessageWebSocketsService} from "../../services/message-web-sockets.service";
+import {User} from '../../model/User';
+import {Chat} from '../../model/Chat';
+import {MessengerService} from '../../services/messenger.service';
+import {ActivatedRoute} from '@angular/router';
+import {MessageWebSocketsService} from '../../services/message-web-sockets.service';
 import * as Stomp from 'stompjs';
-import {Observable} from "rxjs";
-import {Message} from "../../model/Message";
-import * as SockJS from 'sockjs-client';
-
+import {StompService} from '@stomp/ng2-stompjs';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-chat-list',
@@ -20,6 +18,9 @@ export class ChatListComponent implements OnInit {
   @Input() currentUser: User;
   @Input() stompClient: Stomp;
 
+  private receivedLastMessages: Observable<Stomp.Message>[] = [];
+  private subscriptions: Subscription[] = [];
+
   chats: Chat[] = [];
   friend: User;
 
@@ -27,7 +28,8 @@ export class ChatListComponent implements OnInit {
 
   constructor(private messageWebSocketService: MessageWebSocketsService,
               private messengerService: MessengerService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private _stompService: StompService) {
   }
 
   ngOnInit() {
@@ -40,13 +42,15 @@ export class ChatListComponent implements OnInit {
     this.messengerService.getChats(this.currentUser).subscribe(
       chats => {
         this.chats = chats;
-        for (let chat of this.chats) {
-
+        this.chats.forEach((chat, index) => {
           if (chat.avatar == null && chat.interlocutor == null) {
-            chat.alternativeAvatar = new AlternativeAvatar();
-            chat.alternativeAvatar.color = this.messengerService.getAvatarColor(chat.chatName);
-            chat.alternativeAvatar.letter = chat.chatName.charAt(0);
+            chat.alternativeAvatar = this.messengerService.getAlternativeAvatar(chat.chatName);
           }
+          this.receivedLastMessages[index] = this._stompService.subscribe('/chat/' + chat.id + '/messages');
+
+          this.subscriptions[index] = this.receivedLastMessages[index].subscribe((message: Stomp.Message) => {
+            this.chats[index].lastMessage = JSON.parse(message.body);
+          });
           // const _this = this;
           // this.stompClient = Stomp.over(new SockJS("http://localhost:8080/messenger"));
           // this.stompClient.connect({}, function (frame) {
@@ -61,9 +65,7 @@ export class ChatListComponent implements OnInit {
           //     chat.lastMessage = newMessage;
           //   });
           // debugger;
-        }
+        });
       });
   }
-
-
 }

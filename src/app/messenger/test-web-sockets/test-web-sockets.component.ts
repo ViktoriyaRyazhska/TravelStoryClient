@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import {Message} from "../model/Message";
+import {Message} from '../model/Message';
 
 @Component({
   selector: 'app-test-web-sockets',
@@ -15,6 +15,7 @@ export class TestWebSocketsComponent implements OnInit {
   messages: string[] = [];
   disabled: boolean;
   messageContent: string;
+  messageType: string = 'TEXT';
   private stompClient = null;
 
   constructor() {
@@ -56,6 +57,7 @@ export class TestWebSocketsComponent implements OnInit {
   sendMessage() {
     let message = new Message();
     message.messageContent = this.messageContent;
+    message.messageType = this.messageType;
     this.stompClient.send(
       '/messenger/1/message',
       {},

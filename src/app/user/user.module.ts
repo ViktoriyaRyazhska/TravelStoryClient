@@ -17,8 +17,8 @@ import {NgModule} from '@angular/core';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
 import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from '../security/login/login.component';
+import { RegistrationComponent } from '../security/registration/registration.component';
 import {
   MatButtonModule,
   MatButtonToggleModule,
@@ -37,6 +37,9 @@ import { SettingsPageComponent } from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
 import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
+import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
+import { FileSizePipe } from './intro/dialog-change-profile-pic/file-size.pipe';
+import {DropZoneDirective} from './drop-zone.directive';
 
 
 @NgModule({
@@ -77,11 +80,11 @@ import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-s
     UserInfoSideComponent,
     UserFollowsSideComponent,
     UserGallerySideComponent,
-    LoginComponent,
-    RegistrationComponent,
     UserPlacesComponent,
     SettingsPageComponent,
     DialogEditTravelStoryComponent,
+    UserPlacesComponent,
+    DialogChangeBackgroundImageComponent
   ]
 })
 export class UserModule {

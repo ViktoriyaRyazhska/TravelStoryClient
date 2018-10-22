@@ -1,35 +1,44 @@
-.DS_STORE
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-/dist/
-bazel-*
-e2e_test.*
+# compiled output
+/tmp
+/out-tsc
+/dist
+# dependencies
+/node_modules
 node_modules
-bower_components
-tools/gulp-tasks/cldr/cldr-data/
+.idea
+.idea/*
 
-# Include when developing application packages.
-pubspec.lock
-.c9
-.idea/
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
 .settings/
-*.swo
-modules/.settings
-.bazelrc
-.vscode
-modules/.vscode
+*.sublime-workspace
 
-# Don't check in secret files
-*secret.js
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# Ignore npm/yarn debug log
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
-yarn-error.log
+testem.log
+/typings
 
-# build-analytics
-.build-analytics
+# e2e
+/e2e/*.js
+/e2e/*.map
 
-# rollup-test output
-/modules/rollup-test/dist/
-TravelStoryClient/package-lock.json
-package-lock.json
-TravelStoryClient/package-lock.json
+# System Files
+.DS_Store
+Thumbs.db

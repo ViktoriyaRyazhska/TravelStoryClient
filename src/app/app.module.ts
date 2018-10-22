@@ -8,8 +8,8 @@ import {UserModule} from './user/user.module';
 import {MatCardModule, MatNativeDateModule} from '@angular/material';
 import {CookieService} from 'ngx-cookie-service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {InterceptorService} from './user/login/interceptor.service';
-import {MyAuthService} from './user/login/my-auth.service';
+import {InterceptorService} from './service/interceptor.service';
+import {MyAuthService} from './service/my-auth.service';
 import {DialogChangeProfilePicComponent} from './user/intro/dialog-change-profile-pic/dialog-change-profile-pic.component';
 import {MessengerModule} from './messenger/messenger.module';
 import {HttpClient} from '@angular/common/http';
@@ -19,6 +19,15 @@ import {AdminComponent} from './admin/admin.component';
 import {UserComponent} from './user/user.component';
 import {DialogAddTravelStoryComponent} from './user/user-page/dialog-add-travel-story/dialog-add-travel-story.component';
 import {DialogEditTravelStoryComponent} from './user/user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
+import {DialogChangeBackgroundImageComponent} from './user/intro/dialog-change-background-image/dialog-change-background-image.component';
+
+import {SecurityModule} from './security/security.module';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {environment} from '../environments/environment.prod';
+import {AngularFireModule} from '@angular/fire';
+import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pipe';
+import {DropZoneDirective} from './user/drop-zone.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -30,6 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     DialogChangeProfilePicComponent,
     DialogAddTravelStoryComponent,
+    FileSizePipe,
+    DropZoneDirective,
   ],
   imports: [
     MatCardModule,
@@ -39,8 +50,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule,
     UserModule,
     AppRoutingModule,
+    SecurityModule,
     MessengerModule,
     MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -59,7 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CookieService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogChangeProfilePicComponent, DialogAddTravelStoryComponent,DialogEditTravelStoryComponent]
+  entryComponents: [DialogChangeProfilePicComponent, DialogChangeBackgroundImageComponent, DialogAddTravelStoryComponent,DialogEditTravelStoryComponent],
 })
 export class AppModule {
 }

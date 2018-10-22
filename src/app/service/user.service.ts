@@ -7,7 +7,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'http://localhost:8080/api';
+  baseUrl = 'https://travelstory-server.herokuapp.com/api';
 
   private user = new BehaviorSubject<any>(null);
 
@@ -24,7 +24,7 @@ export class UserService {
     localStorage.setItem('lang', lang);
   }
 
-  getPreferedLang(): string{
+  getPreferedLang(): string {
     return localStorage.getItem('lang');
   }
 

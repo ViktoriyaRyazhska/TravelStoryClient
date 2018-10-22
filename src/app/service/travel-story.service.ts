@@ -11,12 +11,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TravelStoryService {
-  private baseUrl = 'http://localhost:8080/travelStory/';
-  private editUrl = '/edit';
-  private getByUserUrl = '/byUser/';
-  private getByIdUrl = '/byId/';
-  private addUrl = 'http://localhost:8080/travelStory/byUser/';
-  private addTravelStoryUrl = 'http://localhost:8080/travelStory/add';
+  private baseUrl = 'https://travelstory-server.herokuapp.com/travelStory/';
+  private addUrl = 'https://travelstory-server.herokuapp.com/travelStory/byUser/';
+  private addTravelStoryUrl = 'https://travelstory-server.herokuapp.com/travelStory/add';
 
 
   constructor(private httpClient: HttpClient) { }

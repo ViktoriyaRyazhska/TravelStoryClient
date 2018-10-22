@@ -6,15 +6,15 @@ import {Observable} from 'rxjs';
 import {UserPicDTO} from '../../../models/UserPicDTO';
 import {TokenService} from '../../../service/token.service';
 
-
 @Component({
-  selector: 'app-dialog-change-profile-pic',
-  templateUrl: './dialog-change-profile-pic.component.html',
-  styleUrls: ['./dialog-change-profile-pic.component.scss']
+  selector: 'app-dialog-change-background-image',
+  templateUrl: './dialog-change-background-image.component.html',
+  styleUrls: ['./dialog-change-background-image.component.scss']
 })
 
-export class DialogChangeProfilePicComponent implements OnInit {
-  userProfilePicDto: UserPicDTO;
+export class DialogChangeBackgroundImageComponent implements OnInit {
+  dto: UserPicDTO;
+  image: string;
 
 // Main task
   task: AngularFireUploadTask;
@@ -23,9 +23,6 @@ export class DialogChangeProfilePicComponent implements OnInit {
   percentage: Observable<number>;
 
   snapshot: Observable<any>;
-
-  downloadURL: Observable<string>;
-
 
   // State for dropzone CSS toggling
   isHovering: boolean;
@@ -37,14 +34,14 @@ export class DialogChangeProfilePicComponent implements OnInit {
   ) {
   }
 
-  onResetProfilePic() {
-    this.fileService.resetProfilePic(1).subscribe((response) => {
+  uploadBackgroundPic() {
+    this.fileService.resetBackgroundPic(this.tokenService.getUserId()).subscribe((response) => {
       console.log(response);
     });
   }
 
   ngOnInit(): void {
-    this.userProfilePicDto = new UserPicDTO();
+    this.dto = new UserPicDTO();
   }
 
 
@@ -61,13 +58,12 @@ export class DialogChangeProfilePicComponent implements OnInit {
     }
 
     // The storage path
-    const path = `prof_pic/${new Date().getTime()}_${file.name}`;
+    const path = `test/${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = {app: 'travelstory resource'};
 
     // The main task
-    debugger;
     this.task = this.storage.upload(path, file, {customMetadata});
 
     // Progress monitoring
@@ -78,20 +74,20 @@ export class DialogChangeProfilePicComponent implements OnInit {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
-            this.userProfilePicDto.pic = value;
-            this.userProfilePicDto.id = this.tokenService.getUserId();
-            this.fileService.uploadProfilePic(this.userProfilePicDto)
+            this.dto.pic = value;
+            console.log(value);
+          }, (error1) => {
+            console.error(error1);
+          }, () => {
+            this.dto.id = this.tokenService.getUserId();
+            this.fileService.uploadBackgroundPic(this.dto)
               .subscribe((response) => {
                 console.log(response);
                 location.reload(true);
               });
-            console.log(this.userProfilePicDto.pic);
-            console.log(value);
-          }, (error1) => {
-            console.error(error1);
+            console.log(this.dto.pic);
           }
         );
     });
   }
-
 }
