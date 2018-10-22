@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Comment} from '../models/Comment';
+import {environment} from '../../environments/environment.prod';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -11,7 +12,7 @@ const httpOptions = {
 @Injectable({providedIn: 'root'})
 export class CommentService {
 
-  baseUrl = 'https://travelstory-server.herokuapp.com/api';
+  baseUrl = environment.apiUrl + '/api';
   private commentsUrl = 'comments';
 
   constructor(
@@ -42,6 +43,7 @@ export class CommentService {
       catchError(this.handleError<Comment>('deleteComment'))
     );
   }
+
   /**
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result

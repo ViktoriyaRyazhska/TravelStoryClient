@@ -1,4 +1,4 @@
-// This file can be replaced during build by using the `fileReplacements` array.
+// This file can be replaced during build by using the `fileReplacements` array.;
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
@@ -11,7 +11,8 @@ export const environment = {
     projectId: 'travel-story-8f313',
     storageBucket: 'travel-story-8f313.appspot.com',
     messagingSenderId: '804778208331'
-  }
+  },
+  apiUrl: 'http://localhost:8080'
 
 };
 
