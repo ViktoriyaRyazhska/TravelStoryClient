@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {TravelStory} from '../models/TravelStory';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -11,9 +12,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TravelStoryService {
-  private baseUrl = 'https://travelstory-server.herokuapp.com/travelStory/';
-  private addUrl = 'https://travelstory-server.herokuapp.com/travelStory/byUser/';
-  private addTravelStoryUrl = 'https://travelstory-server.herokuapp.com/travelStory/add';
+  private baseUrl = environment.apiUrl+'/travelStory/';
+  private addUrl = environment.apiUrl+'/travelStory/byUser/';
+  private addTravelStoryUrl = environment.apiUrl+'/travelStory/add';
 
 
   constructor(private httpClient: HttpClient) { }
