@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {UserPicDTO} from '../models/UserPicDTO';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment.prod';
 
-const baseUrl = 'https://travelstory-server.herokuapp.com/api';
+const baseUrl = environment.apiUrl + 'api';
 
 @Injectable({
   providedIn: 'root'

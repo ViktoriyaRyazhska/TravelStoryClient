@@ -2,12 +2,13 @@ import {Injectable, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from '../messenger/model/User';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = 'https://travelstory-server.herokuapp.com/api';
+  baseUrl = environment.apiUrl + '/api';
 
   private user = new BehaviorSubject<any>(null);
 
