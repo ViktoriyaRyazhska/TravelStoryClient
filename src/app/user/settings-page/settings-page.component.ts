@@ -16,11 +16,13 @@ export interface Gender {
   styleUrls: ['./settings-page.component.scss']
 })
 export class SettingsPageComponent implements OnInit {
+  public loading = false;
   userDetailsForm: FormGroup;
   accountDetailsForm: FormGroup;
   @Input() user: UserDTO;
   matching_passwords_group: FormGroup;
   country_phone_group: FormGroup;
+
 
   parentErrorStateMatcher = new ParentErrorStateMatcher();
 
@@ -90,13 +92,18 @@ export class SettingsPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.userService.getUser(this.tokenService.getUserId())
       .subscribe(value => {
+          this.loading = false;
           this.user = value;
           this.user.userRole = this.tokenService.getUserRole();
           console.log(value);
         },
-        error1 => console.error(error1),
+        error1 => {
+          this.loading = false;
+          console.error(error1);
+        },
         () => this.createForms());
 
   }

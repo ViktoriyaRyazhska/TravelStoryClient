@@ -17,8 +17,6 @@ import {NgModule} from '@angular/core';
 import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
 import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
 import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
-import { LoginComponent } from '../security/login/login.component';
-import { RegistrationComponent } from '../security/registration/registration.component';
 import {
   MatButtonModule,
   MatButtonToggleModule,
@@ -38,6 +36,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
 import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
+import {NgxLoadingModule} from 'ngx-loading';
 
 
 @NgModule({
@@ -64,7 +63,8 @@ import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
     MatSelectModule,
     MatDatepickerModule,
     TranslateModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    NgxLoadingModule.forRoot({}),
   ],
   declarations: [
     UserComponent,

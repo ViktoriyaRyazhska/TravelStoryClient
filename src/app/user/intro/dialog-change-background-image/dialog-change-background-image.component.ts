@@ -13,19 +13,11 @@ import {TokenService} from '../../../service/token.service';
 })
 
 export class DialogChangeBackgroundImageComponent implements OnInit {
-  dto: UserPicDTO;
-  image: string;
-
-// Main task
-  task: AngularFireUploadTask;
-
-// Process monitoring
-  percentage: Observable<number>;
-
-  snapshot: Observable<any>;
-
-  // State for dropzone CSS toggling
-  isHovering: boolean;
+  public dto: UserPicDTO;
+  public percentage: Observable<number>;
+  public isHovering: boolean;
+  private task: AngularFireUploadTask;
+  private snapshot: Observable<any>;
 
   constructor(private storage: AngularFireStorage,
               private db: AngularFirestore,
@@ -34,39 +26,31 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
   ) {
   }
 
-  uploadBackgroundPic() {
-    this.fileService.resetBackgroundPic(this.tokenService.getUserId()).subscribe((response) => {
-      console.log(response);
-    });
-  }
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.dto = new UserPicDTO();
   }
 
+  public resetBackground() {
+    this.fileService.resetBackgroundPic(this.tokenService.getUserId())
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
 
-  toggleHover(event: boolean) {
+  public toggleHover(event: boolean) {
     this.isHovering = event;
   }
 
-  startUpload(event: FileList) {
-    // The File object
+  public startUpload(event: FileList) {
     const file = event.item(0);
 
     if (file.type.split('/')[0] !== 'image') {
       console.error('unsupported  file type :( ');
     }
 
-    // The storage path
-    const path = `test/${new Date().getTime()}_${file.name}`;
-
-    // Totally optional metadata
+    const path = `backgr/${new Date().getTime()}_${file.name}`;
     const customMetadata = {app: 'travelstory resource'};
-
-    // The main task
     this.task = this.storage.upload(path, file, {customMetadata});
-
-    // Progress monitoring
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges();
 
@@ -75,17 +59,14 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
         .getDownloadURL()
         .subscribe(value => {
             this.dto.pic = value;
-            console.log(value);
           }, (error1) => {
             console.error(error1);
           }, () => {
             this.dto.id = this.tokenService.getUserId();
             this.fileService.uploadBackgroundPic(this.dto)
-              .subscribe((response) => {
-                console.log(response);
+              .subscribe(() => {
                 location.reload(true);
               });
-            console.log(this.dto.pic);
           }
         );
     });

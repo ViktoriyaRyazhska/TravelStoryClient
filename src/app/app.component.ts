@@ -10,14 +10,13 @@ import {UserService} from './service/user.service';
 export class AppComponent {
 
   constructor(private translate: TranslateService,
-              userService: UserService) {
-    console.log('browser language: ' + this.translate.getBrowserLang());
+              private userService: UserService) {
 
     if (userService.getPreferedLang() === null) {
-      if (translate.getBrowserLang() === 'uk' || this.translate.getBrowserLang() === 'ru') {
+      if (translate.getBrowserLang() === 'uk') {
         translate.use('uk');
       }
-    } else if (userService.getPreferedLang() === 'uk' || userService.getPreferedLang() === 'ru') {
+    } else if (userService.getPreferedLang() === 'uk') {
       translate.use('uk');
     } else {
       translate.use('en');

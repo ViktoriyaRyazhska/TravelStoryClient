@@ -5,14 +5,13 @@
   "Logout": "logout",
   "Search": "Search",
   "Info": "Info",
-  "Gender": "Gender",
+  "Gender": "{{gender}}",
   "Follow": "Follow",
   "Message": "Message",
   "Add new story": "Add new story",
   "Gallery": "Gallery",
   "Follows": "Follows",
-  "Places": "Places",
-  "Login": "login"
+  "Places": "Places"
 }
 
 
