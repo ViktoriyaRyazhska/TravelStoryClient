@@ -5,6 +5,7 @@ import {User} from "../../models/User";
 import {TravelStory} from "../../models/TravelStory";
 import {UserService} from "../../service/user.service";
 import 'rxjs/add/observable/fromEvent';
+import {TokenService} from "../../service/token.service";
 
 @Component({
   selector: 'app-likes',
@@ -17,17 +18,19 @@ export class LikesComponent implements OnInit {
   loggedUserLike: Like;
   likes: Like[];
 
-  constructor(private likeService: LikeService, private userService: UserService) {
+  constructor(private likeService: LikeService, private userService: UserService, private tokenService: TokenService) {
   }
 
   ngOnInit() {
-    this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
     this.getLoggedUser();
+    this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
+
   }
 
   getLoggedUser() {
-    this.loggedUser = new User();
-    this.loggedUser.id = 1;
+    let user = new User;
+    user.id = this.tokenService.getUserId();
+    this.loggedUser = user;
   }
 
   like(travelStoryId: number, mediaId: number) {
@@ -62,7 +65,7 @@ export class LikesComponent implements OnInit {
   add() {
     this.likeService.addLike(this.loggedUserLike).subscribe(like => {
       this.likes.push(like);
-      this.loggedUserLike=like;
+      this.loggedUserLike = like;
     });
   }
 
@@ -81,3 +84,4 @@ export class LikesComponent implements OnInit {
   }
 
 }
+

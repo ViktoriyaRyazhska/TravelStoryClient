@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../messenger/model/User';
 
 import { Observable, of} from 'rxjs';
 import {PagableUserSearch} from "../models/PagableUserSearch";
 
 import {BehaviorSubject} from 'rxjs';
 import {environment} from '../../environments/environment.prod';
+import {User} from "../models/User";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getUser(id: number): Observable<any> {
+  getUser(id: number): Observable<User> {
     return this.httpClient.get<User>(this.baseUrl + '/user/' + id);
   }
 

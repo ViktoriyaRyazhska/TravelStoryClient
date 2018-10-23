@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Comment} from '../../models/Comment';
-import {User} from "../../models/User";
 import {TravelStory} from "../../models/TravelStory";
 import {CommentService} from "../../service/comment.service";
-
+import {TokenService} from "../../service/token.service";
+import {UserService} from "../../service/user.service";
+import {User} from "../../models/User";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CommentsComponent implements OnInit {
   pageNumber: number;
   commentsNumber: number;
 
-  constructor(private commentService: CommentService) {
+  constructor(private commentService: CommentService, private tokenService: TokenService, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -32,7 +33,7 @@ export class CommentsComponent implements OnInit {
     if (!commentMassage) {
       return;
     }
-    this.getComments(travelStoryId,mediaId);
+    this.getComments(travelStoryId, mediaId);
     let comment: Comment = new Comment();
     comment.commentMassage = commentMassage;
     comment.userId = this.loggedUser.id;
@@ -52,7 +53,7 @@ export class CommentsComponent implements OnInit {
   getComments(travelStoryId: number, mediaId: number) {
     this.commentService.getComments(travelStoryId, mediaId)
       .subscribe(comments => this.comments = comments);
-    document.getElementById('commentsBlock'+this.travelStory.id).hidden = false;
+    document.getElementById('commentsBlock' + this.travelStory.id).hidden = false;
   }
 
   delete(comment: Comment) {
@@ -62,9 +63,8 @@ export class CommentsComponent implements OnInit {
   }
 
   getLoggedUser() {
-    this.loggedUser = new User();
-    this.loggedUser.id = 1;
-    this.loggedUser.profilePic = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
+    let userId = this.tokenService.getUserId();
+    this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
 
 
@@ -76,7 +76,8 @@ export class CommentsComponent implements OnInit {
     });
     document.getElementById('commentsBlock').hidden = false;
   }
+
   hideComments() {
-    document.getElementById('commentsBlock'+this.travelStory.id).hidden = true;
+    document.getElementById('commentsBlock' + this.travelStory.id).hidden = true;
   }
 }
