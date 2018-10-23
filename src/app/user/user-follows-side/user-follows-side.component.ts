@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {UserSearchDTO} from "../../models/UserSearchDTO";
 import {UserService} from "../../service/user.service";
 import {ActivatedRoute} from "@angular/router";
-import {MatDialog, MatDialogRef} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
+
+
 
 @Component({
   selector: 'app-user-follows-side',
@@ -38,7 +40,7 @@ export class UserFollowsSideComponent implements OnInit {
   openDialogFollowers(): void {
     const dialogRef = this.dialog.open(FollowersComponentDialog, {
       width: '800px',
-      data: {}
+      data: {'userId':this.userId}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -49,7 +51,7 @@ export class UserFollowsSideComponent implements OnInit {
   openDialogFollowing(): void {
     const dialogRef = this.dialog.open(FollowingComponentDialog, {
       width: '800px',
-      data: {}
+      data: {'userId':this.userId}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -71,11 +73,11 @@ export class FollowersComponentDialog {
   userId: number;
   followersNumber: number;
 
-  constructor(public dialogRef: MatDialogRef<UserFollowsSideComponent>, private userService: UserService, private route: ActivatedRoute) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<UserFollowsSideComponent>, private userService: UserService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.userId = 1;
+    this.userId = this.data['userId'];
     this.userService.getFollowers(this.userId, this.page, this.PageSize).subscribe(data => {
       this.followers = data.content;
       this.followersNumber = data.totalElements;
@@ -108,11 +110,12 @@ export class FollowingComponentDialog {
   userId: number;
   followingNumber: number;
 
-  constructor(public dialogRef: MatDialogRef<UserFollowsSideComponent>, private userService: UserService, private route: ActivatedRoute) {
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<UserFollowsSideComponent>, private userService: UserService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.userId = 1;
+    this.userId = this.data['userId'];
     this.userService.getFollowing(this.userId, this.page, this.PageSize).subscribe(data => {
       this.following = data.content;
       this.followingNumber = data.totalElements;

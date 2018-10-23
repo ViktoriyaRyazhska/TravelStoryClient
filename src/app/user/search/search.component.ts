@@ -57,7 +57,7 @@ export class SearchComponentDialog {
   }
 
   ngOnInit(): void {
-    this.pageSize = 7;
+    this.pageSize = 3;
      this.data=this.searchTerms.pipe(
       debounceTime(300),
       switchMap((term: string) => this.userService.searchUsers(term, this.page, this.pageSize))

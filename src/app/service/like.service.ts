@@ -12,14 +12,14 @@ const httpOptions = {
 
 @Injectable({providedIn: 'root'})
 export class LikeService {
-  private baseUrl = environment.apiUrl + '/likes';
+  private baseUrl = environment.apiUrl + '/api/likes';
 
   constructor(
     private http: HttpClient) {
   }
 
   /** GET likes from the server */
-  getLikes(travelStoryId: number, mediaId: number): Observable<any> {
+  getLikes(travelStoryId: number, mediaId: number): Observable<Like[]> {
     let params = new HttpParams();
     params = params.set('travelStoryId', travelStoryId.toString());
     params = params.set('mediaId', mediaId.toString());

@@ -6,7 +6,7 @@
     User follows </h1></mat-card-title>
 </div>
 
-<div style="overflow-y: scroll; height: 700px;" appScrollable (scrollPosition)="scrollHandler($event)">
+<div style="overflow-y: scroll; height: 300px;" appScrollable (scrollPosition)="scrollHandler($event)">
   <mat-card *ngFor="let followed of following">
     <mat-card-header>
       <mat-card-title-group>

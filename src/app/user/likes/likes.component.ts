@@ -17,29 +17,31 @@ export class LikesComponent implements OnInit {
   loggedUser: User;
   loggedUserLike: Like;
   likes: Like[];
+  posibilityToLike: boolean;
 
   constructor(private likeService: LikeService, private userService: UserService, private tokenService: TokenService) {
   }
 
   ngOnInit() {
+    this.posibilityToLike=true;
     this.getLoggedUser();
     this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
-
   }
 
   getLoggedUser() {
-    let user = new User;
-    user.id = this.tokenService.getUserId();
-    this.loggedUser = user;
+    let userId = this.tokenService.getUserId();
+    this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
 
   like(travelStoryId: number, mediaId: number) {
+    if (this.posibilityToLike===false){return}
     this.getLoggedUserLike();
 
     if (!this.likeExist()) {
       this.loggedUserLike.userId = this.loggedUser.id;
       this.loggedUserLike.travelStoryId = travelStoryId;
       this.loggedUserLike.mediaId = mediaId;
+      this.posibilityToLike = false;
       this.add();
     }
     else {
@@ -66,6 +68,7 @@ export class LikesComponent implements OnInit {
     this.likeService.addLike(this.loggedUserLike).subscribe(like => {
       this.likes.push(like);
       this.loggedUserLike = like;
+      this.posibilityToLike = true;
     });
   }
 
@@ -84,4 +87,3 @@ export class LikesComponent implements OnInit {
   }
 
 }
-
