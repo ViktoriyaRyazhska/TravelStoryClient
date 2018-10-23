@@ -22,7 +22,7 @@ import { RegistrationComponent } from '../security/registration/registration.com
 import {
   MatButtonModule,
   MatButtonToggleModule,
-  MatCardModule,
+  MatCardModule, MatCheckboxModule,
   MatDatepickerModule,
   MatFormFieldModule,
   MatInputModule,
@@ -36,9 +36,8 @@ import { UserPlacesComponent } from './user-places/user-places.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
-import { FileSizePipe } from './intro/dialog-change-profile-pic/file-size.pipe';
-import {DropZoneDirective} from './drop-zone.directive';
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
+import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 
 
 @NgModule({
@@ -55,6 +54,7 @@ import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-backgr
     MatInputModule,
     MatFormFieldModule,
     MatButtonToggleModule,
+    MatCheckboxModule,
     MatToolbarModule,
     HttpClientModule,
     MatDialogModule,
@@ -64,6 +64,7 @@ import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-backgr
     MatSelectModule,
     MatDatepickerModule,
     TranslateModule,
+    GooglePlaceModule
   ],
   declarations: [
     UserComponent,

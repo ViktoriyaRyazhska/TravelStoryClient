@@ -4,7 +4,7 @@ import {UserPicDTO} from '../models/UserPicDTO';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 
-const baseUrl = environment.apiUrl + 'api';
+const baseUrl = environment.apiUrl + '/api';
 
 @Injectable({
   providedIn: 'root'

@@ -14,6 +14,6 @@ export class RegistrationService {
   }
 
   registrate(registrationDTO: RegistrationDTO): Observable<any> {
-    return this.http.post(environment.apiUrl + '/registrate', registrationDTO);
+    return this.http.post(environment.apiUrl + '/api/registrate', registrationDTO);
   }
 }

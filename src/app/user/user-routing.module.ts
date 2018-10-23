@@ -7,7 +7,6 @@ import {SettingsPageComponent} from './settings-page/settings-page.component';
 import {LoginComponent} from '../security/login/login.component';
 import {UserComponent} from './user.component';
 
-
 const userRoutes: Routes = [
   {
     path: '',

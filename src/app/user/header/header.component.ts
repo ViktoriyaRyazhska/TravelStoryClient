@@ -22,8 +22,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id).subscribe(user => this.user = user);
     this.meId = this.tokenService.getUserId();
   }
 
@@ -42,7 +40,7 @@ export class HeaderComponent implements OnInit {
     if (this.translate.getBrowserLang() === 'en') {
       return 'en';
     }
-    return 'ua';
+    return 'uk';
   }
 
 

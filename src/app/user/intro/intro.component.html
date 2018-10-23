@@ -1,9 +1,10 @@
 <section class="intro-section">
+  <div class="intro-content" *ngIf="user">
   <img *ngIf="user.backgroundPic" class="background-pic" (click)="changeBackgroundImage()" src="{{user.backgroundPic}}">
   <div class="user-details">
     <div class="row">
       <a class="ava bg-light">
-        <img (click)="changeProfilePic()" src="{{user.profilePic}}">
+        <img *ngIf="user.profilePic" (click)="changeProfilePic()" src="{{user.profilePic}}">
         <div class="online-status">
         </div>
       </a>
@@ -20,5 +21,6 @@
         <a href="#" class="btn btn-success">Message</a>
       </div>
     </div>
+  </div>
   </div>
 </section>

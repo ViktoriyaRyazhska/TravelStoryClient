@@ -6,7 +6,6 @@ import {Observable} from 'rxjs';
 import {UserPicDTO} from '../../../models/UserPicDTO';
 import {TokenService} from '../../../service/token.service';
 
-
 @Component({
   selector: 'app-dialog-change-profile-pic',
   templateUrl: './dialog-change-profile-pic.component.html',
@@ -25,7 +24,6 @@ export class DialogChangeProfilePicComponent implements OnInit {
   snapshot: Observable<any>;
 
   downloadURL: Observable<string>;
-
 
   // State for dropzone CSS toggling
   isHovering: boolean;
@@ -67,7 +65,6 @@ export class DialogChangeProfilePicComponent implements OnInit {
     const customMetadata = {app: 'travelstory resource'};
 
     // The main task
-    debugger;
     this.task = this.storage.upload(path, file, {customMetadata});
 
     // Progress monitoring
