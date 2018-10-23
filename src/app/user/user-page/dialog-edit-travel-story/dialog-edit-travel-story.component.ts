@@ -3,6 +3,7 @@ import {TravelStory} from '../../../models/TravelStory';
 import {Media} from '../../../models/Media';
 import {TravelStoryService} from '../../../service/travel-story.service';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {FileService} from '../../../service/file.service';
 
 
 @Component({
@@ -14,15 +15,31 @@ export class DialogEditTravelStoryComponent implements OnInit {
   @Input() travelStory: TravelStory;
   medias: Media[] = [];
   media: Media = new Media();
+  fileToUpload: File;
+  myReader: FileReader;
+  image: string;
 
-  constructor(private travelStoryService: TravelStoryService,
+  constructor(private travelStoryService: TravelStoryService,private fileService: FileService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     console.log('data', this.data);
     this.travelStory = this.data.ts;
   }
 
-  initMedia() {
-    this.media.url = 'https://cdn.pixabay.com/photo/2014/06/06/09/36/sydney-363244_1280.jpg';
+  changeListener($event): void {
+    this.readThis($event.target);
+  }
+
+  readThis(inputValue: any): void {
+    this.fileToUpload = inputValue.files[0];
+    this.myReader = new FileReader();
+
+    this.myReader.onloadend = (e) => {
+      this.image = this.myReader.result;
+    };
+    this.myReader.readAsDataURL(this.fileToUpload);
+  }
+  initMedia(){
+    this.media.url = this.image;
     this.media.mediaType = 'IMAGE';
     this.medias.push(this.media);
   }
@@ -36,8 +53,5 @@ export class DialogEditTravelStoryComponent implements OnInit {
     this.travelStory.media = this.medias;
     this.travelStory.userId = 1;
     this.travelStoryService.editTravelStory(this.travelStory).subscribe();
-  }
-  changePicture(){
-
   }
 }
