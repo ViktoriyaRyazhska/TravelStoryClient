@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Comment} from '../models/Comment';
@@ -12,8 +12,8 @@ const httpOptions = {
 @Injectable({providedIn: 'root'})
 export class CommentService {
 
-  baseUrl = environment.apiUrl + '/api';
-  private commentsUrl = 'comments';
+  baseUrl = environment.apiUrl + '/api/comments';
+
 
   constructor(
     private http: HttpClient) {
@@ -21,15 +21,15 @@ export class CommentService {
 
   /** GET comments from the server */
   getComments(travelStoryId: number, mediaId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.baseUrl}/${this.commentsUrl}/${travelStoryId}/${mediaId}`)
-      .pipe(
-        catchError(this.handleError('getComments', []))
-      );
+    let params = new HttpParams().set('travelStoryId', travelStoryId.toString());
+    params.set('mediaId', mediaId.toString());
+    return this.http.get<Comment[]>(this.baseUrl,
+      {params: params});
   }
 
   /** POST: add a new comment to the server */
-  addComment(comment: Comment, travelStoryId: number, mediaId: number): Observable<Comment> {
-    return this.http.post<Comment>(`${this.baseUrl}/${this.commentsUrl}/${travelStoryId}/${mediaId}`, comment, httpOptions).pipe(
+  addComment(comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.baseUrl, comment, httpOptions).pipe(
       catchError(this.handleError<Comment>('addComment'))
     );
   }
@@ -37,11 +37,17 @@ export class CommentService {
   /** DELETE: delete the comment from the server */
   deleteComment(comment: Comment | number): Observable<Comment> {
     const id = typeof comment === 'number' ? comment : comment.id;
-    const url = `${this.baseUrl}/${this.commentsUrl}/${id}`;
+    const url = `${this.baseUrl}/${id}`;
 
     return this.http.delete<Comment>(url, httpOptions).pipe(
       catchError(this.handleError<Comment>('deleteComment'))
     );
+  }
+
+  getCommentsPortion(travelStoryId: number, mediaId: number, pageNumber: number) {
+   debugger; let params = new HttpParams().set('pageNumber', pageNumber.toString()).set('mediaId', mediaId.toString());
+    debugger; return this.http.get(`${this.baseUrl}/` + travelStoryId,
+      {params: params});
   }
 
   /**
@@ -54,4 +60,5 @@ export class CommentService {
       return of(result as T);
     };
   }
+
 }

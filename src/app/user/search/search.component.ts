@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {UserSearchDTO} from '../../models/UserSearchDTO';
+import {UserService} from '../../service/user.service';
+import {Observable, Subject} from 'rxjs';
+import {debounceTime, switchMap} from 'rxjs/operators';
+import {PagableUserSearch} from '../../models/PagableUserSearch';
+
 
 @Component({
   selector: 'app-search',
@@ -6,10 +13,77 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  countOfSquirrels: number;
 
-  constructor() { }
+  constructor(public dialog: MatDialog,
+  ) {
+  }
 
   ngOnInit() {
+    this.countOfSquirrels = 0;
+  }
+
+  openDialog(): void {
+    this.countOfSquirrels++;
+
+    const dialogRef = this.dialog.open(SearchComponentDialog, {
+      width: '600px',
+      data: {
+        'countOfSquirrels': this.countOfSquirrels
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
+
+@Component({
+  selector: 'search-component-dialog',
+  templateUrl: 'search.component.dialog.html',
+})
+export class SearchComponentDialog implements OnInit {
+
+  private searchTerms = new Subject<string>();
+  page: number;
+  finished = false;
+  pageSize: number;
+  term: string;
+  data: Observable<PagableUserSearch>;
+  users: UserSearchDTO[];
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data2: any, public dialogRef: MatDialogRef<SearchComponent>, private userService: UserService) {
+  }
+
+  search(term: string): void {
+    this.term = term;
+    this.page = 0;
+    this.finished = false;
+    this.searchTerms.next(term);
+  }
+
+  ngOnInit(): void {
+    this.pageSize = 3;
+    this.data = this.searchTerms.pipe(
+      debounceTime(300),
+      switchMap((term: string) => this.userService.searchUsers(term, this.page, this.pageSize))
+    );
+    this.data.subscribe(data => {
+      this.users = data.content;
+      this.finished = data.last;
+    });
+  }
+
+  getMore() {
+    if (this.finished) return;
+    this.page++;
+    this.userService.searchUsers(this.term, this.page, this.pageSize).subscribe(data => {
+      this.users = this.users.concat(data.content);
+      this.finished = data['last'];
+    });
+  }
+}
+

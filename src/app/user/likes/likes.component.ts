@@ -4,8 +4,8 @@ import {LikeService} from "../../service/like.service";
 import {User} from "../../models/User";
 import {TravelStory} from "../../models/TravelStory";
 import {UserService} from "../../service/user.service";
-import {ActivatedRoute} from "@angular/router";
-
+import 'rxjs/add/observable/fromEvent';
+import {TokenService} from "../../service/token.service";
 
 @Component({
   selector: 'app-likes',
@@ -17,42 +17,35 @@ export class LikesComponent implements OnInit {
   loggedUser: User;
   loggedUserLike: Like;
   likes: Like[];
+  posibilityToLike: boolean;
 
-
-  constructor(private likeService: LikeService, private userService: UserService, private route: ActivatedRoute) {
+  constructor(private likeService: LikeService, private userService: UserService, private tokenService: TokenService) {
   }
 
   ngOnInit() {
-    this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
+    this.posibilityToLike=true;
     this.getLoggedUser();
-    // this.loggedUserLike=new Like();
-    this.loggedUserLike = this.getLikeOfUser(this.likes, this.loggedUser.id);
-
+    this.getLikes(this.travelStory.id, this.travelStory.medias[0].id);
   }
 
-  like(userLike: Like, travelStoryId: number, mediaId: number) {
-    this.flipLike();
-    if (userLike.likeState === true) {
-      userLike.loggedUserId = this.loggedUser.id;
-      userLike.travelStoryId = travelStoryId;
-      userLike.mediaId = mediaId;
-      this.add(userLike);
-    }
-    else {
-      userLike.loggedUserId = this.loggedUser.id;
-      userLike.travelStoryId = travelStoryId;
-      userLike.mediaId = mediaId;
-      userLike.likeState = false;
-      this.delete(userLike);
-    }
+  getLoggedUser() {
+    let userId = this.tokenService.getUserId();
+    this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
 
-  flipLike() {
-    if (this.loggedUserLike.likeState === true) {
-      this.loggedUserLike.likeState = false;
+  like(travelStoryId: number, mediaId: number) {
+    if (this.posibilityToLike===false){return}
+    this.getLoggedUserLike();
+
+    if (!this.likeExist()) {
+      this.loggedUserLike.userId = this.loggedUser.id;
+      this.loggedUserLike.travelStoryId = travelStoryId;
+      this.loggedUserLike.mediaId = mediaId;
+      this.posibilityToLike = false;
+      this.add();
     }
     else {
-      this.loggedUserLike.likeState = true;
+      this.delete();
     }
   }
 
@@ -61,49 +54,36 @@ export class LikesComponent implements OnInit {
       .subscribe(likes => this.likes = likes);
   }
 
-  add(userLike: Like) {
-    this.likeService.addLike(userLike).subscribe(like => {
+  getLoggedUserLike(): void {
+    this.loggedUserLike = new Like();
+    this.loggedUserLike.userId = this.loggedUser.id;
+    for (let l of this.likes) {
+      if (l.userId == this.loggedUser.id) {
+        this.loggedUserLike = l;
+      }
+    }
+  }
+
+  add() {
+    this.likeService.addLike(this.loggedUserLike).subscribe(like => {
       this.likes.push(like);
+      this.loggedUserLike = like;
+      this.posibilityToLike = true;
     });
   }
 
-  delete(userLike: Like) {
-    this.likes = this.likes.filter(h => h !== userLike);
-    this.likeService.deleteLike(userLike).subscribe(like => this.loggedUserLike = like);
+  delete() {
+    this.likes = this.likes.filter(like => like !== this.loggedUserLike);
+    this.likeService.deleteLike(this.loggedUserLike).subscribe(like => this.loggedUserLike = like);
   }
 
-  getLoggedUser(): void {
-    let user = new User();
-    user.id = 2;
-    this.loggedUser = user;
-  }
-
-
-  getLikeOfUser(likes: Like[], loggedUserId: number): Like {
-    let userLike: Like;
-    if (likes != null) {
-      for (let like of likes) {
-        if (like.loggedUserId === loggedUserId) {
-          debugger;
-          userLike = like;
-          return userLike;
-        }
-      }
-    }
-    userLike = new Like();
-    userLike.likeState = false;
-    return userLike;
-  }
-
-  likeExhist(likes: Like[], like: Like): boolean {
-    if (likes != null) {
-      for (let l of likes) {
-        if (l === like) {
-          return true;
-        }
+  likeExist(): boolean {
+    for (let l of this.likes) {
+      if (l.userId == this.loggedUserLike.userId) {
+        return true;
       }
     }
     return false;
-
   }
+
 }

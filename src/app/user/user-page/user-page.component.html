@@ -23,7 +23,7 @@
         <div > <mat-card class="card" *ngFor="let story of travelStories">
           <app-container-post  [travelStory]="story" [user]="this.user"></app-container-post>
           <app-likes [travelStory]="story">  </app-likes>
-          <!--<app-comments [travelStory]="story" [user]="this.user"> </app-comments>-->
+          <app-comments [travelStory]="story"> </app-comments>
           </mat-card >
         </div>
       </div>
