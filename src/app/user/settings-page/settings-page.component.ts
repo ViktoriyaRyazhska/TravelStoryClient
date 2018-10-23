@@ -163,7 +163,7 @@ export class SettingsPageComponent implements OnInit {
     console.log(value);
   }
 
-  onSubmitUserDetails(value) {
+  onSubmitUserDetails() {
     this.userService.updateSettings(this.user).subscribe(value1 => console.log(value1));
   }
 }
