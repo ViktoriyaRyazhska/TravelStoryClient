@@ -5,7 +5,7 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(path.join(__dirname, 'dist', 'travelStoryClient')));
+app.use(express.static(path.join(__dirname, 'dist/travelStoryClient')));
 app.get('*', function (req, res) {
   res.sendFile(__dirname, path.join('/dist/travelStoryClient/index.html'), function (err) {
     if (err) {
