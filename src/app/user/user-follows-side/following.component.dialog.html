@@ -1,9 +1,9 @@
 <div *ngIf="following">
-  <mat-card-title><h1 style="text-align: center">
+  <mat-card-title><h1 style="text-align: center" >
     <i class="material-icons">
       supervised_user_circle
     </i>{{followingNumber}}
-    User follows </h1></mat-card-title>
+    <span translate>UserFollows</span></h1></mat-card-title>
 </div>
 
 <div style="overflow-y: scroll; height: 300px;" appScrollable (scrollPosition)="scrollHandler($event)">
