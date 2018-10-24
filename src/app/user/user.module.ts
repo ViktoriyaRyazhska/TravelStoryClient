@@ -16,7 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {UserInfoSideComponent} from './user-info-side/user-info-side.component';
 import {
-  FollowersComponentDialog, FollowingComponentDialog,
+  FollowingDialogComponent, FollowersDialogComponent,
   UserFollowsSideComponent
 } from './user-follows-side/user-follows-side.component';
 import {UserGallerySideComponent} from './user-gallery-side/user-gallery-side.component';
@@ -71,8 +71,8 @@ import {NgxLoadingModule} from 'ngx-loading';
   ],
   entryComponents: [
     SearchComponentDialog,
-    FollowersComponentDialog,
-    FollowingComponentDialog
+    FollowersDialogComponent,
+    FollowingDialogComponent
   ],
   declarations: [
     UserComponent,
@@ -90,14 +90,13 @@ import {NgxLoadingModule} from 'ngx-loading';
     UserGallerySideComponent,
     UserPlacesComponent,
     SearchComponentDialog,
-    FollowersComponentDialog,
-    FollowingComponentDialog,
+    FollowersDialogComponent,
+    FollowingDialogComponent,
     ScrollableDirective,
     UserPlacesComponent,
     SettingsPageComponent,
     UserPlacesComponent,
     DialogChangeBackgroundImageComponent
-
   ]
 })
 export class UserModule {
