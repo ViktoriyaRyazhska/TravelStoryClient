@@ -6,7 +6,7 @@ import {UserPageComponent} from './user-page/user-page.component';
 import {SettingsPageComponent} from './settings-page/settings-page.component';
 import {LoginComponent} from '../security/login/login.component';
 import {UserComponent} from './user.component';
-
+import {AuthComponent} from '../admin/auth/auth.component';
 
 const userRoutes: Routes = [
   {
@@ -17,6 +17,7 @@ const userRoutes: Routes = [
       {path: 'settings', component: SettingsPageComponent},
       {path: 'user/:id', component: UserPageComponent},
       {path: 'login', component: LoginComponent},
+      {path: 'admin', component: AuthComponent},
     ]
   }
 ];

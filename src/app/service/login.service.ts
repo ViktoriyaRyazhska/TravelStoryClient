@@ -19,7 +19,7 @@ export class LoginService {
   }
 
   signIn(loginDTO: LoginDTO): Observable<any> {
-    return this.auth.post(environment.apiUrl + '/login', loginDTO);
+    return this.auth.post(environment.apiUrl + '/api/login', loginDTO);
   }
 
   public getToken(): string {

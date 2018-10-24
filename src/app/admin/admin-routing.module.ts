@@ -1,16 +1,21 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from "@angular/router";
-import {MessengerComponent} from "../messenger/messenger.component";
-import {TestWebSocketsComponent} from "../messenger/test-web-sockets/test-web-sockets.component";
-import {AdminComponent} from "./admin.component";
-import {TableComponent} from "./table/table.component";
-import {ChartsComponent} from "./charts/charts.component";
+import {RouterModule, Routes} from '@angular/router';
+import {AuthComponent} from './auth/auth.component';
 
 const adminRoutes: Routes = [
-  {path: 'admin', component: AdminComponent},
-  {path: 'admin/table', component: TableComponent},
-  {path: 'admin/chart', component: ChartsComponent}
+ // {path: 'admin', component: AdminComponent},
+  {
+    // {path: 'admin/chart', component: ChartsComponent}
+    path: '' ,
+    component: AuthComponent,
+    children: [
+      {path: 'auth1', component: AuthComponent},
+      // {path: 'settings', component: SettingsPageComponent},
+      // {path: 'user/:id', component: UserPageComponent},
+      // {path: 'login', component: LoginComponent},
+    ]
+  }
 ];
 
 @NgModule({
