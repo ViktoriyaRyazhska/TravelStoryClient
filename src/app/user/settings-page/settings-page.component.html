@@ -1,8 +1,8 @@
 <div class="container" *ngIf="user">
   <div class="row">
     <div class="col">
-      <h2 class="section-title">User details</h2>
-      <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails()">
+      <h2 class="section-title" translate>UserDetails</h2>
+      <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
         <mat-form-field class="full-width">
           <input matInput placeholder="First Name" formControlName="firstname" [(ngModel)]="user.firstName" required>
           <mat-error *ngFor="let validation of validation_messages.firstname">
@@ -22,7 +22,6 @@
             </mat-error>
           </mat-error>
         </mat-form-field>
-
 
         <mat-form-field class="full-width">
           <input matInput [matDatepicker]="picker" placeholder="Your birthday" formControlName="birthday"
@@ -54,9 +53,9 @@
 
         <mat-form-field class="full-width">
           <textarea matInput maxlength="256" placeholder="Bio" formControlName="bio" matTextareaAutosize
-                    matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
-          <mat-hint align="start">Tell us about yourself</mat-hint>
-          <mat-hint align="end">{{userDetailsForm.get('bio').value.length}} / 256</mat-hint>
+                    matAutosizeMinRows="2" matAutosizeMaxRows="5" [(ngModel)]="user.bio"></textarea>
+          <mat-hint align="start" translate>AboutYourself</mat-hint>
+          <mat-hint *ngIf="userDetailsForm" align="end">{{userDetailsForm.get('bio').value.length}} / 256</mat-hint>
           <mat-error *ngFor="let validation of validation_messages.bio">
             <mat-error class="error-message"
                        *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">
@@ -66,16 +65,15 @@
         </mat-form-field>
 
 
-        <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="false">
-          Submit
+        <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!userDetailsForm.valid">
+          <span translate>Submit</span>
         </button>
-
       </form>
     </div>
 
 
     <div class="col">
-      <h2 class="section-title">Account details</h2>
+      <h2 class="section-title" translate>AccountDetails</h2>
 
       <form [formGroup]="accountDetailsForm" novalidate (ngSubmit)="onSubmitAccountDetails(accountDetailsForm.value)">
 
@@ -88,7 +86,6 @@
             </mat-error>
           </mat-error>
         </mat-form-field>
-
 
         <div formGroupName="matching_passwords">
           <mat-form-field class="full-width">
@@ -115,7 +112,7 @@
 
         <button class="submit-btn" color="primary" mat-raised-button type="submit"
                 [disabled]="!accountDetailsForm.valid">
-          Submit
+          <span translate>Submit</span>
         </button>
       </form>
     </div>

@@ -39,5 +39,9 @@ export class HeaderComponent implements OnInit {
     }
     return 'uk';
   }
+
+  public logout() {
+    this.tokenService.clearAccessToken();
+  }
 }
 

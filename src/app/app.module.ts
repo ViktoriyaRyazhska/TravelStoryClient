@@ -23,8 +23,6 @@ import {AngularFireModule} from '@angular/fire';
 import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pipe';
 import {DropZoneDirective} from './user/drop-zone.directive';
 import {DialogChangeBackgroundImageComponent} from './user/intro/dialog-change-background-image/dialog-change-background-image.component';
-import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
-import {NgxLoadingModule} from 'ngx-loading';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
