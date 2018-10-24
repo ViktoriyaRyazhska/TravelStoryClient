@@ -25,7 +25,7 @@ export class CommentsComponent implements OnInit {
   ngOnInit() {
     this.getLoggedUser();
     this.pageNumber = 0;
-    this.getCommentsPortion(this.travelStory.id, this.travelStory.medias[0].id);
+    this.getCommentsPortion(this.travelStory.id, this.travelStory.media[0].id);
   }
 
   add(commentMassage: string, travelStoryId: number, mediaId: number): void {
@@ -66,7 +66,6 @@ export class CommentsComponent implements OnInit {
     let userId = this.tokenService.getUserId();
     this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
-
 
   getCommentsPortion(travelStoryId: number, mediaId: number) {
     debugger;

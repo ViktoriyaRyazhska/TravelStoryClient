@@ -38,10 +38,10 @@
       </div>
       <div class="user_forms-forgot">
         <h2 class="forms_title">Forgot Password</h2>
-        <form class="forms_form">
+        <form class="forms_form" (ngSubmit) = "onSubmit(f)" #f ="ngForm">
           <fieldset class="forms_fieldset">
             <div class="forms_field">
-              <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
+              <input type="email" id="emailFor" placeholder="Email" class="form-control" ngModel name="email" />
             </div>
           </fieldset>
           <div class="forms_buttons">

@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
     this.translate.use(lang);
   }
 
+
   public onChosenLang(): string {
     this.lang = this.userService.getPreferedLang();
     if (this.lang === 'en') {

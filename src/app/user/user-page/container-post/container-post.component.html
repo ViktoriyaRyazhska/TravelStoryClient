@@ -1,11 +1,11 @@
-<mat-card-header *ngIf="user">
-  <mat-card-title><b>{{this.travelStory.head}}</b></mat-card-title>
-  <mat-card-subtitle>{{this.user.firstName}} {{this.user.lastName}}</mat-card-subtitle>
-</mat-card-header>
-<img mat-card-image src={{this.travelStory.medias[0].url}} alt="sorry, check connection... =)">
-<mat-card-content>
-  <p>{{this.travelStory.description}}</p>
-</mat-card-content>
-
-
-
+<div *ngIf="user && travelStory">
+  <mat-card-header>
+    <mat-card-title><b>{{travelStory.head}}</b>
+    </mat-card-title>
+    <mat-card-subtitle>{{user.firstName + ' ' + user.lastName}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{travelStory.media[travelStory.media.length-1].url}}" alt="sorry, check connection... =)">
+  <mat-card-content>
+    <p>{{travelStory.description}}</p>
+  </mat-card-content>
+</div>

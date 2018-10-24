@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from '../../../models/User';
-import {TravelStory} from '../../../models/TravelStory';
+import {User} from "../../../models/User";
+import {TravelStory} from "../../../models/TravelStory";
+import {Like} from '../../../models/Like';
+import {TravelStoryService} from '../../../service/travel-story.service';
 
 
 @Component({
@@ -13,12 +15,10 @@ export class ContainerPostComponent implements OnInit {
   @Input() user: User;
 
   constructor
-  () {
+  (private travelStoryService: TravelStoryService) {
   }
 
   ngOnInit() {
-
-
   }
 
 }

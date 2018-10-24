@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {LoginDTO} from '../models/LoginDTO';
 import {MyAuthService} from './my-auth.service';
 import {CookieService} from 'ngx-cookie-service';
+import {catchError} from 'rxjs/operators';
 import {environment} from '../../environments/environment.prod';
 
 @Injectable({
@@ -24,5 +25,8 @@ export class LoginService {
 
   public getToken(): string {
     return localStorage.getItem('auth');
+  }
+  public forgotPass( login : string): Observable<any>{
+    return this.http.get<String>('http://localhost:8080/api/forgotPass/'+login);
   }
 }
