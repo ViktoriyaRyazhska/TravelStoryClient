@@ -1,9 +1,10 @@
 <section class="intro-section">
+  <div class="intro-content">
   <img *ngIf="user.backgroundPic" class="background-pic" (click)="changeBackgroundImage()" src="{{user.backgroundPic}}">
   <div class="user-details">
     <div class="row">
       <a class="ava bg-light">
-        <img (click)="changeProfilePic()" src="{{user.profilePic}}">
+        <img *ngIf="user.profilePic" (click)="changeProfilePic()" src="{{user.profilePic}}">
         <div class="online-status">
         </div>
       </a>
@@ -12,7 +13,6 @@
           <div>
             <h3 class="name" *ngIf="user.firstName">{{user.firstName}} {{user.lastName}}</h3>
           </div>
-          <div class="text-under" *ngIf="user.hobbies">{{user.hobbies}}</div>
         </div>
       </div>
       <div class="right-details" *ngIf="!owner">
@@ -20,5 +20,6 @@
         <a href="#" class="btn btn-success">Message</a>
       </div>
     </div>
+  </div>
   </div>
 </section>

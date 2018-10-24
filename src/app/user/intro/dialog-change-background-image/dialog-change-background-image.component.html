@@ -5,8 +5,6 @@
        (hovered)="toggleHover($event)"
        (dropped)="startUpload($event)"
        [class.hovering]="isHovering">
-
-    <h3></h3>
     <p>Drag and Drop a File</p>
     <div class="file">
       <label class="file-label">
@@ -24,13 +22,10 @@
   </div>
 
   <div *ngIf="percentage | async as pct">
-
     <progress class="progress is-info"
               [value]="pct"
               max="100">
     </progress>
-
     {{ pct | number }}%
-
   </div>
 </div>

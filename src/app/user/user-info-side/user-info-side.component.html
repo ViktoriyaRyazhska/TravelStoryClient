@@ -1,14 +1,14 @@
 <div class="card my-4" *ngIf="user">
   <h5 class="card-header" translate>Info</h5>
   <div class="card-body">
-    <p>{{user.hobbies}}</p>
+    <p *ngIf="user.bio" translate>About: {{user.bio}}</p>
     <hr>
-    <p>Gender: {{user.gender}}</p>
+    <p *ngIf="user.gender" translate [translateParams]="user">Gender</p>
     <hr>
-    <p>Active posts: {{user.countOfTravelStories}}</p>
+    <p *ngIf="user.countOfTravelStories" translate>Active posts: {{user.countOfTravelStories}}</p>
     <hr>
-    <p>Birth: {{user.dateOfBirth}}</p>
+    <p *ngIf="user.dateOfBirth" translate>Birth: {{user.dateOfBirth}}</p>
     <hr>
-    <p>Location: {{user.location}}</p>
+    <p *ngIf="user.location" translate>Location: {{user.location}}</p>
   </div>
 </div>

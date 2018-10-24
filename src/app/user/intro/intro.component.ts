@@ -13,14 +13,13 @@ import {TokenService} from '../../service/token.service';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent implements OnInit {
-  user: User;
-  owner: boolean;
+  public user: User;
+  public owner: boolean;
 
-  constructor(
-    private route: ActivatedRoute,
-    private userService: UserService,
-    public dialog: MatDialog,
-    private tokenService: TokenService
+  constructor(private route: ActivatedRoute,
+              private userService: UserService,
+              public dialog: MatDialog,
+              private tokenService: TokenService
   ) {
   }
 
@@ -28,23 +27,22 @@ export class IntroComponent implements OnInit {
     this.getUser();
   }
 
-  changeProfilePic() {
+  public changeProfilePic() {
     this.dialog.open(DialogChangeProfilePicComponent, {
       height: '430px',
       width: '500px',
     });
   }
 
-  changeBackgroundImage() {
+  public changeBackgroundImage() {
     this.dialog.open(DialogChangeBackgroundImageComponent, {
       height: '430px',
       width: '500px',
     });
   }
 
-  getUser(): void {
+  public getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log('user id: ' + id);
     this.userService.getUser(id)
       .subscribe(user => {
         this.user = user;

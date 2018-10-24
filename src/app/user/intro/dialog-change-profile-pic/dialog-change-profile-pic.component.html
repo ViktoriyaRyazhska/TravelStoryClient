@@ -1,12 +1,10 @@
-<h2 mat-dialog-title>Change profile picture</h2>
+<h5 mat-dialog-title>Change profile picture</h5>
 <div class="content">
   <div class="dropzone"
        appDropZone
        (hovered)="toggleHover($event)"
        (dropped)="startUpload($event)"
        [class.hovering]="isHovering">
-
-    <h3></h3>
     <p>Drag and Drop a File</p>
     <div class="file">
       <label class="file-label">
@@ -24,13 +22,10 @@
   </div>
 
   <div *ngIf="percentage | async as pct">
-
     <progress class="progress is-info"
               [value]="pct"
               max="100">
     </progress>
-
     {{ pct | number }}%
-
   </div>
 </div>

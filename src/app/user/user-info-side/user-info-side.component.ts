@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {UserService} from '../../service/user.service';
-import {TokenService} from '../../service/token.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./user-info-side.component.scss']
 })
 export class UserInfoSideComponent implements OnInit {
-  user: User;
+ public user: User;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute) {

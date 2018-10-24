@@ -5,7 +5,7 @@
   "Logout": "вийти",
   "Search": "Пошук",
   "Info": "Деталі",
-  "Gender": "Стать",
+  "Gender": "{{gender}}",
   "Follow": "Підписатись",
   "Message": "Повідомлення",
   "Add new story": "Нова історія",

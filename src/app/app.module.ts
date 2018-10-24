@@ -28,7 +28,8 @@ import {environment} from '../environments/environment.prod';
 import {AngularFireModule} from '@angular/fire';
 import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pipe';
 import {DropZoneDirective} from './user/drop-zone.directive';
-
+import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
+import {NgxLoadingModule} from 'ngx-loading';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

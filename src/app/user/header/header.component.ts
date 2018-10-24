@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
-import {User} from '../../models/User';
 import {TranslateService} from '@ngx-translate/core';
 import {TokenService} from '../../service/token.service';
 
@@ -11,9 +10,9 @@ import {TokenService} from '../../service/token.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public user: User;
-  lang: string;
-  meId: number;
+
+  public meId: number;
+  private lang: string;
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
@@ -25,14 +24,12 @@ export class HeaderComponent implements OnInit {
     this.meId = this.tokenService.getUserId();
   }
 
-  switchLanguage(lang: string) {
-    console.log('Switch to language: ' + lang);
+   switchLanguage(lang: string) {
     this.userService.setPreferedLang(lang);
     this.translate.use(lang);
   }
 
-
-  onChosenLang(): string {
+   onChosenLang(): string {
     this.lang = this.userService.getPreferedLang();
     if (this.lang === 'en') {
       return 'en';
@@ -40,9 +37,7 @@ export class HeaderComponent implements OnInit {
     if (this.translate.getBrowserLang() === 'en') {
       return 'en';
     }
-    return 'ua';
+    return 'uk';
   }
-
-
 }
 
