@@ -24,12 +24,12 @@ export class HeaderComponent implements OnInit {
     this.meId = this.tokenService.getUserId();
   }
 
-  private switchLanguage(lang: string) {
+  public switchLanguage(lang: string) {
     this.userService.setPreferedLang(lang);
     this.translate.use(lang);
   }
 
-  private onChosenLang(): string {
+  public onChosenLang(): string {
     this.lang = this.userService.getPreferedLang();
     if (this.lang === 'en') {
       return 'en';

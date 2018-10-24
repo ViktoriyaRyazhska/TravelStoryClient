@@ -13,24 +13,17 @@ import {PagableUserSearch} from '../../models/PagableUserSearch';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  countOfSquirrels: number;
 
   constructor(public dialog: MatDialog,
   ) {
   }
 
   ngOnInit() {
-    this.countOfSquirrels = 0;
   }
 
   openDialog(): void {
-    this.countOfSquirrels++;
-
     const dialogRef = this.dialog.open(SearchComponentDialog, {
-      width: '600px',
-      data: {
-        'countOfSquirrels': this.countOfSquirrels
-      }
+      width: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -55,7 +48,7 @@ export class SearchComponentDialog implements OnInit {
   users: UserSearchDTO[];
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data2: any, public dialogRef: MatDialogRef<SearchComponent>, private userService: UserService) {
+  constructor(public dialogRef: MatDialogRef<SearchComponent>, private userService: UserService) {
   }
 
   search(term: string): void {
@@ -78,7 +71,9 @@ export class SearchComponentDialog implements OnInit {
   }
 
   getMore() {
-    if (this.finished) return;
+    if (this.finished) {
+      return;
+    }
     this.page++;
     this.userService.searchUsers(this.term, this.page, this.pageSize).subscribe(data => {
       this.users = this.users.concat(data.content);
