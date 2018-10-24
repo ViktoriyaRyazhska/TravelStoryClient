@@ -24,12 +24,13 @@ export class HeaderComponent implements OnInit {
     this.meId = this.tokenService.getUserId();
   }
 
-   switchLanguage(lang: string) {
+  public switchLanguage(lang: string) {
     this.userService.setPreferedLang(lang);
     this.translate.use(lang);
   }
 
-   onChosenLang(): string {
+
+  public onChosenLang(): string {
     this.lang = this.userService.getPreferedLang();
     if (this.lang === 'en') {
       return 'en';
@@ -38,6 +39,10 @@ export class HeaderComponent implements OnInit {
       return 'en';
     }
     return 'uk';
+  }
+
+  public logout() {
+    this.tokenService.clearAccessToken();
   }
 }
 

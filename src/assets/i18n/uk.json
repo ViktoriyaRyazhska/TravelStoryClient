@@ -5,14 +5,26 @@
   "Logout": "вийти",
   "Search": "Пошук",
   "Info": "Деталі",
-  "Gender": "{{gender}}",
+  "CurUserGender": "{{gender}}",
   "Follow": "Підписатись",
   "Message": "Повідомлення",
   "Add new story": "Нова історія",
   "Gallery": "Галерея",
   "Follows": "Підписки",
+  "Followers": "Підписники",
   "Places": "Місця",
   "Language": "Мова",
-  "Login": "вхід"
+  "Login": "вхід",
+  "Birth": "День народження: {{dateOfBirth}}",
+  "About": "{{bio}}",
+  "ChangeBackgroundImage": "Зміна фонового зображення",
+  "ChangeProfilePic": "Зміна профільного зображення",
+  "DragAndDropAFile": "Перетягніть зображення сюди",
+  "OrChooseAFile":"або виберіть...",
+  "UserDetails": "Деталі користувача",
+  "AccountDetails": "Аккаунт",
+  "Submit": "Зберегти",
+  "AboutYourself":"Розкажіть про себе"
+
 }
 

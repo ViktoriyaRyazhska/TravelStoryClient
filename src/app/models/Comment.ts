@@ -1,15 +1,17 @@
 export class Comment {
   id: number;
-  userName: string;
-  massage: string;
-  createdTime: string;
-  userAvatarUrl: string;
+  userId: number;
+  travelStoryId: number;
+  mediaId: number;
+  userFirstName: string;
+  userLastName: string;
+  userProfilePic: string;
+  commentMassage: string;
+  createdTime: Date;
 
-  constructor(userName: string, massage: string, createdTime: string, userAvatarUrl: string) {
-    this.userName = userName;
-    this.massage = massage;
-    this.createdTime = createdTime;
-    this.userAvatarUrl = userAvatarUrl;
+
+
+  constructor() {
   }
 }
 

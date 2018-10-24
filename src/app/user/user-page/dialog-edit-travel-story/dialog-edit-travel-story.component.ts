@@ -51,6 +51,7 @@ export class DialogEditTravelStoryComponent implements OnInit {
     this.travelStory.media = this.medias;
     this.travelStory.userId = 1;
     this.travelStoryService.editTravelStory(this.travelStory).subscribe();
+    location.reload(true);
   }
 
   uploadBackgroundPic() {

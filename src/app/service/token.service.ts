@@ -36,5 +36,9 @@ export class TokenService {
     }
   }
 
+  public clearAccessToken() {
+    localStorage.removeItem('auth');
+  }
+
 
 }

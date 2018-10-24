@@ -163,14 +163,14 @@ export class SettingsPageComponent implements OnInit {
       matching_passwords: this.matching_passwords_group,
       terms: new FormControl(false, Validators.pattern('true'))
     });
-
   }
 
   onSubmitAccountDetails(value) {
     console.log(value);
   }
 
-  onSubmitUserDetails() {
+  onSubmitUserDetails(value) {
+    console.log(value);
     this.userService.updateSettings(this.user).subscribe(value1 => console.log(value1));
   }
 }

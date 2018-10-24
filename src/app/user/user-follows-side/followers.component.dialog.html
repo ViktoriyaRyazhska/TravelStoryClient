@@ -1,0 +1,23 @@
+<div *ngIf="followers">
+  <mat-card-title><h1 style="text-align: center">
+    <i class="material-icons">
+      face
+    </i>{{followersNumber}}
+
+    <span translate>Followers</span> </h1></mat-card-title>
+</div>
+
+<div style="overflow-y: scroll; height: 300px;" appScrollable (scrollPosition)="scrollHandler($event)">
+  <mat-card *ngFor="let follower of followers">
+    <mat-card-header>
+      <mat-card-title-group>
+        <a href="/user/{{follower.id}}">
+          <img mat-card-lg-image src="{{follower.profilePic}}"/> </a>
+        <h3><b> {{follower.firstName}} {{follower.lastName}}</b></h3>
+      </mat-card-title-group>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+
+

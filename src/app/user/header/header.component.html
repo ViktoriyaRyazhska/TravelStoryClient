@@ -8,10 +8,10 @@
     <div ngStyle="" class="collapse navbar-collapse" id="navbarResponsive">
       <app-search></app-search>
       <div id="language-switcher" class="lang-switcher clearfix">
-        <div class="lang-switcher-i uk" [ngClass]="{'selected':onChosenLang()==='uk'}">
+        <div class="lang-switcher-i uk" style="cursor: pointer" [ngClass]="{'selected':onChosenLang()==='uk'}">
           <a (click)="switchLanguage('uk')">UK</a>
         </div>
-        <div class="lang-switcher-i en" [ngClass]="{'selected':onChosenLang()==='en'}">
+        <div class="lang-switcher-i en" style="cursor: pointer" [ngClass]="{'selected':onChosenLang()==='en'}">
           <a (click)="switchLanguage('en')">EN</a>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <a class="nav-link" routerLink="/settings" translate>Settings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login" translate>Logout</a>
+          <a class="nav-link" routerLink="/login" (click)="logout()" translate>Logout</a>
         </li>
       </ul>
     </div>
