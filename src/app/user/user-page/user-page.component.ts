@@ -50,12 +50,6 @@ export class UserPageComponent implements OnInit {
   }
 
   getTravelStories(user: User): void {
-    // const id = +this.route.snapshot.paramMap.get('id');
-    // this.travelStoryService.getTravelStoriesByUser(id).subscribe((travelStories: TravelStory[]) => {
-    //     this.travelStories = travelStories;
-    //     debugger;
-    //   }
-    // );
     this.travelStoryService.getTravelStoriesByUser(user.id).subscribe((travelStories) => {
       this.travelStories=travelStories;
     });

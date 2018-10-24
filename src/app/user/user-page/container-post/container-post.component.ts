@@ -20,4 +20,5 @@ export class ContainerPostComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

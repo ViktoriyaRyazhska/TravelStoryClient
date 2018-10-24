@@ -11,8 +11,41 @@
             <label for="description">description</label>
             <input type="text" id="description" class="form-control" [(ngModel)]="travelStory.description" [ngModelOptions]="{standalone: true}">
           </div>
-          <div class="row">
-            <input type="file" accept="image/*" (change)="changeListener($event)">
+          <h2 mat-dialog-title></h2>
+          <div class="content">
+            <div class="dropzone"
+                 appDropZone
+                 (hovered)="toggleHover($event)"
+                 (dropped)="startUpload($event)"
+                 [class.hovering]="isHovering">
+
+              <h3></h3>
+              <p>Drag and Drop a File</p>
+              <div class="file">
+                <label class="file-label">
+                  <input type="file" (change)="startUpload($event.target.files)">
+                  <span class="file-cta">
+    <span class="file-icon">
+      <i class="fa fa-upload"></i>
+    </span>
+    <span class="file-label">
+      or choose a file...
+    </span>
+  </span>
+                </label>
+              </div>
+            </div>
+
+            <div *ngIf="percentage | async as pct">
+
+              <progress class="progress is-info"
+                        [value]="pct"
+                        max="100">
+              </progress>
+
+              {{ pct | number }}%
+
+            </div>
           </div>
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>

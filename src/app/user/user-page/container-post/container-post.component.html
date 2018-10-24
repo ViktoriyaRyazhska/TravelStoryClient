@@ -4,7 +4,7 @@
     </mat-card-title>
     <mat-card-subtitle>{{user.firstName + ' ' + user.lastName}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{travelStory.media[0].url}}" alt="sorry, check connection... =)">
+  <img mat-card-image src="{{travelStory.media[travelStory.media.length-1].url}}" alt="sorry, check connection... =)">
   <mat-card-content>
     <p>{{travelStory.description}}</p>
   </mat-card-content>

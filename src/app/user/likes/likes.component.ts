@@ -24,7 +24,7 @@ export class LikesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getLikes(this.travelStory.id, this.travelStory.media[0].id);
+    this.getLikes(this.travelStory.id, 1);
     this.getLoggedUser();
     // this.loggedUserLike=new Like();
     this.loggedUserLike = this.getLikeOfUser(this.likes, this.loggedUser.id);
