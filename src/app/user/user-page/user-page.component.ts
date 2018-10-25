@@ -8,7 +8,6 @@ import {TravelStoryService} from '../../service/travel-story.service';
 import {MatDialog} from '@angular/material';
 import {DialogAddTravelStoryComponent} from './dialog-add-travel-story/dialog-add-travel-story.component';
 import {DialogEditTravelStoryComponent} from './dialog-edit-travel-story/dialog-edit-travel-story.component';
-import {MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -27,13 +26,15 @@ export class UserPageComponent implements OnInit {
     private userService: UserService,
     private translate: TranslateService,
     private travelStoryService: TravelStoryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
   }
 
   ngOnInit() {
+    this.userService.checkTokenEmpty();
     this.translate.setDefaultLang('en');
     this.getUser();
+
   }
 
   switchLanguage(language: string) {
@@ -51,23 +52,26 @@ export class UserPageComponent implements OnInit {
 
   getTravelStories(user: User): void {
     this.travelStoryService.getTravelStoriesByUser(user.id).subscribe((travelStories) => {
-      this.travelStories=travelStories;
+      this.travelStories = travelStories;
     });
   }
+
   delete(travelStory: TravelStory): void {
     this.travelStories = this.travelStories.filter(ts => ts !== travelStory);
     this.travelStoryService.deleteTravelStory(travelStory.id).subscribe();
   }
+
   addTravelStory() {
     this.dialog.open(DialogAddTravelStoryComponent, {
       height: '500px',
       width: '700px',
     });
   }
-  editTravelStory(travelStory: TravelStory){
+
+  editTravelStory(travelStory: TravelStory) {
     this.dialog.open(DialogEditTravelStoryComponent, {
       data: {
-        ts : travelStory
+        ts: travelStory
       },
       height: '500px',
       width: '700px',

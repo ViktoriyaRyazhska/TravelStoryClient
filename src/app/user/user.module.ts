@@ -7,7 +7,6 @@ import {LikesComponent} from './likes/likes.component';
 import {SearchComponent, SearchComponentDialog} from './search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
-import {FeedComponent} from './feed/feed.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ContainerPostComponent} from './user-page/container-post/container-post.component';
@@ -16,7 +15,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {UserInfoSideComponent} from './user-info-side/user-info-side.component';
 import {
-  FollowingDialogComponent, FollowersDialogComponent,
+  FollowingDialogComponent,
+  FollowersDialogComponent,
   UserFollowsSideComponent
 } from './user-follows-side/user-follows-side.component';
 import {UserGallerySideComponent} from './user-gallery-side/user-gallery-side.component';
@@ -37,7 +37,7 @@ import {ScrollableDirective} from './scrollable.directive';
 import {SettingsPageComponent} from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
-import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
+import {DialogEditTravelStoryComponent} from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
 import {NgxLoadingModule} from 'ngx-loading';
 
@@ -82,7 +82,6 @@ import {NgxLoadingModule} from 'ngx-loading';
     IntroComponent,
     SearchComponent,
     UserPageComponent,
-    FeedComponent,
     ContainerPostComponent,
     LikesComponent,
     CommentsComponent,

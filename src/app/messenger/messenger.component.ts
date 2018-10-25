@@ -4,6 +4,7 @@ import {Chat} from "./model/Chat";
 import {MessengerService} from "./services/messenger.service";
 import {MessageWebSocketsService} from "./services/message-web-sockets.service";
 import * as Stomp from 'stompjs';
+import {UserService} from '../service/user.service';
 
 
 @Component({
@@ -18,11 +19,13 @@ export class MessengerComponent implements OnInit {
 
   constructor(
     private messageWebSocketService: MessageWebSocketsService,
-    private messengerService: MessengerService
+    private messengerService: MessengerService,
+    private userService: UserService
   ) {
   }
 
   ngOnInit(): void {
+    this.userService.checkTokenEmpty();
     //this.stompClient = this.messageWebSocketService.connect();
 
     this.getCurrUser();
