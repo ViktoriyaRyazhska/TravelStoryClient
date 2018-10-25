@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   public meId: number;
   private lang: string;
+  public clickedTab: string;
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
@@ -21,7 +22,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.translate.use('uk');
     this.meId = this.tokenService.getUserId();
   }
 
@@ -44,6 +44,22 @@ export class HeaderComponent implements OnInit {
 
   public logout() {
     this.tokenService.clearAccessToken();
+  }
+
+  public onClickedTab(): string {
+    if (this.clickedTab === 'me') {
+      return 'me';
+    }
+    if (this.clickedTab === 'messenger') {
+      return 'messenger';
+    }
+    if (this.clickedTab === 'settings') {
+      return 'settings';
+    }
+  }
+
+  public onClickTab(tab: string) {
+    this.clickedTab = tab;
   }
 }
 

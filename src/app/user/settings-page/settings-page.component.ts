@@ -92,6 +92,7 @@ export class SettingsPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.checkTokenEmpty();
     this.loading = true;
     this.userService.getUser(this.tokenService.getUserId())
       .subscribe(value => {

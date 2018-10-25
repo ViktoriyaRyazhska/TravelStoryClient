@@ -6,6 +6,7 @@ import {User} from '../models/User';
 import {UserDTO} from '../models/UserDTO';
 import {PagableUserSearch} from '../models/PagableUserSearch';
 import {BehaviorSubject} from 'rxjs';
+import {Router} from '@angular/router';
 
 const baseUrl = environment.apiUrl + '/api';
 const options = {headers: {'Content-Type': 'application/json'}};
@@ -23,7 +24,9 @@ export class UserService {
 
   private user = new BehaviorSubject<any>(null);
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router) {
   }
 
   public getUser(id: number): Observable<any> {
@@ -58,6 +61,12 @@ export class UserService {
 
   public getPreferedLang(): string {
     return localStorage.getItem('lang');
+  }
+
+  public checkTokenEmpty() {
+    if (localStorage.getItem('auth') === null) {
+      this.router.navigate(['/login']);
+    }
   }
 
 }
