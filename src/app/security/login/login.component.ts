@@ -6,6 +6,7 @@ import {LoginService} from '../../service/login.service';
 import {ResponseToken} from '../../models/ResponseToken';
 import {CookieService} from 'ngx-cookie-service';
 import {MyAuthService} from '../../service/my-auth.service';
+import {TokenService} from '../../service/token.service';
 
 @Component({
   selector: 'app-login',
@@ -39,10 +40,14 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private loginService: LoginService,
-              private cookie: CookieService,) {
+              private cookie: CookieService,
+              private tokenService: TokenService) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('auth') !== null) {
+      this.router.navigate(['/user/' + this.tokenService.getUserId()]);
+    }
     this.interactiveFunction();
     this.buildForm();
   }
@@ -54,7 +59,7 @@ export class LoginComponent implements OnInit {
           this.cookie.set('auth', response.accessToken);
           localStorage.setItem('auth', response.accessToken);
           this.error = false;
-          this.router.navigate(['/feed']);
+          this.router.navigate(['/user/' + this.tokenService.getUserId()]);
         }, error2 => {
           this.error = true;
         }
