@@ -4,7 +4,7 @@
   "Settings": "налаштування",
   "Logout": "вийти",
   "Search": "Пошук",
-  "Info": "Деталі",
+  "Info": "Інфо",
   "CurUserGender": "{{gender}}",
   "Follow": "Підписатись",
   "Message": "Повідомлення",
@@ -24,7 +24,11 @@
   "UserDetails": "Деталі користувача",
   "AccountDetails": "Аккаунт",
   "Submit": "Зберегти",
-  "AboutYourself":"Розкажіть про себе"
+  "AboutYourself":"Розкажіть про себе",
+  "Edit": "Редагувати",
+  "Posts": "Записів: {{countOfTravelStories}}",
+  "UserLocation": "Локація: {{location}}"
+
 
 }
 
