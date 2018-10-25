@@ -39,9 +39,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
 import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
-import { FileSizePipe } from './intro/dialog-change-profile-pic/file-size.pipe';
-import {DropZoneDirective} from './drop-zone.directive';
-import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 import {NgxLoadingModule} from 'ngx-loading';
 
 

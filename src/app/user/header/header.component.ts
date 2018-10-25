@@ -21,14 +21,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.translate.use('uk');
     this.meId = this.tokenService.getUserId();
   }
 
   public switchLanguage(lang: string) {
+    console.log(lang);
     this.userService.setPreferedLang(lang);
     this.translate.use(lang);
   }
-
 
   public onChosenLang(): string {
     this.lang = this.userService.getPreferedLang();
