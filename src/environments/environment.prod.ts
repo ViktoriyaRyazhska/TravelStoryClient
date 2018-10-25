@@ -9,4 +9,5 @@ export const environment = {
     messagingSenderId: '804778208331'
   },
   apiUrl: 'https://travelstory-server.herokuapp.com'
-}
+};
+

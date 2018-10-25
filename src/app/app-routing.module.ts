@@ -10,7 +10,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes,
-      {useHash: false})
+      {useHash: true})
   ],
   exports: [
     RouterModule

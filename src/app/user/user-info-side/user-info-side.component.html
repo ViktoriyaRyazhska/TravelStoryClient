@@ -5,10 +5,10 @@
     <hr>
     <p *ngIf="user.gender" translate [translateParams]="user">CurUserGender</p>
     <hr>
-    <p *ngIf="user.countOfTravelStories" translate>Active posts: {{user.countOfTravelStories}}</p>
+    <p *ngIf="user.countOfTravelStories" translate [translateParams]="user">Posts</p>
     <hr>
     <p *ngIf="user.dateOfBirth" [translateParams]="user" translate>Birth</p>
     <hr>
-    <p *ngIf="user.location" translate>Location: {{user.location}}</p>
+    <p *ngIf="user.location" [translateParams]="user" translate>UserLocation</p>
   </div>
 </div>
