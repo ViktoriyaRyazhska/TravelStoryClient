@@ -26,7 +26,8 @@ export class LoginService {
   public getToken(): string {
     return localStorage.getItem('auth');
   }
-  public forgotPass( login : string): Observable<any>{
-    return this.http.get<String>('http://localhost:8080/api/forgotPass/'+login);
+
+  public forgotPass(login: string): Observable<any> {
+    return this.http.get<String>(environment.apiUrl + '/api/forgotPass/' + login);
   }
 }

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {FormGroup, FormBuilder, Validators, NgForm} from '@angular/forms';
 import {LoginDTO} from '../../models/LoginDTO';
 import {LoginService} from '../../service/login.service';
 import {ResponseToken} from '../../models/ResponseToken';
 import {CookieService} from 'ngx-cookie-service';
 import {MyAuthService} from '../../service/my-auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -38,19 +39,20 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private loginService: LoginService,
-              private cookie: CookieService, ) {
+              private cookie: CookieService,) {
   }
 
   ngOnInit() {
     this.interactiveFunction();
     this.buildForm();
   }
+
   login = () => {
     this.loginDTO = this.loginForm.value;
     this.loginService.signIn(this.loginDTO)
       .subscribe((response: ResponseToken) => {
           this.cookie.set('auth', response.accessToken);
-        localStorage.setItem('auth', response.accessToken);
+          localStorage.setItem('auth', response.accessToken);
           this.error = false;
           this.router.navigate(['/feed']);
         }, error2 => {
@@ -58,7 +60,7 @@ export class LoginComponent implements OnInit {
         }
       );
     console.log('message');
-  }
+  };
 
   buildForm() {
     this.loginForm = this.fb.group({
@@ -138,7 +140,8 @@ export class LoginComponent implements OnInit {
       userForms.classList.add('show-signup');
     }, false);
   }
-  onSubmit(form: NgForm){
+
+  onSubmit(form: NgForm) {
     this.email = form.value.email;
     this.loginService.forgotPass(this.email).subscribe();
   }
