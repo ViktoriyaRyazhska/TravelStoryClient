@@ -4,7 +4,7 @@ import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {IntroComponent} from './intro/intro.component';
 import {LikesComponent} from './likes/likes.component';
-import {SearchComponent, SearchComponentDialog} from './search/search.component';
+import {SearchComponent, SearchDialogComponent} from './search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
@@ -71,7 +71,7 @@ import {NgxLoadingModule} from 'ngx-loading';
     NgxLoadingModule.forRoot({}),
   ],
   entryComponents: [
-    SearchComponentDialog,
+    SearchDialogComponent,
     FollowersDialogComponent,
     FollowingDialogComponent
   ],
@@ -90,7 +90,7 @@ import {NgxLoadingModule} from 'ngx-loading';
     UserFollowsSideComponent,
     UserGallerySideComponent,
     UserPlacesComponent,
-    SearchComponentDialog,
+    SearchDialogComponent,
     FollowersDialogComponent,
     FollowingDialogComponent,
     ScrollableDirective,
