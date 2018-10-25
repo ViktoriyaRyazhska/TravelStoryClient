@@ -31,6 +31,7 @@ export class UserPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.checkTokenEmpty();
     this.translate.setDefaultLang('en');
     this.getUser();
 
