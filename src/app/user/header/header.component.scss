@@ -20,8 +20,11 @@ app-search {
   pointer-events: none;
 }
 
-.lang-switcher-i {
+.lang-switcher-i, .nav-link {
   cursor: pointer;
 }
 
-
+.selected2 {
+  color: #cc6e39;
+  //pointer-events: none;
+}
