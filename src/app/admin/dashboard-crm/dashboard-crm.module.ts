@@ -4,11 +4,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {DashboardCrmComponent} from './dashboard-crm.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatCardModule} from '@angular/material/card';
-import {DashboardWidgetModule} from '../../dashboard-widget/dashboard-widget.module';
-import {BarGraphComponent} from '../../dashboard-widget/bar-graph/bar-graph.component';
+import {DashboardWidgetModule} from '../dashboard-widget/dashboard-widget.module';
+import {LineGraphComponent} from '../dashboard-widget/line-graph/line-graph.component';
 
 export const appRoutes: Routes = [
-  {path: '', component: DashboardCrmComponent},
+  {path: 'admin/dashboard', component: DashboardCrmComponent},
 ];
 
 @NgModule({
@@ -19,7 +19,7 @@ export const appRoutes: Routes = [
     MatCardModule,
     DashboardWidgetModule
   ],
-  declarations: [DashboardCrmComponent, BarGraphComponent],
+  declarations: [DashboardCrmComponent, LineGraphComponent],
   exports: []
 })
 export class DashboardCrmModule {

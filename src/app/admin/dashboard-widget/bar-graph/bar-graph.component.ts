@@ -1,20 +1,30 @@
 import {Component, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
+import {ActivityService} from '../../table/feature-table/activity.service';
+import {ActivityCard} from '../../table/feature-table/activityCard';
 
 @Component({
-  selector: 'app-bar-graph',
+  selector: 'cdk-bar-graph',
   templateUrl: './bar-graph.component.html',
   styleUrls: ['./bar-graph.component.scss']
 })
 export class BarGraphComponent implements OnInit {
+  activityCard: ActivityCard;
 
-  constructor() {
+  constructor(private service: ActivityService) {
+  }
+
+  getActivity(): void {
+    this.service.getActivity()
+      .subscribe(data => {
+        this.activityCard = data;
+        this.createBarGraph();
+        console.log(this.activityCard.likes);
+      });
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.createBarGraph();
-    }, 500);
+    this.getActivity();
   }
 
   createBarGraph() {
@@ -26,28 +36,28 @@ export class BarGraphComponent implements OnInit {
           {
             backgroundColor: 'rgba(92, 107, 192, .7)',
             borderColor: 'rgba(92, 107, 192, .7)',
-            data: [80, 88, 77, 93, 82, 100, 70, 67, 78, 99, 78, 99],
+            data: JSON.parse(this.activityCard.likes),
             label: 'Likes',
             fill: 'false'
           },
           {
             backgroundColor: 'rgba(66, 165, 245, .7)',
             borderColor: 'rgba(69, 39, 160, .7)',
-            data: [80, 88, 67, 95, 76, 60, 67, 95, 95, 66, 78, 99],
+            data: JSON.parse(this.activityCard.comments),
             label: 'Comments',
             fill: 'false'
           },
           {
             backgroundColor: 'rgba(38, 166, 154, .7)',
             borderColor: 'rgba(69, 39, 160, .7)',
-            data: [60, 88, 70, 67, 27, 83, 78, 88, 95, 60, 78, 99],
+            data: JSON.parse(this.activityCard.travelStories),
             label: 'TravelStories',
             fill: 'false'
           },
           {
             backgroundColor: 'rgba(102, 187, 106, .7)',
             borderColor: 'rgba(255, 99, 132)',
-            data: [75, 55, 55, 95, 66, 88, 70, 78, 77, 100, 78, 101],
+            data: JSON.parse(this.activityCard.users),
             label: 'Users',
             fill: 'false'
           }

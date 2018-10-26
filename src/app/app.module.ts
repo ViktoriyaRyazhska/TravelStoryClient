@@ -30,10 +30,10 @@ import {MatSidenavModule} from '@angular/material';
 // import {MatSidenav} from '@angular/material';
 import {MatToolbarModule} from '@angular/material';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
-import {DashcardComponent} from './dashboard-widget/dashcard/dashcard.component';
-import {BarGraphComponent} from './dashboard-widget/bar-graph/bar-graph.component';
 import {MatIconModule} from '@angular/material';
 import {Ng2OdometerModule} from 'ng2-odometer';
+import {DashcardComponent} from './admin/dashboard-widget/dashcard/dashcard.component';
+import {BarGraphComponent} from './admin/dashboard-widget/bar-graph/bar-graph.component';
 
 // import { TableComponent } from './table/table.component';
 export function HttpLoaderFactory(http: HttpClient) {

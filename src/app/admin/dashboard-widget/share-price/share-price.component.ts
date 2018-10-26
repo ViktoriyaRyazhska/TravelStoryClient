@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivityService} from '../../table/feature-table/activity.service';
+import {ActivityCard} from '../../table/feature-table/activityCard';
 
 declare const Chart;
 
@@ -8,19 +10,19 @@ declare const Chart;
   styleUrls: ['./share-price.component.scss']
 })
 export class SharePriceComponent implements OnInit {
-
+  activityCard: ActivityCard;
 
   public data = {
-    labels: ['A', 'B', 'C', 'D', 'E', 'F'],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [{
       label: 'My First dataset',
       fillColor: 'rgba(255, 255, 255, 1)',
-      strokeColor: 'rgba(255, 255, 255, 1)\',',
-      pointColor: 'rgba(255, 255, 255, 1)\'',
-      pointStrokeColor: 'rgba(255, 255, 255, 1)\'',
-      pointHighlightFill: 'rgba(255, 255, 255, 1)\'',
+      strokeColor: 'rgba(255, 255, 255, 1)',
+      pointColor: 'rgba(255, 255, 255, 1)',
+      pointStrokeColor: 'rgba(255, 255, 255, 1)',
+      pointHighlightFill: 'rgba(255, 255, 255, 1)',
       pointHighlightStroke: 'rgba(220,220,220,1)',
-      data: [25, 29, 58, 50, 42, 65]
+      data: [41, 29, 53, 27, 53, 53, 92, 106, 66, 44, 40, 79]
     }]
   };
 
@@ -57,38 +59,36 @@ export class SharePriceComponent implements OnInit {
     },
     title: {
       display: true,
-      text: 'Live Share Value',
+      text: 'TravelStory creating month statistic',
       fontColor: 'white',
       fontSize: 18
     }
   };
 
-  constructor() {
+  constructor(private service: ActivityService) {
   }
 
-  getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
+  getActivity(): void {
+    this.service.getActivity()
+      .subscribe(data => {
+        this.activityCard = data;
+        this.drawGraph();
+      });
   }
 
   ngOnInit() {
+    this.getActivity();
     setTimeout(() => {
       this.drawGraph();
     }, 500);
   }
 
   drawGraph() {
-    let graph = new Chart('share-price', {
+    const graph = new Chart('share-price', {
       type: 'line',
       data: this.data,
       options: this.options
     });
-    setInterval(() => {
-      graph.data.datasets[0].data.map((p) => {
-        p = this.getRandomInt(20, 60);
-      });
-    }, 2500);
-
-
   }
 
 }

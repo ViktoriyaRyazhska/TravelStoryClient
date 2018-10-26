@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Chart} from 'chart.js';
+import {ActivityCard} from '../../table/feature-table/activityCard';
+import {ActivityService} from '../../table/feature-table/activity.service';
 
 @Component({
   selector: 'cdk-line-graph',
@@ -7,14 +9,21 @@ import {Chart} from 'chart.js';
   styleUrls: ['./line-graph.component.scss']
 })
 export class LineGraphComponent implements OnInit {
+  activityCard: ActivityCard;
 
-  constructor() {
+  constructor(private service: ActivityService) {
+  }
+
+  getActivity(): void {
+    this.service.getActivity()
+      .subscribe(data => {
+        this.activityCard = data;
+        this.createLineChart();
+      });
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.createLineChart();
-    }, 500);
+    this.getActivity();
   }
 
   createLineChart() {
@@ -25,7 +34,7 @@ export class LineGraphComponent implements OnInit {
         datasets: [{
           'backgroundColor': 'rgba(92, 107, 192, 0.36)',
           'borderColor': 'rgba(92, 107, 192,.5)',
-          'data': [14, 14, 14, 14, 14, 14, 14, 14, 28, 14, 28, 14],
+          'data': JSON.parse(this.activityCard.users),
           'label': 'Dataset',
           'fill': 'start'
         }]

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthComponent} from './auth/auth.component';
-
+import {AdminComponent} from './admin.component';
 const adminRoutes: Routes = [
  // {path: 'admin', component: AdminComponent},
   {
