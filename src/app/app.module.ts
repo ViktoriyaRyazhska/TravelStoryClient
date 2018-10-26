@@ -23,17 +23,16 @@ import {AngularFireModule} from '@angular/fire';
 import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pipe';
 import {DropZoneDirective} from './user/drop-zone.directive';
 import {DialogChangeBackgroundImageComponent} from './user/intro/dialog-change-background-image/dialog-change-background-image.component';
-import { AuthComponent } from './admin/auth/auth.component';
-import { CoreModule } from './core/core.module';
-import { DashboardCrmComponent } from './admin/dashboard-crm/dashboard-crm.component';
+import {AuthComponent} from './admin/auth/auth.component';
+import {CoreModule} from './core/core.module';
 import {MatSidenavModule} from '@angular/material';
 // import {MatSidenav} from '@angular/material';
 import {MatToolbarModule} from '@angular/material';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {MatIconModule} from '@angular/material';
 import {Ng2OdometerModule} from 'ng2-odometer';
-import {DashcardComponent} from './admin/dashboard-widget/dashcard/dashcard.component';
-import {BarGraphComponent} from './admin/dashboard-widget/bar-graph/bar-graph.component';
+import {DashboardCrmModule} from './admin/dashboard-crm/dashboard-crm.module';
+import {DashboardWidgetModule} from './admin/dashboard-widget/dashboard-widget.module';
 
 // import { TableComponent } from './table/table.component';
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,11 +46,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FileSizePipe,
     DropZoneDirective,
     AuthComponent,
-    DashboardCrmComponent,
-    DashcardComponent,
-    BarGraphComponent,
     // MatSidenav,
-   // TableComponent,
+    // TableComponent,
   ],
   imports: [
     MatCardModule,
@@ -72,6 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatToolbarModule,
     PerfectScrollbarModule,
     Ng2OdometerModule,
+    DashboardCrmModule,
+    DashboardWidgetModule,
     MatIconModule,
     TranslateModule.forRoot({
       loader: {

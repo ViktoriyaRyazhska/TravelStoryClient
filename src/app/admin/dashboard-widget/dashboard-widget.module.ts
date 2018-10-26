@@ -15,8 +15,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {Ng2OdometerModule} from 'ng2-odometer';
 import {SharePriceComponent} from './share-price/share-price.component';
-import {RoundProgressbarComponent} from './round-progressbar/round-progressbar.component';
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 @NgModule({
   imports: [
@@ -28,7 +26,6 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     MatToolbarModule,
     MatListModule,
     Ng2OdometerModule,
-    RoundProgressModule,
     MatMenuModule,
     MatChipsModule,
     MatProgressBarModule,
@@ -40,14 +37,12 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     LineGraphComponent,
     BarGraphComponent,
     SharePriceComponent,
-    RoundProgressbarComponent
   ],
   exports: [
     DashcardComponent,
     LineGraphComponent,
     BarGraphComponent,
     SharePriceComponent,
-    RoundProgressbarComponent
   ]
 })
 export class DashboardWidgetModule {
