@@ -26,5 +26,18 @@ app-search {
 
 .selected2 {
   color: #cc6e39;
-  //pointer-events: none;
+  //pointer-events: none;s
+}
+
+
+.navbar-nav {
+  margin:0;
+}
+.navbar-nav>li {
+  float:none;
+  display:inline-block;
+}
+.navbar-nav>li>a {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
