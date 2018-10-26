@@ -1,10 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
 import {TravelStory} from '../../models/TravelStory';
-import {TRAVELSTORYS} from './TRAVELSTORYS';
 import {TranslateService} from '@ngx-translate/core';
+import {TravelStoryService} from '../../service/travel-story.service';
+import {MatDialog} from '@angular/material';
+import {DialogAddTravelStoryComponent} from './dialog-add-travel-story/dialog-add-travel-story.component';
+import {DialogEditTravelStoryComponent} from './dialog-edit-travel-story/dialog-edit-travel-story.component';
+import {MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
+
 
 @Component({
   selector: 'app-user-page',
@@ -15,18 +20,20 @@ import {TranslateService} from '@ngx-translate/core';
 export class UserPageComponent implements OnInit {
   user: User;
   travelStories: TravelStory[];
+  travelStory: TravelStory;
 
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private travelStoryService: TravelStoryService,
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit() {
     this.translate.setDefaultLang('en');
     this.getUser();
-    this.getTravelStories();
   }
 
   switchLanguage(language: string) {
@@ -36,11 +43,34 @@ export class UserPageComponent implements OnInit {
   getUser(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUser(id)
-      .subscribe(user => this.user = user);
+      .subscribe(user => {
+        this.user = user;
+        this.getTravelStories(user);
+      });
   }
 
-  getTravelStories() {
-    return this.travelStories = TRAVELSTORYS;
+  getTravelStories(user: User): void {
+    this.travelStoryService.getTravelStoriesByUser(user.id).subscribe((travelStories) => {
+      this.travelStories=travelStories;
+    });
   }
-
+  delete(travelStory: TravelStory): void {
+    this.travelStories = this.travelStories.filter(ts => ts !== travelStory);
+    this.travelStoryService.deleteTravelStory(travelStory.id).subscribe();
+  }
+  addTravelStory() {
+    this.dialog.open(DialogAddTravelStoryComponent, {
+      height: '500px',
+      width: '700px',
+    });
+  }
+  editTravelStory(travelStory: TravelStory){
+    this.dialog.open(DialogEditTravelStoryComponent, {
+      data: {
+        ts : travelStory
+      },
+      height: '500px',
+      width: '700px',
+    });
+  }
 }

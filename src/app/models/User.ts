@@ -12,7 +12,7 @@ export class User {
   gender: string;
   backgroundPic: string;
   location: string;
-  hobbies: string;
+  bio: string;
   countOfTravelStories: number;
 
 }

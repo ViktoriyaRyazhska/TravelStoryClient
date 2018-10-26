@@ -4,7 +4,7 @@ import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {IntroComponent} from './intro/intro.component';
 import {LikesComponent} from './likes/likes.component';
-import {SearchComponent} from './search/search.component';
+import {SearchComponent, SearchComponentDialog} from './search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
@@ -14,31 +14,32 @@ import {ContainerPostComponent} from './user-page/container-post/container-post.
 import {CommentsComponent} from './comments/comments.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
-import { UserInfoSideComponent } from './user-info-side/user-info-side.component';
-import { UserFollowsSideComponent } from './user-follows-side/user-follows-side.component';
-import { UserGallerySideComponent } from './user-gallery-side/user-gallery-side.component';
-import { LoginComponent } from '../security/login/login.component';
-import { RegistrationComponent } from '../security/registration/registration.component';
+import {UserInfoSideComponent} from './user-info-side/user-info-side.component';
 import {
-  MatButtonModule,
+  FollowingDialogComponent, FollowersDialogComponent,
+  UserFollowsSideComponent
+} from './user-follows-side/user-follows-side.component';
+import {UserGallerySideComponent} from './user-gallery-side/user-gallery-side.component';
+import {
+  MatBadgeModule,
+  MatButtonModule, MatFormFieldModule, MatInputModule,
   MatButtonToggleModule,
-  MatCardModule,
+  MatCheckboxModule,
   MatDatepickerModule,
-  MatFormFieldModule,
-  MatInputModule,
   MatSelectModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule, MatCardModule} from '@angular/material';
 import {UserComponent} from './user.component';
-import { UserPlacesComponent } from './user-places/user-places.component';
-import { SettingsPageComponent } from './settings-page/settings-page.component';
+import {UserPlacesComponent} from './user-places/user-places.component';
+import {ScrollableDirective} from './scrollable.directive';
+import {SettingsPageComponent} from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
-import { FileSizePipe } from './intro/dialog-change-profile-pic/file-size.pipe';
-import {DropZoneDirective} from './drop-zone.directive';
+import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
+import {NgxLoadingModule} from 'ngx-loading';
 
 
 @NgModule({
@@ -55,15 +56,24 @@ import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-backgr
     MatInputModule,
     MatFormFieldModule,
     MatButtonToggleModule,
+    MatCheckboxModule,
     MatToolbarModule,
     HttpClientModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatBadgeModule,
     MatSidenavModule,
     ReactiveFormsModule,
     MatTabsModule,
     MatSelectModule,
     MatDatepickerModule,
     TranslateModule,
+    NgxLoadingModule.forRoot({}),
+  ],
+  entryComponents: [
+    SearchComponentDialog,
+    FollowersDialogComponent,
+    FollowingDialogComponent
   ],
   declarations: [
     UserComponent,
@@ -80,7 +90,13 @@ import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-backgr
     UserFollowsSideComponent,
     UserGallerySideComponent,
     UserPlacesComponent,
+    SearchComponentDialog,
+    FollowersDialogComponent,
+    FollowingDialogComponent,
+    ScrollableDirective,
+    UserPlacesComponent,
     SettingsPageComponent,
+    DialogEditTravelStoryComponent,
     UserPlacesComponent,
     DialogChangeBackgroundImageComponent
   ]

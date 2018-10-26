@@ -5,14 +5,27 @@
   "Logout": "logout",
   "Search": "Search",
   "Info": "Info",
-  "Gender": "Gender",
+  "CurUserGender": "{{gender}}",
   "Follow": "Follow",
   "Message": "Message",
   "Add new story": "Add new story",
   "Gallery": "Gallery",
   "Follows": "Follows",
+  "Followers": "Followers",
   "Places": "Places",
-  "Login": "login"
+  "Birth": "Birth: {{dateOfBirth}}",
+  "About": "{{bio}}",
+  "ChangeBackgroundImage": "Change background image",
+  "ChangeProfilePic": "Change profile picture",
+  "DragAndDropAFile": "Drag and drop an image",
+  "OrChooseAFile": "or choose a file...",
+  "UserDetails": "User details",
+  "AccountDetails": "Account",
+  "Submit": "Submit",
+  "AboutYourself":"Tell about yourself",
+  "Edit": "Edit",
+  "Posts": "Posts: {{countOfTravelStories}}",
+  "UserLocation": "Location: {{location}}"
 }
 
 

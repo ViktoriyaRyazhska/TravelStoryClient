@@ -15,6 +15,12 @@ import {MessengerModule} from './messenger/messenger.module';
 import {HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AdminComponent} from './admin/admin.component';
+import {UserComponent} from './user/user.component';
+import {DialogAddTravelStoryComponent} from './user/user-page/dialog-add-travel-story/dialog-add-travel-story.component';
+import {DialogEditTravelStoryComponent} from './user/user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
+import {DialogChangeBackgroundImageComponent} from './user/intro/dialog-change-background-image/dialog-change-background-image.component';
+
 import {SecurityModule} from './security/security.module';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
@@ -22,19 +28,7 @@ import {environment} from '../environments/environment.prod';
 import {AngularFireModule} from '@angular/fire';
 import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pipe';
 import {DropZoneDirective} from './user/drop-zone.directive';
-import {DialogChangeBackgroundImageComponent} from './user/intro/dialog-change-background-image/dialog-change-background-image.component';
-import {AuthComponent} from './admin/auth/auth.component';
-import {CoreModule} from './core/core.module';
-import {MatSidenavModule} from '@angular/material';
-// import {MatSidenav} from '@angular/material';
-import {MatToolbarModule} from '@angular/material';
-import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
-import {MatIconModule} from '@angular/material';
-import {Ng2OdometerModule} from 'ng2-odometer';
-import {DashboardCrmModule} from './admin/dashboard-crm/dashboard-crm.module';
-import {DashboardWidgetModule} from './admin/dashboard-widget/dashboard-widget.module';
 
-// import { TableComponent } from './table/table.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -43,11 +37,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     DialogChangeProfilePicComponent,
+    DialogAddTravelStoryComponent,
     FileSizePipe,
     DropZoneDirective,
-    AuthComponent,
-    // MatSidenav,
-    // TableComponent,
   ],
   imports: [
     MatCardModule,
@@ -59,18 +51,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     SecurityModule,
     MessengerModule,
-    CoreModule,
     MatNativeDateModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    PerfectScrollbarModule,
-    Ng2OdometerModule,
-    DashboardCrmModule,
-    DashboardWidgetModule,
-    MatIconModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -89,7 +73,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     CookieService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogChangeProfilePicComponent, DialogChangeBackgroundImageComponent]
+  entryComponents: [
+    DialogChangeProfilePicComponent,
+    DialogChangeBackgroundImageComponent,
+    DialogAddTravelStoryComponent,
+    DialogEditTravelStoryComponent
+  ],
 })
 export class AppModule {
 }

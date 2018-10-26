@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="user && travelStories">
   <app-intro></app-intro>
 
   <div class="row">
@@ -10,21 +10,25 @@
 
       <app-user-follows-side></app-user-follows-side>
 
-      <app-user-places></app-user-places>
-
     </div>
-
 
     <div class="col-md-8">
       <div class="col-sm-12 posts">
 
-        <!--<button type="button" class="btn btn-outline-success">Add new post</button>-->
-        <button class="btn btn-secondary" type="button">Add new story!</button>
-        <div > <mat-card class="card" *ngFor="let story of travelStories">
-          <app-container-post  [travelStory]="story" [user]="this.user"></app-container-post>
-          <app-likes [travelStory]="story">  </app-likes>
-          <!--<app-comments [travelStory]="story" [user]="this.user"> </app-comments>-->
-          </mat-card >
+        <button class="btn btn-secondary" type="button" (click)="addTravelStory()" translate>Add new story</button>
+        <div>
+          <mat-card class="card" *ngFor="let story of travelStories ">
+            <button class="btn btn-secondary" type="button" (click)="editTravelStory(story)" translate>Edit
+            </button>
+            <button class="delete" title="delete TravelStory"
+                    (click)="delete(story)">x
+            </button>
+            <app-container-post [travelStory]="story" [user]="user">
+            </app-container-post>
+            <app-likes [travelStory]="story"></app-likes>
+            <app-comments [travelStory]="story"></app-comments>
+            <!--<app-comments [travelStory]="story" [user]="this.user"> </app-comments>-->
+          </mat-card>
         </div>
       </div>
     </div>

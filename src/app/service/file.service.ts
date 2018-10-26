@@ -3,33 +3,37 @@ import {Observable} from 'rxjs';
 import {UserPicDTO} from '../models/UserPicDTO';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
+import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/storage';
+import {snapshotChanges} from '@angular/fire/database';
 
-const baseUrl = environment.apiUrl + 'api';
+const baseUrl = environment.apiUrl + '/api';
+const options = {headers: {'Content-Type': 'application/json'}};
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
 
-  constructor(private http: HttpClient) {
+  public task: AngularFireUploadTask;
+
+  constructor(private http: HttpClient,
+              private storage: AngularFireStorage) {
   }
 
-  uploadProfilePic(dto: UserPicDTO): Observable<any> {
-    console.log(dto);
-    return this.http.post(baseUrl + '/uploadProfilePic', dto, {headers: {'Content-Type': 'application/json'}});
+  public uploadProfilePic(dto: UserPicDTO): Observable<any> {
+    return this.http.post(baseUrl + '/uploadProfilePic', dto, options);
   }
 
-  resetProfilePic(id: number): Observable<any> {
-    return this.http.post(baseUrl + '/resetProfilePic', id, {headers: {'Content-Type': 'application/json'}});
+  public resetProfilePic(id: number): Observable<any> {
+    return this.http.post(baseUrl + '/resetProfilePic', id, options);
   }
 
-  resetBackgroundPic(id: number): Observable<any> {
-    return this.http.post(baseUrl + '/resetBackgroundPic', id, {headers: {'Content-Type': 'application/json'}});
+  public resetBackgroundPic(id: number): Observable<any> {
+    return this.http.post(baseUrl + '/resetBackgroundPic', id, options);
   }
 
-  uploadBackgroundPic(dto: UserPicDTO): Observable<any> {
-    return this.http.post(baseUrl + '/uploadBackgroundPic', dto, {headers: {'Content-Type': 'application/json'}});
+  public uploadBackgroundPic(dto: UserPicDTO): Observable<any> {
+    return this.http.post(baseUrl + '/uploadBackgroundPic', dto, options);
   }
-
 
 }
