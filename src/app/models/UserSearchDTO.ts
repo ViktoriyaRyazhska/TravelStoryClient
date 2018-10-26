@@ -3,4 +3,4 @@ export class UserSearchDTO {
   firstName: string;
   lastName: string;
   profilePic: string;
-  }
+}

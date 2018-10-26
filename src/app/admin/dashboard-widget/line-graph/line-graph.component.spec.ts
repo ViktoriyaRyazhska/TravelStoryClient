@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LineGraphComponent } from './line-graph.component';
+import {LineGraphComponent} from './line-graph.component';
 
 describe('LineGraphComponent', () => {
   let component: LineGraphComponent;
@@ -8,9 +8,9 @@ describe('LineGraphComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LineGraphComponent ]
+      declarations: [LineGraphComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -34,17 +34,17 @@ export class RoundProgressbarComponent implements OnInit {
   constructor(private service: UsersCardService) {
   }
 
-/*  getCards(): void {
-    this.service.getUsersCard()
-      .subscribe(data => {
-        this.userCard = data;
-        this.male = this.userCard.male;
-        this.female = this.userCard.female;
-        this.activeThisWeek = this.userCard.activeThisWeek;
-        this.averageAge = this.userCard.userAverageAge;
-        this.getOverlayStyle();
-      });
-  }*/
+  /*  getCards(): void {
+      this.service.getUsersCard()
+        .subscribe(data => {
+          this.userCard = data;
+          this.male = this.userCard.male;
+          this.female = this.userCard.female;
+          this.activeThisWeek = this.userCard.activeThisWeek;
+          this.averageAge = this.userCard.userAverageAge;
+          this.getOverlayStyle();
+        });
+    }*/
 
   ngOnInit() {
     /*this.getCards();*/

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "./model/User";
-import {Chat} from "./model/Chat";
-import {MessengerService} from "./services/messenger.service";
-import {MessageWebSocketsService} from "./services/message-web-sockets.service";
+import {User} from './model/User';
+import {Chat} from './model/Chat';
+import {MessengerService} from './services/messenger.service';
+import {MessageWebSocketsService} from './services/message-web-sockets.service';
 import * as Stomp from 'stompjs';
 
 

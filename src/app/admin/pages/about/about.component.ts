@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../table/feature-table/userService';
 import {User} from '../../table/feature-table/user';
 
@@ -9,8 +9,10 @@ import {User} from '../../table/feature-table/user';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
   users: User[];
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
     this.getUsers();

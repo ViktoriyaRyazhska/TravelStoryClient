@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FullscreenComponent } from './fullscreen.component';
+import {FullscreenComponent} from './fullscreen.component';
 
 describe('FullscreenComponent', () => {
   let component: FullscreenComponent;
@@ -8,9 +8,9 @@ describe('FullscreenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FullscreenComponent ]
+      declarations: [FullscreenComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

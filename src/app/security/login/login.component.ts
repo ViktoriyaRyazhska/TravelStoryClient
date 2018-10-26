@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {FormGroup, FormBuilder, Validators, NgForm} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {LoginDTO} from '../../models/LoginDTO';
 import {LoginService} from '../../service/login.service';
 import {ResponseToken} from '../../models/ResponseToken';
@@ -35,18 +35,6 @@ export class LoginComponent implements OnInit {
       'maxlength': 'Please enter less than 25 characters',
     }
   };
-
-  constructor(private router: Router,
-              private fb: FormBuilder,
-              private loginService: LoginService,
-              private cookie: CookieService,) {
-  }
-
-  ngOnInit() {
-    this.interactiveFunction();
-    this.buildForm();
-  }
-
   login = () => {
     this.loginDTO = this.loginForm.value;
     this.loginService.signIn(this.loginDTO)
@@ -61,6 +49,17 @@ export class LoginComponent implements OnInit {
       );
     console.log('message');
   };
+
+  constructor(private router: Router,
+              private fb: FormBuilder,
+              private loginService: LoginService,
+              private cookie: CookieService,) {
+  }
+
+  ngOnInit() {
+    this.interactiveFunction();
+    this.buildForm();
+  }
 
   buildForm() {
     this.loginForm = this.fb.group({

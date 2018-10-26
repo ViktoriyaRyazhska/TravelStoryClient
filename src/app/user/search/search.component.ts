@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {UserSearchDTO} from '../../models/UserSearchDTO';
 import {UserService} from '../../service/user.service';
 import {Observable, Subject} from 'rxjs';
@@ -39,14 +39,13 @@ export class SearchComponent implements OnInit {
 })
 export class SearchComponentDialog implements OnInit {
 
-  private searchTerms = new Subject<string>();
   page: number;
   finished = false;
   pageSize: number;
   term: string;
   data: Observable<PagableUserSearch>;
   users: UserSearchDTO[];
-
+  private searchTerms = new Subject<string>();
 
   constructor(public dialogRef: MatDialogRef<SearchComponent>, private userService: UserService) {
   }

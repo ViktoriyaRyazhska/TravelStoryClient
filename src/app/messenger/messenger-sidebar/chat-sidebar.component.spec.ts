@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ChatSidebarComponent } from './chat-sidebar.component';
+import {ChatSidebarComponent} from './chat-sidebar.component';
 
 describe('ChatSidebarComponent', () => {
   let component: ChatSidebarComponent;
@@ -8,9 +8,9 @@ describe('ChatSidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatSidebarComponent ]
+      declarations: [ChatSidebarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

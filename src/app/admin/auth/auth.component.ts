@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 
 @Component({
@@ -17,11 +17,11 @@ export class AuthComponent implements OnInit {
   matDrawerShow: boolean = true;
   sideNavMode: string = 'side';
 
-  ngOnChanges() {
-    this.visibility = this.isVisible ? 'shown' : 'hidden';
+  constructor(private media: ObservableMedia) {
   }
 
-  constructor(private media: ObservableMedia) {
+  ngOnChanges() {
+    this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
 
   ngOnInit() {

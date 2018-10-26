@@ -17,14 +17,11 @@ export class ChatListComponent implements OnInit {
   @Input() searchQuery: string = '';
   @Input() currentUser: User;
   @Input() stompClient: Stomp;
-
-  private receivedLastMessages: Observable<Stomp.Message>[] = [];
-  private subscriptions: Subscription[] = [];
-
   chats: Chat[] = [];
   friend: User;
-
   activeChatId: number;
+  private receivedLastMessages: Observable<Stomp.Message>[] = [];
+  private subscriptions: Subscription[] = [];
 
   constructor(private messageWebSocketService: MessageWebSocketsService,
               private messengerService: MessengerService,

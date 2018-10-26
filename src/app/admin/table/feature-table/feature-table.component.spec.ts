@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FeatureTableComponent } from './feature-table.component';
+import {FeatureTableComponent} from './feature-table.component';
 
 describe('FeatureTableComponent', () => {
   let component: FeatureTableComponent;
@@ -8,9 +8,9 @@ describe('FeatureTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeatureTableComponent ]
+      declarations: [FeatureTableComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

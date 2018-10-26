@@ -1,5 +1,6 @@
 <div class="contact-profile" *ngIf="currChat">
-  <img *ngIf="currChat.chatType=='PRIVATE_MESSAGES'" src="{{currChat.interlocutor.profilePic}}"/> <!--{{currChat.avatar}}-->
+  <img *ngIf="currChat.chatType=='PRIVATE_MESSAGES'" src="{{currChat.interlocutor.profilePic}}"/>
+  <!--{{currChat.avatar}}-->
   <div *ngIf="currChat.chatType!='PRIVATE_MESSAGES'">
     <div *ngIf="currChat.avatar; then profile_pic else alternative_avatar"></div>
     <ng-template #profile_pic>

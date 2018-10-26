@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RoundProgressbarComponent } from './round-progressbar.component';
+import {RoundProgressbarComponent} from './round-progressbar.component';
 
 describe('RoundProgressbarComponent', () => {
   let component: RoundProgressbarComponent;
@@ -8,9 +8,9 @@ describe('RoundProgressbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoundProgressbarComponent ]
+      declarations: [RoundProgressbarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

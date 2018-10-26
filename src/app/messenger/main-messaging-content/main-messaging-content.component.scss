@@ -5,12 +5,14 @@
   overflow: hidden;
   position: relative;
 }
+
 @media screen and (max-width: 735px) {
   .content {
     width: calc(100% - 58px);
     min-width: 300px !important;
   }
 }
+
 @media screen and (min-width: 900px) {
   .content {
     width: calc(100% - 340px);
@@ -24,18 +26,22 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 @media screen and (max-width: 735px) {
   .content .messages {
     max-height: calc(100% - 105px);
   }
 }
+
 .content .messages::-webkit-scrollbar {
   width: 8px;
   background: transparent;
 }
+
 .content .messages::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
 .content .messages ul li {
   display: inline-block;
   clear: both;
@@ -44,30 +50,37 @@
   width: calc(100% - 25px);
   font-size: 0.9em;
 }
+
 .content .messages ul li:nth-last-child(1) {
   margin-bottom: 20px;
 }
+
 .content .messages ul li.replies img {
   margin: 6px 8px 0 0;
 }
+
 .content .messages ul li.replies p {
   background: #435f7a;
   color: #f5f5f5;
 }
+
 .content .messages ul li.sent img {
   float: right;
   margin: 6px 0 0 8px;
 }
+
 .content .messages ul li.sent p {
   background: #f5f5f5;
   float: right;
 }
+
 .content .messages ul li img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   float: left;
 }
+
 .content .messages ul li p {
   display: inline-block;
   padding: 10px 15px;
@@ -75,11 +88,13 @@
   max-width: 205px;
   line-height: 130%;
 }
+
 @media screen and (min-width: 735px) {
   .content .messages ul li p {
     max-width: 300px;
   }
 }
+
 .content .message-input {
   position: absolute;
   bottom: 0;
@@ -88,8 +103,9 @@
   height: 40px;
   z-index: 99;
 }
-.content{
-  textarea{
+
+.content {
+  textarea {
     height: 40px;
     width: 90%;
     font-family: 'Montserrat', sans-serif;
@@ -102,7 +118,6 @@
   }
 }
 
-
 .content .message-input .wrap {
   background-color: #ffffff;
   position: absolute;
@@ -111,7 +126,7 @@
   height: 40px;
 }
 
-.btn-wrapper{
+.btn-wrapper {
   height: 40px;
   position: absolute;
   right: 0;
@@ -128,14 +143,17 @@
   font-size: 0.8em;
   color: #32465a;
 }
+
 @media screen and (max-width: 735px) {
   .content .message-input .wrap input {
     padding: 15px 32px 16px 8px;
   }
 }
+
 .content .message-input .wrap input:focus {
   outline: none;
 }
+
 .content .message-input .wrap .attachment {
   position: absolute;
   right: 60px;
@@ -146,15 +164,18 @@
   opacity: .5;
   cursor: pointer;
 }
+
 @media screen and (max-width: 735px) {
   .content .message-input .wrap .attachment {
     margin-top: 17px;
     right: 65px;
   }
 }
+
 .content .message-input .wrap .attachment:hover {
   opacity: 1;
 }
+
 .content .message-input .wrap button {
   float: right;
   border: none;
@@ -164,14 +185,17 @@
   background: #32465a;
   color: #f5f5f5;
 }
+
 @media screen and (max-width: 735px) {
   .content .message-input .wrap button {
     padding: 16px 0;
   }
 }
+
 .content .message-input .wrap button:hover {
   background: #435f7a;
 }
+
 .content .message-input .wrap button:focus {
   outline: none;
 }

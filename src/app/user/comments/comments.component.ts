@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Comment} from '../../models/Comment';
-import {TravelStory} from "../../models/TravelStory";
-import {CommentService} from "../../service/comment.service";
-import {TokenService} from "../../service/token.service";
-import {UserService} from "../../service/user.service";
-import {User} from "../../models/User";
+import {TravelStory} from '../../models/TravelStory';
+import {CommentService} from '../../service/comment.service';
+import {TokenService} from '../../service/token.service';
+import {UserService} from '../../service/user.service';
+import {User} from '../../models/User';
 
 
 @Component({

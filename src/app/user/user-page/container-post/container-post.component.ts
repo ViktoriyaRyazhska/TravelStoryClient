@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../../models/User";
-import {TravelStory} from "../../../models/TravelStory";
-import {Like} from '../../../models/Like';
+import {User} from '../../../models/User';
+import {TravelStory} from '../../../models/TravelStory';
 import {TravelStoryService} from '../../../service/travel-story.service';
 
 

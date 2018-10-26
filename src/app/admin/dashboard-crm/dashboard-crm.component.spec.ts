@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DashboardCrmComponent } from './dashboard-crm.component';
+import {DashboardCrmComponent} from './dashboard-crm.component';
 
 describe('DashboardCrmComponent', () => {
   let component: DashboardCrmComponent;
@@ -8,9 +8,9 @@ describe('DashboardCrmComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardCrmComponent ]
+      declarations: [DashboardCrmComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

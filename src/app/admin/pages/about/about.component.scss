@@ -8,7 +8,7 @@ mat-card {
   margin: 10px;
   .mat-card-avatar {
     width: 100px;
-    height:100px;
+    height: 100px;
   }
 }
 
@@ -24,6 +24,7 @@ mat-card {
   height: 15px;
   overflow: hidden;
 }
+
 .nav-item {
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: default;

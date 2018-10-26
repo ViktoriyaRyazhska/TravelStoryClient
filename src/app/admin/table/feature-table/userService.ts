@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, of} from 'rxjs';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {User} from './user';
 import {MessageService} from './message.service';
 
@@ -23,10 +23,11 @@ export class UserService {
   getUser(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl)
       .pipe(
-      catchError(this.handleError('getUsers', []))
-    );
+        catchError(this.handleError('getUsers', []))
+      );
   }
-  private handleError<T> (operation = 'operation', result?: T) {
+
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -39,6 +40,7 @@ export class UserService {
       return of(result as T);
     };
   }
+
   private log(message: string) {
     this.messageService.add(`UserService: ${message}`);
   }

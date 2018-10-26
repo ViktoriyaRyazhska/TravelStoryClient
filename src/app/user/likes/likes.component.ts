@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Like} from "../../models/Like";
-import {LikeService} from "../../service/like.service";
-import {User} from "../../models/User";
-import {TravelStory} from "../../models/TravelStory";
-import {UserService} from "../../service/user.service";
+import {Like} from '../../models/Like';
+import {LikeService} from '../../service/like.service';
+import {User} from '../../models/User';
+import {TravelStory} from '../../models/TravelStory';
+import {UserService} from '../../service/user.service';
 import 'rxjs/add/observable/fromEvent';
-import {TokenService} from "../../service/token.service";
+import {TokenService} from '../../service/token.service';
 
 @Component({
   selector: 'app-likes',
@@ -24,7 +24,7 @@ export class LikesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.posibilityToLike=true;
+    this.posibilityToLike = true;
     this.getLoggedUser();
     this.getLikes(this.travelStory.id, this.travelStory.media[0].id);
   }
@@ -35,7 +35,9 @@ export class LikesComponent implements OnInit {
   }
 
   like(travelStoryId: number, mediaId: number) {
-    if (this.posibilityToLike===false){return}
+    if (this.posibilityToLike === false) {
+      return;
+    }
     this.getLoggedUserLike();
 
     if (!this.likeExist()) {

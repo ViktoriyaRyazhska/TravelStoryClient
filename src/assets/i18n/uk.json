@@ -20,15 +20,13 @@
   "ChangeBackgroundImage": "Зміна фонового зображення",
   "ChangeProfilePic": "Зміна профільного зображення",
   "DragAndDropAFile": "Перетягніть зображення сюди",
-  "OrChooseAFile":"або виберіть...",
+  "OrChooseAFile": "або виберіть...",
   "UserDetails": "Деталі користувача",
   "AccountDetails": "Аккаунт",
   "Submit": "Зберегти",
-  "AboutYourself":"Розкажіть про себе",
+  "AboutYourself": "Розкажіть про себе",
   "Edit": "Редагувати",
   "Posts": "Записів: {{countOfTravelStories}}",
   "UserLocation": "Локація: {{location}}"
-
-
 }
 

@@ -4,7 +4,6 @@ import {UserPicDTO} from '../models/UserPicDTO';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment.prod';
 import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/storage';
-import {snapshotChanges} from '@angular/fire/database';
 
 const baseUrl = environment.apiUrl + '/api';
 const options = {headers: {'Content-Type': 'application/json'}};

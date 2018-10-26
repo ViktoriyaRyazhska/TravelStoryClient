@@ -1,13 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
 
-
 body, html {
   height: 100%;
 }
+
 .app-loading {
   position: relative;
   display: flex;
@@ -16,6 +15,7 @@ body, html {
   justify-content: center;
   height: 100%;
 }
+
 .app-loading .spinner {
   height: 200px;
   width: 200px;
@@ -28,6 +28,7 @@ body, html {
   right: 0;
   margin: auto;
 }
+
 .app-loading .spinner .path {
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
@@ -35,11 +36,13 @@ body, html {
   stroke-linecap: round;
   stroke: #ddd;
 }
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes dash {
   0% {
     stroke-dasharray: 1, 200;

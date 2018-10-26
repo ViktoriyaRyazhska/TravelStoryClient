@@ -1,15 +1,14 @@
-import {fromEvent as observableFromEvent, Observable, pipe} from 'rxjs';
+import {fromEvent as observableFromEvent} from 'rxjs';
 
-import {distinctUntilChanged, debounceTime, tap, catchError} from 'rxjs/operators';
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import {TABLE_HELPERS, ExampleDatabase, ExampleDataSource} from './helpers.data';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ExampleDatabase, ExampleDataSource, TABLE_HELPERS} from './helpers.data';
 import {MatPaginator, MatSort} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 
 import {HttpClient} from '@angular/common/http';
 import {User} from './user';
 import {UserService} from './userService';
-import {MatGridListModule} from '@angular/material/grid-list';
 
 @Component({
   selector: 'feature-table',
@@ -24,14 +23,13 @@ export class FeatureTableComponent implements OnInit {
   selection = new SelectionModel<string>(true, []);
   dataSource: ExampleDataSource | null;
   allfeatures = TABLE_HELPERS;
-
-  constructor(private http: HttpClient, private userService: UserService) {
-  }
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
   users: User[];
+
+  constructor(private http: HttpClient, private userService: UserService) {
+  }
 
   ngOnInit() {
     this.getUsers();
@@ -76,6 +74,7 @@ export class FeatureTableComponent implements OnInit {
       this.exampleDatabase.data.forEach(data => this.selection.select(data.id));
     }
   }
+
   getUsers(): void {
     this.userService.getUser()
       .subscribe(users => {

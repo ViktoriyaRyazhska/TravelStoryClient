@@ -10,6 +10,7 @@ export interface UserData {
   lastUpdateDate: string;
   gender: string;
 }
+
 export interface GithubApi {
   items: GithubIssue[];
   total_count: number;

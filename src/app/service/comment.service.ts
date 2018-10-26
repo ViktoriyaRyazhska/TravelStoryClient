@@ -45,8 +45,10 @@ export class CommentService {
   }
 
   getCommentsPortion(travelStoryId: number, mediaId: number, pageNumber: number) {
-   debugger; let params = new HttpParams().set('pageNumber', pageNumber.toString()).set('mediaId', mediaId.toString());
-    debugger; return this.http.get(`${this.baseUrl}/` + travelStoryId,
+    debugger;
+    let params = new HttpParams().set('pageNumber', pageNumber.toString()).set('mediaId', mediaId.toString());
+    debugger;
+    return this.http.get(`${this.baseUrl}/` + travelStoryId,
       {params: params});
   }
 

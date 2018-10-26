@@ -22,7 +22,7 @@
   "UserDetails": "User details",
   "AccountDetails": "Account",
   "Submit": "Submit",
-  "AboutYourself":"Tell about yourself",
+  "AboutYourself": "Tell about yourself",
   "Edit": "Edit",
   "Posts": "Posts: {{countOfTravelStories}}",
   "UserLocation": "Location: {{location}}"

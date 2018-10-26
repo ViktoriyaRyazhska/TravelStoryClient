@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {environment} from '../../environments/environment.prod';
 import {User} from '../models/User';
 import {UserDTO} from '../models/UserDTO';
 import {PagableUserSearch} from '../models/PagableUserSearch';
-import {BehaviorSubject} from 'rxjs';
 
 const baseUrl = environment.apiUrl + '/api';
 const options = {headers: {'Content-Type': 'application/json'}};
@@ -16,11 +15,8 @@ const options = {headers: {'Content-Type': 'application/json'}};
 })
 export class UserService {
 
-  private data: any;
-
-
   baseUrl = environment.apiUrl + '/api';
-
+  private data: any;
   private user = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) {

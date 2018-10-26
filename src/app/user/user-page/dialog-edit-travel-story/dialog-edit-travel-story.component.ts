@@ -2,7 +2,7 @@ import {Component, Inject, Input, OnInit} from '@angular/core';
 import {TravelStory} from '../../../models/TravelStory';
 import {Media} from '../../../models/Media';
 import {TravelStoryService} from '../../../service/travel-story.service';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material';
 import {FileService} from '../../../service/file.service';
 import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/storage';
 import {AngularFirestore} from '@angular/fire/firestore';

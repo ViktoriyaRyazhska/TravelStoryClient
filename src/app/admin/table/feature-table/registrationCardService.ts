@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {RegistrationCard} from './RegistrationCard';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json','Access-Control-Allow-Origin': 'https://travelstory-client.herokuapp.com'})
+  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://travelstory-client.herokuapp.com'})
 };
 
 @Injectable({

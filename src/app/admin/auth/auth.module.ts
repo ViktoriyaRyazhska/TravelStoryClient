@@ -10,17 +10,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material';
 import {SidemenuComponent} from '../../core/sidemenu/sidemenu.component';
 
-import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
-import {PERFECT_SCROLLBAR_CONFIG} from 'ngx-perfect-scrollbar';
-import {PerfectScrollbarConfigInterface} from 'ngx-perfect-scrollbar';
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface} from 'ngx-perfect-scrollbar';
+import {DashboardCrmModule} from '../dashboard-crm/dashboard-crm.module';
+import {CoreModule} from '../../core/core.module';
+import {appRoutes} from './lazyloader.routes';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
-
- import {DashboardCrmModule} from '../dashboard-crm/dashboard-crm.module';
- import {CoreModule} from '../../core/core.module';
-import {appRoutes} from './lazyloader.routes';
 
 
 @NgModule({

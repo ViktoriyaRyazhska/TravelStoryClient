@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Observable, Observer, BehaviorSubject, ReplaySubject} from 'rxjs/Rx';
-import * as SockJS from 'sockjs-client';
 import {Client, Frame, Stomp} from 'stompjs';
 
 @Injectable()
@@ -20,8 +18,6 @@ export class StompClient {
   //
   //   }
   // }
-
-
 
 
 }

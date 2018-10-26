@@ -13,4 +13,5 @@ import {DashboardCrmModule} from './dashboard-crm/dashboard-crm.module';
   ],
   declarations: [AdminComponent, AuthComponent]
 })
-export class AdminModule { }
+export class AdminModule {
+}

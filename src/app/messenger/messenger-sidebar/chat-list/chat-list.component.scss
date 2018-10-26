@@ -35,7 +35,8 @@ ul li.contact {
   cursor: pointer;
 
 }
-ul li.contact .wrap{
+
+ul li.contact .wrap {
   display: flex;
   align-items: center;
 }
@@ -172,9 +173,9 @@ a {
   text-decoration: none;
 }
 
-.you-before{
-  &:before{
-    content:"You: ";
+.you-before {
+  &:before {
+    content: "You: ";
     color: #f5f5f5;
     opacity: 0.5;
   }

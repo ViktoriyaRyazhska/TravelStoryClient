@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ToolbarNotificationComponent } from './toolbar-notification.component';
+import {ToolbarNotificationComponent} from './toolbar-notification.component';
 
 describe('ToolbarNotificationComponent', () => {
   let component: ToolbarNotificationComponent;
@@ -8,9 +8,9 @@ describe('ToolbarNotificationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarNotificationComponent ]
+      declarations: [ToolbarNotificationComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import {Message} from "../model/Message";
-import {Observable} from "rxjs";
+import {Message} from '../model/Message';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,10 @@ export class MessageWebSocketsService {
   messageContent: string;
   private stompClient = null;
 
-  private baseUrl = "http://localhost:8080";
+  private baseUrl = 'http://localhost:8080';
   private urlToSubscribe: string;
   private urlToSendMessage: string;
-  private urlToConnect = "";
+  private urlToConnect = '';
 
   constructor() {
   }

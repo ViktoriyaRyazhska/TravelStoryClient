@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { menus } from './menu-element';
+import {Component, Input, OnInit} from '@angular/core';
+import {menus} from './menu-element';
 
 @Component({
   selector: 'app-sidemenu',
@@ -8,12 +8,13 @@ import { menus } from './menu-element';
 })
 export class SidemenuComponent implements OnInit {
 
-    @Input() iconOnly:boolean = false;
-    public menus = menus;
+  @Input() iconOnly: boolean = false;
+  public menus = menus;
 
-    constructor() { }
+  constructor() {
+  }
 
-    ngOnInit() {
-    }
+  ngOnInit() {
+  }
 
 }

@@ -44,7 +44,7 @@ export class LikeService {
       catchError(this.handleError<Like>('deleteLike'))
     );
   }
-  
+
 
   /**
    * @param operation - name of the operation that failed

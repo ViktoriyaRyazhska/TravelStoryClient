@@ -1,12 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {HttpModule} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 
 import {Observable} from 'rxjs';
 import {LoginDTO} from '../models/LoginDTO';
 import {MyAuthService} from './my-auth.service';
 import {CookieService} from 'ngx-cookie-service';
-import {catchError} from 'rxjs/operators';
 import {environment} from '../../environments/environment.prod';
 
 @Injectable({

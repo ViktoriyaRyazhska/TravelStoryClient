@@ -1,7 +1,7 @@
-import {UserSearchDTO} from "./UserSearchDTO";
+import {UserSearchDTO} from './UserSearchDTO';
 
 export class PagableUserSearch {
   content: UserSearchDTO[];
   last: boolean;
-  totalElements:number;
+  totalElements: number;
 }

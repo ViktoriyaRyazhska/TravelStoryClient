@@ -10,7 +10,6 @@ export class Comment {
   createdTime: Date;
 
 
-
   constructor() {
   }
 }

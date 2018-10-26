@@ -1,7 +1,6 @@
-import {merge as observableMerge, BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, merge as observableMerge, Observable} from 'rxjs';
 
 import {map} from 'rxjs/operators';
-import {Injectable} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator, MatSort} from '@angular/material';
 
@@ -381,13 +380,13 @@ export class ExampleDatabase {
   /** Stream that emits whenever the data has been modified. */
   dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
 
-  get data(): UserData[] {
-    return this.dataChange.value;
-  }
-
   constructor() {
     // Fill up the database with 100 users.
     // for (let i = 0; i < 100; i++) { this.addUser(); }
+  }
+
+  get data(): UserData[] {
+    return this.dataChange.value;
   }
 
   /** Adds a new user to the database. */
@@ -421,15 +420,6 @@ export class ExampleDatabase {
  */
 export class ExampleDataSource extends DataSource<any> {
   _filterChange = new BehaviorSubject('');
-
-  get filter(): string {
-    return this._filterChange.value;
-  }
-
-  set filter(filter: string) {
-    this._filterChange.next(filter);
-  }
-
   filteredData: UserData[] = [];
   renderedData: UserData[] = [];
 
@@ -440,6 +430,14 @@ export class ExampleDataSource extends DataSource<any> {
 
     // Reset to the first page when the user changes the filter.
     this._filterChange.subscribe(() => this._paginator.pageIndex = 0);
+  }
+
+  get filter(): string {
+    return this._filterChange.value;
+  }
+
+  set filter(filter: string) {
+    this._filterChange.next(filter);
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */

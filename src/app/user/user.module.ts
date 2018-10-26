@@ -16,28 +16,32 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {UserInfoSideComponent} from './user-info-side/user-info-side.component';
 import {
-  FollowingDialogComponent, FollowersDialogComponent,
+  FollowersDialogComponent,
+  FollowingDialogComponent,
   UserFollowsSideComponent
 } from './user-follows-side/user-follows-side.component';
 import {UserGallerySideComponent} from './user-gallery-side/user-gallery-side.component';
 import {
   MatBadgeModule,
-  MatButtonModule, MatFormFieldModule, MatInputModule,
+  MatButtonModule,
   MatButtonToggleModule,
+  MatCardModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
   MatSelectModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {MatDialogModule, MatCardModule} from '@angular/material';
 import {UserComponent} from './user.component';
 import {UserPlacesComponent} from './user-places/user-places.component';
 import {ScrollableDirective} from './scrollable.directive';
 import {SettingsPageComponent} from './settings-page/settings-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {TranslateModule} from '@ngx-translate/core';
-import { DialogEditTravelStoryComponent } from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
+import {DialogEditTravelStoryComponent} from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
 import {NgxLoadingModule} from 'ngx-loading';
 

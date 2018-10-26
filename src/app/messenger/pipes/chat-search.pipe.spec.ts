@@ -1,4 +1,4 @@
-import { ChatSearchPipe } from './chat-search.pipe';
+import {ChatSearchPipe} from './chat-search.pipe';
 
 describe('ChatSearchPipe', () => {
   it('create an instance', () => {

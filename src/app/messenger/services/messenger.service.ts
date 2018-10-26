@@ -28,6 +28,15 @@ export class MessengerService {
   ) {
   }
 
+  private static getAvatarColor(chatName: string): string {
+    var hash = 0;
+    for (var i = 0; i < chatName.length; i++) {
+      hash = 31 * hash + chatName.charCodeAt(i);
+    }
+    var index = Math.abs(hash % colors.length);
+    return colors[index];
+  }
+
   getChats(user: User): Observable<Chat[]> {
     this.route.queryParams.subscribe(params => {
       this.userId = params['userId'];
@@ -76,14 +85,5 @@ export class MessengerService {
     ava.color = MessengerService.getAvatarColor(chatName);
     ava.letter = chatName.charAt(0);
     return ava;
-  }
-
-  private static getAvatarColor(chatName: string): string {
-    var hash = 0;
-    for (var i = 0; i < chatName.length; i++) {
-      hash = 31 * hash + chatName.charCodeAt(i);
-    }
-    var index = Math.abs(hash % colors.length);
-    return colors[index];
   }
 }
