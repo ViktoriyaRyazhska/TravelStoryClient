@@ -16,16 +16,15 @@
     <div class="col-md-8">
       <div class="col-sm-12 posts">
 
-        <button class="btn btn-secondary" type="button" (click)="addTravelStory()" translate>Add new story</button>
+        <button  mat-button class="green" type="button" (click)="addTravelStory()" translate>Add new story</button>
         <div>
           <mat-card class="card" *ngFor="let story of travelStories ">
-            <button class="btn btn-secondary" type="button" (click)="editTravelStory(story)" translate>Edit
+            <button  mat-button class="green"  (click)="editTravelStory(story)" translate>Edit
             </button>
-            <button class="delete" title="delete TravelStory"
+            <button mat-button class="delete" title="delete TravelStory"
                     (click)="delete(story)">x
             </button>
-            <app-container-post [travelStory]="story" [user]="user">
-            </app-container-post>
+            <app-container-post [travelStory]="story" [user]="user"></app-container-post>
             <app-likes [travelStory]="story"></app-likes>
             <app-comments [travelStory]="story"></app-comments>
             <!--<app-comments [travelStory]="story" [user]="this.user"> </app-comments>-->
