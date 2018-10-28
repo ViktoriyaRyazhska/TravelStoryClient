@@ -14,7 +14,9 @@
 //  background-size: cover;
 //}
 .comment {
-  background: lightskyblue;
+
+padding: 7px;
+  background: #d5dee3;
   border-radius: 20px;
 }
 
@@ -28,7 +30,8 @@
   background-color: gray !important;
   color: white;
 }
-.green {
-  background-color: #28a745;
-  color: white
+.mat-raised-button{
+  font-weight: bold;
+  outline: 0;
 }
+

@@ -13,7 +13,6 @@ const userRoutes: Routes = [
     children: [
       {path: 'settings', component: SettingsPageComponent},
       {path: 'user/:id', component: UserPageComponent},
-      {path: 'login', component: LoginComponent},
       {path: '', redirectTo: 'login', pathMatch: 'full'},
     ]
   }

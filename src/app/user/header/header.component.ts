@@ -3,6 +3,10 @@ import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {TranslateService} from '@ngx-translate/core';
 import {TokenService} from '../../service/token.service';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-header',
@@ -11,11 +15,17 @@ import {TokenService} from '../../service/token.service';
 })
 export class HeaderComponent implements OnInit {
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
+
   public meId: number;
   private lang: string;
   public clickedTab: string;
 
   constructor(private route: ActivatedRoute,
+              private breakpointObserver: BreakpointObserver,
               private userService: UserService,
               private translate: TranslateService,
               private tokenService: TokenService) {
