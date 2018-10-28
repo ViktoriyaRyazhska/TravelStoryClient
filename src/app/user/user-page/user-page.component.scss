@@ -1,9 +1,19 @@
 button.delete {
-  position: relative;
-  left: 530px;
-  top: -3px;
-  background-color: #28a745 !important;
-  color: white;
+
+  position: absolute;
+  right: 20px;
+  top: auto;
+  color: #fffbf4;
+  font-weight: bold;
+  box-shadow: none;
+  outline: none;
+  background-color: #ee1520;
+}
+*{
+  outline: 0;
+}
+.mat-raised-button{
+  font-weight: bold;
 }
 .green {
   background-color: #28a745;

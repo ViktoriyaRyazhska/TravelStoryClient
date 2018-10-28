@@ -1,21 +1,32 @@
 * {
   box-sizing: border-box;
 }
+
 *:before,
 *:after {
   box-sizing: border-box;
 }
+
 html,
 body {
   height: 100%;
-  position: relative;
 }
+
+body {
+  margin: 0;
+}
+
 .main-container {
   min-height: 100vh; /* will cover the 100% of viewport */
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 160px; /* height of your footer */
+  padding-bottom: 160px; /* height of yo;ur footer */
+}
+
+.green {
+  background-color: #28a745;
+  text-color: white
 }
 .green {
   background-color: #28a745;

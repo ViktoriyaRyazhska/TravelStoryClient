@@ -1,4 +1,3 @@
-<app-header></app-header>
 <div class="container" *ngIf="user && travelStories">
   <app-intro></app-intro>
 
@@ -16,13 +15,14 @@
     <div class="col-md-8">
       <div class="col-sm-12 posts">
 
-        <button  mat-button class="green" type="button" (click)="addTravelStory()" translate>Add new story</button>
+
+        <button  mat-raised-button color="primary" type="button" (click)="addTravelStory()" translate>Add new story</button>
         <div>
           <mat-card class="card" *ngFor="let story of travelStories ">
-            <button  mat-button class="green"  (click)="editTravelStory(story)" translate>Edit
+            <button  mat-raised-button color="primary"  (click)="editTravelStory(story)" translate>Edit
             </button>
-            <button mat-button class="delete" title="delete TravelStory"
-                    (click)="delete(story)">x
+            <button mat-mini-fab   class="delete" title="delete TravelStory"
+                    (click)="delete(story)">X
             </button>
             <app-container-post [travelStory]="story" [user]="user"></app-container-post>
             <app-likes [travelStory]="story"></app-likes>

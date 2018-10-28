@@ -1,3 +1,6 @@
+button {
+  outline: 0;
+}
 app-search {
   margin-left: 6em;
 }
@@ -15,16 +18,53 @@ app-search {
   padding: 0 5px;
 }
 
-.selected {
-  color: #cccccc;
-  pointer-events: none;
-}
 
 .lang-switcher-i, .nav-link {
   cursor: pointer;
 }
 
-.selected2 {
-  color: #cc6e39;
-  //pointer-events: none;
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+.hidden{
+  display:none;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  padding-left: 75px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.spacer{
+  flex:1 1 auto;
+}
+.mat-list-item:hover {
+  background-color: #673ab7;
+  padding-left: 15px;
+  color: white;
+}
+.mat-list-item{
+  font-weight: bold;
+  color: #777b80;
+}
+.mat-menu-item{
+  font-weight: bold;
+  color: #777b80;
+}
+.mat-menu-item:hover{
+  color: white;
+  background-color: #673ab7;
+}
+.mat-icon:hover{
+  color: white;
 }

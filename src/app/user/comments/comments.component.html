@@ -18,7 +18,7 @@
   <textarea matInput class="full-width" placeholder="{{'LeaveComment' | translate}}"
             #commentMassage></textarea>
     <!--<emoji-input></emoji-input>-->
-    <button  class="green" mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.media[0].id)" translate
+    <button  mat-raised-button color="primary" mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.media[0].id)" translate
             (click)="commentMassage.value=''"><i class="material-icons">
     </i><span translate>Add</span>
     </button>
