@@ -7,21 +7,19 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
-
   public meId: number;
   private lang: string;
+  public clickedTab: string;
 
   constructor(private route: ActivatedRoute,
               private breakpointObserver: BreakpointObserver,
@@ -31,7 +29,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.translate.use('uk');
     this.meId = this.tokenService.getUserId();
   }
 
@@ -55,5 +52,20 @@ export class HeaderComponent implements OnInit {
   public logout() {
     this.tokenService.clearAccessToken();
   }
-}
 
+  public onClickedTab(): string {
+    if (this.clickedTab === 'me') {
+      return 'me';
+    }
+    if (this.clickedTab === 'messenger') {
+      return 'messenger';
+    }
+    if (this.clickedTab === 'settings') {
+      return 'settings';
+    }
+  }
+
+  public onClickTab(tab: string) {
+    this.clickedTab = tab;
+  }
+}
