@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthComponent} from './auth/auth.component';
 import {AdminComponent} from './admin.component';
+import {DashboardCrmComponent} from './dashboard-crm/dashboard-crm.component';
 
 const adminRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
@@ -12,6 +13,7 @@ const adminRoutes: Routes = [
     component: AuthComponent,
     children: [
       {path: 'auth1', component: AuthComponent},
+      {path: 'dashboard', component: DashboardCrmComponent}
       // {path: 'settings', component: SettingsPageComponent},
       // {path: 'user/:id', component: UserPageComponent},
       // {path: 'login', component: LoginComponent},
