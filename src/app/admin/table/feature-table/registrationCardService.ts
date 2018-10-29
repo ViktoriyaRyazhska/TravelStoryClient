@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class RegistrationCardService {
 
-  private basicUrl = 'https://travelstory-client.herokuapp.com/admin/statistics';  // URL to web api
+  private basicUrl = 'https://travelstory-server.herokuapp.com/admin/statistics';  // URL to web api
 
   constructor(private http: HttpClient) {
   }

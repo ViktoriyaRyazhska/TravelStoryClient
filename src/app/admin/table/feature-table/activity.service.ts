@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {ActivityCard} from './activityCard';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://travelstory-client.herokuapp.com'})
+  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://travelstory-server.herokuapp.com'})
 };
 
 @Injectable({
@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class ActivityService {
 
-  private basicUrl = 'https://travelstory-client.herokuapp.com/admin/statistics';  // URL to web api
+  private basicUrl = 'https://travelstory-server.herokuapp.com/admin/statistics';  // URL to web api
 
   constructor(private http: HttpClient) {
   }
