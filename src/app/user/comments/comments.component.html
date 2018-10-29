@@ -1,31 +1,26 @@
 <div *ngIf="travelStory">
   <button mat-button (click)="this.getComments(this.travelStory.id,this.travelStory.media[0].id);"><i
-    class="material-icons" matBadge="{{this.commentsNumber}}" matBadgePosition="after"> chat_bubble_outline</i> show
-    all
+    class="material-icons" matBadge="{{this.commentsNumber}}" matBadgePosition="after"> chat_bubble_outline</i> <span translate>ShowAll</span>
   </button>
-  <button mat-button (click)="hideComments()"><i class="material-icons">keyboard_arrow_up</i> hide</button>
+  <button mat-button (click)="hideComments()"><i class="material-icons">keyboard_arrow_up</i> <span translate>Hide</span> </button>
   <hr>
-  <div id="commentsBlock{{travelStory.id}}" *ngIf="comments">
+  <div id="commentsBlock{{travelStory.id}}" *ngIf="comments" >
     <mat-card-content *ngFor="let comment of comments">
       <mat-card-header>
         <img mat-card-avatar src="{{comment.userProfilePic}}">
         <mat-card-title>{{comment.userFirstName}} {{comment.userLastName}}</mat-card-title>
-        <mat-card-subtitle>{{comment.createdTime |date:'medium'}}<a mat-button
-                                                                    *ngIf="this.loggedUser.id == comment.userId"
-                                                                    (click)="delete(comment)">delete</a>
-        </mat-card-subtitle>
+        <mat-card-subtitle>{{comment.createdTime |date:'medium'}}<a mat-button *ngIf="this.loggedUser.id == comment.userId"(click)="delete(comment)">delete</a></mat-card-subtitle>
       </mat-card-header>
       <p class="comment">{{comment.commentMassage}}</p>
     </mat-card-content>
   </div>
   <mat-card-actions>
-  <textarea matInput class="full-width" placeholder="Leave a comment..."
+  <textarea matInput class="full-width" placeholder="{{'LeaveComment' | translate}}"
             #commentMassage></textarea>
     <!--<emoji-input></emoji-input>-->
-    <button mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.media[0].id)"
-            (click)="commentMassage.value=''">Add <i class="material-icons">
-      send
-    </i>
+    <button  mat-raised-button color="primary" mat-button (click)="add(commentMassage.value,this.travelStory.id,this.travelStory.media[0].id)" translate
+            (click)="commentMassage.value=''"><i class="material-icons">
+    </i><span translate>Add</span>
     </button>
   </mat-card-actions>
 </div>

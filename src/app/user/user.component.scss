@@ -10,7 +10,10 @@
 html,
 body {
   height: 100%;
-  position: relative;
+}
+
+body {
+  margin: 0;
 }
 
 .main-container {
@@ -18,5 +21,14 @@ body {
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 160px; /* height of your footer */
+  padding-bottom: 160px; /* height of yo;ur footer */
+}
+
+.green {
+  background-color: #28a745;
+  text-color: white
+}
+.green {
+  background-color: #28a745;
+  text-color: white
 }

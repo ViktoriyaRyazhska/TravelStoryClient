@@ -8,19 +8,21 @@
   width: 100%;
 }
 
+
 //.header-image {
 //  background-image: url('');
 //  background-size: cover;
 //}
 .comment {
-  background: lightskyblue;
+
+padding: 7px;
+  background: #d5dee3;
   border-radius: 20px;
 }
 
 .article-body p {
   word-break: break-all;
 }
-
 .delete {
   position: relative;
   left: 194px;
@@ -28,3 +30,10 @@
   background-color: gray !important;
   color: white;
 }
+
+.mat-raised-button{
+  font-weight: bold;
+  outline: 0;
+}
+
+

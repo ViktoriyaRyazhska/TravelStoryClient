@@ -33,7 +33,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule, MatMenuModule
 } from '@angular/material';
 import {UserComponent} from './user.component';
 import {UserPlacesComponent} from './user-places/user-places.component';
@@ -44,6 +44,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {DialogEditTravelStoryComponent} from './user-page/dialog-edit-travel-story/dialog-edit-travel-story.component';
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
 import {NgxLoadingModule} from 'ngx-loading';
+import {MatListModule, MatIconModule} from '@angular/material';
 
 
 @NgModule({
@@ -72,6 +73,9 @@ import {NgxLoadingModule} from 'ngx-loading';
     MatSelectModule,
     MatDatepickerModule,
     TranslateModule,
+    MatListModule,
+    MatIconModule,
+    MatMenuModule,
     NgxLoadingModule.forRoot({}),
   ],
   entryComponents: [
