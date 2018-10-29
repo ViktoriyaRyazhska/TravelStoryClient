@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AdminComponent} from './admin.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {AuthComponent} from './auth/auth.component';
 import {DashboardCrmModule} from './dashboard-crm/dashboard-crm.module';
 
 @NgModule({
@@ -11,7 +10,7 @@ import {DashboardCrmModule} from './dashboard-crm/dashboard-crm.module';
     TranslateModule,
     DashboardCrmModule
   ],
-  declarations: [AdminComponent, AuthComponent]
+  declarations: [AdminComponent]
 })
 export class AdminModule {
 }
