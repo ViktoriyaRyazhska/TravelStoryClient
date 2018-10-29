@@ -8,7 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material';
-import {SidemenuComponent} from '../../core/sidemenu/sidemenu.component';
+// import {SidemenuComponent} from '../../core/sidemenu/sidemenu.component';
 
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface} from 'ngx-perfect-scrollbar';
 import {DashboardCrmModule} from '../dashboard-crm/dashboard-crm.module';
@@ -33,7 +33,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     // PerfectScrollbarModule,
     DashboardCrmModule
   ],
-  declarations: [AuthComponent, SidemenuComponent],
+  declarations: [AuthComponent],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
