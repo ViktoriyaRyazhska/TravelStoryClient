@@ -3,8 +3,6 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
-import {TablesRouterModule} from './tables.router';
-
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -67,7 +65,6 @@ export function highlightJsFactory(): any {
       provide: HIGHLIGHT_JS,
       useFactory: highlightJsFactory
     }),
-    TablesRouterModule,
     MatGridListModule,
     MatProgressBarModule
   ],
