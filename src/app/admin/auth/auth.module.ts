@@ -12,10 +12,14 @@ import {MatTabsModule} from '@angular/material';
 import {DashboardCrmModule} from '../dashboard-crm/dashboard-crm.module';
 import {CoreModule} from '../../core/core.module';
 import {appRoutes} from './lazyloader.routes';
+import {TablesModule} from '../table/tables.module';
+import {TablesRouterModule} from '../table/tables.router';
 
 
 @NgModule({
   imports: [
+    TablesModule,
+    TablesRouterModule,
     CommonModule,
     RouterModule.forChild(appRoutes),
     MatToolbarModule,
