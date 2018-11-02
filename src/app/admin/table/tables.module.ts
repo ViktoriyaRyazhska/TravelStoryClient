@@ -29,7 +29,6 @@ import {MatTableModule} from '@angular/material/table';
 import * as hljs from 'highlight.js';
 import {HIGHLIGHT_JS, HighlightJsModule} from 'angular-highlight-js';
 import * as hljsTypescript from 'highlight.js/lib/languages/typescript';
-import {FeatureTableComponent} from './feature-table/feature-table.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 export function highlightJsFactory(): any {
@@ -68,9 +67,7 @@ export function highlightJsFactory(): any {
     MatGridListModule,
     MatProgressBarModule
   ],
-  declarations: [
-    FeatureTableComponent,
-  ],
+  declarations: [],
 
   exports: []
 })
