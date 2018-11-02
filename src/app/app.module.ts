@@ -37,7 +37,6 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SearchComponent} from './search/search.component';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
-import {AboutComponent} from './admin/pages/about/about.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -46,7 +45,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
     DialogChangeProfilePicComponent,
     DialogAddTravelStoryComponent,
     FileSizePipe,
