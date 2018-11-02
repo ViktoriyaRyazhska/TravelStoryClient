@@ -37,7 +37,6 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SearchComponent} from './search/search.component';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
-import {AuthComponent} from './admin/auth/auth.component';
 import {AboutComponent} from './admin/pages/about/about.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,7 +46,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
     AboutComponent,
     DialogChangeProfilePicComponent,
     DialogAddTravelStoryComponent,
