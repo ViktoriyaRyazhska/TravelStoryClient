@@ -32,9 +32,7 @@ import {FileSizePipe} from './user/intro/dialog-change-profile-pic/file-size.pip
 import {DropZoneDirective} from './user/drop-zone.directive';
 import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AdminModule} from './admin/admin.module';
-import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {AboutComponent} from './admin/pages/about/about.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SearchComponent} from './search/search.component';
@@ -50,8 +48,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     DialogAddTravelStoryComponent,
     FileSizePipe,
     DropZoneDirective,
-    FeatureTableComponent,
-    AboutComponent,
     HeaderComponent,
     FooterComponent,
     SearchComponent
