@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {UserSearchDTO} from '../../models/UserSearchDTO';
-import {UserService} from '../../service/user.service';
+import {UserSearchDTO} from '../models/UserSearchDTO';
+import {UserService} from '../service/user.service';
 import {Observable, Subject} from 'rxjs';
 import {debounceTime, switchMap} from 'rxjs/operators';
-import {PagableUserSearch} from '../../models/PagableUserSearch';
+import {PagableUserSearch} from '../models/PagableUserSearch';
 
 
 @Component({

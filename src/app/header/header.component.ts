@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../service/user.service';
+import {UserService} from '../service/user.service';
 import {TranslateService} from '@ngx-translate/core';
-import {TokenService} from '../../service/token.service';
+import {TokenService} from '../service/token.service';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';

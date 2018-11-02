@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SidemenuComponent} from './sidemenu/sidemenu.component';
-import {SidemenuItemComponent} from './sidemenu-item/sidemenu-item.component';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -13,11 +11,8 @@ import {MatProgressBarModule, MatSidenavModule, MatSliderModule, MatTabsModule} 
 import {RouterModule} from '@angular/router';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {ToolbarNotificationComponent} from './toolbar-notification/toolbar-notification.component';
-import {ToolbarComponent} from './toolbar/toolbar.component';
 import {SearchBarComponent} from './search-bar/search-bar.component';
 import {FullscreenComponent} from './fullscreen/fullscreen.component';
-import {SidebarComponent} from './sidebar/sidebar.component';
 import {UserMenuComponent} from './user-menu/user-menu.component';
 
 
@@ -28,13 +23,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
 
   declarations: [
-    SidemenuComponent,
-    SidemenuItemComponent,
-    ToolbarNotificationComponent,
-    ToolbarComponent,
     SearchBarComponent,
     FullscreenComponent,
-    SidebarComponent,
     UserMenuComponent
   ],
 
@@ -58,13 +48,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
   exports: [
-    SidemenuComponent,
-    SidemenuItemComponent,
-    ToolbarNotificationComponent,
-    ToolbarComponent,
     SearchBarComponent,
     FullscreenComponent,
-    SidebarComponent,
     UserMenuComponent
   ],
 

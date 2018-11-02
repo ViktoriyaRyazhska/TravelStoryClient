@@ -3,12 +3,16 @@ import {CommonModule} from '@angular/common';
 import {AdminComponent} from './admin.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {DashboardCrmModule} from './dashboard-crm/dashboard-crm.module';
+import {AdminRoutingModule} from './admin-routing.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    AdminRoutingModule,
     TranslateModule,
-    DashboardCrmModule
+    DashboardCrmModule,
+    RouterModule
   ],
   declarations: [AdminComponent]
 })

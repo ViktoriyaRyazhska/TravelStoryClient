@@ -3,10 +3,8 @@ import {CommonModule} from '@angular/common';
 import {AuthComponent} from './auth.component';
 import {RouterModule} from '@angular/router';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material';
 
 import {DashboardCrmModule} from '../dashboard-crm/dashboard-crm.module';
@@ -22,12 +20,10 @@ import {TablesRouterModule} from '../table/tables.router';
     TablesRouterModule,
     CommonModule,
     RouterModule.forChild(appRoutes),
-    MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
     CoreModule,
-    MatSidenavModule,
     DashboardCrmModule
   ],
   declarations: [AuthComponent]
