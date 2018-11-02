@@ -36,6 +36,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SearchComponent} from './search/search.component';
+import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
+import {AuthComponent} from './admin/auth/auth.component';
+import {AboutComponent} from './admin/pages/about/about.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,13 +47,16 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
+    AboutComponent,
     DialogChangeProfilePicComponent,
     DialogAddTravelStoryComponent,
     FileSizePipe,
     DropZoneDirective,
     HeaderComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    FeatureTableComponent
   ],
   imports: [
     MatCardModule,
