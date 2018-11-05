@@ -37,6 +37,8 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {SearchComponent} from './search/search.component';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
+import {HeaderModule} from './header/header.module';
+import {FooterModule} from './footer/footer.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -61,6 +63,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     MatMenuModule,
     MatTabsModule,
+    HeaderModule,
+    FooterModule,
     RouterModule,
     MatTableModule,
     MatGridListModule,
@@ -105,9 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DialogChangeProfilePicComponent,
     DialogChangeBackgroundImageComponent,
     DialogAddTravelStoryComponent,
-    DialogEditTravelStoryComponent,
-    HeaderComponent,
-    FooterComponent
+    DialogEditTravelStoryComponent
   ],
 })
 export class AppModule {
