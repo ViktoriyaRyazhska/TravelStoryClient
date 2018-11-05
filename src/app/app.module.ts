@@ -33,12 +33,8 @@ import {DropZoneDirective} from './user/drop-zone.directive';
 import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AdminModule} from './admin/admin.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
 import {SearchComponent} from './search/search.component';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
-import {HeaderModule} from './header/header.module';
-import {FooterModule} from './footer/footer.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -51,9 +47,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     DialogAddTravelStoryComponent,
     FileSizePipe,
     DropZoneDirective,
-    HeaderComponent,
-    FooterComponent,
-    SearchComponent,
     FeatureTableComponent
   ],
   imports: [
@@ -63,8 +56,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     MatMenuModule,
     MatTabsModule,
-    HeaderModule,
-    FooterModule,
     RouterModule,
     MatTableModule,
     MatGridListModule,

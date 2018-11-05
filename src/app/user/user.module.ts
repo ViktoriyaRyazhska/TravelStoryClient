@@ -43,6 +43,8 @@ import {DialogEditTravelStoryComponent} from './user-page/dialog-edit-travel-sto
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
 import {NgxLoadingModule} from 'ngx-loading';
 import {MatListModule, MatIconModule} from '@angular/material';
+import {FooterComponent} from './footer/footer.component';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
   imports: [
@@ -85,6 +87,9 @@ import {MatListModule, MatIconModule} from '@angular/material';
     IntroComponent,
     UserPageComponent,
     FeedComponent,
+    SearchComponent,
+    FooterComponent,
+    HeaderComponent,
     ContainerPostComponent,
     LikesComponent,
     CommentsComponent,
