@@ -33,8 +33,12 @@ import {DropZoneDirective} from './user/drop-zone.directive';
 import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AdminModule} from './admin/admin.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {SearchComponent} from './search/search.component';
+import {SearchComponent, SearchComponentDialog} from './search/search.component';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
+// import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+// import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
+// import {HeaderComponent} from './user/header/header.component';
+// import {FooterComponent} from './user/footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

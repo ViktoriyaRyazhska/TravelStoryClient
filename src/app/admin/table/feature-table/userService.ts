@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class UserService {
 
-  private usersUrl = 'https://travelstory-server.herokuapp.com/admin/0/10';  // URL to web api
+  private usersUrl = 'https://travelstory-server.herokuapp.com/admin/getAllUsers/0/10';  // URL to web api
 
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
