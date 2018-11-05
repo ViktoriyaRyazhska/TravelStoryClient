@@ -105,7 +105,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     DialogChangeProfilePicComponent,
     DialogChangeBackgroundImageComponent,
     DialogAddTravelStoryComponent,
-    DialogEditTravelStoryComponent
+    DialogEditTravelStoryComponent,
+    HeaderComponent,
+    FooterComponent
   ],
 })
 export class AppModule {
