@@ -1,7 +1,8 @@
 import {UserSearchDTO} from './UserSearchDTO';
+import {Media} from './Media';
 
-export class PagableUserSearch {
-  content: UserSearchDTO[];
+export class MediaPagableDTO {
+  content: Media[];
   last: boolean;
   totalElements: number;
 }

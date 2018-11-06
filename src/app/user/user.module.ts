@@ -28,7 +28,7 @@ import {
   MatDatepickerModule,
   MatSelectModule,
   MatTabsModule,
-  MatToolbarModule, MatMenuModule
+  MatToolbarModule, MatMenuModule, MatGridListModule
 } from '@angular/material';
 import {MatDialogModule, MatCardModule} from '@angular/material';
 import {UserComponent} from './user.component';
@@ -41,6 +41,7 @@ import {DialogEditTravelStoryComponent} from './user-page/dialog-edit-travel-sto
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
 import {NgxLoadingModule} from 'ngx-loading';
 import {MatListModule, MatIconModule} from '@angular/material';
+import {GalleryComponent, MediaDialogComponent, ConfirmationDialogComponent} from './gallery/gallery.component';
 
 
 @NgModule({
@@ -72,12 +73,15 @@ import {MatListModule, MatIconModule} from '@angular/material';
     MatListModule,
     MatIconModule,
     MatMenuModule,
+    MatGridListModule,
     NgxLoadingModule.forRoot({}),
   ],
   entryComponents: [
     SearchDialogComponent,
     FollowersDialogComponent,
-    FollowingDialogComponent
+    FollowingDialogComponent,
+    MediaDialogComponent,
+    ConfirmationDialogComponent
   ],
   declarations: [
     UserComponent,
@@ -92,16 +96,17 @@ import {MatListModule, MatIconModule} from '@angular/material';
     UserInfoSideComponent,
     UserFollowsSideComponent,
     UserGallerySideComponent,
+    MediaDialogComponent,
     UserPlacesComponent,
     SearchDialogComponent,
     FollowersDialogComponent,
     FollowingDialogComponent,
     ScrollableDirective,
-    UserPlacesComponent,
     SettingsPageComponent,
     DialogEditTravelStoryComponent,
-    UserPlacesComponent,
-    DialogChangeBackgroundImageComponent
+    DialogChangeBackgroundImageComponent,
+    GalleryComponent,
+    ConfirmationDialogComponent
   ]
 })
 export class UserModule {

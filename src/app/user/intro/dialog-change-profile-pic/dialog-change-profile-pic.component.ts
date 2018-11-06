@@ -19,7 +19,8 @@ export class DialogChangeProfilePicComponent implements OnInit {
   private snapshot: Observable<any>;
   private task: AngularFireUploadTask;
 
-  constructor(private storage: AngularFireStorage,
+  constructor(
+    private storage: AngularFireStorage,
               private db: AngularFirestore,
               private fileService: FileService,
               private tokenService: TokenService,

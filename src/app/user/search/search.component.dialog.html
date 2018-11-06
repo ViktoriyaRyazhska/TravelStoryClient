@@ -1,13 +1,13 @@
-<div mat-dialog-content style="height: 500px"  (click)="this.countSquirrels()">
-
+<div mat-dialog-content style="height: 525px"  (click)="this.countSquirrels()">
   <div class="w-100 d-flex justify-content-center flex-wrap">
     <h1 class="text-center w-100 d-block" mat-dialog-title><b> <i class="material-icons">
       find_replace
     </i><span translate>FindYourFriends</span></b></h1>
-    <input placeholder="{{'TypeName'|translate}}" #searchBox id="search-box" class="d-block"
+    <mat-form-field class="search-form">
+    <input  matInput placeholder="{{'TypeName'|translate}}" #searchBox id="search-box" class="d-block"
            (keyup)="search(searchBox.value)"/>
+      </mat-form-field>
   </div>
-
   <img [hidden]="this.showSquirrel" *ngIf="!this.users" style="height: 400px; width: 500px"
        src="https://previews.123rf.com/images/dimjul/dimjul1703/dimjul170300047/73871407-funny-pet-chipmunk-searching-with-magnifying-glass-onm-white.jpg">
 

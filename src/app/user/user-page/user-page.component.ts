@@ -20,6 +20,7 @@ export class UserPageComponent implements OnInit {
   user: User;
   travelStories: TravelStory[];
   travelStory: TravelStory;
+  contentType: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +32,7 @@ export class UserPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.contentType = 'TRAVELSTORY';
     this.userService.checkTokenEmpty();
     this.translate.setDefaultLang('en');
     this.getUser();

@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Like} from "../../models/Like";
-import {LikeService} from "../../service/like.service";
-import {User} from "../../models/User";
-import {TravelStory} from "../../models/TravelStory";
-import {UserService} from "../../service/user.service";
+import {Like} from '../../models/Like';
+import {LikeService} from '../../service/like.service';
+import {User} from '../../models/User';
+import {UserService} from '../../service/user.service';
 import 'rxjs/add/observable/fromEvent';
-import {TokenService} from "../../service/token.service";
+import {TokenService} from '../../service/token.service';
 
 @Component({
   selector: 'app-likes',
@@ -13,7 +12,8 @@ import {TokenService} from "../../service/token.service";
   styleUrls: ['./likes.component.scss']
 })
 export class LikesComponent implements OnInit {
-  @Input() travelStory: TravelStory;
+  @Input() contentId: number;
+  @Input() contentType: string;
   loggedUser: User;
   loggedUserLike: Like;
   likes: Like[];
@@ -24,34 +24,35 @@ export class LikesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.posibilityToLike=true;
+    this.posibilityToLike = true;
     this.getLoggedUser();
-    this.getLikes(this.travelStory.id, this.travelStory.media[0].id);
+    this.getLikes(this.contentId, this.contentType);
   }
 
   getLoggedUser() {
-    let userId = this.tokenService.getUserId();
+    const userId = this.tokenService.getUserId();
     this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
 
-  like(travelStoryId: number, mediaId: number) {
-    if (this.posibilityToLike===false){return}
+  like() {
+    if (this.posibilityToLike === false) {
+      return;
+    }
     this.getLoggedUserLike();
 
     if (!this.likeExist()) {
       this.loggedUserLike.userId = this.loggedUser.id;
-      this.loggedUserLike.travelStoryId = travelStoryId;
-      this.loggedUserLike.mediaId = mediaId;
+      this.loggedUserLike.contentId = this.contentId;
+      this.loggedUserLike.mediaType = this.contentType;
       this.posibilityToLike = false;
       this.add();
-    }
-    else {
+    } else {
       this.delete();
     }
   }
 
-  getLikes(travelStoryId: number, mediaId: number) {
-    this.likeService.getLikes(travelStoryId, mediaId)
+  getLikes(contentId: number, contentType: string) {
+    this.likeService.getLikes(contentId, contentType)
       .subscribe(likes => this.likes = likes);
   }
 
@@ -80,7 +81,7 @@ export class LikesComponent implements OnInit {
 
   likeExist(): boolean {
     for (let l of this.likes) {
-      if (l.userId == this.loggedUserLike.userId) {
+      if (l.userId === this.loggedUserLike.userId) {
         return true;
       }
     }

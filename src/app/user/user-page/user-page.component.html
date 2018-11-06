@@ -16,18 +16,29 @@
       <div class="col-sm-12 posts">
 
 
-        <button  mat-raised-button color="primary" type="button" (click)="addTravelStory()" translate>Add new story</button>
+        <button mat-raised-button color="primary" type="button" (click)="addTravelStory()" translate>Add new story
+        </button>
         <div>
           <mat-card class="card" *ngFor="let story of travelStories ">
-            <button  mat-raised-button color="primary"  (click)="editTravelStory(story)" translate>Edit
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <i class="material-icons">
+                more_vert
+              </i>
             </button>
-            <button mat-mini-fab   class="delete" title="delete TravelStory"
-                    (click)="delete(story)">X
-            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <i class="material-icons">
+                  attachment
+                </i>
+                <span><a (click)="editTravelStory(story)" translate>Edit</a></span>
+              </button>
+              <button mat-menu-item>
+                <span><a (click)="delete(story)" title="delete TravelStory" translate><i class="material-icons">delete_sweep</i></a></span>
+              </button>
+            </mat-menu>
             <app-container-post [travelStory]="story" [user]="user"></app-container-post>
-            <app-likes [travelStory]="story"></app-likes>
-            <app-comments [travelStory]="story"></app-comments>
-            <!--<app-comments [travelStory]="story" [user]="this.user"> </app-comments>-->
+            <app-likes [contentId]="story.id" [contentType]="contentType"></app-likes>
+            <app-comments [contentId]="story.id" [contentType]="contentType"></app-comments>
           </mat-card>
         </div>
       </div>
