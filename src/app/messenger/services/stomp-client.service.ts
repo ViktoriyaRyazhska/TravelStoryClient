@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Observable, Observer, BehaviorSubject, ReplaySubject} from 'rxjs/Rx';
-import * as SockJS from 'sockjs-client';
 import {Client, Frame, Stomp} from 'stompjs';
 
 @Injectable()
@@ -16,12 +14,10 @@ export class StompClient {
   //   // this.stompClient.reconnect_delay=5000;
   //
   //   if (!connection) {
-  //     this.stompClient = Stomp.over(new SockJS('http://localhost:8080/ws'));
+  //     this.stompClient = Stomp.over(new SockJS('https://travelstory-server.herokuapp.com/ws'));
   //
   //   }
   // }
-
-
 
 
 }

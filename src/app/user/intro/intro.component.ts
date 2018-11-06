@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/User';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../service/user.service';
@@ -28,21 +28,17 @@ export class IntroComponent implements OnInit {
   }
 
   public changeProfilePic() {
-    if (this.owner === true) {
-      this.dialog.open(DialogChangeProfilePicComponent, {
-        height: '430px',
-        width: '500px',
-      });
-    }
+    this.dialog.open(DialogChangeProfilePicComponent, {
+      height: '430px',
+      width: '500px',
+    });
   }
 
   public changeBackgroundImage() {
-    if (this.owner === true) {
-      this.dialog.open(DialogChangeBackgroundImageComponent, {
-        height: '430px',
-        width: '500px',
-      });
-    }
+    this.dialog.open(DialogChangeBackgroundImageComponent, {
+      height: '430px',
+      width: '500px',
+    });
   }
 
   public getUser(): void {

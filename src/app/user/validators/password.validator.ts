@@ -1,5 +1,5 @@
-import { FormControl, FormGroup, NgForm, FormGroupDirective } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import {FormControl, FormGroup, FormGroupDirective, NgForm} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 
 export class ParentErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -22,7 +22,7 @@ export class PasswordValidator {
         let control: FormControl = <FormControl>formGroup.controls[key];
 
         if (value === undefined) {
-          value = control.value
+          value = control.value;
         } else {
           if (value !== control.value) {
             valid = false;

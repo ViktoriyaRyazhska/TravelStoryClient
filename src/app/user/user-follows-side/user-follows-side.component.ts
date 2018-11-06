@@ -13,7 +13,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 export class UserFollowsSideComponent implements OnInit {
   followers: UserSearchDTO[];
   following: UserSearchDTO[];
-  PageSize = 18;
+  PageSize = 7;
   pageNumber = 0;
   userId: number;
   followersNumber: number;

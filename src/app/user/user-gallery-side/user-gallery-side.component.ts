@@ -3,6 +3,7 @@ import {MediaService} from '../../service/media.service';
 import {Media} from '../../models/Media';
 import {ActivatedRoute} from '@angular/router';
 
+
 @Component({
   selector: 'app-user-gallery-side',
   templateUrl: './user-gallery-side.component.html',
@@ -10,11 +11,13 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class UserGallerySideComponent implements OnInit {
 
+
   constructor(private mediaService: MediaService, private route: ActivatedRoute) {
   }
 
   userId: number;
   medias: Media[];
+
 
   ngOnInit() {
     this.userId = +this.route.snapshot.paramMap.get('id');

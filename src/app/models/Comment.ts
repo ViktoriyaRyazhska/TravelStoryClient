@@ -8,9 +8,6 @@ export class Comment {
   userProfilePic: string;
   commentMassage: string;
   createdTime: Date;
-
-  constructor() {
-  }
 }
 
 

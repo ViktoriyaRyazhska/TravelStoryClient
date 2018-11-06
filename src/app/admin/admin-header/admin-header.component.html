@@ -1,0 +1,96 @@
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">-->
+  <!--<div class="container">-->
+    <!--<a class="navbar-brand">travelstory</a>-->
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"-->
+            <!--aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+      <!--<span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
+    <!--<div ngStyle="" class="collapse navbar-collapse" id="navbarResponsive">-->
+      <!--<app-search></app-search>-->
+      <!--<div id="language-switcher" class="lang-switcher clearfix">-->
+        <!--<div class="lang-switcher-i uk" [ngClass]="{'selected':onChosenLang()==='uk'}">-->
+          <!--<a (click)="switchLanguage('uk')">UK</a>-->
+        <!--</div>-->
+        <!--<div class="lang-switcher-i en" [ngClass]="{'selected':onChosenLang()==='en'}">-->
+          <!--<a (click)="switchLanguage('en')">EN</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<ul class="navbar-nav ml-auto">-->
+        <!--<li class="nav-item">-->
+          <!--<a *ngIf="meId" class="nav-link" (click)="onClickTab('me')"-->
+             <!--[ngClass]="{'selected':onClickedTab()==='me'}" routerLink="/user/{{meId}}"-->
+             <!--translate>Me</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link" (click)="onClickTab('messenger')"-->
+             <!--[ngClass]="{'selected':onClickedTab()==='messenger'}" routerLink="/messenger" translate>Messenger</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link" routerLink="/settings" (click)="onClickTab('settings')"-->
+             <!--[ngClass]="{'selected':onClickedTab()==='settings'}" translate>Settings</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link" routerLink="/login" (click)="logout()" translate>Logout</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav  #drawer class="sidenav"
+                fixedInViewport="false"
+                [ngClass]="{hidden: (isHandset$|async )!.matches}"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
+    <mat-toolbar  style="position: absolute; margin-left: 20px"color="primary"  style="background-color: #673ab7">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item  *ngIf="meId" (click)="onClickTab('me')"
+         [ngClass]="{'selected':onClickedTab()==='me'}" routerLink="/user/{{meId}}"
+         translate><i class="material-icons">
+        account_circle
+      </i>Me</a>
+      <a mat-list-item  (click)="onClickTab('messenger')"
+         [ngClass]="{'selected':onClickedTab()==='messenger'}" routerLink="/messenger" translate><i class="material-icons">
+        mail
+      </i>Messenger</a>
+      <a mat-list-item  routerLink="/settings" (click)="onClickTab('settings')"
+         [ngClass]="{'selected':onClickedTab()==='settings'}" translate><i class="material-icons">
+        brightness_high
+      </i>Settings</a>
+      <a mat-list-item  routerLink="/login" (click)="logout()" translate><i class="material-icons">
+        meeting_room
+      </i>Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>TravelStory</span>
+      <app-admin-search></app-admin-search>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>language</mat-icon>
+          <span><a [ngClass]="{'selected':onChosenLang()==='uk'}" (click)="switchLanguage('en')">EN</a></span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>language</mat-icon>
+          <span><a  [ngClass]="{'selected':onChosenLang()==='en'}" (click)="switchLanguage('uk')">UK</a></span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <ng-content> </ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

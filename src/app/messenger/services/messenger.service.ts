@@ -22,10 +22,19 @@ const colors: string[] = [
 })
 export class MessengerService {
   userId: number;
-  baseUrl: string = 'http://localhost:8080/';
+  baseUrl: string = 'https://travelstory-server.herokuapp.com/';
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
   ) {
+  }
+
+  private static getAvatarColor(chatName: string): string {
+    var hash = 0;
+    for (var i = 0; i < chatName.length; i++) {
+      hash = 31 * hash + chatName.charCodeAt(i);
+    }
+    var index = Math.abs(hash % colors.length);
+    return colors[index];
   }
 
   getChats(user: User): Observable<Chat[]> {
@@ -76,14 +85,5 @@ export class MessengerService {
     ava.color = MessengerService.getAvatarColor(chatName);
     ava.letter = chatName.charAt(0);
     return ava;
-  }
-
-  private static getAvatarColor(chatName: string): string {
-    var hash = 0;
-    for (var i = 0; i < chatName.length; i++) {
-      hash = 31 * hash + chatName.charCodeAt(i);
-    }
-    var index = Math.abs(hash % colors.length);
-    return colors[index];
   }
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ResponseToken} from '../../models/ResponseToken';
+import {Component, OnInit} from '@angular/core';
 import {RegistrationService} from '../../service/registration.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -15,28 +14,29 @@ export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
   registrationDTO: RegistrationDTO;
+  registrate = () => {
+    console.log(this.registrationForm.value);
+    this.registrationDTO = this.registrationForm.value;
+    this.registrationService.registrate(this.registrationDTO)
+      .subscribe(() => {
+          location.reload(true);
+        }
+      );
+    console.log('message');
+  };
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private registrationService: RegistrationService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.buildForm();
     console.log(this.registrationForm);
   }
 
-  registrate = () => {
-    console.log(this.registrationForm.value);
-    this.registrationDTO = this.registrationForm.value;
-    this.registrationService.registrate(this.registrationDTO)
-      .subscribe(() => {
-          this.router.navigate(['/settings']);
-        }
-      );
-    console.log('message');
-  }
   buildForm() {
     this.registrationForm = this.fb.group({
       'email': ['', [
@@ -63,4 +63,5 @@ export class RegistrationComponent implements OnInit {
       ]
       ],
     });
-}}
+  }
+}

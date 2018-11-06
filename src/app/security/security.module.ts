@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {SecurityRoutingModule} from './security-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -8,7 +8,11 @@ import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {HttpClientModule} from '@angular/common/http';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatFormFieldModule, MatInputModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
   MatToolbarModule
 } from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
@@ -36,4 +40,5 @@ import {BrowserModule} from '@angular/platform-browser';
     RegistrationComponent
   ]
 })
-export class SecurityModule { }
+export class SecurityModule {
+}

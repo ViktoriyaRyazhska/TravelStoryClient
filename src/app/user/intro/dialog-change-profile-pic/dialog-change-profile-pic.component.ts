@@ -57,9 +57,6 @@ export class DialogChangeProfilePicComponent implements OnInit {
     this.snapshot = this.task.snapshotChanges();
 
     this.snapshot.subscribe(() => {
-    }, error1 => {
-      console.error(error1);
-    }, () => {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
@@ -73,8 +70,7 @@ export class DialogChangeProfilePicComponent implements OnInit {
             console.error(error1);
           }
         );
-    })
-    ;
+    });
   }
 
 }

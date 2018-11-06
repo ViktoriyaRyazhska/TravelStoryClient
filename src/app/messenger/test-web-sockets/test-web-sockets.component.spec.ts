@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TestWebSocketsComponent } from './test-web-sockets.component';
+import {TestWebSocketsComponent} from './test-web-sockets.component';
 
 describe('TestWebSocketsComponent', () => {
   let component: TestWebSocketsComponent;
@@ -8,9 +8,9 @@ describe('TestWebSocketsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestWebSocketsComponent ]
+      declarations: [TestWebSocketsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

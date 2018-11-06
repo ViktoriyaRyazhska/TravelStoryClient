@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TokenService} from '../../service/token.service';
 import {UserService} from '../../service/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -92,7 +92,6 @@ export class SettingsPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.checkTokenEmpty();
     this.loading = true;
     this.userService.getUser(this.tokenService.getUserId())
       .subscribe(value => {

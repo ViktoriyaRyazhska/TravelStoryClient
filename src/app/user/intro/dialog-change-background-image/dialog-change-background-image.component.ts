@@ -55,9 +55,6 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
     this.snapshot = this.task.snapshotChanges();
 
     this.snapshot.subscribe(() => {
-    }, error1 => {
-      console.error(error1);
-    }, () => {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
@@ -72,7 +69,6 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
               });
           }
         );
-    })
-    ;
+    });
   }
 }

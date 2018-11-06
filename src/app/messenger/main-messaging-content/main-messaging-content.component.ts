@@ -15,18 +15,26 @@ import {StompService} from '@stomp/ng2-stompjs';
   styleUrls: ['./main-messaging-content.component.scss', '../general.scss']
 })
 export class MainMessagingContentComponent implements OnInit {
-  private receivedMessage: Observable<Stomp.Message>;
-  private subscription: Subscription;
-  private subscribed = false;
-
   currChat: Chat;
   currMessage: Message = new Message();
   @Input() currUser: User;
-
-  private container: any;
-
   messages: Message[] = [];
   pageNumber: number = 1;
+  public onNextMessage = (message: Stomp.Message) => {
+    let castedMessage: Message = JSON.parse(message.body);
+    this.messages.push(castedMessage);
+
+    const _this = this;
+    setTimeout(() => _this.container.scrollTop(_this.container.prop('scrollHeight')), 20);
+
+    //TODO do smth with this =(
+    //DOESN'T work without delay
+    //this.container.scrollTop(this.container.prop('scrollHeight'));
+  };
+  private receivedMessage: Observable<Stomp.Message>;
+  private subscription: Subscription;
+  private subscribed = false;
+  private container: any;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -69,7 +77,6 @@ export class MainMessagingContentComponent implements OnInit {
     }
   }
 
-
   getChat() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.messengerService.getChat(id).subscribe(chat => {
@@ -88,19 +95,6 @@ export class MainMessagingContentComponent implements OnInit {
       this.container.scrollTop(this.container.prop('scrollHeight')); //scroll down
     });
   }
-
-  public onNextMessage = (message: Stomp.Message) => {
-    let castedMessage: Message = JSON.parse(message.body);
-    this.messages.push(castedMessage);
-
-    const _this = this;
-    setTimeout(() => _this.container.scrollTop(_this.container.prop('scrollHeight')), 20);
-
-    //TODO do smth with this =(
-    //DOESN'T work without delay
-    //this.container.scrollTop(this.container.prop('scrollHeight'));
-  };
-
 
   getFirst30Messages() {
     const id = +this.route.snapshot.paramMap.get('id');

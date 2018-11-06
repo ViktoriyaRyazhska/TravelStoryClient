@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 import {TravelStory} from '../../../models/TravelStory';
 import {TravelStoryService} from '../../../service/travel-story.service';
 import {Media} from '../../../models/Media';
-import {MatDialog} from '@angular/material';
-import {DialogChangeProfilePicComponent} from '../../intro/dialog-change-profile-pic/dialog-change-profile-pic.component';
 import {FileService} from '../../../service/file.service';
 import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
@@ -17,9 +14,9 @@ import {TokenService} from '../../../service/token.service';
   styleUrls: ['./dialog-add-travel-story.component.scss']
 })
 export class DialogAddTravelStoryComponent implements OnInit {
-  travelStory : TravelStory = new TravelStory();
-  medias : Media[] = [];
-  media : Media = new Media();
+  travelStory: TravelStory = new TravelStory();
+  medias: Media[] = [];
+  media: Media = new Media();
   // Main task
   task: AngularFireUploadTask;
 
@@ -32,14 +29,14 @@ export class DialogAddTravelStoryComponent implements OnInit {
   isHovering: boolean;
 
 
-  constructor(private travelStoryService: TravelStoryService,private storage: AngularFireStorage,
+  constructor(private travelStoryService: TravelStoryService, private storage: AngularFireStorage,
               private db: AngularFirestore,
-              private fileService: FileService,private tokenService: TokenService) {
+              private fileService: FileService, private tokenService: TokenService) {
   }
 
-  initMedia(){
+  initMedia() {
     this.media.mediaType = 'IMAGE';
-    this.medias[0]=this.media;
+    this.medias[0] = this.media;
   }
 
   ngOnInit() {
@@ -53,11 +50,13 @@ export class DialogAddTravelStoryComponent implements OnInit {
     this.travelStoryService.addTravelStory(this.travelStory).subscribe();
     location.reload(true);
   }
+
   uploadBackgroundPic() {
     this.fileService.resetBackgroundPic(this.tokenService.getUserId()).subscribe((response) => {
       console.log(response);
     });
   }
+
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
@@ -84,7 +83,7 @@ export class DialogAddTravelStoryComponent implements OnInit {
     this.snapshot = this.task.snapshotChanges();
 
     this.snapshot.subscribe(() => {
-    },
+      },
       error1 => console.error(error1),
       () => {
         this.storage.ref(path)

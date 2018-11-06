@@ -42,7 +42,6 @@ export class CommentService {
       catchError(this.handleError<Comment>('deleteComment'))
     );
   }
-
   getCommentsPortion(contentId: number, contentType: string, pageNumber: number) {
     let params = new HttpParams().set('contentId', contentId.toString()).
     set('pageNumber', pageNumber.toString());

@@ -17,14 +17,11 @@ export class ChatListComponent implements OnInit {
   @Input() searchQuery: string = '';
   @Input() currentUser: User;
   @Input() stompClient: Stomp;
-
-  private receivedLastMessages: Observable<Stomp.Message>[] = [];
-  private subscriptions: Subscription[] = [];
-
   chats: Chat[] = [];
   friend: User;
-
   activeChatId: number;
+  private receivedLastMessages: Observable<Stomp.Message>[] = [];
+  private subscriptions: Subscription[] = [];
 
   constructor(private messageWebSocketService: MessageWebSocketsService,
               private messengerService: MessengerService,
@@ -52,7 +49,7 @@ export class ChatListComponent implements OnInit {
             this.chats[index].lastMessage = JSON.parse(message.body);
           });
           // const _this = this;
-          // this.stompClient = Stomp.over(new SockJS("http://localhost:8080/messenger"));
+          // this.stompClient = Stomp.over(new SockJS("https://travelstory-server.herokuapp.com/messenger"));
           // this.stompClient.connect({}, function (frame) {
           //   _this.stompClient.subscribe('/messenger/' + chat.id + '/messages',
           //     function (newMessage: Message) {

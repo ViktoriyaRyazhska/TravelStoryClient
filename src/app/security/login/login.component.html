@@ -3,13 +3,15 @@
     <div class="user_options-text">
       <div class="user_options-unregistered">
         <h2 class="user_unregistered-title">Don't have an account?</h2>
-        <p class="user_unregistered-text">Find travel friends nearby & connect to meet a new travel buddy. Meet travellers from around the world with travelstory.</p>
+        <p class="user_unregistered-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis nibh in leo
+          lacinia blandit et quis lorem.</p>
         <button class="user_unregistered-signup" id="signup-button">Sign up</button>
       </div>
 
       <div class="user_options-registered">
         <h2 class="user_registered-title">Have an account?</h2>
-        <p class="user_registered-text">Find travel friends nearby & connect to meet a new travel buddy. Meet travellers from around the world with travelstory.</p>
+        <p class="user_registered-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis nibh in leo
+          lacinia blandit et quis lorem.</p>
         <button class="user_registered-login" id="login-button">Login</button>
       </div>
     </div>
@@ -20,10 +22,12 @@
         <form class="forms_form" [formGroup]="loginForm" (ngSubmit)="login()">
           <fieldset class="forms_fieldset">
             <div class="forms_field">
-              <input type="email" id="email" placeholder="Please enter your email" formControlName="email" class="forms_field-input" required autofocus />
+              <input type="email" id="email" placeholder="Please enter your email" formControlName="email"
+                     class="forms_field-input" required autofocus/>
             </div>
             <div class="forms_field">
-              <input type="password" id="password" placeholder="Please enter your password" formControlName="password" class="forms_field-input" required />
+              <input type="password" id="password" placeholder="Please enter your password" formControlName="password"
+                     class="forms_field-input" required/>
             </div>
           </fieldset>
           <div class="forms_buttons">
@@ -38,10 +42,10 @@
       </div>
       <div class="user_forms-forgot">
         <h2 class="forms_title">Forgot Password</h2>
-        <form class="forms_form" (ngSubmit) = "onSubmit(f)" #f ="ngForm">
+        <form class="forms_form" (ngSubmit)="onSubmit(f)" #f="ngForm">
           <fieldset class="forms_fieldset">
             <div class="forms_field">
-              <input type="email" id="emailFor" placeholder="Email" class="form-control" ngModel name="email" />
+              <input type="email" id="emailFor" placeholder="Email" class="form-control" ngModel name="email"/>
             </div>
           </fieldset>
           <div class="forms_buttons">

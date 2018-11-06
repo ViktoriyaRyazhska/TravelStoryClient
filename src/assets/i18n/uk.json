@@ -12,17 +12,6 @@
   "Gallery": "Галерея",
   "Follows": "Підписки",
   "Followers": "Підписники",
-  "Following": "Відстежування",
-  "UserFollows": "Користувач стежить",
-  "Add": "Додати",
-  "LeaveComment": "Додай відгук...",
-  "Delete": "видалити",
-  "TypeName": "надрукуй ім'я...",
-  "ShowMoreResults": "показати більше співпадінь",
-  "LikeIt": "сподобай це!",
-  "Hide": "сховати",
-  "ShowAll": "показати всі",
-  "FindYourFriends": "Знайди своїх друзів",
   "Places": "Місця",
   "Language": "Мова",
   "Login": "вхід",
@@ -31,15 +20,13 @@
   "ChangeBackgroundImage": "Зміна фонового зображення",
   "ChangeProfilePic": "Зміна профільного зображення",
   "DragAndDropAFile": "Перетягніть зображення сюди",
-  "OrChooseAFile":"або виберіть...",
+  "OrChooseAFile": "або виберіть...",
   "UserDetails": "Деталі користувача",
   "AccountDetails": "Аккаунт",
   "Submit": "Зберегти",
-  "AboutYourself":"Розкажіть про себе",
+  "AboutYourself": "Розкажіть про себе",
   "Edit": "Редагувати",
   "Posts": "Записів: {{countOfTravelStories}}",
   "UserLocation": "Локація: {{location}}"
-
-
 }
 

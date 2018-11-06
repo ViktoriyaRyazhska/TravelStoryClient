@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LoginDTO} from '../models/LoginDTO';
 import {RegistrationDTO} from '../models/RegistrationDTO';
 import {environment} from '../../environments/environment.prod';
 

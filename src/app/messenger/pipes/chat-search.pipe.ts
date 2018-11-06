@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Chat} from "../model/Chat";
+import {Chat} from '../model/Chat';
 
 @Pipe({name: 'chatSearch'})
 export class ChatSearchPipe implements PipeTransform {

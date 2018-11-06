@@ -1,5 +1,3 @@
-import {Chat} from "./Chat";
-
 export class User {
   id: number;
   profilePic: string;

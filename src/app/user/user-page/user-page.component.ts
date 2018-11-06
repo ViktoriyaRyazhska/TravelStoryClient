@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../models/User';
@@ -27,16 +27,15 @@ export class UserPageComponent implements OnInit {
     private userService: UserService,
     private translate: TranslateService,
     private travelStoryService: TravelStoryService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit() {
     this.contentType = 'TRAVELSTORY';
-    this.userService.checkTokenEmpty();
+    // this.userService.checkTokenEmpty();
     this.translate.setDefaultLang('en');
     this.getUser();
-
   }
 
   switchLanguage(language: string) {

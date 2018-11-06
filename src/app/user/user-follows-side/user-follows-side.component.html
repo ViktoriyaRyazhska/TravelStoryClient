@@ -1,10 +1,9 @@
-
 <mat-card *ngIf="followers">
-    <h5 class="card-header pointer" (click)="openDialogFollowers()" translate>
+  <h5 class="card-header pointer" (click)="openDialogFollowers()">
     Followers
-      <i class="material-icons">
-        face
-      </i>
+    <i class="material-icons">
+      face
+    </i>
     {{followersNumber}}</h5>
   <mat-card-content>
     <span *ngFor="let follower of followers">
@@ -15,7 +14,7 @@
 
 
 <mat-card *ngIf="following">
-  <h5 class="card-header pointer" (click)="openDialogFollowing()" translate>
+  <h5 class="card-header pointer" (click)="openDialogFollowing()">
     Following
     <i class="material-icons">
       supervised_user_circle
@@ -23,7 +22,7 @@
     {{followingNumber}}</h5>
   <mat-card-content>
     <span *ngFor="let follow of following">
-      <a href="user/{{follow.id}}"><img mat-card-avatar src="{{follow.profilePic}}"style="margin: 5px;"></a>
+      <a href="user/{{follow.id}}"><img mat-card-avatar src="{{follow.profilePic}}" style="margin: 5px;"></a>
     </span>
   </mat-card-content>
 </mat-card>
