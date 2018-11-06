@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
     this.registrationDTO = this.registrationForm.value;
     this.registrationService.registrate(this.registrationDTO)
       .subscribe(() => {
-          this.router.navigate(['/settings']);
+          this.router.navigate(['/login']);
         }
       );
     console.log('message');

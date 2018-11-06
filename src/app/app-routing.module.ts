@@ -8,8 +8,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes,
-      {useHash: false})
+    RouterModule.forRoot(routes)
   ],
   exports: [
     RouterModule
