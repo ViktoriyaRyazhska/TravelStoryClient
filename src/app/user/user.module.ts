@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {IntroComponent} from './intro/intro.component';
 import {LikesComponent} from './likes/likes.component';
-import {SearchComponent} from '../search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
@@ -46,6 +45,7 @@ import {MatListModule, MatIconModule} from '@angular/material';
 import {GalleryComponent, MediaDialogComponent, ConfirmationDialogComponent} from './gallery/gallery.component';
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
+import {SearchComponent, SearchDialogComponent} from '../search/search.component';
 
 @NgModule({
   imports: [
@@ -83,14 +83,14 @@ import {HeaderComponent} from './header/header.component';
     FollowersDialogComponent,
     FollowingDialogComponent,
     MediaDialogComponent,
-    ConfirmationDialogComponent
-  ],
+    ConfirmationDialogComponent,
+    SearchDialogComponent
+],
   declarations: [
     UserComponent,
     IntroComponent,
     UserPageComponent,
     FeedComponent,
-    SearchComponent,
     FooterComponent,
     HeaderComponent,
     ContainerPostComponent,
@@ -108,7 +108,9 @@ import {HeaderComponent} from './header/header.component';
     DialogEditTravelStoryComponent,
     DialogChangeBackgroundImageComponent,
     GalleryComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    SearchDialogComponent,
+    SearchComponent
   ]
 })
 export class UserModule {

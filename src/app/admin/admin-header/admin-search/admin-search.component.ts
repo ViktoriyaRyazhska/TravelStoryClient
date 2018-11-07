@@ -5,7 +5,7 @@ import {debounceTime, switchMap} from 'rxjs/operators';
 import {UserService} from '../../../service/user.service';
 import {UserSearchDTO} from '../../../models/UserSearchDTO';
 import {PagableUserSearch} from '../../../models/PagableUserSearch';
-import {SearchComponentDialog} from '../../../search/search.component';
+import {SearchDialogComponent} from '../../../search/search.component';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class AdminSearchComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(SearchComponentDialog, {
+    const dialogRef = this.dialog.open(SearchDialogComponent, {
       width: '600px'
     });
 

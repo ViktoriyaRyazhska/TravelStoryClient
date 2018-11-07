@@ -17,7 +17,6 @@ import {
   MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
-import {SearchComponent, SearchComponentDialog} from '../search/search.component';
 import {AdminSearchComponent} from './admin-header/admin-search/admin-search.component';
 
 @NgModule({

@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {UserModule} from './user/user.module';
 import {
-  MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatListModule, MatMenuModule,
+  MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule,
   MatNativeDateModule, MatNavList, MatPaginatorModule, MatProgressBarModule,
   MatSidenavModule, MatTableModule, MatTabsModule,
   MatToolbarModule
@@ -33,7 +33,6 @@ import {DropZoneDirective} from './user/drop-zone.directive';
 import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AdminModule} from './admin/admin.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {SearchComponent, SearchComponentDialog} from './search/search.component';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
 // import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 // import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
@@ -51,12 +50,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     DialogAddTravelStoryComponent,
     FileSizePipe,
     DropZoneDirective,
-    FeatureTableComponent
+    FeatureTableComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
   imports: [
+    MatInputModule,
     MatCardModule,
     HttpClientModule,
     BrowserModule,
@@ -107,7 +107,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DialogChangeProfilePicComponent,
     DialogChangeBackgroundImageComponent,
     DialogAddTravelStoryComponent,
-    DialogEditTravelStoryComponent
+    DialogEditTravelStoryComponent,
   ],
 })
 export class AppModule {
