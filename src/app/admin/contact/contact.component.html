@@ -1,62 +1,73 @@
-<!--<link rel="stylesheet" href="../about/about.component.scss">-->
+<!--<link rel="stylesheet" href="contact.component.scss">-->
 <div fxLayout="column" fxLayoutAlign="space-between stretch" fxFlexFil fxFill class="components-container-gt-xs ">
 
   <div fxLayout="row" fxLayoutAlign="space-between stretch" fxFlexFil fxFill fxLayoutGap="20px">
-
-    <div fxFlex="35" fxLayout="column" class="mat-elevation-z2 contact-add">
-
-      <div fxFlex="10" fxLayout="row" fxLayoutAlign="space-between center">
-
-        <h3 class="mat-headline" fxFlex="80">New Contact</h3>
-        <div fxLayout="row" fxLayoutAlign="end center" fxFlex="10">
-          <button mat-icon-button>
-            <mat-icon>close</mat-icon>
-          </button>
+    <div class="myCard">
+      <div fxFlex="35" fxLayout="column" class="mat-elevation-z2 contact-add">
+        <div fxFlex="10" fxLayout="row" fxLayoutAlign="space-between center">
+          <h3 class="mat-headline" fxFlex="80">John Doe</h3>
+          <!--<div fxLayout="row" fxLayoutAlign="end center" fxFlex="10">-->
+          <!--<button mat-icon-button>-->
+          <!--<mat-icon>close</mat-icon>-->
+          <!--</button>-->
+          <!--</div>-->
         </div>
-      </div>
-      <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
 
-      <div fxFlex="25" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="25" fxLayout="row" fxLayoutAlign="space-between center">
 
-        <div fxFlex="40">
-          <img class="avatar" src="./assets/images/avatars/hari.jpg"/>
+          <div align="center" fxFlex="40">
+            <img class="avatar"
+                 src="https://firebasestorage.googleapis.com/v0/b/travel-story-8f313.appspot.com/o/backgr%2F1540563055983_2c181f2f172d430ab5073daf3915bc21.jpg?alt=media&token=fb4e8445-85ff-4e46-b5de-38dcc24ce6aa"/>
+          </div>
+          <div fxFlex="60" fxLayout="column" fxLayoutAlign="center start">
+            <h3 class="mat-title">Developer</h3>
+            <h3 class="mat-body-2">London</h3>
+          </div>
         </div>
-        <div fxFlex="60" fxLayout="column" fxLayoutAlign="center start">
-          <h3 class="mat-title">Sujith</h3>
-          <h3 class="mat-body-2">Developer</h3>
-        </div>
-      </div>
 
-      <div fxFlex="10" fxLayoutGap="10px" fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="center start">
-        <div fxFlex="50" fxLayout.lt-lg="100">
-          <mat-form-field>
-            <input matInput placeholder="phone">
-          </mat-form-field>
+        <div align="center" fxFlex="10" fxLayoutGap="10px" fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="center start">
+          <div fxFlex="50" fxLayout.lt-lg="100">
+            <mat-form-field>
+              <input matInput placeholder="phone">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="address">
+            </mat-form-field>
+          </div>
+          <div align="center" fxFlex="50" fxLayout.lt-lg="100">
+            <mat-form-field>
+              <input matInput placeholder="Office">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="ExampleData">
+            </mat-form-field>
+          </div>
         </div>
-        <div fxFlex="50" fxLayout.lt-lg="100">
-          <mat-form-field>
-            <input matInput placeholder="Office">
-          </mat-form-field>
-        </div>
-      </div>
 
-      <div fxFlex="10" fxLayoutGap="10px" fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="center start">
-        <div fxFlex="50" fxLayout.lt-lg="100">
-          <mat-form-field>
-            <input matInput placeholder="skype">
-          </mat-form-field>
+        <div align="center" fxFlex="10" fxLayoutGap="10px" fxLayout="row" fxLayout.lt-lg="column" fxLayoutAlign="center start">
+          <div fxFlex="50" fxLayout.lt-lg="100">
+            <mat-form-field>
+              <input matInput placeholder="skype">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Status">
+            </mat-form-field>
+          </div>
+          <div align="center" fxFlex="50" fxLayout.lt-lg="100">
+            <mat-form-field>
+              <input matInput placeholder="Email">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Name">
+            </mat-form-field>
+          </div>
         </div>
-        <div fxFlex="50" fxLayout.lt-lg="100">
-          <mat-form-field>
-            <input matInput placeholder="Email">
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div fxFlex fxLayout="column" fxLayoutAlign="end stretch">
-        <div fxLayout="row" fxLayoutAlign="space-between stretch">
-          <button mat-raised-button>CANCEL</button>
-          <button mat-raised-button color="primary">SAVE</button>
+        <div align="center" fxFlex fxLayout="column" fxLayoutAlign="end stretch" style="align-content: center">
+          <div fxLayout="row" fxLayoutAlign="space-between stretch">
+            <button mat-raised-button>CANCEL</button>
+            <button mat-raised-button color="primary">SAVE</button>
+          </div>
         </div>
       </div>
     </div>
