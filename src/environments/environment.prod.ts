@@ -8,5 +8,5 @@ export const environment = {
     storageBucket: 'travel-story-8f313.appspot.com',
     messagingSenderId: '804778208331'
   },
-  apiUrl: 'https://travelstory-server.herokuapp.com'
+  apiUrl: 'https://travelstory-app-client.herokuapp.com'
 };
