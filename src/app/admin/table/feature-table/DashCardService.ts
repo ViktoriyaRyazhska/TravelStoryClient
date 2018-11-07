@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class DashCardService {
 
-  private basicUrl = 'https://travelstory-app-client.herokuapp.com/admin/statistics';  // URL to web api
+  private basicUrl = 'https://travel-story-server.herokuapp.com/admin/statistics';  // URL to web api
 
   constructor(private http: HttpClient) {
   }

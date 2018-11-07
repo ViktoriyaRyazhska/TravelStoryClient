@@ -22,7 +22,7 @@ const colors: string[] = [
 })
 export class MessengerService {
   userId: number;
-  baseUrl: string = 'https://travelstory-app-client.herokuapp.com/';
+  baseUrl: string = 'https://travel-story-server.herokuapp.com/';
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
   ) {

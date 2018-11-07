@@ -14,7 +14,7 @@ export class StompClient {
   //   // this.stompClient.reconnect_delay=5000;
   //
   //   if (!connection) {
-  //     this.stompClient = Stomp.over(new SockJS('https://travelstory-app-client.herokuapp.com/ws'));
+  //     this.stompClient = Stomp.over(new SockJS('https://travel-story-server.herokuapp.com/ws'));
   //
   //   }
   // }
