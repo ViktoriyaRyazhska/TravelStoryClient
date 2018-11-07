@@ -8,6 +8,7 @@ import {SettingsPageComponent} from '../user/settings-page/settings-page.compone
 import {UserPageComponent} from '../user/user-page/user-page.component';
 import {AdminComponent} from './admin.component';
 import {FeatureTableComponent} from './table/feature-table/feature-table.component';
+import {ContactComponent} from './contact/contact.component';
 
 const adminRoutes: Routes = [
   {
@@ -16,7 +17,8 @@ const adminRoutes: Routes = [
      children: [
       {path: '', redirectTo: 'admin/dashboard', pathMatch: 'full'},
       {path: 'dashboard', component: DashboardCrmComponent},
-      {path: 'table', component: FeatureTableComponent}
+       {path: 'table', component: FeatureTableComponent},
+       {path: 'component', component: ContactComponent}
     ]
   }
 ];

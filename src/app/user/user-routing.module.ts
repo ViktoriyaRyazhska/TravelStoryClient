@@ -14,7 +14,8 @@ const userRoutes: Routes = [
       {path: 'settings', component: SettingsPageComponent},
       {path: 'user/:id', component: UserPageComponent},
       {path: 'user/:id/gallery', component: GalleryComponent},
-      {path: '', redirectTo: 'login', pathMatch: 'full'},
+      {path: '', redirectTo: 'admin/component', pathMatch: 'full'},
+
     ]
   }
 ];

@@ -11,13 +11,14 @@ import {
   MatBadgeModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatIconModule,
+  MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatSidenavModule,
+  MatSidenavModule, MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {AdminSearchComponent} from './admin-header/admin-search/admin-search.component';
+import {ContactComponent} from './contact/contact.component';
 
 @NgModule({
   imports: [
@@ -31,9 +32,13 @@ import {AdminSearchComponent} from './admin-header/admin-search/admin-search.com
     MatListModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule,
+    MatTableModule
   ],
-  declarations: [AdminComponent, AdminFooterComponent, AdminHeaderComponent, AdminSearchComponent]
+  declarations: [AdminComponent, AdminFooterComponent, AdminHeaderComponent, AdminSearchComponent, ContactComponent]
 })
 export class AdminModule {
 }

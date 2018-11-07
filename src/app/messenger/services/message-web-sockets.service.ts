@@ -13,7 +13,7 @@ export class MessageWebSocketsService {
   messageContent: string;
   private stompClient = null;
 
-  private baseUrl = 'https://travelstory-server.herokuapp.com';
+  private baseUrl = 'https://travel-story-server.herokuapp.com';
   private urlToSubscribe: string;
   private urlToSendMessage: string;
   private urlToConnect = '';

@@ -15,7 +15,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {StompConfig, StompService} from '@stomp/ng2-stompjs';
 import * as SockJS from 'sockjs-client';
 
-const WS_URL = 'https://travelstory-server.herokuapp.com/ws';
+const WS_URL = 'https://travel-story-server.herokuapp.com/ws';
 
 export function socketProvider(): SockJS {
   return new SockJS(WS_URL);
