@@ -13,7 +13,7 @@ const userRoutes: Routes = [
     children: [
       {path: 'settings', component: SettingsPageComponent},
       {path: 'user/:id', component: UserPageComponent},
-      {path: '', redirectTo: 'admin/component', pathMatch: 'full'},
+      {path: '', redirectTo: 'login', pathMatch: 'full'},
     ]
   }
 ];

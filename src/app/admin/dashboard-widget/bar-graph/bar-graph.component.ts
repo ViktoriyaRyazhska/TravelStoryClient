@@ -36,28 +36,28 @@ export class BarGraphComponent implements OnInit {
           {
             backgroundColor: 'rgba(92, 107, 192, .7)',
             borderColor: 'rgba(92, 107, 192, .7)',
-            data: this.activityCard.likes,
+            data: JSON.parse(this.activityCard.likes),
             label: 'Likes',
             fill: 'false'
           },
           {
             backgroundColor: 'rgba(66, 165, 245, .7)',
             borderColor: 'rgba(69, 39, 160, .7)',
-            data: this.activityCard.comments,
+            data: JSON.parse(this.activityCard.comments),
             label: 'Comments',
             fill: 'false'
           },
           {
             backgroundColor: 'rgba(38, 166, 154, .7)',
             borderColor: 'rgba(69, 39, 160, .7)',
-            data: this.activityCard.travelStories,
+            data: JSON.parse(this.activityCard.travelStories),
             label: 'TravelStories',
             fill: 'false'
           },
           {
             backgroundColor: 'rgba(102, 187, 106, .7)',
             borderColor: 'rgba(255, 99, 132)',
-            data: this.activityCard.users,
+            data: JSON.parse(this.activityCard.users),
             label: 'Users',
             fill: 'false'
           }
