@@ -18,14 +18,16 @@
              formControlName="password" class="forms_field-input" required/>
     </div>
     <div class="forms_field">
-      <select name="gender" id="gender" formControlName="gender">
-        <option>Choose an option</option>
+      <select name="gender" id="gender" formControlName="gender" >
         <option value="MALE">MALE</option>
         <option value="FEMALE">FEMALE</option>
+        <option value="OTHER">OTHER</option>
       </select>
     </div>
   </fieldset>
   <div class="forms_buttons">
     <button type="submit" class="forms_buttons-action">Sign up</button>
+    <!--<button (click)="socialSignIn('facebook')" class="forms_buttons-action-social-fb">Facebook</button>-->
+    <button (click)="signinWithGoogle()" class="forms_buttons-action-social-g">Google</button>
   </div>
 </form>
