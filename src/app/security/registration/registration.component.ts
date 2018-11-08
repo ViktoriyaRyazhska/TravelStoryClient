@@ -48,9 +48,10 @@ export class RegistrationComponent implements OnInit {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => { // on success
+        console.log(' sign in data : ' , userData);
         // this will return user data from google. What you need is a user token which you will send it to the server
-        userData.email = this.registrationDTO.email;
-        console.log(userData);
+        // this.registrationDTO.email = userData.email;
+        // console.log(userData);
         // this.sendToRestApiMethod(userData.idToken);
       }
     );
