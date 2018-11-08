@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Comment} from '../../models/Comment';
-import {TravelStory} from '../../models/TravelStory';
 import {CommentService} from '../../service/comment.service';
 import {TokenService} from '../../service/token.service';
 import {UserService} from '../../service/user.service';
@@ -13,11 +12,13 @@ import {User} from '../../models/User';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
-  @Input() travelStory: TravelStory;
+  @Input() contentId: number;
+  @Input() contentType: string;
   loggedUser: User;
   comments: Comment [];
   pageNumber: number;
   commentsNumber: number;
+
 
   constructor(private commentService: CommentService, private tokenService: TokenService, private userService: UserService) {
   }
@@ -25,35 +26,34 @@ export class CommentsComponent implements OnInit {
   ngOnInit() {
     this.getLoggedUser();
     this.pageNumber = 0;
-    this.getCommentsPortion(this.travelStory.id, this.travelStory.media[0].id);
+    this.getCommentsPortion(this.contentId, this.contentType);
   }
 
-  add(commentMassage: string, travelStoryId: number, mediaId: number): void {
+  add(commentMassage: string, contentId: number, contentType: string): void {
     commentMassage = commentMassage.trim();
     if (!commentMassage) {
       return;
     }
-    this.getComments(travelStoryId, mediaId);
-    let comment: Comment = new Comment();
+    this.getComments(this.contentId, this.contentType);
+    const comment: Comment = new Comment();
     comment.commentMassage = commentMassage;
     comment.userId = this.loggedUser.id;
     comment.userProfilePic = this.loggedUser.profilePic;
     comment.userFirstName = this.loggedUser.firstName;
     comment.userLastName = this.loggedUser.lastName;
-    comment.travelStoryId = travelStoryId;
-    comment.mediaId = mediaId;
-
+    comment.contentId = this.contentId;
+    comment.mediaType = this.contentType;
     this.commentService.addComment(comment)
       .subscribe(comment => {
         this.comments.push(comment);
       });
-    this.commentsNumber++;
+    this.commentsNumber ++;
   }
 
-  getComments(travelStoryId: number, mediaId: number) {
-    this.commentService.getComments(travelStoryId, mediaId)
+  getComments(contentId: number, contentType: string) {
+    this.commentService.getComments(contentId, contentType)
       .subscribe(comments => this.comments = comments);
-    document.getElementById('commentsBlock' + this.travelStory.id).hidden = false;
+    document.getElementById('commentsBlock' + this.contentId).hidden = false;
   }
 
   delete(comment: Comment) {
@@ -67,16 +67,15 @@ export class CommentsComponent implements OnInit {
     this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
 
-  getCommentsPortion(travelStoryId: number, mediaId: number) {
-    debugger;
-    this.commentService.getCommentsPortion(travelStoryId, mediaId, this.pageNumber).subscribe(data => {
+  getCommentsPortion(contentId: number, contentType: string) {
+    this.commentService.getCommentsPortion(contentId, contentType, this.pageNumber).subscribe(data => {
       this.comments = data['content'];
       this.commentsNumber = data['totalElements'];
     });
-    document.getElementById('commentsBlock').hidden = false;
+    document.getElementById('commentsBlock' + this.contentId).hidden = false;
   }
 
   hideComments() {
-    document.getElementById('commentsBlock' + this.travelStory.id).hidden = true;
+    document.getElementById('commentsBlock' + this.contentId).hidden = true;
   }
 }

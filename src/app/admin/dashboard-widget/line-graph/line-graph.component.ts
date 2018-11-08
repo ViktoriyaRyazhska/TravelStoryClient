@@ -34,7 +34,7 @@ export class LineGraphComponent implements OnInit {
         datasets: [{
           'backgroundColor': 'rgba(92, 107, 192, 0.36)',
           'borderColor': 'rgba(92, 107, 192,.5)',
-          'data': JSON.parse(this.activityCard.users),
+          'data': this.activityCard.users,
           'label': 'Dataset',
           'fill': 'start'
         }]

@@ -19,10 +19,9 @@ export class LikeService {
   }
 
   /** GET likes from the server */
-  getLikes(travelStoryId: number, mediaId: number): Observable<Like[]> {
-    let params = new HttpParams();
-    params = params.set('travelStoryId', travelStoryId.toString());
-    params = params.set('mediaId', mediaId.toString());
+  getLikes(contentId: number, contentType: string): Observable<Like[]> {
+    const params = new HttpParams().set('contentId', contentId.toString())
+      .set('contentType', contentType);
     return this.http.get<Like[]>(this.baseUrl, {params: params})
       .pipe(
         catchError(this.handleError('getLikes', []))
@@ -44,7 +43,6 @@ export class LikeService {
       catchError(this.handleError<Like>('deleteLike'))
     );
   }
-
 
   /**
    * @param operation - name of the operation that failed

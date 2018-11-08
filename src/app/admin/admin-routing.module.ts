@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
+
 import {DashboardCrmComponent} from './dashboard-crm/dashboard-crm.component';
 import {UserComponent} from '../user/user.component';
 import {SettingsPageComponent} from '../user/settings-page/settings-page.component';

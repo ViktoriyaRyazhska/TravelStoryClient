@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {IntroComponent} from './intro/intro.component';
 import {LikesComponent} from './likes/likes.component';
-import {SearchComponent, SearchComponentDialog} from '../search/search.component';
 import {UserRoutingModule} from './user-routing.module';
 import {UserPageComponent} from './user-page/user-page.component';
 import {FeedComponent} from './feed/feed.component';
@@ -31,7 +30,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatTabsModule,
-  MatToolbarModule, MatMenuModule
+  MatToolbarModule, MatMenuModule, MatGridListModule
 } from '@angular/material';
 import {UserComponent} from './user.component';
 import {UserPlacesComponent} from './user-places/user-places.component';
@@ -43,8 +42,10 @@ import {DialogEditTravelStoryComponent} from './user-page/dialog-edit-travel-sto
 import {DialogChangeBackgroundImageComponent} from './intro/dialog-change-background-image/dialog-change-background-image.component';
 import {NgxLoadingModule} from 'ngx-loading';
 import {MatListModule, MatIconModule} from '@angular/material';
+import {GalleryComponent, MediaDialogComponent, ConfirmationDialogComponent} from './gallery/gallery.component';
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
+import {SearchComponent, SearchDialogComponent} from '../search/search.component';
 
 @NgModule({
   imports: [
@@ -75,19 +76,21 @@ import {HeaderComponent} from './header/header.component';
     MatListModule,
     MatIconModule,
     MatMenuModule,
+    MatGridListModule,
     NgxLoadingModule.forRoot({}),
   ],
   entryComponents: [
-    SearchComponentDialog,
     FollowersDialogComponent,
-    FollowingDialogComponent
-  ],
+    FollowingDialogComponent,
+    MediaDialogComponent,
+    ConfirmationDialogComponent,
+    SearchDialogComponent
+],
   declarations: [
     UserComponent,
     IntroComponent,
     UserPageComponent,
     FeedComponent,
-    SearchComponent,
     FooterComponent,
     HeaderComponent,
     ContainerPostComponent,
@@ -96,16 +99,18 @@ import {HeaderComponent} from './header/header.component';
     UserInfoSideComponent,
     UserFollowsSideComponent,
     UserGallerySideComponent,
+    MediaDialogComponent,
     UserPlacesComponent,
-    SearchComponentDialog,
     FollowersDialogComponent,
     FollowingDialogComponent,
     ScrollableDirective,
-    UserPlacesComponent,
     SettingsPageComponent,
     DialogEditTravelStoryComponent,
-    UserPlacesComponent,
-    DialogChangeBackgroundImageComponent
+    DialogChangeBackgroundImageComponent,
+    GalleryComponent,
+    ConfirmationDialogComponent,
+    SearchDialogComponent,
+    SearchComponent
   ]
 })
 export class UserModule {

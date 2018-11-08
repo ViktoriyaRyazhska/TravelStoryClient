@@ -17,7 +17,6 @@ import {
   MatSidenavModule, MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {SearchComponent, SearchComponentDialog} from '../search/search.component';
 import {AdminSearchComponent} from './admin-header/admin-search/admin-search.component';
 import {ContactComponent} from './contact/contact.component';
 

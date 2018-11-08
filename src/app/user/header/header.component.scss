@@ -36,11 +36,14 @@ app-search {
 }
 
 .sidenav .mat-toolbar {
+  font-family: cursive;
   background: inherit;
   padding-left: 75px;
 }
 
 .mat-toolbar.mat-primary {
+  font-weight: bold;
+  font-family: cursive;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -68,3 +71,4 @@ app-search {
 .mat-icon:hover{
   color: white;
 }
+

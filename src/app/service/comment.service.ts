@@ -14,15 +14,14 @@ export class CommentService {
 
   baseUrl = environment.apiUrl + '/api/comments';
 
-
   constructor(
     private http: HttpClient) {
   }
 
   /** GET comments from the server */
-  getComments(travelStoryId: number, mediaId: number): Observable<Comment[]> {
-    let params = new HttpParams().set('travelStoryId', travelStoryId.toString());
-    params.set('mediaId', mediaId.toString());
+  getComments(contentId: number, contentType: string): Observable<Comment[]> {
+    const params = new HttpParams().set('contentId', contentId.toString())
+      .set('contentType', contentType);
     return this.http.get<Comment[]>(this.baseUrl,
       {params: params});
   }
@@ -43,12 +42,10 @@ export class CommentService {
       catchError(this.handleError<Comment>('deleteComment'))
     );
   }
-
-  getCommentsPortion(travelStoryId: number, mediaId: number, pageNumber: number) {
-    debugger;
-    let params = new HttpParams().set('pageNumber', pageNumber.toString()).set('mediaId', mediaId.toString());
-    debugger;
-    return this.http.get(`${this.baseUrl}/` + travelStoryId,
+  getCommentsPortion(contentId: number, contentType: string, pageNumber: number) {
+    let params = new HttpParams().set('contentId', contentId.toString()).
+    set('pageNumber', pageNumber.toString());
+    return this.http.get(`${this.baseUrl}/` + `${contentType}`,
       {params: params});
   }
 

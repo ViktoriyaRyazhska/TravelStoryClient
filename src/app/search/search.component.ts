@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
+import {Observable, Subject} from 'rxjs';
+import {PagableUserSearch} from '../models/PagableUserSearch';
 import {UserSearchDTO} from '../models/UserSearchDTO';
 import {UserService} from '../service/user.service';
-import {Observable, Subject} from 'rxjs';
 import {debounceTime, switchMap} from 'rxjs/operators';
-import {PagableUserSearch} from '../models/PagableUserSearch';
+
 
 
 @Component({
@@ -19,10 +20,11 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(SearchComponentDialog, {
+    const dialogRef = this.dialog.open(SearchDialogComponent, {
       width: '600px'
     });
 
@@ -32,20 +34,22 @@ export class SearchComponent implements OnInit {
   }
 
 }
-
 @Component({
-  selector: 'search-component-dialog',
+  selector: 'app-search-component-dialog',
   templateUrl: 'search.component.dialog.html',
 })
-export class SearchComponentDialog implements OnInit {
+export class SearchDialogComponent implements OnInit {
 
+  private searchTerms = new Subject<string>();
   page: number;
   finished = false;
   pageSize: number;
   term: string;
   data: Observable<PagableUserSearch>;
   users: UserSearchDTO[];
-  private searchTerms = new Subject<string>();
+  showSquirrel: boolean;
+  squirrelCounter: number;
+
 
   constructor(public dialogRef: MatDialogRef<SearchComponent>, private userService: UserService) {
   }
@@ -58,6 +62,8 @@ export class SearchComponentDialog implements OnInit {
   }
 
   ngOnInit(): void {
+    this.showSquirrel = false;
+    this.squirrelCounter = 0;
     this.pageSize = 3;
     this.data = this.searchTerms.pipe(
       debounceTime(300),
@@ -79,5 +85,12 @@ export class SearchComponentDialog implements OnInit {
       this.finished = data['last'];
     });
   }
-}
 
+  countSquirrels() {
+    this.squirrelCounter = this.squirrelCounter + 1;
+    console.log(this.squirrelCounter.toString());
+    if (this.squirrelCounter > 15) {
+      this.showSquirrel = true;
+    }
+  }
+}

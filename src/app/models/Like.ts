@@ -1,8 +1,9 @@
 export class Like {
   id: number;
-  travelStoryId: number;
-  mediaId: number;
+  contentId: number;
+  mediaType: string;
   userId: number;
+  createdAt: Date;
 
   constructor() {
   }

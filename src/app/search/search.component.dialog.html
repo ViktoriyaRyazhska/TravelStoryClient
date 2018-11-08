@@ -1,14 +1,16 @@
-<div mat-dialog-content style="height: 500px">
+<div mat-dialog-content style="height: 525px" (click)="this.countSquirrels()">
   <div class="w-100 d-flex justify-content-center flex-wrap">
     <h1 class="text-center w-100 d-block" mat-dialog-title><b> <i class="material-icons">
       find_replace
-    </i>Find your friends</b></h1>
-    <!--<p  class="text-center w-100 d-block">Type the mame of your friend...</p>-->
-    <input placeholder="Type a name..." #searchBox id="search-box" class="d-block" (keyup)="search(searchBox.value)"/>
+    </i><span translate>FindYourFriends</span></b></h1>
+    <mat-form-field class="search-form">
+      <input matInput placeholder="{{'TypeName'|translate}}" #searchBox id="search-box" class="d-block"
+             (keyup)="search(searchBox.value)"/>
+    </mat-form-field>
   </div>
+  <img [hidden]="this.showSquirrel" *ngIf="!this.users" style="height: 400px; width: 500px"
 
-  <img *ngIf="!this.users" style="height: 400px; width: 500px"
-       src="https://previews.123rf.com/images/dimjul/dimjul1703/dimjul170300047/73871407-funny-pet-chipmunk-searching-with-magnifying-glass-onm-white.jpg">
+  src="https://previews.123rf.com/images/dimjul/dimjul1703/dimjul170300047/73871407-funny-pet-chipmunk-searching-with-magnifying-glass-onm-white.jpg">
   <div *ngIf="this.data['countOfSquirrels']>5">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/TxyTeZXgWr8" frameborder="0"
             allow="autoplay; encrypted-media" allowfullscreen></iframe>
