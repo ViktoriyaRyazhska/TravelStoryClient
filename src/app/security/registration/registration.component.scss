@@ -7,6 +7,12 @@ $primaryFont: "PT Sans", sans-serif;
 $transparendBg: transparent;
 $blackBg: rgba(34, 34, 34, 0.85);
 $primaryColorDark: #e14641;
+$primaryColorFb: #8b9dc3;
+$primaryColorDarkFb: #3b5998;
+$primaryColorGoogle: #DB4437;
+$primaryColorDarkGoogle: #e14641;
+
+
 
 button {
   background-color: $transparendBg;
@@ -60,6 +66,38 @@ input {
   transition: background-color 0.2s ease-in-out;
   &:hover {
     background-color: $primaryColorDark;
+  }
+}
+
+.forms_buttons-action-social-fb {
+  margin: 5px 5px 5px 30px;
+  background-color: $primaryColorFb;
+  border-radius: 3px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: $primaryColorDarkFb;
+  }
+}
+
+.forms_buttons-action-social-g {
+  margin: 5px;
+  background-color: $primaryColor;
+  border-radius: 3px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: $primaryColorDarkGoogle;
   }
 }
 

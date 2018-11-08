@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
@@ -11,6 +11,12 @@ import {
   MatSidenavModule, MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angular5-social-login';
 import {CookieService} from 'ngx-cookie-service';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {InterceptorService} from './service/interceptor.service';
@@ -34,10 +40,7 @@ import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AdminModule} from './admin/admin.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
-// import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
-// import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
-// import {HeaderComponent} from './user/header/header.component';
-// import {FooterComponent} from './user/footer/footer.component';
+import {getAuthServiceConfigs} from './socialloginConfig';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -85,13 +88,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    SocialLoginModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }, )
   ],
   providers: [
     {
@@ -100,7 +104,12 @@ export function HttpLoaderFactory(http: HttpClient) {
       multi: true
     },
     MyAuthService,
-    CookieService
+    CookieService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }, // here an error SocialLoginModule.initialize(getAuthServiceConfigs)
+    SocialLoginModule,
   ],
   bootstrap: [AppComponent],
   entryComponents: [
