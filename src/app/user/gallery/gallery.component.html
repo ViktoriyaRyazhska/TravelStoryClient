@@ -1,13 +1,11 @@
 
 
-<mat-tab-group>
+<mat-tab-group appScrollable (scrollPosition)="scrollHandler($event)">
   <mat-tab label="Travel stories' photos">
     <mat-grid-list cols="4" gutterSize=7px rowHeight="4:3" *ngIf="this.medias">
     <mat-grid-tile *ngFor="let media of this.medias">
       <mat-card class="card-picture">
         <mat-card-title>
-          <span fxFlex="80%" class="description">For now it`s just a simple title, let it be long enough to identify all problems with long description</span>
-          <mat-icon fxFlex="10%"><a></a>mode_edit</mat-icon>
           <mat-icon fxFlex="10%" (click)="openDialogDeletion(media.id)">delete</mat-icon>
         </mat-card-title>
         <img (click)="openDialog(media)"  mat-card-image class="img" [src]="media.url">

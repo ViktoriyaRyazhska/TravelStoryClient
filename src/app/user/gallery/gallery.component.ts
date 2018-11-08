@@ -16,12 +16,32 @@ export class GalleryComponent implements OnInit {
               private route: ActivatedRoute) {
   }
 
+  finished = false;
+
+  PageSize = 2;
+  page = 0;
   userId: number;
   medias: Media[];
 
   ngOnInit() {
     this.userId = +this.route.snapshot.paramMap.get('id');
-    this.mediaService.getMedias(this.userId, 0, 6).subscribe(data => this.medias = data['content']);
+    this.mediaService.getMedias(this.userId, 0, 2).subscribe(data => this.medias = data['content']);
+  }
+
+  scrollHandler(e) {
+    console.log('scrolled!');
+    this.getMore();
+  }
+
+  getMore() {
+    if (this.finished) {
+      return;
+    }
+    this.page++;
+    this.mediaService.getMedias(this.userId, 0, 2).subscribe((data) => {
+      this.medias.concat(data['content']);
+      this.finished = data['last'];
+    });
   }
 
   openDialog(media: Media): void {
@@ -34,6 +54,7 @@ export class GalleryComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
   openDialogDeletion(mediaId: number): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '400px',
@@ -44,14 +65,9 @@ export class GalleryComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+
 }
-
-
-
-
-
-
-
 
 
 @Component({
@@ -73,18 +89,9 @@ export class MediaDialogComponent implements OnInit {
     this.userId = +this.route.snapshot.paramMap.get('id');
     this.media = this.data['media'];
   }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 @Component({
