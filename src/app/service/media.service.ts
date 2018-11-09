@@ -33,7 +33,8 @@ export class MediaService {
 
 
   public delete(mediaId: number) {
-    this.data = this.http.delete(`${this.baseUrl}/${mediaId}`);
+    debugger;
+    return this.http.delete(`${this.baseUrl}/${mediaId}`);
   }
 
 }

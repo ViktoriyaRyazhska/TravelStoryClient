@@ -46,6 +46,7 @@ import {GalleryComponent, MediaDialogComponent, ConfirmationDialogComponent} fro
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {SearchComponent, SearchDialogComponent} from '../search/search.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -77,6 +78,7 @@ import {SearchComponent, SearchDialogComponent} from '../search/search.component
     MatIconModule,
     MatMenuModule,
     MatGridListModule,
+    InfiniteScrollModule,
     NgxLoadingModule.forRoot({}),
   ],
   entryComponents: [
