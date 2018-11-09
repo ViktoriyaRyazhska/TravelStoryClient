@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class stompClient {
   // public stompClient = null;
   // connect() {
-  //   const socket = new SockJS('https://travel-story-server.herokuapp.com/messenger');
+  //   const socket = new SockJS('http://localhost:8080/messenger');
   //   this.stompClient = Stomp.over(socket);
   //
   //   const _this = this;
