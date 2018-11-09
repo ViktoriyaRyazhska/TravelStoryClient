@@ -11,12 +11,6 @@ import {
   MatSidenavModule, MatTableModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import {
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-} from 'angular5-social-login';
 import {CookieService} from 'ngx-cookie-service';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {InterceptorService} from './service/interceptor.service';
@@ -40,7 +34,6 @@ import {AdminRoutingModule} from './admin/admin-routing.module';
 import {AdminModule} from './admin/admin.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FeatureTableComponent} from './admin/table/feature-table/feature-table.component';
-import {getAuthServiceConfigs} from './socialloginConfig';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -88,7 +81,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    SocialLoginModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -104,12 +96,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       multi: true
     },
     MyAuthService,
-    CookieService,
-    {
-      provide: AuthServiceConfig,
-      useFactory: getAuthServiceConfigs
-    }, // here an error SocialLoginModule.initialize(getAuthServiceConfigs)
-    SocialLoginModule,
+    CookieService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
