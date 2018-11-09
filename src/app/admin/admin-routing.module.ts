@@ -12,8 +12,8 @@ import {ContactComponent} from './contact/contact.component';
 
 const adminRoutes: Routes = [
   {
-     path: 'admin',
-     component: AdminComponent,
+    path: 'admin',
+    component: AdminComponent,
      children: [
       {path: '', redirectTo: 'admin/dashboard', pathMatch: 'full'},
       {path: 'dashboard', component: DashboardCrmComponent},
