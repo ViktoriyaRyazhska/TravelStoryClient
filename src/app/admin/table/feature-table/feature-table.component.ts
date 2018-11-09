@@ -18,7 +18,7 @@ import {UserService} from './userService';
 export class FeatureTableComponent implements OnInit {
 
   showNavListCode;
-  displayedColumns = ['select', 'userId', 'userName', 'email', 'dateOfBirth', 'dateOfRegistration', 'gender', 'lastActivity'];
+  displayedColumns = ['select', 'userId', 'userName', 'email', 'dateOfBirth', 'dateOfRegistration', 'role', 'status', 'gender', 'lastActivity'];
   exampleDatabase = new ExampleDatabase();
   selection = new SelectionModel<string>(true, []);
   dataSource: ExampleDataSource | null;
