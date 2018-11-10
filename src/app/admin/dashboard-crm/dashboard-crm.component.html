@@ -1,12 +1,11 @@
-<div fxLayout="row" fxLayout="row wrap">
+<div fxLayout="row" fxLayout="row wrap" style="height: 98px;">
   <div *ngFor="let dash of dashCard" fxFlex.lt-sm="100" fxFlex.sm="50" fxFlex.md="25">
-    <cdk-dashcard style="height: 98px; width: 180px" *ngIf="card" [dashData]="dash"></cdk-dashcard>
+    <cdk-dashcard  *ngIf="card" [dashData]="dash"></cdk-dashcard>
   </div>
 </div>
 
 <div fxLayout="row" fxLayout="row wrap">
   <cdk-bar-graph fxFlex="auto" fxFlex.lt-sm="auto" fxFlex.sm="auto"></cdk-bar-graph>
-
 </div>
 <div fxLayout="row" fxLayout="row wrap">
   <cdk-line-graph fxFlex="75" fxFlex.lt-sm="100" fxFlex.sm="50"></cdk-line-graph>
