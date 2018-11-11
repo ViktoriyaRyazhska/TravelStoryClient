@@ -15,8 +15,8 @@
     <div class="col-md-8">
       <div class="col-sm-12 posts">
 
-
-        <button mat-raised-button color="primary" type="button" (click)="addTravelStory()" translate>AddNewStory</button>
+        <button mat-raised-button color="primary" type="button" (click)="addTravelStory()" translate>AddNewStory
+        </button>
         <div>
           <mat-card class="card" *ngFor="let story of travelStories ">
             <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -24,6 +24,7 @@
                 more_vert
               </i>
             </button>
+
             <mat-menu #menu="matMenu">
               <!--<button mat-menu-item>-->
                 <!--<i class="material-icons">-->
@@ -38,9 +39,10 @@
                 <span><a (click)="delete(story)" title="delete TravelStory" translate>Delete<i class="material-icons">delete_sweep</i></a></span>
               </button>
             </mat-menu>
+
             <app-container-post [travelStory]="story" [user]="user"></app-container-post>
-            <app-likes [contentId]="story.id" [contentType]="contentType"></app-likes>
-            <app-comments [contentId]="story.id" [contentType]="contentType"></app-comments>
+            <app-likes  *ngIf="story" [contentId]="story.id" [contentType]="contentType"></app-likes>
+            <app-comments *ngIf="story" [contentId]="story.id" [contentType]="contentType"></app-comments>
           </mat-card>
         </div>
       </div>

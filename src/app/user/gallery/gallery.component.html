@@ -1,20 +1,51 @@
 
-
+<div class="d-flex justify-content-center flex-wrap">
 <mat-tab-group >
   <mat-tab label="Travel stories' photos">
     <mat-grid-list cols="4" gutterSize=7px rowHeight="4:3" *ngIf="this.medias">
-    <mat-grid-tile *ngFor="let media of this.medias">
-      <mat-card class="card-picture" id="media{{this.media.id}}">
+    <mat-grid-tile *ngFor="let media of this.medias"  >
+      <mat-card  class="card-picture " id="media{{this.media.id}}" (mouseout)="fireEventMouseOut($event,media)" (mouseover)="fireEventMouseOver($event,media)">
         <mat-card-title>
-          <mat-icon fxFlex="10%" (click)="openDialogDeletion(media.id)">delete</mat-icon>
+          <mat-icon   class="hidden" id="delete{{media.id}}" fxFlex="10%" (click)="openDialogDeletion(media.id)">delete</mat-icon>
         </mat-card-title>
         <img (click)="openDialog(media)"  mat-card-image class="img" [src]="media.url">
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
-    <button (click)="this.getMore()" *ngIf="this.finished==false">Load more</button>
   </mat-tab>
   <mat-tab label="My photos"> My photos </mat-tab>
-  <mat-tab label="Add photos"> Add photos </mat-tab>
+  <mat-tab label="Add photos"> <img src="../../../../assets/images/cancel.png" (click)="close()">
+    <h5 mat-dialog-title translate>ChangeProfilePic</h5>
+    <div class="content">
+      <div class="dropzone"
+           appDropZone
+           (hovered)="toggleHover($event)"
+           (dropped)="startUpload($event)"
+           [class.hovering]="isHovering">
+        <p translate>DragAndDropAFile</p>
+        <div class="file">
+          <label class="file-label">
+            <input type="file" (change)="startUpload($event.target.files)">
+            <span class="file-cta">
+    <span class="file-icon">
+      <i class="fa fa-upload"></i>
+    </span>
+    <span class="file-label" translate>OrChooseAFile</span>
+  </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="percentage" *ngIf="percentage | async as pct">
+        <progress class="progress is-info"
+                  [value]="pct"
+                  max="100">
+        </progress>
+        {{ pct | number }}%
+      </div>
+    </div>
+  </mat-tab>
 </mat-tab-group>
+<mat-spinner   *ngIf="this.spinnerState == true"></mat-spinner>
+<button  class="downbutton" mat-raised-button color="primary"  (click)="this.getMore()" *ngIf="this.finished == false">Load more</button></div>
 

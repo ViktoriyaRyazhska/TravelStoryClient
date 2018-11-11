@@ -59,8 +59,8 @@ export class LikesComponent implements OnInit {
   getLoggedUserLike(): void {
     this.loggedUserLike = new Like();
     this.loggedUserLike.userId = this.loggedUser.id;
-    for (let l of this.likes) {
-      if (l.userId == this.loggedUser.id) {
+    for (const l of this.likes) {
+      if (l.userId === this.loggedUser.id) {
         this.loggedUserLike = l;
       }
     }
@@ -80,7 +80,7 @@ export class LikesComponent implements OnInit {
   }
 
   likeExist(): boolean {
-    for (let l of this.likes) {
+    for (const l of this.likes) {
       if (l.userId === this.loggedUserLike.userId) {
         return true;
       }

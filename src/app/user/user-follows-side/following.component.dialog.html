@@ -6,7 +6,7 @@
     User follows </h1></mat-card-title>
 </div>
 
-<div style="overflow-y: scroll; height: 300px;" appScrollable (scrollPosition)="scrollHandler($event)">
+<div style="overflow-y: scroll; height: 500px;" appScrollable (scrollPosition)="scrollHandler($event)" >
   <mat-card *ngFor="let followed of following">
     <mat-card-header>
       <mat-card-title-group>
@@ -16,5 +16,6 @@
       </mat-card-title-group>
     </mat-card-header>
   </mat-card>
+  <div class="d-flex justify-content-center flex-wrap"><mat-spinner   *ngIf="this.spinnerState == true"></mat-spinner></div>
 </div>
 

@@ -66,7 +66,7 @@ export class DialogAddTravelStoryComponent implements OnInit {
     }
 
     // The storage path
-    const path = `${new Date().getTime()}_${file.name}`;
+    const path = `${this.tokenService.getUserId()}_${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = {app: 'travelstory resource'};
