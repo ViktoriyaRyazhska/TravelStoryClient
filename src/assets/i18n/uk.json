@@ -27,6 +27,7 @@
   "AboutYourself": "Розкажіть про себе",
   "Edit": "Редагувати",
   "Posts": "Записів: {{countOfTravelStories}}",
-  "UserLocation": "Локація: {{location}}"
+  "UserLocation": "Локація: {{location}}",
+  "NewStory": "Додати нову історію"
 }
 

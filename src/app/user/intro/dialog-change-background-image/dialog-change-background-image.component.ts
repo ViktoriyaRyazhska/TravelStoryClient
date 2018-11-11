@@ -5,6 +5,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {UserPicDTO} from '../../../models/UserPicDTO';
 import {TokenService} from '../../../service/token.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-dialog-change-background-image',
@@ -23,6 +24,7 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
               private db: AngularFirestore,
               private fileService: FileService,
               private tokenService: TokenService,
+              private dialogRef: MatDialogRef<DialogChangeBackgroundImageComponent>
   ) {
   }
 
@@ -48,27 +50,33 @@ export class DialogChangeBackgroundImageComponent implements OnInit {
       console.error('unsupported  file type :( ');
     }
 
-    const path = `backgr/${new Date().getTime()}_${file.name}`;
+    const path = `backgr/${this.tokenService.getUserId()}_${new Date().getTime()}_${file.name}`;
     const customMetadata = {app: 'travelstory resource'};
     this.task = this.storage.upload(path, file, {customMetadata});
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges();
 
     this.snapshot.subscribe(() => {
+    }, error1 => {
+      console.error(error1);
+    }, () => {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
-            this.dto.pic = value;
-          }, (error1) => {
-            console.error(error1);
-          }, () => {
+            this.dto.pictureUrl = value;
             this.dto.id = this.tokenService.getUserId();
             this.fileService.uploadBackgroundPic(this.dto)
               .subscribe(() => {
-                location.reload(true);
               });
-          }
-        );
+          }, (error1) => {
+            console.error(error1);
+          }, () => location.reload(true)
+        )
+      ;
     });
+  }
+
+  public close(): void {
+    this.dialogRef.close();
   }
 }
