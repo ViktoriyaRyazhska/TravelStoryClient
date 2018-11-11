@@ -25,7 +25,8 @@
   "AboutYourself": "Tell about yourself",
   "Edit": "Edit",
   "Posts": "Posts: {{countOfTravelStories}}",
-  "UserLocation": "Location: {{location}}"
+  "UserLocation": "Location: {{location}}",
+  "AddNewStory": "Add new Story"
 }
 
 

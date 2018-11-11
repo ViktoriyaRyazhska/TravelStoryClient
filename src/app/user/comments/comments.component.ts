@@ -20,6 +20,7 @@ export class CommentsComponent implements OnInit {
   commentsNumber: number;
 
 
+
   constructor(private commentService: CommentService, private tokenService: TokenService, private userService: UserService) {
   }
 
@@ -47,7 +48,7 @@ export class CommentsComponent implements OnInit {
       .subscribe(comment => {
         this.comments.push(comment);
       });
-    this.commentsNumber ++;
+    this.commentsNumber++;
   }
 
   getComments(contentId: number, contentType: string) {
