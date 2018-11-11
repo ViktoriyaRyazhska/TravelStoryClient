@@ -1,10 +1,10 @@
 <div style="position:relative; height: 150px">
-  <h1 style="text-align: center;">Are you shoure?</h1>
+  <h1 style="text-align: center;">Are you shure?</h1>
   <p style="text-align: center;"> Confirm you want to delete your photo, it's going to be deleted permanently</p>
-  <button mat-raised-button color="primary" type="button"  style="position:absolute;  font-weight: bold; margin-left: 30px;">
+  <button mat-raised-button color="primary" type="button"  style="position:absolute;  font-weight: bold; margin-left: 30px;"  (click)="closeDialog()">
     Close
   </button>
-  <button mat-raised-button color="primary" type="button" style="position:absolute;   font-weight: bold; margin-left: 225px;">
+  <button (click)="delete(this.mediaId)" mat-raised-button color="primary" type="button" style="position:absolute;   font-weight: bold; margin-left: 225px;">
     <i class="material-icons">
       delete
     </i>

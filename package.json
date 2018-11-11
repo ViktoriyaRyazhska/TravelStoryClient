@@ -53,6 +53,7 @@
     "ngx-cookie-service": "^1.0.10",
     "ngx-google-places-autocomplete": "^2.0.1",
     "ngx-image-zoom": "^0.3.1",
+    "ngx-infinite-scroll": "^6.0.1",
     "ngx-loading": "^3.0.1",
     "ngx-perfect-scrollbar": "^6.3.1",
     "path": "^0.12.7",

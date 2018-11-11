@@ -55,6 +55,11 @@
          [ngClass]="{'selected':onClickedTab()==='messenger'}" routerLink="/messenger" translate><i class="material-icons">
         mail
       </i>Messenger</a>
+
+      <a mat-list-item  (click)="onClickTab('messenger')"
+         [ngClass]="{'selected':onClickedTab()==='messenger'}" routerLink="/user/{{meId}}/gallery" translate><i class="material-icons">
+        photo_library</i>MyGallery</a>
+
       <a mat-list-item  routerLink="/settings" (click)="onClickTab('settings')"
          [ngClass]="{'selected':onClickedTab()==='settings'}" translate><i class="material-icons">
         brightness_high

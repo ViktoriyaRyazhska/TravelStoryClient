@@ -25,6 +25,7 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit() {
+    debugger; document.getElementById('commentsBlock' + this.contentId.toString()).hidden = false;
     this.getLoggedUser();
     this.pageNumber = 0;
     this.getCommentsPortion(this.contentId, this.contentType);
@@ -54,7 +55,7 @@ export class CommentsComponent implements OnInit {
   getComments(contentId: number, contentType: string) {
     this.commentService.getComments(contentId, contentType)
       .subscribe(comments => this.comments = comments);
-    document.getElementById('commentsBlock' + this.contentId).hidden = false;
+    document.getElementById('commentsBlock' + this.contentId.toString()).hidden = false;
   }
 
   delete(comment: Comment) {
@@ -64,7 +65,7 @@ export class CommentsComponent implements OnInit {
   }
 
   getLoggedUser() {
-    let userId = this.tokenService.getUserId();
+    const userId = this.tokenService.getUserId();
     this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
 
@@ -73,10 +74,10 @@ export class CommentsComponent implements OnInit {
       this.comments = data['content'];
       this.commentsNumber = data['totalElements'];
     });
-    document.getElementById('commentsBlock' + this.contentId).hidden = false;
+    document.getElementById('commentsBlock' + this.contentId.toString()).hidden = false;
   }
 
   hideComments() {
-    document.getElementById('commentsBlock' + this.contentId).hidden = true;
+    document.getElementById('commentsBlock' + this.contentId.toString()).hidden = true;
   }
 }
