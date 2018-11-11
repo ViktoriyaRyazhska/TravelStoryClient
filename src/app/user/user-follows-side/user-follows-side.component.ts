@@ -13,7 +13,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 export class UserFollowsSideComponent implements OnInit {
   followers: UserSearchDTO[];
   following: UserSearchDTO[];
-  PageSize = 7;
+  PageSize = 12;
   pageNumber = 0;
   userId: number;
   followersNumber: number;
@@ -71,6 +71,7 @@ export class FollowersDialogComponent {
   page = 0;
   userId: number;
   followersNumber: number;
+  spinnerState: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UserFollowsSideComponent>,
               private userService: UserService, private route: ActivatedRoute) {
@@ -78,8 +79,10 @@ export class FollowersDialogComponent {
 
   ngOnInit() {
     this.userId = this.data['userId'];
+    this.spinnerState = true;
     this.userService.getFollowers(this.userId, this.page, this.PageSize).subscribe(data => {
       this.followers = data.content;
+      this.spinnerState = false;
       this.followersNumber = data.totalElements;
     });
   }
@@ -93,10 +96,12 @@ export class FollowersDialogComponent {
     if (this.finished) {
       return;
     }
+    this.spinnerState = true;
     this.page++;
     this.userService.getFollowers(this.userId, this.page, this.PageSize).subscribe(data => {
       this.followers = this.followers.concat(data.content);
       this.finished = data['last'];
+      this.spinnerState = false;
     });
   }
 }
@@ -113,6 +118,7 @@ export class FollowingDialogComponent {
   page = 0;
   userId: number;
   followingNumber: number;
+  spinnerState: boolean;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UserFollowsSideComponent>,
@@ -121,9 +127,11 @@ export class FollowingDialogComponent {
 
   ngOnInit() {
     this.userId = this.data['userId'];
+    this.spinnerState = true;
     this.userService.getFollowing(this.userId, this.page, this.PageSize).subscribe(data => {
       this.following = data.content;
       this.followingNumber = data.totalElements;
+      this.spinnerState = false;
     });
   }
 
@@ -135,10 +143,12 @@ export class FollowingDialogComponent {
     if (this.finished) {
       return;
     }
+    this.spinnerState = true;
     this.page++;
     this.userService.getFollowing(this.userId, this.page, this.PageSize).subscribe(data => {
       this.following = this.following.concat(data.content);
       this.finished = data['last'];
+      this.spinnerState = false;
     });
   }
 }

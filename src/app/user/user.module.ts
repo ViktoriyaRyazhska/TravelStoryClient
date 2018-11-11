@@ -30,7 +30,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatTabsModule,
-  MatToolbarModule, MatMenuModule, MatGridListModule
+  MatToolbarModule, MatMenuModule, MatGridListModule, MatProgressSpinnerModule
 } from '@angular/material';
 import {UserComponent} from './user.component';
 import {UserPlacesComponent} from './user-places/user-places.component';
@@ -79,6 +79,7 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     MatMenuModule,
     MatGridListModule,
     InfiniteScrollModule,
+    MatProgressSpinnerModule,
     NgxLoadingModule.forRoot({}),
   ],
   entryComponents: [

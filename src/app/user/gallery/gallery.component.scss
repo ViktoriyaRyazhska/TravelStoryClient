@@ -11,18 +11,27 @@
   outline: none;
   font-weight: bold;
 }
-.pointer {cursor: pointer;}
 
+.pointer {
+  cursor: pointer;
+}
 
-
-.mat-tab{
+.mat-tab {
 
   color: white;
   background-color: #673ab7;
 }
 
-mat-tab-group{
+mat-tab-group {
   height: 100%;
   width: 100%;
-}
 
+}
+.hidden{
+  visibility: hidden;
+}
+.downbutton{
+  font-weight: bold;
+  margin-top: 30px;
+
+}

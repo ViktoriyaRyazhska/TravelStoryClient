@@ -1,4 +1,4 @@
-<div *ngIf="contentId">
+<div *ngIf="contentId && loggedUser">
   <button mat-button (click)="this.getComments(this.contentId,this.contentType)"><i
     class="material-icons" matBadge="{{this.commentsNumber}}" matBadgePosition="after"> chat_bubble_outline</i> <span
     translate>ShowAll</span>
@@ -6,7 +6,7 @@
   <button mat-button (click)="hideComments()"><i class="material-icons">keyboard_arrow_up</i> <span
     translate>Hide</span></button>
   <hr>
-  <div id="commentsBlock{{this.contentId}}" *ngIf="comments">
+  <div id="commentsBlock{{this.contentId}}" *ngIf="comments" style="hidden:false">
     <mat-card-content *ngFor="let comment of comments">
       <mat-card-header>
         <img mat-card-avatar src="{{comment.userProfilePic}}">

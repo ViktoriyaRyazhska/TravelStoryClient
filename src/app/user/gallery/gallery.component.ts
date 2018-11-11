@@ -11,10 +11,11 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 })
 export class GalleryComponent implements OnInit {
   finished: boolean;
-  pageSize = 1;
+  pageSize = 12;
   page = 0;
   userId: number;
   medias: Media[];
+  spinnerState: boolean;
 
   constructor(private mediaService: MediaService,
               public dialog: MatDialog,
@@ -22,20 +23,36 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.finished = false;
+    this.spinnerState = true;
+    this.finished = true;
     this.userId = +this.route.snapshot.paramMap.get('id');
-    this.mediaService.getMedias(this.userId, this.page, this.pageSize).subscribe(data => this.medias = data.content);
+    this.mediaService.getMedias(this.userId, this.page, this.pageSize).subscribe((data) => {
+      this.medias = data.content;
+      this.finished = data.last;
+      this.spinnerState = false;
+    });
   }
 
+  fireEventMouseOver(e, media: Media) {
+    console.log(e.type);
+    document.getElementById('delete' + media.id).style.visibility = 'visible';
+  }
+  fireEventMouseOut(e, media: Media) {
+    console.log(e.type);
+    document.getElementById('delete' + media.id).style.visibility = 'hidden';
+  }
   getMore() {
     console.log('clicked!');
     if (this.finished) {
       return;
     }
+    this.finished = true;
+    this.spinnerState = true;
     this.page++;
     this.mediaService.getMedias(this.userId, this.page, this.pageSize).subscribe(data => {
       this.medias = this.medias.concat(data.content);
       this.finished = data.last;
+      this.spinnerState = false;
     });
   }
 
