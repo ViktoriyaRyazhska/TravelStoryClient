@@ -26,7 +26,6 @@
   "Edit": "Edit",
   "Posts": "Posts: {{countOfTravelStories}}",
   "UserLocation": "Location: {{location}}",
-  "AddNewStory": "Add new Story",
   "Confirm":"Confirm you want to delete your photo, it's going to be deleted permanently",
   "AreYouSure":"Are you sure?",
   "Close":"Close",
@@ -44,7 +43,8 @@
   "LeaveComment":"Leave a comment...",
   "TravelStoriesPhotos":"Travel stories' photos",
   "MyPhotos":"My photos"
-
+  "AddNewStory": "Add new story",
+  "Delete": "Delete"
 
 }
 
