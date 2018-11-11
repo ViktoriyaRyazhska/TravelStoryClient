@@ -1,10 +1,10 @@
 
 
-<mat-tab-group appScrollable (scrollPosition)="scrollHandler($event)">
+<mat-tab-group >
   <mat-tab label="Travel stories' photos">
     <mat-grid-list cols="4" gutterSize=7px rowHeight="4:3" *ngIf="this.medias">
     <mat-grid-tile *ngFor="let media of this.medias">
-      <mat-card class="card-picture">
+      <mat-card class="card-picture" id="media{{this.media.id}}">
         <mat-card-title>
           <mat-icon fxFlex="10%" (click)="openDialogDeletion(media.id)">delete</mat-icon>
         </mat-card-title>
@@ -12,6 +12,7 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+    <button (click)="this.getMore()" *ngIf="this.finished==false">Load more</button>
   </mat-tab>
   <mat-tab label="My photos"> My photos </mat-tab>
   <mat-tab label="Add photos"> Add photos </mat-tab>
