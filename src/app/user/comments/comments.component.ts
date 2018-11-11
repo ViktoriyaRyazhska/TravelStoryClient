@@ -20,6 +20,7 @@ export class CommentsComponent implements OnInit {
   commentsNumber: number;
 
 
+
   constructor(private commentService: CommentService, private tokenService: TokenService, private userService: UserService) {
   }
 

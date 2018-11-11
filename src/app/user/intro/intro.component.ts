@@ -29,14 +29,14 @@ export class IntroComponent implements OnInit {
 
   public changeProfilePic() {
     this.dialog.open(DialogChangeProfilePicComponent, {
-      height: '430px',
+      height: '435px',
       width: '500px',
     });
   }
 
   public changeBackgroundImage() {
     this.dialog.open(DialogChangeBackgroundImageComponent, {
-      height: '430px',
+      height: '435px',
       width: '500px',
     });
   }
