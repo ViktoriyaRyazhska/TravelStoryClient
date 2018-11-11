@@ -1,51 +1,51 @@
-
-<div class="d-flex justify-content-center flex-wrap">
-<mat-tab-group >
-  <mat-tab label="Travel stories' photos">
+<mat-tab-group>
+  <mat-tab  label="{{'TravelStoriesPhotos' | translate}}">
     <mat-grid-list cols="4" gutterSize=7px rowHeight="4:3" *ngIf="this.medias">
-    <mat-grid-tile *ngFor="let media of this.medias"  >
-      <mat-card  class="card-picture " id="media{{this.media.id}}" (mouseout)="fireEventMouseOut($event,media)" (mouseover)="fireEventMouseOver($event,media)">
-        <mat-card-title>
-          <mat-icon   class="hidden" id="delete{{media.id}}" fxFlex="10%" (click)="openDialogDeletion(media.id)">delete</mat-icon>
-        </mat-card-title>
-        <img (click)="openDialog(media)"  mat-card-image class="img" [src]="media.url">
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-  </mat-tab>
-  <mat-tab label="My photos"> My photos </mat-tab>
-  <mat-tab label="Add photos"> <img src="../../../../assets/images/cancel.png" (click)="close()">
-    <h5 mat-dialog-title translate>ChangeProfilePic</h5>
-    <div class="content">
-      <div class="dropzone"
-           appDropZone
-           (hovered)="toggleHover($event)"
-           (dropped)="startUpload($event)"
-           [class.hovering]="isHovering">
-        <p translate>DragAndDropAFile</p>
-        <div class="file">
-          <label class="file-label">
-            <input type="file" (change)="startUpload($event.target.files)">
-            <span class="file-cta">
-    <span class="file-icon">
-      <i class="fa fa-upload"></i>
-    </span>
-    <span class="file-label" translate>OrChooseAFile</span>
-  </span>
-          </label>
-        </div>
-      </div>
+      <mat-grid-tile *ngFor="let media of this.medias">
+        <mat-card class="card-picture position-relative " id="media{{this.media.id}}" (mouseout)="fireEventMouseOut($event,media)"
+                  (mouseover)="fireEventMouseOver($event,media)">
+          <mat-card-title>
+            <mat-icon class="hidden position-absolute" id="delete{{media.id}}" fxFlex="10%" (click)="openDialogDeletion(media.id)">
+              delete
+            </mat-icon>
+          </mat-card-title>
+          <img (click)="openDialog(media)" mat-card-image class="img" [src]="media.url">
+        </mat-card>
+      </mat-grid-tile>
 
-      <div class="percentage" *ngIf="percentage | async as pct">
-        <progress class="progress is-info"
-                  [value]="pct"
-                  max="100">
-        </progress>
-        {{ pct | number }}%
-      </div>
+    </mat-grid-list>
+    <div class="d-flex justify-content-center flex-wrap">
+      <mat-spinner style="margin-top:30px" *ngIf="this.spinnerState == true"></mat-spinner>
+      <button class="down" mat-raised-button color="primary" (click)="this.getMore()"
+              *ngIf="this.finished == false"><span translate>LoadMore</span>
+      </button>
+    </div>
+
+
+  </mat-tab>
+  <mat-tab c label="{{'MyPhotos' | translate}}">
+    <mat-grid-list cols="4" gutterSize=7px rowHeight="4:3" *ngIf="this.userMedias">
+      <mat-grid-tile *ngFor="let userMedia of this.userMedias">
+
+        <mat-card class="card-picture position-relative " id="media{{userMedia.id}}" (mouseout)="fireEventMouseOut($event,userMedia)"
+                  (mouseover)="fireEventMouseOver($event,userMedia)">
+          <mat-card-title>
+            <mat-icon  class="hidden position-absolute" id="delete{{userMedia.id}}" fxFlex="10%"
+                      (click)="openDialogDeletion(userMedia.id)">delete
+            </mat-icon>
+          </mat-card-title>
+          <img (click)="openDialog(userMedia)" mat-card-image class="img" [src]="userMedia.url">
+        </mat-card>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="d-flex justify-content-center flex-wrap">
+      <mat-spinner class="down"  *ngIf="this.spinnerStateUserMedia === true"></mat-spinner>
+      <button class="downbutton" mat-raised-button color="primary" (click)="this.getMoreUserMedias()"
+              *ngIf="this.finishedUserMedia === false"><span translate>LoadMore</span>
+      </button>
     </div>
   </mat-tab>
 </mat-tab-group>
-<mat-spinner   *ngIf="this.spinnerState == true"></mat-spinner>
-<button  class="downbutton" mat-raised-button color="primary"  (click)="this.getMore()" *ngIf="this.finished == false">Load more</button></div>
+
 

@@ -1,8 +1,8 @@
 {
-  "Me": "я",
-  "Messenger": "месенджер",
-  "Settings": "налаштування",
-  "Logout": "вийти",
+  "Me": "Я",
+  "Messenger": "Месенджер",
+  "Settings": "Налаштування",
+  "Logout": "Вийти",
   "Search": "Пошук",
   "Info": "Інфо",
   "CurUserGender": "{{gender}}",
@@ -28,6 +28,25 @@
   "Edit": "Редагувати",
   "Posts": "Записів: {{countOfTravelStories}}",
   "UserLocation": "Локація: {{location}}",
-  "AddNewStory": "Додати сторі"
+  "AddNewStory": "Додати сторі",
+  "Confirm":"Ви впевнені що бажаєте видалити фото? Фото буде видалено назавжди.",
+  "AreYouSure":"Ви впевнені?",
+  "Close":"Закрити",
+  "MyGallery":"Моя галерея",
+  "FindYourFriends":"Знайди своїх друзів",
+  "ShowMoreResults":"Показати більше співпадінь...",
+  "TypeName":"Надрукуй ім'я...",
+  "LoadMore":"Завантажити більше",
+  "UserFollows":"Користувач відстежує",
+  "Following":"Відстежування",
+  "LikeIt":"Сподоай це!",
+  "Add":"Додати",
+  "ShowAll":"Показати всі",
+  "Hide":"Сховати",
+  "LeaveComment":"Прокоментуй...",
+  "TravelStoriesPhotos":"Фотографії з подорожей",
+  "MyPhotos":"Мої фото"
+
+
 }
 

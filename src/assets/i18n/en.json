@@ -1,8 +1,8 @@
 {
-  "Me": "me",
-  "Messenger": "messenger",
-  "Settings": "settings",
-  "Logout": "logout",
+  "Me": "Me",
+  "Messenger": "Messenger",
+  "Settings": "Settings",
+  "Logout": "Logout",
   "Search": "Search",
   "Info": "Info",
   "CurUserGender": "{{gender}}",
@@ -26,7 +26,26 @@
   "Edit": "Edit",
   "Posts": "Posts: {{countOfTravelStories}}",
   "UserLocation": "Location: {{location}}",
-  "AddNewStory": "Add new Story"
+  "AddNewStory": "Add new Story",
+  "Confirm":"Confirm you want to delete your photo, it's going to be deleted permanently",
+  "AreYouSure":"Are you sure?",
+  "Close":"Close",
+  "MyGallery":"My gallery",
+  "FindYourFriends":"Find your friends",
+  "ShowMoreResults":"show more results...",
+  "TypeName":"Type a name...",
+  "LoadMore":"Load more",
+  "UserFollows":"User follows",
+  "Following":"Following",
+  "LikeIt":"Like it!",
+  "Add":"Add",
+  "ShowAll":"Show all",
+  "Hide":"Hide",
+  "LeaveComment":"Leave a comment...",
+  "TravelStoriesPhotos":"Travel stories' photos",
+  "MyPhotos":"My photos"
+
+
 }
 
 
