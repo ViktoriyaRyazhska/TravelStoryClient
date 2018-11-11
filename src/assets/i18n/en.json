@@ -26,7 +26,8 @@
   "Edit": "Edit",
   "Posts": "Posts: {{countOfTravelStories}}",
   "UserLocation": "Location: {{location}}",
-  "AddNewStory": "Add new Story"
+  "AddNewStory": "Add new story",
+  "Delete": "Delete"
 }
 
 

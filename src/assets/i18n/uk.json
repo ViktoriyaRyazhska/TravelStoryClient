@@ -28,6 +28,7 @@
   "Edit": "Редагувати",
   "Posts": "Записів: {{countOfTravelStories}}",
   "UserLocation": "Локація: {{location}}",
-  "AddNewStory": "Додати сторі"
+  "AddNewStory": "Додати сторі",
+  "Delete": "Видалити"
 }
 
