@@ -80,8 +80,9 @@ export class CommentsComponent implements OnInit {
 
   }
 
-  hideComments() {
+  hideComments(contentId: number) {
     window.onload = function () {
-      document.getElementById('commentsBlock' + this.contentId.toString()).hidden = true;
-  };
-}}
+      document.getElementById('commentsBlock' + contentId.toString()).hidden = true;
+    };
+  }
+}

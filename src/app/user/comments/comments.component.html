@@ -3,7 +3,7 @@
     class="material-icons" matBadge="{{this.commentsNumber}}" matBadgePosition="after"> chat_bubble_outline</i> <span
     translate>ShowAll</span>
   </button>
-  <button mat-button (click)="hideComments()"><i class="material-icons">keyboard_arrow_up</i> <span
+  <button mat-button (click)="hideComments(this.contentId)"><i class="material-icons">keyboard_arrow_up</i> <span
     translate>Hide</span></button>
   <hr>
   <div id="commentsBlock{{this.contentId}}" *ngIf="comments" >
