@@ -45,7 +45,18 @@
   "MyPhotos":"My photos",
   "Story": "Add new story",
   "Delete": "Delete",
-  "StopBotheringMe":"Stop bothering me !"
+  "StopBotheringMe":"Stop bothering me !",
+  "FirstName": "First name",
+  "LastName": "Last name",
+  "YourBirthday": "Your birthday",
+  "Gender": "Gender",
+  "Bio": "Bio",
+  "Email": "Email",
+  "NewPassword": "New password",
+  "ConfirmPassword": "Confirm password",
+  "Male": "Male",
+  "Female":"Female",
+  "Other":"Other"
 
 }
 

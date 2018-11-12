@@ -46,7 +46,18 @@
   "TravelStoriesPhotos":"Фотографії з подорожей",
   "MyPhotos":"Мої фото",
   "StopBotheringMe":"Не дратуй мене!",
-  "Delete": "Видалити"
+  "Delete": "Видалити",
+  "FirstName": "Ім'я",
+  "LastName": "Прізвище",
+  "YourBirthday": "Дата народження",
+  "Gender": "Стать",
+  "Bio": "Біо",
+  "Email": "Електронна пошта",
+  "NewPassword": "Новий пароль",
+  "ConfirmPassword": "Підтвердити пароль",
+  "Male": "Чоловік",
+  "Female":"Жінка",
+  "Other":"Інше"
 
 }
 
