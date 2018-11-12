@@ -18,7 +18,7 @@ import {UserService} from './userService';
 export class FeatureTableComponent implements OnInit {
 
   showNavListCode;
-  displayedColumns = ['select', 'userId', 'userName', 'email', 'dateOfBirth', 'dateOfRegistration', 'gender', 'lastActivity'];
+  displayedColumns = ['userId', 'userName', 'email', 'dateOfBirth', 'dateOfRegistration', 'gender', 'lastActivity'];
   exampleDatabase = new ExampleDatabase();
   selection = new SelectionModel<string>(true, []);
   dataSource: ExampleDataSource | null;
@@ -27,6 +27,7 @@ export class FeatureTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
   users: User[];
+  private online: string;
 
   constructor(private http: HttpClient, private userService: UserService) {
   }
@@ -37,13 +38,30 @@ export class FeatureTableComponent implements OnInit {
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
     observableFromEvent(this.filter.nativeElement, 'keyup').pipe(
       debounceTime(150),
-      distinctUntilChanged(),)
+      distinctUntilChanged(), )
       .subscribe(() => {
         if (!this.dataSource) {
           return;
         }
         this.dataSource.filter = this.filter.nativeElement.value;
       });
+  }
+
+  isUserOnline(user): boolean {
+    this.online = 'ONLINE';
+    if (user === this.online) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public isUsersUnloaded(): boolean {
+    if ((this.users.length < 1)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   isAllSelected(): boolean {

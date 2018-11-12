@@ -30,7 +30,7 @@ export class TestWebSocketsComponent implements OnInit {
   }
 
   connect() {
-    const socket = new SockJS('https://travel-story-server.herokuapp.com/ws');
+    const socket = new SockJS('http://localhost:8080/ws');
     this.stompClient = Stomp.over(socket);
 
     const _this = this;

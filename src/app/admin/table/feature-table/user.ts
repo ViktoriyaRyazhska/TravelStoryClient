@@ -6,6 +6,7 @@ export class User {
   dateOfBirth: string;
   userRole: string;
   userStatus: string;
+  userState: string;
   registrationDate: string;
   lastUpdateDate: string;
   profilePic: string;

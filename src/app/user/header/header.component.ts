@@ -38,6 +38,13 @@ export class HeaderComponent implements OnInit {
     this.translate.use(lang);
   }
 
+  public isUserAdmin(): boolean {
+    if (this.tokenService.getUserRole() === 'ADMIN') {
+      return true;
+    } else {
+      return false;
+    }
+  }
   public onChosenLang(): string {
     this.lang = this.userService.getPreferedLang();
     if (this.lang === 'en') {

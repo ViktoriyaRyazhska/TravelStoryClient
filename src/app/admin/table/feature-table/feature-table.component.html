@@ -11,11 +11,6 @@
       </div>
       <mat-tab-group class="tabs" mat-align-tabs="center" dynamicHeight align="center">
         <mat-tab label="Users list" align="center">
-          <mat-cell *matCellDef="let users">
-          <div *ngIf='users.length==0'>
-            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-          </div>
-          </mat-cell>
           <div fxLayout="row" class="example-header example-selection-header mat-headline center-align "
                *ngIf="!selection.isEmpty()">
             {{selection.selected.length}}
@@ -24,22 +19,6 @@
           </div>
 
           <mat-table #table [dataSource]="users" matSort style="margin-top: 20px;">
-
-            <!-- Checkbox Column -->
-            <ng-container matColumnDef="select">
-              <mat-header-cell *matHeaderCellDef>
-                <mat-checkbox (change)="$event ? masterToggle() : null"
-                              [checked]="isAllSelected()"
-                              [indeterminate]="selection.hasValue() && !isAllSelected()">
-                </mat-checkbox>
-              </mat-header-cell>
-              <mat-cell *matCellDef="let users">
-                <mat-checkbox (click)="$event.stopPropagation()"
-                              (change)="$event ? selection.toggle(users.id) : null"
-                              [checked]="selection.isSelected(users.id)">
-                </mat-checkbox>
-              </mat-cell>
-            </ng-container>
 
             <!-- ID Column -->
             <ng-container matColumnDef="userId">
@@ -112,16 +91,21 @@
             <mat-grid-tile *ngFor="let user of users">
                 <div class="thecard">
                   <div class="card-img">
-                    <img  src={{user.profilePic}}>
+                    <img mat-card-avatar src="{{user.profilePic}}">
                   </div>
                   <div class="card-caption">
                     <a target="_blank" href="/user/{{user.id}}">
-                    <i id="like-btn">info</i>
+                    <i id="like-btn">page</i>
                     </a>
                     <span class="date">{{user.lastUpdateDate}}</span>
                     <h1>{{user.firstName + " " +user.lastName}}</h1>
                     <p>{{user.email}}</p>
-                    <p style="color: limegreen">online</p>
+                    <div *ngIf=" isUserOnline(user.state); else notShow ">
+                      <p style="color: limegreen">online</p>
+                    </div>
+                    <ng-template #notShow>
+                      <p style="color: red">offline</p>
+                    </ng-template>
                   </div>
                   <a target="_blank" href="/admin/component/{{user.id}}">
                   <div class="card-outmore">

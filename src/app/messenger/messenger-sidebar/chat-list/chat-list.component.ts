@@ -49,7 +49,7 @@ export class ChatListComponent implements OnInit {
             this.chats[index].lastMessage = JSON.parse(message.body);
           });
           // const _this = this;
-          // this.stompClient = Stomp.over(new SockJS("https://travel-story-server.herokuapp.com/messenger"));
+          // this.stompClient = Stomp.over(new SockJS("http://localhost:8080/messenger"));
           // this.stompClient.connect({}, function (frame) {
           //   _this.stompClient.subscribe('/messenger/' + chat.id + '/messages',
           //     function (newMessage: Message) {

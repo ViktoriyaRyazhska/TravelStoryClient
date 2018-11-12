@@ -19,6 +19,7 @@ import {
 } from '@angular/material';
 import {AdminSearchComponent} from './admin-header/admin-search/admin-search.component';
 import {ContactComponent} from './contact/contact.component';
+import {SearchComponent} from '../search/search.component';
 
 @NgModule({
   imports: [

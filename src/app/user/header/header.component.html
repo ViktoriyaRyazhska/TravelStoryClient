@@ -59,8 +59,8 @@
          [ngClass]="{'selected':onClickedTab()==='settings'}" translate><i class="material-icons">
         brightness_high
       </i>Settings</a>
-      <!--<div *ngIf=>-->
-      <a mat-list-item  (click)="onClickTab('table')"
+      <div *ngIf=" isUserAdmin()">
+        <a mat-list-item  (click)="onClickTab('table')"
          [ngClass]="{'selected':onClickedTab()==='table'}" routerLink="/admin/table" translate><i class="material-icons">
         assignment_ind
       </i>Users stats</a>
@@ -68,7 +68,7 @@
          [ngClass]="{'selected':onClickedTab()==='table'}" routerLink="/admin/dashboard" translate><i class="material-icons">
         dashboard
       </i>Dashboard</a>
-      <!--</div>-->
+      </div>
       <a mat-list-item  routerLink="/login" (click)="logout()" translate><i class="material-icons">
         meeting_room
       </i>Logout</a>
