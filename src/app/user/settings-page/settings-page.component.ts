@@ -4,6 +4,7 @@ import {UserService} from '../../service/user.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Country, ParentErrorStateMatcher, PasswordValidator, PhoneValidator, UsernameValidator} from '../validators';
 import {UserDTO} from '../../models/UserDTO';
+import {Router} from '@angular/router';
 
 export interface Gender {
   value: string;
@@ -88,10 +89,14 @@ export class SettingsPageComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private router: Router) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('auth') === null) {
+      this.router.navigate(['/login']);
+    }
     this.loading = true;
     this.userService.getUser(this.tokenService.getUserId())
       .subscribe(value => {

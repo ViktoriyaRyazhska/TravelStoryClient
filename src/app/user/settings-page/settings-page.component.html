@@ -5,7 +5,7 @@
       <h2 class="section-title" translate>UserDetails</h2>
       <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
         <mat-form-field class="full-width">
-          <input matInput placeholder="First Name" formControlName="firstname" [(ngModel)]="user.firstName" required>
+          <input matInput placeholder="{{'FirstName' | translate}}" formControlName="firstname" [(ngModel)]="user.firstName" required>
           <mat-error *ngFor="let validation of validation_messages.firstname">
             <mat-error class="error-message"
                        *ngIf="userDetailsForm.get('firstname').hasError(validation.type) && (userDetailsForm.get('firstname').dirty || userDetailsForm.get('firstname').touched)">
@@ -15,7 +15,7 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <input matInput placeholder="Last Name" formControlName="lastname" [(ngModel)]="user.lastName" required>
+          <input matInput placeholder="{{'LastName' | translate}}" formControlName="lastname" [(ngModel)]="user.lastName" required>
           <mat-error *ngFor="let validation of validation_messages.lastname">
             <mat-error class="error-message"
                        *ngIf="userDetailsForm.get('lastname').hasError(validation.type) && (userDetailsForm.get('lastname').dirty || userDetailsForm.get('lastname').touched)">
@@ -25,7 +25,7 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Your birthday" formControlName="birthday"
+          <input matInput [matDatepicker]="picker" placeholder="{{'YourBirthday' | translate}}" formControlName="birthday"
                  [(ngModel)]="user.dateOfBirth" required>
           <mat-datepicker-toggle matSuffix [for]="picker">
           </mat-datepicker-toggle>
@@ -39,9 +39,9 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <mat-select placeholder="Gender">
+          <mat-select placeholder="{{'Gender' | translate}}">
             <mat-option *ngFor="let gender of genders" [value]="gender">
-              {{ gender }}
+              {{ gender | translate }}
             </mat-option>
           </mat-select>
           <mat-error *ngFor="let validation of validation_messages.gender">
@@ -53,7 +53,7 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-          <textarea matInput maxlength="256" placeholder="Bio" formControlName="bio" matTextareaAutosize
+          <textarea matInput maxlength="256" placeholder="{{'Bio' | translate}}" formControlName="bio" matTextareaAutosize
                     matAutosizeMinRows="2" matAutosizeMaxRows="5" [(ngModel)]="user.bio"></textarea>
           <mat-hint align="start" translate>AboutYourself</mat-hint>
           <mat-hint *ngIf="userDetailsForm" align="end">{{userDetailsForm.get('bio').value.length}} / 256</mat-hint>
@@ -79,7 +79,7 @@
       <form [formGroup]="accountDetailsForm" novalidate (ngSubmit)="onSubmitAccountDetails(accountDetailsForm.value)">
 
         <mat-form-field class="full-width">
-          <input matInput type="email" placeholder="Email" formControlName="email" [(ngModel)]="user.email" required>
+          <input matInput type="email" placeholder="{{'Email' | translate}}" formControlName="email" [(ngModel)]="user.email" required>
           <mat-error *ngFor="let validation of account_validation_messages.email">
             <mat-error class="error-message"
                        *ngIf="accountDetailsForm.get('email').hasError(validation.type) && (accountDetailsForm.get('email').dirty || accountDetailsForm.get('email').touched)">
@@ -90,7 +90,7 @@
 
         <div formGroupName="matching_passwords">
           <mat-form-field class="full-width">
-            <input matInput type="password" placeholder="New password" formControlName="password" required>
+            <input matInput type="password" placeholder="{{'NewPassword' | translate}}" formControlName="password" required>
             <mat-error *ngFor="let validation of account_validation_messages.password">
               <mat-error class="error-message"
                          *ngIf="accountDetailsForm.get('matching_passwords').get('password').hasError(validation.type) && (accountDetailsForm.get('matching_passwords').get('password').dirty || accountDetailsForm.get('matching_passwords').get('password').touched)">
@@ -100,7 +100,7 @@
           </mat-form-field>
 
           <mat-form-field class="full-width">
-            <input matInput type="password" placeholder="Confirm Password" formControlName="confirm_password"
+            <input matInput type="password" placeholder="{{'ConfirmPassword' | translate}}" formControlName="confirm_password"
                    [errorStateMatcher]="parentErrorStateMatcher" required>
             <mat-error *ngFor="let validation of account_validation_messages.confirm_password">
               <mat-error class="error-message"
