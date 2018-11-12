@@ -15,13 +15,13 @@ const httpOptions = {
 })
 export class UserService {
 
-  private usersUrl = 'https://travel-story-server.herokuapp.com/admin/getAllUsers/0/20';  // URL to web api
+  private usersUrl = 'https://travel-story-server.herokuapp.com/admin/getAllUsers/0/';  // URL to web api
 
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 
-  getUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl)
+  getUser(serverUrl: string): Observable<User[]> {
+    return this.http.get<User[]>(serverUrl)
       .pipe(
         catchError(this.handleError('getUsers', []))
       );

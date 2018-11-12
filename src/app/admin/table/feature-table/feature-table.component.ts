@@ -28,12 +28,14 @@ export class FeatureTableComponent implements OnInit {
   @ViewChild('filter') filter: ElementRef;
   users: User[];
   private online: string;
-
+  pageSize: number;
+  private usersUrl = 'https://travel-story-server.herokuapp.com/admin/getAllUsers/0/';  // URL to web api
   constructor(private http: HttpClient, private userService: UserService) {
   }
 
   ngOnInit() {
-    this.getUsers();
+    this.pageSize = this.paginator.pageSize;
+    this.getUsers(this.usersUrl + this.pageSize);
     console.log(this.users);
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
     observableFromEvent(this.filter.nativeElement, 'keyup').pipe(
@@ -54,6 +56,9 @@ export class FeatureTableComponent implements OnInit {
     } else {
       return false;
     }
+  }
+  public updateData(pageSize: number): void {
+  this.getUsers(this.usersUrl + pageSize);
   }
 
   public isUsersUnloaded(): boolean {
@@ -93,8 +98,8 @@ export class FeatureTableComponent implements OnInit {
     }
   }
 
-  getUsers(): void {
-    this.userService.getUser()
+  getUsers(serverUrl: string): void {
+    this.userService.getUser(serverUrl)
       .subscribe(users => {
         console.log(users);
         return this.users = users;
