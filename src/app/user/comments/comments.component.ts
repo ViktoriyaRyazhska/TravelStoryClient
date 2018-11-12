@@ -53,9 +53,7 @@ export class CommentsComponent implements OnInit {
   getComments(contentId: number, contentType: string) {
     this.commentService.getComments(contentId, contentType)
       .subscribe(comments => this.comments = comments);
-    window.onload = function () {
       document.getElementById('commentsBlock' + contentId).hidden = false;
-    };
   }
 
   delete(comment: Comment) {
@@ -73,16 +71,11 @@ export class CommentsComponent implements OnInit {
     this.commentService.getCommentsPortion(contentId, contentType, this.pageNumber).subscribe(data => {
       this.comments = data['content'];
       this.commentsNumber = data['totalElements'];
-      window.onload = function () {
         document.getElementById('commentsBlock' + contentId.toString()).hidden = false;
-      };
     });
-
   }
 
   hideComments(contentId: number) {
-    window.onload = function () {
       document.getElementById('commentsBlock' + contentId.toString()).hidden = true;
-    };
   }
 }

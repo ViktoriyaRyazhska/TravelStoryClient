@@ -8,7 +8,7 @@
   <hr>
   <div id="commentsBlock{{this.contentId}}" *ngIf="comments" >
     <mat-card-content *ngFor="let comment of comments">
-      <mat-card-header>
+      <mat-card-header *ngIf="comment">
         <img mat-card-avatar src="{{comment.userProfilePic}}">
         <mat-card-title>{{comment.userFirstName}} {{comment.userLastName}}</mat-card-title>
         <mat-card-subtitle>{{comment.createdTime |date:'medium'}}<a mat-button
@@ -26,7 +26,7 @@
       <!--<emoji-input></emoji-input>-->
     </mat-form-field>
     <button mat-raised-button color="primary" mat-button
-            (click)="add(commentMassage.value,this.contentId, this.contentType)" translate
+            (click)="add(commentMassage.value,this.contentId, this.contentType)"
             (click)="commentMassage.value=''"><i class="material-icons">
     </i><span translate>Add</span>
     </button>
