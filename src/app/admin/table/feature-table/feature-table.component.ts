@@ -18,7 +18,7 @@ import {UserService} from './userService';
 export class FeatureTableComponent implements OnInit {
 
   showNavListCode;
-  displayedColumns = ['userId', 'userName', 'email', 'dateOfBirth', 'dateOfRegistration', 'gender', 'lastActivity'];
+  displayedColumns = ['userId', 'userName', 'email', 'dateOfBirth', 'dateOfRegistration', 'gender', 'role', 'lastActivity'];
   exampleDatabase = new ExampleDatabase();
   selection = new SelectionModel<string>(true, []);
   dataSource: ExampleDataSource | null;
@@ -34,7 +34,7 @@ export class FeatureTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pageSize = this.paginator.pageSize;
+    this.pageSize = 20;
     this.getUsers(this.usersUrl + this.pageSize);
     console.log(this.users);
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
@@ -57,8 +57,9 @@ export class FeatureTableComponent implements OnInit {
       return false;
     }
   }
+
   public updateData(pageSize: number): void {
-  this.getUsers(this.usersUrl + pageSize);
+    this.getUsers(this.usersUrl + pageSize);
   }
 
   public isUsersUnloaded(): boolean {

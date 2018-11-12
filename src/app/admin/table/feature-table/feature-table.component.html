@@ -5,9 +5,6 @@
     </mat-toolbar>
     <div class="table-container">
       <div class="example-header" style="padding: 0 20px;">
-        <!--<mat-form-field floatPlaceholder="never" style="color: black; width: 100%;">-->
-          <!--<input matInput #filter placeholder="Filter users">-->
-        <!--</mat-form-field>-->
       </div>
       <mat-tab-group class="tabs" mat-align-tabs="center" dynamicHeight align="center">
         <mat-tab label="Users list" align="center">
@@ -62,17 +59,11 @@
               <mat-cell *matCellDef="let users"> {{users.gender}}</mat-cell>
             </ng-container>
 
-            <!-- Role Column -->
-            <!--<ng-container matColumnDef="role">-->
-              <!--<mat-header-cell *matHeaderCellDef mat-sort-header> Role</mat-header-cell>-->
-              <!--<mat-cell *matCellDef="let users"> {{users.userRole}}</mat-cell>-->
-            <!--</ng-container>-->
-
-            <!--&lt;!&ndash; Status Column &ndash;&gt;-->
-            <!--<ng-container matColumnDef="status">-->
-              <!--<mat-header-cell *matHeaderCellDef mat-sort-header> Status</mat-header-cell>-->
-              <!--<mat-cell *matCellDef="let users"> {{users.userStatus}}</mat-cell>-->
-            <!--</ng-container>-->
+             <!--Role Column-->
+            <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Role</mat-header-cell>
+            <mat-cell *matCellDef="let users"> {{users.role}}</mat-cell>
+            </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let users; columns: displayedColumns;"
@@ -80,40 +71,34 @@
                      (click)="selection.toggle(users.id)">
             </mat-row>
           </mat-table>
-
-          <div class="example-no-results"
-               [style.display]="dataSource?.renderedData.length == 0 ? '' : 'none'">
-            <!--No users found matching filter.-->
-          </div>
         </mat-tab>
         <mat-tab label="Card view">
           <mat-grid-list cols="4" rowHeight="4:5">
             <mat-grid-tile *ngFor="let user of users">
-                <div class="thecard">
-                  <div class="card-img">
-                    <img mat-card-avatar src="{{user.profilePic}}">
-                  </div>
-                  <div class="card-caption">
-                    <a target="_blank" href="/user/{{user.id}}">
+              <div class="thecard">
+                <div class="card-img">
+                  <img mat-card-avatar src="{{user.profilePic}}">
+                </div>
+                <div class="card-caption">
+                  <a target="_blank" href="/user/{{user.id}}">
                     <i id="like-btn">page</i>
-                    </a>
-                    <span class="date">{{user.lastUpdateDate}}</span>
-                    <h1>{{user.firstName + " " +user.lastName}}</h1>
-                    <p>{{user.email}}</p>
-                    <div *ngIf=" isUserOnline(user.state); else notShow ">
-                      <p style="color: limegreen">online</p>
-                    </div>
-                    <ng-template #notShow>
-                      <p style="color: red">offline</p>
-                    </ng-template>
+                  </a>
+                  <span class="date">{{user.lastUpdateDate}}</span>
+                  <h1>{{user.firstName + " " +user.lastName}}</h1>
+                  <p>{{user.email}}</p>
+                  <div *ngIf=" isUserOnline(user.state); else notShow ">
+                    <p style="color: limegreen">online</p>
                   </div>
-                  <a target="_blank" href="/admin/component/{{user.id}}">
+                  <ng-template #notShow>
+                    <p style="color: red">offline</p>
+                  </ng-template>
+                </div>
+                <a target="_blank" href="/admin/component/{{user.id}}">
                   <div class="card-outmore">
                     <h5>Read more</h5>
-                    <!--<i id="outmore-icon" class="fa fa-angle-right"></i>-->
                   </div>
-                  </a>
-                </div>
+                </a>
+              </div>
             </mat-grid-tile>
           </mat-grid-list>
         </mat-tab>
@@ -121,7 +106,7 @@
       <mat-paginator #paginator
                      [length]="100"
                      [pageIndex]="0"
-                     [pageSize]="10"
+                     [pageSize]="20"
                      [pageSizeOptions]="[5, 10, 25, 100]">
       </mat-paginator>
     </div>
