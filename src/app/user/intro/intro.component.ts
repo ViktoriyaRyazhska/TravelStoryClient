@@ -28,17 +28,21 @@ export class IntroComponent implements OnInit {
   }
 
   public changeProfilePic() {
-    this.dialog.open(DialogChangeProfilePicComponent, {
-      height: '435px',
-      width: '500px',
-    });
+    if (this.owner) {
+      this.dialog.open(DialogChangeProfilePicComponent, {
+        height: '435px',
+        width: '500px',
+      });
+    }
   }
 
   public changeBackgroundImage() {
-    this.dialog.open(DialogChangeBackgroundImageComponent, {
-      height: '435px',
-      width: '500px',
-    });
+    if (this.owner) {
+      this.dialog.open(DialogChangeBackgroundImageComponent, {
+        height: '435px',
+        width: '500px',
+      });
+    }
   }
 
   public getUser(): void {

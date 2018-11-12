@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../models/User';
 import {TravelStory} from '../../models/TravelStory';
 import {TranslateService} from '@ngx-translate/core';
@@ -8,6 +8,7 @@ import {TravelStoryService} from '../../service/travel-story.service';
 import {MatDialog} from '@angular/material';
 import {DialogAddTravelStoryComponent} from './dialog-add-travel-story/dialog-add-travel-story.component';
 import {DialogEditTravelStoryComponent} from './dialog-edit-travel-story/dialog-edit-travel-story.component';
+import {TokenService} from '../../service/token.service';
 
 
 @Component({
@@ -24,16 +25,20 @@ export class UserPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private userService: UserService,
     private translate: TranslateService,
     private travelStoryService: TravelStoryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private tokenService: TokenService
   ) {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('auth') === null) {
+      this.router.navigate(['/login']);
+    }
     this.contentType = 'TRAVELSTORY';
-    // this.userService.checkTokenEmpty();
     this.translate.setDefaultLang('en');
     this.getUser();
   }

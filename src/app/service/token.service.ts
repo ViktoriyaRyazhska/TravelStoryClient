@@ -41,4 +41,9 @@ export class TokenService {
   }
 
 
+  checkTokenAvailable(): boolean {
+    if (this.getUserId() !== null) {
+      return true;
+    }
+  }
 }
