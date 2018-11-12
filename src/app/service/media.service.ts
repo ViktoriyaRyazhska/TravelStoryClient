@@ -30,10 +30,13 @@ export class MediaService {
     this.data = this.http.get(`${this.baseUrl}/${userId}/${page}/${size}`);
     return this.data;
   }
-
+  public getUserMedias(userId: number, page: number, size: number): Observable<MediaPagableDTO> {
+    this.data = this.http.get(`${this.baseUrl}/user/${userId}/${page}/${size}`);
+    return this.data;
+  }
 
   public delete(mediaId: number) {
-    this.data = this.http.delete(`${this.baseUrl}/${mediaId}`);
+    return this.http.delete(`${this.baseUrl}/${mediaId}`);
   }
 
 }

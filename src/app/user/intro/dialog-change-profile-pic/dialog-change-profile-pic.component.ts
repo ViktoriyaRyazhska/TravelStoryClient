@@ -5,6 +5,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {UserPicDTO} from '../../../models/UserPicDTO';
 import {TokenService} from '../../../service/token.service';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-dialog-change-profile-pic',
@@ -21,9 +22,10 @@ export class DialogChangeProfilePicComponent implements OnInit {
 
   constructor(
     private storage: AngularFireStorage,
-              private db: AngularFirestore,
-              private fileService: FileService,
-              private tokenService: TokenService,
+    private db: AngularFirestore,
+    private fileService: FileService,
+    private tokenService: TokenService,
+    private dialogRef: MatDialogRef<DialogChangeProfilePicComponent>
   ) {
   }
 
@@ -49,7 +51,7 @@ export class DialogChangeProfilePicComponent implements OnInit {
       console.error('unsupported  file type :( ');
     }
 
-    const path = `prof_pic/${new Date().getTime()}_${file.name}`;
+    const path = `prof_pic/${this.tokenService.getUserId()}_${new Date().getTime()}_${file.name}`;
     const customMetadata = {app: 'travelstory resource'};
     this.task = this.storage.upload(path, file, {customMetadata});
 
@@ -57,20 +59,27 @@ export class DialogChangeProfilePicComponent implements OnInit {
     this.snapshot = this.task.snapshotChanges();
 
     this.snapshot.subscribe(() => {
+    }, error1 => {
+      console.error(error1);
+    }, () => {
       this.storage.ref(path)
         .getDownloadURL()
         .subscribe(value => {
-            this.dto.pic = value;
+            this.dto.pictureUrl = value;
             this.dto.id = this.tokenService.getUserId();
             this.fileService.uploadProfilePic(this.dto)
-              .subscribe((response) => {
-                location.reload(true);
+              .subscribe(() => {
               });
           }, (error1) => {
             console.error(error1);
-          }
-        );
-    });
+          }, () => location.reload(true)
+        )
+      ;
+    })
+    ;
   }
 
+  public close(): void {
+    this.dialogRef.close();
+  }
 }

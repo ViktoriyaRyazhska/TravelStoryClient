@@ -50,15 +50,20 @@
          [ngClass]="{'selected':onClickedTab()==='me'}" routerLink="/user/{{meId}}"
          translate><i class="material-icons">
         account_circle
-      </i>Me</a>
+      </i><span translate>Me</span></a>
       <a mat-list-item  (click)="onClickTab('messenger')"
          [ngClass]="{'selected':onClickedTab()==='messenger'}" routerLink="/messenger" translate><i class="material-icons">
         mail
-      </i>Messenger</a>
+      </i><span translate >Messenger</span></a>
+
+      <a mat-list-item  (click)="onClickTab('messenger')"
+         [ngClass]="{'selected':onClickedTab()==='messenger'}" routerLink="/user/{{meId}}/gallery" translate><i class="material-icons">
+        photo_library</i><span translate>MyGallery</span></a>
+
       <a mat-list-item  routerLink="/settings" (click)="onClickTab('settings')"
          [ngClass]="{'selected':onClickedTab()==='settings'}" translate><i class="material-icons">
         brightness_high
-      </i>Settings</a>
+      </i><span translate>Settings</span></a>
       <div *ngIf=" isUserAdmin()">
         <a mat-list-item  (click)="onClickTab('table')"
          [ngClass]="{'selected':onClickedTab()==='table'}" routerLink="/admin/table" translate><i class="material-icons">
@@ -67,11 +72,11 @@
       <a mat-list-item  (click)="onClickTab('table')"
          [ngClass]="{'selected':onClickedTab()==='table'}" routerLink="/admin/dashboard" translate><i class="material-icons">
         dashboard
-      </i>Dashboard</a>
+      </i><span translate>Dashboard</span></a>
       </div>
       <a mat-list-item  routerLink="/login" (click)="logout()" translate><i class="material-icons">
         meeting_room
-      </i>Logout</a>
+      </i><span translate>Logout</span></a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

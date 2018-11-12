@@ -1,19 +1,51 @@
-
-
-<mat-tab-group appScrollable (scrollPosition)="scrollHandler($event)">
-  <mat-tab label="Travel stories' photos">
+<mat-tab-group>
+  <mat-tab  label="{{'TravelStoriesPhotos' | translate}}">
     <mat-grid-list cols="4" gutterSize=7px rowHeight="4:3" *ngIf="this.medias">
-    <mat-grid-tile *ngFor="let media of this.medias">
-      <mat-card class="card-picture">
-        <mat-card-title>
-          <mat-icon fxFlex="10%" (click)="openDialogDeletion(media.id)">delete</mat-icon>
-        </mat-card-title>
-        <img (click)="openDialog(media)"  mat-card-image class="img" [src]="media.url">
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+      <mat-grid-tile *ngFor="let media of this.medias">
+        <mat-card class="card-picture position-relative " id="media{{this.media.id}}" (mouseout)="fireEventMouseOut($event,media)"
+                  (mouseover)="fireEventMouseOver($event,media)">
+          <mat-card-title>
+            <mat-icon class="hidden position-absolute" id="delete{{media.id}}" fxFlex="10%" (click)="openDialogDeletion(media.id)">
+              delete
+            </mat-icon>
+          </mat-card-title>
+          <img (click)="openDialog(media)" mat-card-image class="img" [src]="media.url">
+        </mat-card>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+    <div class="d-flex justify-content-center flex-wrap">
+      <mat-spinner style="margin-top:30px" *ngIf="this.spinnerState == true"></mat-spinner>
+      <button class="down" mat-raised-button color="primary" (click)="this.getMore()"
+              *ngIf="this.finished == false"><span translate>LoadMore</span>
+      </button>
+    </div>
+
+
   </mat-tab>
-  <mat-tab label="My photos"> My photos </mat-tab>
-  <mat-tab label="Add photos"> Add photos </mat-tab>
+  <mat-tab c label="{{'MyPhotos' | translate}}">
+    <mat-grid-list cols="4" gutterSize=7px rowHeight="4:3" *ngIf="this.userMedias">
+      <mat-grid-tile *ngFor="let userMedia of this.userMedias">
+
+        <mat-card class="card-picture position-relative " id="media{{userMedia.id}}" (mouseout)="fireEventMouseOut($event,userMedia)"
+                  (mouseover)="fireEventMouseOver($event,userMedia)">
+          <mat-card-title>
+            <mat-icon  class="hidden position-absolute" id="delete{{userMedia.id}}" fxFlex="10%"
+                      (click)="openDialogDeletion(userMedia.id)">delete
+            </mat-icon>
+          </mat-card-title>
+          <img (click)="openDialog(userMedia)" mat-card-image class="img" [src]="userMedia.url">
+        </mat-card>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+    <div class="d-flex justify-content-center flex-wrap">
+      <mat-spinner class="down"  *ngIf="this.spinnerStateUserMedia === true"></mat-spinner>
+      <button class="downbutton" mat-raised-button color="primary" (click)="this.getMoreUserMedias()"
+              *ngIf="this.finishedUserMedia === false"><span translate>LoadMore</span>
+      </button>
+    </div>
+  </mat-tab>
 </mat-tab-group>
+
 

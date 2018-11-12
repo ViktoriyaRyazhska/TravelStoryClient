@@ -46,16 +46,12 @@ export class DialogAddTravelStoryComponent implements OnInit {
     this.initMedia();
     this.travelStory.media = this.medias;
     console.log(this.travelStory);
-    this.travelStory.userId = 1;
+    // this.travelStory.userId = 1;
+    this.travelStory.userId = this.tokenService.getUserId();
     this.travelStoryService.addTravelStory(this.travelStory).subscribe();
     location.reload(true);
   }
 
-  uploadBackgroundPic() {
-    this.fileService.resetBackgroundPic(this.tokenService.getUserId()).subscribe((response) => {
-      console.log(response);
-    });
-  }
 
   toggleHover(event: boolean) {
     this.isHovering = event;
@@ -70,7 +66,7 @@ export class DialogAddTravelStoryComponent implements OnInit {
     }
 
     // The storage path
-    const path = `${new Date().getTime()}_${file.name}`;
+    const path = `${this.tokenService.getUserId()}_${new Date().getTime()}_${file.name}`;
 
     // Totally optional metadata
     const customMetadata = {app: 'travelstory resource'};

@@ -1,3 +1,4 @@
+<img src="../../../../assets/images/cancel.png" (click)="close()">
 <h5 mat-dialog-title translate>ChangeProfilePic</h5>
 <div class="content">
   <div class="dropzone"
@@ -19,7 +20,7 @@
     </div>
   </div>
 
-  <div *ngIf="percentage | async as pct">
+  <div class="percentage" *ngIf="percentage | async as pct">
     <progress class="progress is-info"
               [value]="pct"
               max="100">

@@ -1,18 +1,18 @@
-<div mat-dialog-content style="height: 500px"  (click)="this.countSquirrels()">
+<div mat-dialog-content style="height: 525px"  (click)="this.countSquirrels()">
 
   <div class="w-100 d-flex justify-content-center flex-wrap">
     <h1 class="text-center w-100 d-block" mat-dialog-title><b> <i class="material-icons">
       find_replace
     </i><span translate>FindYourFriends</span></b></h1>
-    <input placeholder="{{'TypeName'|translate}}" #searchBox id="search-box" class="d-block"
-           (keyup)="search(searchBox.value)"/>
+   <mat-form-field> <input matInput placeholder="{{'TypeName'|translate}}" #searchBox id="search-box" class="d-block"
+           (keyup)="search(searchBox.value)"/></mat-form-field>
   </div>
 
   <img [hidden]="this.showSquirrel" *ngIf="!this.users" style="height: 400px; width: 500px"
        src="https://previews.123rf.com/images/dimjul/dimjul1703/dimjul170300047/73871407-funny-pet-chipmunk-searching-with-magnifying-glass-onm-white.jpg">
 
   <div [hidden]="!this.showSquirrel">
-    <h1 style="text-align: center">Don't touch our squirrel!</h1>
+    <h1 style="text-align: center" ><span translate>StopBotheringMe</span></h1>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/T_AHCm0urak?start=29" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
   <div *ngIf="users">
@@ -28,7 +28,7 @@
         </mat-card-content>
       </mat-card>
       <mat-card-subtitle class="text-center w-100 d-block">
-        <a mat-button *ngIf="this.finished==false" (click)="getMore()">show more results...</a>
+        <a mat-button *ngIf="this.finished==false" (click)="getMore()" ><span translate>ShowMoreResults</span></a>
       </mat-card-subtitle>
     </div>
 

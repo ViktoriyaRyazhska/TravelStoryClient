@@ -47,13 +47,15 @@ export class CommentsComponent implements OnInit {
       .subscribe(comment => {
         this.comments.push(comment);
       });
-    this.commentsNumber ++;
+    this.commentsNumber++;
   }
 
   getComments(contentId: number, contentType: string) {
     this.commentService.getComments(contentId, contentType)
       .subscribe(comments => this.comments = comments);
-    document.getElementById('commentsBlock' + this.contentId).hidden = false;
+    window.onload = function () {
+      document.getElementById('commentsBlock' + contentId).hidden = false;
+    };
   }
 
   delete(comment: Comment) {
@@ -63,7 +65,7 @@ export class CommentsComponent implements OnInit {
   }
 
   getLoggedUser() {
-    let userId = this.tokenService.getUserId();
+    const userId = this.tokenService.getUserId();
     this.userService.getUser(userId).subscribe(user => this.loggedUser = user);
   }
 
@@ -71,11 +73,16 @@ export class CommentsComponent implements OnInit {
     this.commentService.getCommentsPortion(contentId, contentType, this.pageNumber).subscribe(data => {
       this.comments = data['content'];
       this.commentsNumber = data['totalElements'];
+      window.onload = function () {
+        document.getElementById('commentsBlock' + contentId.toString()).hidden = false;
+      };
     });
-    document.getElementById('commentsBlock' + this.contentId).hidden = false;
+
   }
 
-  hideComments() {
-    document.getElementById('commentsBlock' + this.contentId).hidden = true;
+  hideComments(contentId: number) {
+    window.onload = function () {
+      document.getElementById('commentsBlock' + contentId.toString()).hidden = true;
+    };
   }
 }

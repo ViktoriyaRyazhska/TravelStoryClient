@@ -30,7 +30,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatTabsModule,
-  MatToolbarModule, MatMenuModule, MatGridListModule
+  MatToolbarModule, MatMenuModule, MatGridListModule, MatProgressSpinnerModule
 } from '@angular/material';
 import {UserComponent} from './user.component';
 import {UserPlacesComponent} from './user-places/user-places.component';
@@ -46,6 +46,7 @@ import {GalleryComponent, MediaDialogComponent, ConfirmationDialogComponent} fro
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {SearchComponent, SearchDialogComponent} from '../search/search.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -77,6 +78,8 @@ import {SearchComponent, SearchDialogComponent} from '../search/search.component
     MatIconModule,
     MatMenuModule,
     MatGridListModule,
+    InfiniteScrollModule,
+    MatProgressSpinnerModule,
     NgxLoadingModule.forRoot({}),
   ],
   entryComponents: [

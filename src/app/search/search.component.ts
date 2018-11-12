@@ -57,7 +57,6 @@ export class SearchDialogComponent implements OnInit {
   search(term: string): void {
     this.term = term;
     this.page = 0;
-    this.finished = false;
     this.searchTerms.next(term);
   }
 
